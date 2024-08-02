@@ -37,6 +37,11 @@ require (
 	github.com/redis/rueidis v1.0.43
 	github.com/redis/rueidis/rueidishook v1.0.43
 	github.com/rs/xid v1.5.0
+	github.com/samber/slog-common v0.17.1
+	github.com/samber/slog-logrus/v2 v2.5.0
+	github.com/samber/slog-sentry/v2 v2.7.0
+	github.com/samber/slog-zap/v2 v2.6.0
+	github.com/samber/slog-zerolog/v2 v2.6.0
 	github.com/segmentio/encoding v0.4.0
 	github.com/segmentio/ksuid v1.0.4
 	github.com/smartystreets/goconvey v1.8.1
@@ -79,6 +84,8 @@ require (
 	github.com/jonboulle/clockwork v0.4.0 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/nats-io/nkeys v0.4.7 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
 	github.com/nexus-rpc/sdk-go v0.0.9 // indirect
@@ -87,8 +94,11 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
+	github.com/rs/zerolog v1.33.0 // indirect
+	github.com/samber/lo v1.46.0 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
-	github.com/smarty/assertions v1.15.0 // indirect
+	github.com/sirupsen/logrus v1.9.3 // indirect
+	github.com/smarty/assertions v1.16.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
