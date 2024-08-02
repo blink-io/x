@@ -3,6 +3,7 @@ module github.com/blink-io/x
 go 1.22.5
 
 require (
+	github.com/BurntSushi/toml v1.4.0
 	github.com/apache/thrift v0.20.0
 	github.com/beevik/guid v1.0.0
 	github.com/bwmarrin/snowflake v0.3.0
