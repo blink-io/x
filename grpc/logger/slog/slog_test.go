@@ -5,7 +5,6 @@ import (
 	"log/slog"
 	"testing"
 
-	xslog "github.com/blink-io/x/slog/ext"
 	"github.com/stretchr/testify/require"
 )
 
@@ -78,7 +77,7 @@ func TestLoggerErrorExpected(t *testing.T) {
 }
 
 func TestLoggerFatalExpected(t *testing.T) {
-	checkMessages(t, slog.LevelDebug, nil, xslog.LevelFatal, []string{
+	checkMessages(t, slog.LevelDebug, nil, LevelFatal, []string{
 		"hello",
 		"s1s21 2 3s34s56",
 		"hello world",
@@ -134,7 +133,7 @@ func TestLoggerV(t *testing.T) {
 		//	grpcDisabled: []int{grpcLvlInfo, grpcLvlWarn, grpcLvlError},
 		//},
 		{
-			slogLevel:    xslog.LevelFatal,
+			slogLevel:    LevelFatal,
 			grpcEnabled:  []int{grpcLvlFatal},
 			grpcDisabled: []int{grpcLvlInfo, grpcLvlWarn, grpcLvlError},
 		},

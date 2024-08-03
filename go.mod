@@ -4,6 +4,9 @@ go 1.22.5
 
 require (
 	github.com/BurntSushi/toml v1.4.0
+	github.com/VictoriaMetrics/fastcache v1.12.2
+	github.com/allegro/bigcache/v3 v3.1.0
+	github.com/ammario/tlru v0.4.0
 	github.com/apache/thrift v0.20.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/beevik/guid v1.0.0
@@ -19,7 +22,9 @@ require (
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
 	github.com/gofrs/uuid/v5 v5.2.0
+	github.com/gogo/protobuf v1.3.2
 	github.com/google/uuid v1.6.0
+	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/jaevor/go-nanoid v1.4.0
 	github.com/jellydator/ttlcache/v3 v3.2.0
 	github.com/joho/godotenv v1.5.1
@@ -49,6 +54,7 @@ require (
 	github.com/segmentio/encoding v0.4.0
 	github.com/segmentio/ksuid v1.0.4
 	github.com/smartystreets/goconvey v1.8.1
+	github.com/spf13/cast v1.6.0
 	github.com/stretchr/testify v1.9.0
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.1
@@ -59,6 +65,7 @@ require (
 	go.temporal.io/sdk v1.28.1
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
+	go.uber.org/zap/exp v0.2.0
 	golang.org/x/sys v0.22.0
 	golang.org/x/text v0.16.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20240730163845-b1a4ccb954bf
@@ -68,6 +75,7 @@ require (
 )
 
 require (
+	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
@@ -77,9 +85,9 @@ require (
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
-	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
+	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/pprof v0.0.0-20240424215950-a892ee059fd6 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
@@ -117,7 +125,6 @@ require (
 	go.opentelemetry.io/otel/trace v1.28.0 // indirect
 	go.temporal.io/api v1.36.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
-	go.uber.org/zap/exp v0.2.0 // indirect
 	golang.org/x/crypto v0.25.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/net v0.27.0 // indirect
