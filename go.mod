@@ -15,6 +15,7 @@ require (
 	github.com/getsentry/sentry-go v0.28.1
 	github.com/go-co-op/gocron/v2 v2.11.0
 	github.com/go-kit/log v0.2.1
+	github.com/go-logr/logr v1.4.2
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
 	github.com/gofrs/uuid/v5 v5.2.0
@@ -24,6 +25,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/karlseguin/ccache/v3 v3.0.5
 	github.com/lithammer/shortuuid/v4 v4.0.0
+	github.com/lmittmann/tint v1.0.5
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.36.0
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
@@ -38,7 +40,9 @@ require (
 	github.com/redis/rueidis/rueidishook v1.0.43
 	github.com/rs/xid v1.5.0
 	github.com/samber/slog-common v0.17.1
+	github.com/samber/slog-http v1.4.1
 	github.com/samber/slog-logrus/v2 v2.5.0
+	github.com/samber/slog-multi v1.2.0
 	github.com/samber/slog-sentry/v2 v2.7.0
 	github.com/samber/slog-zap/v2 v2.6.0
 	github.com/samber/slog-zerolog/v2 v2.6.0
@@ -50,6 +54,7 @@ require (
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.1
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
+	gitlab.com/greyxor/slogor v1.2.10
 	go.etcd.io/etcd/client/v3 v3.5.15
 	go.temporal.io/sdk v1.28.1
 	go.uber.org/multierr v1.11.0
@@ -71,7 +76,6 @@ require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
-	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/mock v1.6.0 // indirect
@@ -113,6 +117,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.28.0 // indirect
 	go.temporal.io/api v1.36.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
+	go.uber.org/zap/exp v0.2.0 // indirect
 	golang.org/x/crypto v0.25.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
 	golang.org/x/net v0.27.0 // indirect
