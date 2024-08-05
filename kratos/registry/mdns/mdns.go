@@ -2,48 +2,31 @@ package mdns
 
 import (
 	"context"
+	"net"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/registry"
-	"github.com/miekg/dns"
+	kregistry "github.com/go-kratos/kratos/v2/registry"
+	"github.com/hashicorp/mdns"
 )
 
 var (
-	_ registry.Registrar = (*Registry)(nil)
-	_ registry.Discovery = (*Registry)(nil)
+	_ kregistry.Registrar = (*Registry)(nil)
+	_ kregistry.Discovery = (*Registry)(nil)
 )
 
-// Option is etcd registry option.
-type Option func(o *options)
-
-type options struct {
-	ctx       context.Context
-	namespace string
-	ttl       time.Duration
-	maxRetry  int
-}
-
-// Namespace with registry namespace.
-func Namespace(ns string) Option {
-	return func(o *options) { o.namespace = ns }
-}
-
-// RegisterTTL with register ttl.
-func RegisterTTL(ttl time.Duration) Option {
-	return func(o *options) { o.ttl = ttl }
-}
-
-func MaxRetry(num int) Option {
-	return func(o *options) { o.maxRetry = num }
+type mdnsEntry struct {
+	node *mdns.Server
+	id   string
 }
 
 type Registry struct {
-	client    *dns.Client
-	instances map[string]*registry.ServiceInstance
+	services map[string][]*mdnsEntry
+
+	instances map[string]*kregistry.ServiceInstance
 	opts      *options
 }
 
-func New(client *dns.Client, opts ...Option) (r *Registry) {
+func New(opts ...Option) (r *Registry) {
 	op := &options{
 		ctx:       context.Background(),
 		namespace: "/microservices",
@@ -54,25 +37,51 @@ func New(client *dns.Client, opts ...Option) (r *Registry) {
 		o(op)
 	}
 	return &Registry{
-		opts:   op,
-		client: client,
+		opts: op,
 	}
 }
 
-func (r *Registry) GetService(ctx context.Context, serviceName string) ([]*registry.ServiceInstance, error) {
+func (r *Registry) GetService(ctx context.Context, serviceName string) ([]*kregistry.ServiceInstance, error) {
 	return nil, nil
 }
 
-func (r *Registry) Watch(ctx context.Context, serviceName string) (registry.Watcher, error) {
+func (r *Registry) Watch(ctx context.Context, serviceName string) (kregistry.Watcher, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (r *Registry) Register(ctx context.Context, service *registry.ServiceInstance) error {
+func (r *Registry) Register(ctx context.Context, service *kregistry.ServiceInstance) error {
+	domain := ""
+	hostName := ""
+	port := 9999
+	msvc, err := mdns.NewMDNSService(
+		service.ID,
+		service.Name,
+		domain,
+		hostName,
+		port,
+		[]net.IP{net.ParseIP("0.0.0.0")},
+		nil,
+	)
+	if err != nil {
+		return err
+	}
+
+	srv, err := mdns.NewServer(&mdns.Config{Zone: msvc})
+	if err != nil {
+		return err
+	}
+
+	r.services[service.Name] = []*mdnsEntry{
+		{
+			node: srv,
+			id:   service.ID,
+		},
+	}
 	return nil
 }
 
-func (r *Registry) Deregister(ctx context.Context, service *registry.ServiceInstance) error {
+func (r *Registry) Deregister(ctx context.Context, service *kregistry.ServiceInstance) error {
 	//TODO implement me
 	panic("implement me")
 }
