@@ -1,19 +1,20 @@
-package grpc
+package loader
 
 import (
 	"log/slog"
 	"net"
 	"testing"
 
+	grpcslog "github.com/blink-io/x/grpc/logger/slog"
 	"github.com/blink-io/x/i18n"
+	"google.golang.org/grpc/grpclog"
 
 	"github.com/blink-io/x/internal/testutil"
 	"github.com/stretchr/testify/require"
-	"google.golang.org/grpc/grpclog"
 )
 
 func init() {
-	grpclog.SetLoggerV2()
+	grpclog.SetLoggerV2(grpcslog.NewLogger(slog.Default()))
 }
 
 func TestGRPC_Server_1(t *testing.T) {

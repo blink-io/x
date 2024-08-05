@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/blink-io/x/i18n/grpc"
+	"github.com/blink-io/x/i18n/grpc/loader"
 	"github.com/blink-io/x/internal/testdata/pb"
 	"github.com/segmentio/encoding/proto"
 	"github.com/stretchr/testify/require"
@@ -64,7 +64,7 @@ func TestProto_3(t *testing.T) {
 	m = proto.AppendVarlen(m, 1, e3)
 	m = proto.AppendVarint(m, 2, 1701148888)
 
-	var res = &grpc.ListLanguagesResponse{}
+	var res = &loader.ListLanguagesResponse{}
 	require.NotNil(t, res)
 	errx := proto.Unmarshal(m, res)
 	require.NoError(t, errx)

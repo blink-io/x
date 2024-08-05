@@ -1,4 +1,4 @@
-package http
+package loader
 
 import (
 	"net/http"
@@ -7,6 +7,8 @@ import (
 )
 
 type options struct {
+	bundle *i18n.Bundle
+
 	client *http.Client
 
 	requestFunc func(*http.Client, string) (*http.Request, error)
@@ -26,6 +28,9 @@ func applyOptions(ops ...Option) *options {
 	for _, op := range ops {
 		op(opts)
 	}
+	if opts.bundle == nil {
+		opts.bundle = i18n.Default()
+	}
 	return opts
 }
 
@@ -44,5 +49,11 @@ func WithRequestFunc(requestFunc func(*http.Client, string) (*http.Request, erro
 func WithExtractFunc(extractFunc func(string) string) Option {
 	return func(o *options) {
 		o.extractFunc = extractFunc
+	}
+}
+
+func WithBundle(bundle *i18n.Bundle) Option {
+	return func(o *options) {
+		o.bundle = bundle
 	}
 }

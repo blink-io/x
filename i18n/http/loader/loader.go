@@ -1,4 +1,4 @@
-package http
+package loader
 
 import (
 	"io"
@@ -15,12 +15,17 @@ type loader struct {
 }
 
 func NewLoader(url string, ops ...Option) i18n.Loader {
+	return newLoader(url, ops...)
+}
+
+func newLoader(url string, ops ...Option) *loader {
 	opts := applyOptions(ops...)
 	return &loader{url: url, opts: opts}
 }
 
 func LoadFromHTTP(url string, ops ...Option) error {
-	return NewLoader(url, ops...).Load(i18n.Default())
+	ld := newLoader(url, ops...)
+	return ld.Load(ld.opts.bundle)
 }
 
 func (l *loader) Load(b i18n.Bundler) error {

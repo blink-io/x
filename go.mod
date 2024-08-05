@@ -10,6 +10,7 @@ require (
 	github.com/apache/thrift v0.20.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/beevik/guid v1.0.0
+	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v10 v10.0.0
 	github.com/cohesivestack/valgo v0.4.1
@@ -18,12 +19,14 @@ require (
 	github.com/getsentry/sentry-go v0.28.1
 	github.com/go-co-op/gocron/v2 v2.11.0
 	github.com/go-kit/log v0.2.1
+	github.com/go-kratos/kratos/v2 v2.8.0
 	github.com/go-logr/logr v1.4.2
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
 	github.com/gofrs/uuid/v5 v5.2.0
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/uuid v1.6.0
+	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.1.0
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/jaevor/go-nanoid v1.4.0
 	github.com/jellydator/ttlcache/v3 v3.2.0
@@ -31,6 +34,7 @@ require (
 	github.com/karlseguin/ccache/v3 v3.0.5
 	github.com/lithammer/shortuuid/v4 v4.0.0
 	github.com/lmittmann/tint v1.0.5
+	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.36.0
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
@@ -78,6 +82,7 @@ require (
 
 require (
 	github.com/armon/go-radix v1.0.0 // indirect
+	github.com/bits-and-blooms/bitset v1.13.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect

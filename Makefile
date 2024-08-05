@@ -6,7 +6,7 @@ tidy:
 .PHONY: build
 # Upgrade packages
 build:
-	go build
+	go build ./...
 
 .PHONY: upgrade
 # Upgrade packages

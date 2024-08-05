@@ -4,7 +4,7 @@
 // - protoc             v4.25.1
 // source: i18n.proto
 
-package grpc
+package loader
 
 import (
 	context "context"

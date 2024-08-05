@@ -1,4 +1,4 @@
-package grpc
+package loader
 
 import (
 	"context"
@@ -17,12 +17,17 @@ type loader struct {
 }
 
 func NewLoader(cc grpc.ClientConnInterface, languages []string) i18n.Loader {
+	return newLoader(cc, languages)
+}
+
+func newLoader(cc grpc.ClientConnInterface, languages []string) *loader {
 	client := NewI18NClient(cc)
 	return &loader{client: client, languages: languages}
 }
 
-func LoadFromGRPC(cc grpc.ClientConnInterface, languages []string) error {
-	return NewLoader(cc, languages).Load(i18n.Default())
+func LoadFromGRPC(cc grpc.ClientConnInterface, languages []string, ops ...Option) error {
+	opts := applyOptions(ops...)
+	return NewLoader(cc, languages).Load(opts.bundle)
 }
 
 func (l *loader) Load(b i18n.Bundler) error {
