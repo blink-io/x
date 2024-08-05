@@ -13,14 +13,17 @@ require (
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v10 v10.0.0
+	github.com/carlmjohnson/requests v0.24.1
 	github.com/cohesivestack/valgo v0.4.1
 	github.com/disgoorg/snowflake/v2 v2.0.3
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/getsentry/sentry-go v0.28.1
+	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-co-op/gocron/v2 v2.11.0
 	github.com/go-kit/log v0.2.1
 	github.com/go-kratos/kratos/v2 v2.8.0
 	github.com/go-logr/logr v1.4.2
+	github.com/go-resty/resty/v2 v2.14.0
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
 	github.com/gofrs/uuid/v5 v5.2.0
@@ -36,6 +39,7 @@ require (
 	github.com/lithammer/shortuuid/v4 v4.0.0
 	github.com/lmittmann/tint v1.0.5
 	github.com/mattn/go-runewidth v0.0.15
+	github.com/miekg/dns v1.1.61
 	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.36.0
@@ -47,6 +51,7 @@ require (
 	github.com/pelletier/go-toml/v2 v2.2.2
 	github.com/phuslu/log v1.0.107
 	github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910
+	github.com/quic-go/quic-go v0.45.2
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.5.3
 	github.com/redis/go-redis/v9 v9.6.1
 	github.com/redis/rueidis v1.0.43
@@ -116,6 +121,7 @@ require (
 	github.com/pborman/uuid v1.2.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/quic-go/qpack v0.4.0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -138,8 +144,10 @@ require (
 	go.opentelemetry.io/otel/trace v1.28.0 // indirect
 	go.temporal.io/api v1.36.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
+	go.uber.org/mock v0.4.0 // indirect
 	golang.org/x/crypto v0.25.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
+	golang.org/x/mod v0.19.0 // indirect
 	golang.org/x/net v0.27.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/time v0.6.0 // indirect
