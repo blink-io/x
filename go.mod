@@ -71,6 +71,7 @@ require (
 	github.com/spf13/cast v1.6.0
 	github.com/stretchr/testify v1.9.0
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
+	github.com/tx7do/kratos-transport/transport/http3 v1.2.13
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.1
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
