@@ -52,12 +52,35 @@ type (
 	XID = log.XID
 )
 
+const (
+	TraceLevel       = log.TraceLevel
+	DebugLevel       = log.DebugLevel
+	InfoLevel        = log.InfoLevel
+	WarnLevel        = log.WarnLevel
+	ErrorLevel       = log.ErrorLevel
+	FatalLevel       = log.FatalLevel
+	PanicLevel       = log.PanicLevel
+	noLevel    Level = 8
+
+	ErrInvalidXID = log.ErrInvalidXID
+
+	TimeFormatUnix = log.TimeFormatUnix
+
+	TimeFormatUnixMs = log.TimeFormatUnixMs
+
+	TimeFormatUnixWithMs = log.TimeFormatUnixWithMs
+)
+
 var (
 	DefaultLogger = log.DefaultLogger
 
 	SlogNewJSONHandler = log.SlogNewJSONHandler
 
 	Printf = log.Printf
+
+	Fastrandn = log.Fastrandn
+
+	IsTerminal = log.IsTerminal
 
 	ErrAsyncWriterFull = log.ErrAsyncWriterFull
 )
