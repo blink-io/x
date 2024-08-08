@@ -14,6 +14,7 @@ type WithRegistrar interface {
 
 type ServiceRegistrar interface {
 	client.Client
+	Origin() client.Client
 }
 
 type Func[S any] func(ServiceRegistrar, S)

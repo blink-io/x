@@ -27,3 +27,19 @@ func TestLogger_Slog_1(t *testing.T) {
 	xid_ := log.NewXID()
 	fmt.Println(xid_.String())
 }
+
+func TestLog_FileWriter(t *testing.T) {
+	fw := &FileWriter{
+		//LocalTime: true,
+		//HostName:  true,
+		//ProcessID: true,
+		Filename: "abc.log",
+	}
+
+	ll := &Logger{
+		Level:  InfoLevel,
+		Writer: fw,
+	}
+	ll.Info().Msg("test")
+
+}
