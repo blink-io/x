@@ -33,7 +33,7 @@ func TestLog_FileWriter(t *testing.T) {
 		//LocalTime: true,
 		//HostName:  true,
 		//ProcessID: true,
-		Filename: "abc.log",
+		Filename: "test.log",
 	}
 
 	ll := &Logger{
