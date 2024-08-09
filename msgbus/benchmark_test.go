@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mustafaturan/bus/v3"
+	"github.com/blink-io/x/msgbus"
 )
 
 func BenchmarkEmit(b *testing.B) {

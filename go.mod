@@ -47,7 +47,6 @@ require (
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/miekg/dns v1.1.61
 	github.com/montanaflynn/stats v0.7.1
-	github.com/mustafaturan/bus/v3 v3.0.3
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.36.0
 	github.com/ncruces/go-strftime v0.1.9
