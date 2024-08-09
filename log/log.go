@@ -60,7 +60,7 @@ const (
 	ErrorLevel       = log.ErrorLevel
 	FatalLevel       = log.FatalLevel
 	PanicLevel       = log.PanicLevel
-	noLevel    Level = 8
+	NoLevel    Level = 8
 
 	ErrInvalidXID = log.ErrInvalidXID
 
