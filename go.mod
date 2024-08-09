@@ -13,14 +13,17 @@ require (
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v10 v10.0.0
-	github.com/carlmjohnson/requests v0.24.1
+	github.com/carlmjohnson/requests v0.24.2
+	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cohesivestack/valgo v0.4.1
+	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/getsentry/sentry-go v0.28.1
 	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-co-op/gocron/v2 v2.11.0
+	github.com/go-faster/city v1.0.1
 	github.com/go-kit/log v0.2.1
 	github.com/go-kratos/kratos/v2 v2.8.0
 	github.com/go-logr/logr v1.4.2
@@ -72,19 +75,21 @@ require (
 	github.com/spf13/cast v1.7.0
 	github.com/stretchr/testify v1.9.0
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
+	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.13
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.1
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
+	github.com/zeebo/xxh3 v1.0.2
 	gitlab.com/greyxor/slogor v1.2.10
 	go.etcd.io/etcd/client/v3 v3.5.15
 	go.temporal.io/sdk v1.28.1
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
 	go.uber.org/zap/exp v0.2.0
-	golang.org/x/sys v0.23.0
+	golang.org/x/sys v0.24.0
 	golang.org/x/text v0.17.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20240805194559-2c9e96a0b5d4
+	google.golang.org/genproto/googleapis/api v0.0.0-20240808171019-573a1156607a
 	google.golang.org/grpc v1.65.0
 	google.golang.org/protobuf v1.34.2
 	gopkg.in/yaml.v3 v3.0.1
@@ -93,7 +98,6 @@ require (
 require (
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/bits-and-blooms/bitset v1.13.0 // indirect
-	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -117,6 +121,7 @@ require (
 	github.com/jonboulle/clockwork v0.4.0 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
+	github.com/klauspost/cpuid/v2 v2.2.8 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/nats-io/nkeys v0.4.7 // indirect
@@ -150,11 +155,11 @@ require (
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/mock v0.4.0 // indirect
 	golang.org/x/crypto v0.26.0 // indirect
-	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
+	golang.org/x/exp v0.0.0-20240808152545-0cdaa3abc0fa // indirect
 	golang.org/x/mod v0.20.0 // indirect
 	golang.org/x/net v0.28.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/time v0.6.0 // indirect
 	golang.org/x/tools v0.24.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240805194559-2c9e96a0b5d4 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240808171019-573a1156607a // indirect
 )
