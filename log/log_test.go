@@ -2,6 +2,7 @@ package log
 
 import (
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/phuslu/log"
@@ -17,10 +18,7 @@ func TestLogger_Slog_1(t *testing.T) {
 	ll := DefaultLogger
 
 	sl := ll.Slog()
-
-	sl.Info("hello world", "name", "hello")
-
-	ll.SetLevel(log.DebugLevel)
+	sl.Info("This is slog", "name", "hello")
 
 	ll.WithLevel(log.InfoLevel).Str("key", "val").Msg("test")
 
@@ -36,9 +34,14 @@ func TestLog_FileWriter(t *testing.T) {
 		Filename: "test.log",
 	}
 
+	mw := &MultiIOWriter{
+		IOWriter{Writer: os.Stderr},
+		fw,
+	}
+
 	ll := &Logger{
 		Level:  InfoLevel,
-		Writer: fw,
+		Writer: mw,
 	}
 	ll.Info().Msg("test")
 

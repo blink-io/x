@@ -83,4 +83,6 @@ var (
 	IsTerminal = log.IsTerminal
 
 	ErrAsyncWriterFull = log.ErrAsyncWriterFull
+
+	ParseLevel = log.ParseLevel
 )
