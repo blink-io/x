@@ -48,6 +48,7 @@ require (
 	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.36.0
+	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/oklog/ulid/v2 v2.1.0
 	github.com/onsi/ginkgo/v2 v2.20.0
