@@ -11,6 +11,7 @@ require (
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
+	github.com/brianvoe/gofakeit/v7 v7.0.4
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v10 v10.0.0
 	github.com/carlmjohnson/requests v0.24.2
@@ -46,6 +47,7 @@ require (
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/miekg/dns v1.1.61
 	github.com/montanaflynn/stats v0.7.1
+	github.com/mustafaturan/bus/v3 v3.0.3
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.36.0
 	github.com/ncruces/go-strftime v0.1.9
