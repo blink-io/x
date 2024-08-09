@@ -10,7 +10,7 @@ type keyValue struct {
 }
 
 type doOptions struct {
-	method      string
+	//method      string
 	statusCode  int
 	ahs         []*keyValue
 	shs         map[string]string
@@ -30,9 +30,9 @@ func applyDoOptions(ops ...DoOption) *doOptions {
 	for _, o := range ops {
 		o(opt)
 	}
-	if len(opt.method) == 0 {
-		opt.method = http.MethodGet
-	}
+	//if len(opt.method) == 0 {
+	//	opt.method = http.MethodGet
+	//}
 	if opt.statusCode == 0 {
 		opt.statusCode = http.StatusOK
 	}
