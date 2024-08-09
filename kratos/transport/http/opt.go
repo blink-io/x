@@ -75,7 +75,7 @@ func Route[Request Req, Response Res](r RouterHandle) func(
 	ops ...DoOption,
 ) {
 	return func(method string, path string, operation string, handle func(context.Context, *Request) (*Response, error), ops ...DoOption) {
-		r.Handle(method, path, Do(method, operation, handle))
+		r.Handle(method, path, Do(method, operation, handle, ops...))
 	}
 }
 
