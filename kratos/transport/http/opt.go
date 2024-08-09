@@ -63,22 +63,6 @@ func (h Func[Request, Response]) Any(operation string, ops ...DoOption) khttp.Ha
 	return Any[Request, Response](operation, h, ops...)
 }
 
-type RouterHandle interface {
-	Handle(method, relativePath string, h khttp.HandlerFunc, filters ...khttp.FilterFunc)
-}
-
-func Route[Request Req, Response Res](r RouterHandle) func(
-	method string,
-	path string,
-	operation string,
-	handle func(context.Context, *Request) (*Response, error),
-	ops ...DoOption,
-) {
-	return func(method string, path string, operation string, handle func(context.Context, *Request) (*Response, error), ops ...DoOption) {
-		r.Handle(method, path, Do(method, operation, handle, ops...))
-	}
-}
-
 func Do[Request Req, Response Res](
 	method string,
 	operation string,
