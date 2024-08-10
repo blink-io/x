@@ -33,8 +33,6 @@ type (
 
 	FileWriter = log.FileWriter
 
-	JournalWriter = log.JournalWriter
-
 	IOWriter = log.IOWriter
 
 	MultiEntryWriter = log.MultiEntryWriter
