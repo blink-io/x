@@ -2,14 +2,14 @@
 // Use of this source code is governed by a Apache License 2.0 license that can
 // be found in the LICENSE file.
 
-package bus_test
+package msgbus_test
 
 import (
 	"context"
 	"testing"
 	"time"
 
-	"github.com/blink-io/x/msgbus"
+	bus "github.com/blink-io/x/msgbus"
 )
 
 func BenchmarkEmit(b *testing.B) {

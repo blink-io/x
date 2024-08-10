@@ -39,6 +39,7 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.5
 	github.com/jaevor/go-nanoid v1.4.0
+	github.com/jaswdr/faker/v2 v2.3.0
 	github.com/jellydator/ttlcache/v3 v3.2.0
 	github.com/joho/godotenv v1.5.1
 	github.com/karlseguin/ccache/v3 v3.0.5

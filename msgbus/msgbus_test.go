@@ -2,7 +2,7 @@
 // Use of this source code is governed by a Apache License 2.0 license that can
 // be found in the LICENSE file.
 
-package bus_test
+package msgbus_test
 
 import (
 	"context"
@@ -12,7 +12,6 @@ import (
 	bus "github.com/blink-io/x/msgbus"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 )
 
 const (
@@ -30,26 +29,6 @@ func TestCtxKeyTxID(t *testing.T) {
 
 func TestVersion(t *testing.T) {
 	assert.Equal(t, bus.Version, "3.0.3")
-}
-
-func TestNew(t *testing.T) {
-	var fn bus.Next = func() string { return "afakeid" }
-
-	t.Run("with valid generator", func(t *testing.T) {
-		b, err := bus.NewBus(fn)
-		require.Nil(t, err)
-		assert.IsType(t, &bus.Bus{}, b)
-	})
-
-	t.Run("with invalid generator", func(t *testing.T) {
-		b, err := bus.NewBus(nil)
-		require.Nil(t, b)
-		assert.NotNil(t, err)
-		if assert.Error(t, err) {
-			want := "bus: Next() id generator func can't be nil"
-			assert.Equal(t, want, err.Error())
-		}
-	})
 }
 
 func TestEmit(t *testing.T) {
@@ -279,14 +258,14 @@ func TestDeregisterHandler(t *testing.T) {
 	})
 }
 
-func setup(topicNames ...string) *bus.Bus {
+func setup(topicNames ...string) bus.Bus {
 	var fn bus.Next = func() string { return "fakeid" }
-	b, _ := bus.NewBus(fn)
+	b, _ := bus.NewWithGen(fn)
 	b.RegisterTopics(topicNames...)
 	return b
 }
 
-func tearDown(b *bus.Bus, topicNames ...string) {
+func tearDown(b bus.Bus, topicNames ...string) {
 	b.DeregisterTopics(topicNames...)
 }
 
@@ -294,7 +273,7 @@ func fakeHandler(matcher string) bus.Handler {
 	return bus.Handler{Handle: func(context.Context, bus.Event) {}, Matcher: matcher}
 }
 
-func registerFakeHandler(b *bus.Bus, key string, t *testing.T) {
+func registerFakeHandler(b bus.Bus, key string, t *testing.T) {
 	fn := func(ctx context.Context, e bus.Event) {
 		t.Run("receives right event", func(t *testing.T) {
 			assert := assert.New(t)
@@ -308,7 +287,7 @@ func registerFakeHandler(b *bus.Bus, key string, t *testing.T) {
 	b.RegisterHandler(key, h)
 }
 
-func isTopicHandler(b *bus.Bus, topicName, handlerKey string) bool {
+func isTopicHandler(b bus.Bus, topicName, handlerKey string) bool {
 	for _, th := range b.TopicHandlerKeys(topicName) {
 		if handlerKey == th {
 			return true
@@ -317,7 +296,7 @@ func isTopicHandler(b *bus.Bus, topicName, handlerKey string) bool {
 	return false
 }
 
-func isHandlerKeyExists(b *bus.Bus, key string) bool {
+func isHandlerKeyExists(b bus.Bus, key string) bool {
 	for _, k := range b.HandlerKeys() {
 		if k == key {
 			return true

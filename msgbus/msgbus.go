@@ -2,7 +2,7 @@
 // Use of this source code is governed by a Apache License 2.0 license that can
 // be found in the LICENSE file.
 
-package bus
+package msgbus
 
 import (
 	"context"
@@ -10,11 +10,26 @@ import (
 	"regexp"
 	"sync"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type (
+	Bus interface {
+		Emit(ctx context.Context, topic string, data any) error
+		EmitWithOpts(ctx context.Context, topic string, data any, opts ...EventOption) error
+		Topics() []string
+		RegisterTopics(topics ...string)
+		DeregisterTopics(topics ...string)
+		TopicHandlerKeys(topic string) []string
+		HandlerKeys() []string
+		HandlerTopicSubscriptions(handlerKey string) []string
+		RegisterHandler(key string, h Handler)
+		DeregisterHandler(key string)
+	}
+
 	// Bus is a message bus
-	Bus struct {
+	bus struct {
 		mutex    sync.RWMutex
 		idgen    Next
 		topics   map[string][]Handler
@@ -31,12 +46,12 @@ type (
 
 	// Event is data structure for any logs
 	Event struct {
-		ID         string      // identifier
-		TxID       string      // transaction identifier
-		Topic      string      // topic name
-		Source     string      // source of the event
-		OccurredAt time.Time   // creation time in nanoseconds
-		Data       interface{} // actual event data
+		ID         string    // identifier
+		TxID       string    // transaction identifier
+		Topic      string    // topic name
+		Source     string    // source of the event
+		OccurredAt time.Time // creation time in nanoseconds
+		Data       any       // actual event data
 	}
 
 	// Handler is a receiver for event reference with the given regex pattern
@@ -69,54 +84,33 @@ const (
 	empty = ""
 )
 
-// NewBus inits a new bus
-func NewBus(g IDGenerator) (*Bus, error) {
+// Generate is an implementation of IDGenerator for bus.Next fn type
+func (n Next) Generate() string {
+	return n()
+}
+
+// New inits a new bus
+func New() Bus {
+	b, _ := NewWithGen(Next(uuid.NewString))
+	return b
+}
+
+// NewWithGen inits a new bus with id generator
+func NewWithGen(g IDGenerator) (Bus, error) {
 	if g == nil {
 		return nil, fmt.Errorf("bus: Next() id generator func can't be nil")
 	}
 
-	return &Bus{
+	return &bus{
 		idgen:    g.Generate,
 		topics:   make(map[string][]Handler),
 		handlers: make(map[string]Handler),
 	}, nil
 }
 
-// WithID returns an option to set event's id field
-func WithID(id string) EventOption {
-	return func(e Event) Event {
-		e.ID = id
-		return e
-	}
-}
-
-// WithTxID returns an option to set event's txID field
-func WithTxID(txID string) EventOption {
-	return func(e Event) Event {
-		e.TxID = txID
-		return e
-	}
-}
-
-// WithSource returns an option to set event's source field
-func WithSource(source string) EventOption {
-	return func(e Event) Event {
-		e.Source = source
-		return e
-	}
-}
-
-// WithOccurredAt returns an option to set event's occurredAt field
-func WithOccurredAt(time time.Time) EventOption {
-	return func(e Event) Event {
-		e.OccurredAt = time
-		return e
-	}
-}
-
 // Emit inits a new event and delivers to the interested in handlers with
 // sync safety
-func (b *Bus) Emit(ctx context.Context, topic string, data interface{}) error {
+func (b *bus) Emit(ctx context.Context, topic string, data any) error {
 	b.mutex.RLock()
 	handlers, ok := b.topics[topic]
 	b.mutex.RUnlock()
@@ -150,7 +144,7 @@ func (b *Bus) Emit(ctx context.Context, topic string, data interface{}) error {
 
 // EmitWithOpts inits a new event and delivers to the interested in handlers
 // with sync safety and options
-func (b *Bus) EmitWithOpts(ctx context.Context, topic string, data interface{}, opts ...EventOption) error {
+func (b *bus) EmitWithOpts(ctx context.Context, topic string, data any, opts ...EventOption) error {
 	b.mutex.RLock()
 	handlers, ok := b.topics[topic]
 	b.mutex.RUnlock()
@@ -182,7 +176,7 @@ func (b *Bus) EmitWithOpts(ctx context.Context, topic string, data interface{}, 
 }
 
 // Topics lists the all registered topics
-func (b *Bus) Topics() []string {
+func (b *bus) Topics() []string {
 	b.mutex.RLock()
 	defer b.mutex.RUnlock()
 
@@ -195,8 +189,8 @@ func (b *Bus) Topics() []string {
 	return topics
 }
 
-// RegisterTopics registers topics and fullfills handlers
-func (b *Bus) RegisterTopics(topics ...string) {
+// RegisterTopics registers topics and fulfills handlers
+func (b *bus) RegisterTopics(topics ...string) {
 	b.mutex.Lock()
 	defer b.mutex.Unlock()
 
@@ -206,7 +200,7 @@ func (b *Bus) RegisterTopics(topics ...string) {
 }
 
 // DeregisterTopics deletes topic
-func (b *Bus) DeregisterTopics(topics ...string) {
+func (b *bus) DeregisterTopics(topics ...string) {
 	b.mutex.Lock()
 	defer b.mutex.Unlock()
 
@@ -216,7 +210,7 @@ func (b *Bus) DeregisterTopics(topics ...string) {
 }
 
 // TopicHandlerKeys returns all handlers for the topic
-func (b *Bus) TopicHandlerKeys(topic string) []string {
+func (b *bus) TopicHandlerKeys(topic string) []string {
 	b.mutex.RLock()
 	handlers := b.topics[topic]
 	b.mutex.RUnlock()
@@ -231,7 +225,7 @@ func (b *Bus) TopicHandlerKeys(topic string) []string {
 }
 
 // HandlerKeys returns list of registered handler keys
-func (b *Bus) HandlerKeys() []string {
+func (b *bus) HandlerKeys() []string {
 	b.mutex.RLock()
 	defer b.mutex.RUnlock()
 
@@ -245,7 +239,7 @@ func (b *Bus) HandlerKeys() []string {
 }
 
 // HandlerTopicSubscriptions returns all topic subscriptions of the handler
-func (b *Bus) HandlerTopicSubscriptions(handlerKey string) []string {
+func (b *bus) HandlerTopicSubscriptions(handlerKey string) []string {
 	b.mutex.RLock()
 	defer b.mutex.RUnlock()
 
@@ -253,7 +247,7 @@ func (b *Bus) HandlerTopicSubscriptions(handlerKey string) []string {
 }
 
 // RegisterHandler re/register the handler to the registry
-func (b *Bus) RegisterHandler(key string, h Handler) {
+func (b *bus) RegisterHandler(key string, h Handler) {
 	b.mutex.Lock()
 	defer b.mutex.Unlock()
 
@@ -262,19 +256,14 @@ func (b *Bus) RegisterHandler(key string, h Handler) {
 }
 
 // DeregisterHandler deletes handler from the registry
-func (b *Bus) DeregisterHandler(key string) {
+func (b *bus) DeregisterHandler(key string) {
 	b.mutex.Lock()
 	defer b.mutex.Unlock()
 
 	b.deregisterHandler(key)
 }
 
-// Generate is an implementation of IDGenerator for bus.Next fn type
-func (n Next) Generate() string {
-	return n()
-}
-
-func (b *Bus) registerHandler(h Handler) {
+func (b *bus) registerHandler(h Handler) {
 	b.deregisterHandler(h.key)
 	b.handlers[h.key] = h
 	for _, t := range b.handlerTopicSubscriptions(h.key) {
@@ -282,7 +271,7 @@ func (b *Bus) registerHandler(h Handler) {
 	}
 }
 
-func (b *Bus) deregisterHandler(handlerKey string) {
+func (b *bus) deregisterHandler(handlerKey string) {
 	if _, ok := b.handlers[handlerKey]; ok {
 		for _, t := range b.handlerTopicSubscriptions(handlerKey) {
 			b.deregisterTopicHandler(t, handlerKey)
@@ -291,11 +280,11 @@ func (b *Bus) deregisterHandler(handlerKey string) {
 	}
 }
 
-func (b *Bus) registerTopicHandler(topic string, h Handler) {
+func (b *bus) registerTopicHandler(topic string, h Handler) {
 	b.topics[topic] = append(b.topics[topic], h)
 }
 
-func (b *Bus) deregisterTopicHandler(topic, handlerKey string) {
+func (b *bus) deregisterTopicHandler(topic, handlerKey string) {
 	l := len(b.topics[topic])
 	for i, h := range b.topics[topic] {
 		if h.key == handlerKey {
@@ -306,7 +295,7 @@ func (b *Bus) deregisterTopicHandler(topic, handlerKey string) {
 	}
 }
 
-func (b *Bus) registerTopic(topic string) {
+func (b *bus) registerTopic(topic string) {
 	if _, ok := b.topics[topic]; ok {
 		return
 	}
@@ -314,11 +303,11 @@ func (b *Bus) registerTopic(topic string) {
 	b.topics[topic] = b.buildHandlers(topic)
 }
 
-func (b *Bus) deregisterTopic(topic string) {
+func (b *bus) deregisterTopic(topic string) {
 	delete(b.topics, topic)
 }
 
-func (b *Bus) buildHandlers(topic string) []Handler {
+func (b *bus) buildHandlers(topic string) []Handler {
 	handlers := make([]Handler, 0)
 	for _, h := range b.handlers {
 		if matched, _ := regexp.MatchString(h.Matcher, topic); matched {
@@ -328,7 +317,7 @@ func (b *Bus) buildHandlers(topic string) []Handler {
 	return handlers
 }
 
-func (b *Bus) handlerTopicSubscriptions(handlerKey string) []string {
+func (b *bus) handlerTopicSubscriptions(handlerKey string) []string {
 	var subscriptions []string
 	h, ok := b.handlers[handlerKey]
 	if !ok {
