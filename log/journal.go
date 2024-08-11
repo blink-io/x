@@ -3,6 +3,8 @@
 
 package log
 
+import "github.com/phuslu/log"
+
 type (
 	JournalWriter = log.JournalWriter
 )
