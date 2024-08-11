@@ -62,8 +62,8 @@ require (
 	github.com/quic-go/quic-go v0.46.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.5.3
 	github.com/redis/go-redis/v9 v9.6.1
-	github.com/redis/rueidis v1.0.43
-	github.com/redis/rueidis/rueidishook v1.0.43
+	github.com/redis/rueidis v1.0.44
+	github.com/redis/rueidis/rueidishook v1.0.44
 	github.com/rs/xid v1.5.0
 	github.com/samber/slog-common v0.17.1
 	github.com/samber/slog-http v1.4.1
