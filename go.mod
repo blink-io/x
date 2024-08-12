@@ -31,7 +31,7 @@ require (
 	github.com/go-resty/resty/v2 v2.14.0
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
-	github.com/gofrs/uuid/v5 v5.2.0
+	github.com/gofrs/uuid/v5 v5.3.0
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/uuid v1.6.0
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.1.0
@@ -86,7 +86,7 @@ require (
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
-	gitlab.com/greyxor/slogor v1.2.10
+	gitlab.com/greyxor/slogor v1.2.11
 	go.etcd.io/etcd/client/v3 v3.5.15
 	go.temporal.io/sdk v1.28.1
 	go.uber.org/multierr v1.11.0
