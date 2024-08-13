@@ -1,4 +1,4 @@
-package debug
+package timing
 
 import (
 	"context"

@@ -1,4 +1,4 @@
-package debug
+package timing
 
 type Option func(*hook)
 
