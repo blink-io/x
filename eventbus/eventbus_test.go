@@ -71,17 +71,17 @@ func TestUnsubscribe(t *testing.T) {
 	}
 }
 
-type handler struct {
+type testHandler struct {
 	val int
 }
 
-func (h *handler) Handle() {
+func (h *testHandler) Handle() {
 	h.val++
 }
 
 func TestUnsubscribeMethod(t *testing.T) {
 	bus := New()
-	h := &handler{val: 0}
+	h := &testHandler{val: 0}
 
 	bus.Subscribe("topic", h.Handle)
 	bus.Publish("topic")

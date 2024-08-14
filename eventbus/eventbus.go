@@ -41,7 +41,7 @@ type bus struct {
 }
 
 type handler struct {
-	callBack      reflect.Value
+	callback      reflect.Value
 	flagOnce      bool
 	async         bool
 	transactional bool
@@ -157,7 +157,7 @@ func (bus *bus) Publish(topic string, args ...interface{}) {
 
 func (bus *bus) doPublish(handler *handler, topic string, args ...interface{}) {
 	passedArguments := bus.setUpPublish(handler, args...)
-	handler.callBack.Call(passedArguments)
+	handler.callback.Call(passedArguments)
 }
 
 func (bus *bus) doPublishAsync(handler *handler, topic string, args ...interface{}) {
@@ -186,8 +186,8 @@ func (bus *bus) removeHandler(topic string, idx int) {
 func (bus *bus) findHandlerIdx(topic string, callback reflect.Value) int {
 	if _, ok := bus.handlers[topic]; ok {
 		for idx, handler := range bus.handlers[topic] {
-			if handler.callBack.Type() == callback.Type() &&
-				handler.callBack.Pointer() == callback.Pointer() {
+			if handler.callback.Type() == callback.Type() &&
+				handler.callback.Pointer() == callback.Pointer() {
 				return idx
 			}
 		}
@@ -196,7 +196,7 @@ func (bus *bus) findHandlerIdx(topic string, callback reflect.Value) int {
 }
 
 func (bus *bus) setUpPublish(callback *handler, args ...interface{}) []reflect.Value {
-	funcType := callback.callBack.Type()
+	funcType := callback.callback.Type()
 	passedArguments := make([]reflect.Value, len(args))
 	for i, v := range args {
 		if v == nil {
