@@ -21,6 +21,7 @@ require (
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
 	github.com/fxamacker/cbor/v2 v2.7.0
+	github.com/georgysavva/scany/v2 v2.1.3
 	github.com/getsentry/sentry-go v0.28.1
 	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-co-op/gocron/v2 v2.11.0
@@ -66,6 +67,7 @@ require (
 	github.com/redis/go-redis/v9 v9.6.1
 	github.com/redis/rueidis v1.0.44
 	github.com/redis/rueidis/rueidishook v1.0.44
+	github.com/riverqueue/river v0.11.2
 	github.com/rs/xid v1.5.0
 	github.com/samber/slog-common v0.17.1
 	github.com/samber/slog-http v1.4.1
@@ -125,6 +127,10 @@ require (
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.21.0 // indirect
+	github.com/jackc/pgpassfile v1.0.0 // indirect
+	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
+	github.com/jackc/pgx/v5 v5.6.0 // indirect
+	github.com/jackc/puddle/v2 v2.2.1 // indirect
 	github.com/jonboulle/clockwork v0.4.0 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
@@ -138,6 +144,9 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
+	github.com/riverqueue/river/riverdriver v0.11.2 // indirect
+	github.com/riverqueue/river/rivershared v0.11.2 // indirect
+	github.com/riverqueue/river/rivertype v0.11.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -160,6 +169,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.28.0 // indirect
 	go.temporal.io/api v1.37.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
+	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/mock v0.4.0 // indirect
 	golang.org/x/crypto v0.26.0 // indirect
 	golang.org/x/exp v0.0.0-20240808152545-0cdaa3abc0fa // indirect
