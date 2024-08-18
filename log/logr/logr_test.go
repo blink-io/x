@@ -1,9 +1,12 @@
 package logr
 
 import (
+	"log"
 	"log/slog"
 	"os"
 	"testing"
+
+	"github.com/go-logr/stdr"
 )
 
 func TestLogr_Slog_1(t *testing.T) {
@@ -15,4 +18,11 @@ func TestLogr_Slog_1(t *testing.T) {
 
 	sl.Info("Hello")
 
+}
+
+func TestLogr_Slog_2(t *testing.T) {
+	ll := stdr.New(log.New(os.Stderr, "", log.LstdFlags|log.Lshortfile))
+	sl := slog.New(ToSlogHandler(ll))
+
+	sl.Info("Hello")
 }
