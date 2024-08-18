@@ -32,12 +32,14 @@ require (
 	github.com/go-resty/resty/v2 v2.14.0
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
+	github.com/gofiber/fiber/v2 v2.52.5
 	github.com/gofrs/uuid/v5 v5.3.0
 	github.com/gogo/protobuf v1.3.2
 	github.com/google/uuid v1.6.0
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.1.0
 	github.com/guregu/null/v5 v5.0.0
 	github.com/h2non/filetype v1.1.3
+	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.5
 	github.com/jaevor/go-nanoid v1.4.0
@@ -60,7 +62,7 @@ require (
 	github.com/onsi/gomega v1.34.1
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/pelletier/go-toml/v2 v2.2.2
-	github.com/phuslu/log v1.0.107
+	github.com/phuslu/log v1.0.108
 	github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910
 	github.com/quic-go/quic-go v0.46.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.5.3
@@ -70,7 +72,7 @@ require (
 	github.com/riverqueue/river v0.11.2
 	github.com/rs/xid v1.5.0
 	github.com/samber/slog-common v0.17.1
-	github.com/samber/slog-http v1.4.1
+	github.com/samber/slog-http v1.4.2
 	github.com/samber/slog-logrus/v2 v2.5.0
 	github.com/samber/slog-multi v1.2.0
 	github.com/samber/slog-sentry/v2 v2.8.0
@@ -105,6 +107,7 @@ require (
 )
 
 require (
+	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/bits-and-blooms/bitset v1.13.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
@@ -127,6 +130,7 @@ require (
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.22.0 // indirect
+	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/pgx/v5 v5.6.0 // indirect
@@ -158,7 +162,9 @@ require (
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
+	github.com/valyala/fasthttp v1.55.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
+	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.15 // indirect
