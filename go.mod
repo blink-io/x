@@ -9,6 +9,7 @@ require (
 	github.com/ammario/tlru v0.4.0
 	github.com/apache/thrift v0.20.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
+	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/brianvoe/gofakeit/v7 v7.0.4
@@ -20,6 +21,7 @@ require (
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
+	github.com/failsafe-go/failsafe-go v0.6.7
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/georgysavva/scany/v2 v2.1.3
 	github.com/getsentry/sentry-go v0.28.1
@@ -29,6 +31,7 @@ require (
 	github.com/go-kit/log v0.2.1
 	github.com/go-kratos/kratos/v2 v2.8.0
 	github.com/go-logr/logr v1.4.2
+	github.com/go-logr/stdr v1.2.2
 	github.com/go-resty/resty/v2 v2.14.0
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
@@ -62,7 +65,7 @@ require (
 	github.com/onsi/gomega v1.34.1
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/pelletier/go-toml/v2 v2.2.2
-	github.com/phuslu/log v1.0.108
+	github.com/phuslu/log v1.0.110
 	github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910
 	github.com/quic-go/quic-go v0.46.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.5.3
@@ -72,6 +75,7 @@ require (
 	github.com/riverqueue/river v0.11.2
 	github.com/rs/xid v1.5.0
 	github.com/samber/slog-common v0.17.1
+	github.com/samber/slog-fiber v1.16.2
 	github.com/samber/slog-http v1.4.2
 	github.com/samber/slog-logrus/v2 v2.5.0
 	github.com/samber/slog-multi v1.2.0
@@ -89,6 +93,8 @@ require (
 	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.13
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.1
+	github.com/vingarcia/ksql v1.12.0
+	github.com/vingarcia/ksql/adapters/modernc-ksqlite v1.12.0
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
@@ -118,9 +124,9 @@ require (
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
-	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/form/v4 v4.2.1 // indirect
-	github.com/gofiber/utils/v2 v2.0.0-beta.4 // indirect
+	github.com/gofiber/fiber/v2 v2.52.5 // indirect
+	github.com/gofiber/utils/v2 v2.0.0-beta.6 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
@@ -149,6 +155,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
+	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/riverqueue/river/riverdriver v0.11.2 // indirect
 	github.com/riverqueue/river/rivershared v0.11.2 // indirect
 	github.com/riverqueue/river/rivertype v0.11.2 // indirect
@@ -157,7 +164,6 @@ require (
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/zerolog v1.33.0 // indirect
 	github.com/samber/lo v1.47.0 // indirect
-	github.com/samber/slog-fiber v0.0.0-20240614191006-b893c1079463 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/smarty/assertions v1.16.0 // indirect
@@ -187,4 +193,11 @@ require (
 	golang.org/x/time v0.6.0 // indirect
 	golang.org/x/tools v0.24.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240814211410-ddb44dafa142 // indirect
+	modernc.org/gc/v3 v3.0.0-20240801135723-a856999a2e4a // indirect
+	modernc.org/libc v1.59.9 // indirect
+	modernc.org/mathutil v1.6.0 // indirect
+	modernc.org/memory v1.8.0 // indirect
+	modernc.org/sqlite v1.32.0 // indirect
+	modernc.org/strutil v1.2.0 // indirect
+	modernc.org/token v1.1.0 // indirect
 )
