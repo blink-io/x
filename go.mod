@@ -73,7 +73,7 @@ require (
 	github.com/redis/go-redis/v9 v9.6.1
 	github.com/redis/rueidis v1.0.44
 	github.com/redis/rueidis/rueidishook v1.0.44
-	github.com/riverqueue/river v0.11.2
+	github.com/riverqueue/river v0.11.3
 	github.com/rs/xid v1.5.0
 	github.com/samber/slog-common v0.17.1
 	github.com/samber/slog-fiber v1.16.2
@@ -163,9 +163,9 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.11.2 // indirect
-	github.com/riverqueue/river/rivershared v0.11.2 // indirect
-	github.com/riverqueue/river/rivertype v0.11.2 // indirect
+	github.com/riverqueue/river/riverdriver v0.11.3 // indirect
+	github.com/riverqueue/river/rivershared v0.11.3 // indirect
+	github.com/riverqueue/river/rivertype v0.11.3 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
