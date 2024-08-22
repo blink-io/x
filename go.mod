@@ -21,7 +21,7 @@ require (
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
-	github.com/failsafe-go/failsafe-go v0.6.7
+	github.com/failsafe-go/failsafe-go v0.6.8
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/georgysavva/scany/v2 v2.1.3
 	github.com/getsentry/sentry-go v0.28.1
@@ -61,7 +61,7 @@ require (
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/oklog/ulid/v2 v2.1.0
-	github.com/onsi/ginkgo/v2 v2.20.0
+	github.com/onsi/ginkgo/v2 v2.20.1
 	github.com/onsi/gomega v1.34.1
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/pelletier/go-toml/v2 v2.2.2
@@ -73,7 +73,7 @@ require (
 	github.com/redis/go-redis/v9 v9.6.1
 	github.com/redis/rueidis v1.0.44
 	github.com/redis/rueidis/rueidishook v1.0.44
-	github.com/riverqueue/river v0.11.3
+	github.com/riverqueue/river v0.11.4
 	github.com/rs/xid v1.5.0
 	github.com/samber/slog-common v0.17.1
 	github.com/samber/slog-fiber v1.16.2
@@ -108,7 +108,7 @@ require (
 	go.uber.org/zap/exp v0.2.0
 	golang.org/x/sys v0.24.0
 	golang.org/x/text v0.17.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20240814211410-ddb44dafa142
+	google.golang.org/genproto/googleapis/api v0.0.0-20240820151423-278611b39280
 	google.golang.org/grpc v1.65.0
 	google.golang.org/protobuf v1.34.2
 	gopkg.in/yaml.v3 v3.0.1
@@ -163,9 +163,9 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/quic-go/qpack v0.4.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.11.3 // indirect
-	github.com/riverqueue/river/rivershared v0.11.3 // indirect
-	github.com/riverqueue/river/rivertype v0.11.3 // indirect
+	github.com/riverqueue/river/riverdriver v0.11.4 // indirect
+	github.com/riverqueue/river/rivershared v0.11.4 // indirect
+	github.com/riverqueue/river/rivertype v0.11.4 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -203,7 +203,7 @@ require (
 	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/time v0.6.0 // indirect
 	golang.org/x/tools v0.24.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240814211410-ddb44dafa142 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240820151423-278611b39280 // indirect
 	modernc.org/gc/v3 v3.0.0-20240801135723-a856999a2e4a // indirect
 	modernc.org/libc v1.59.9 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
