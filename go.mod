@@ -48,7 +48,7 @@ require (
 	github.com/hashicorp/mdns v1.0.5
 	github.com/jaevor/go-nanoid v1.4.0
 	github.com/jaswdr/faker/v2 v2.3.0
-	github.com/jellydator/ttlcache/v3 v3.2.0
+	github.com/jellydator/ttlcache/v3 v3.2.1
 	github.com/joho/godotenv v1.5.1
 	github.com/karlseguin/ccache/v3 v3.0.5
 	github.com/linkedin/goavro/v2 v2.13.0
@@ -75,12 +75,12 @@ require (
 	github.com/redis/rueidis v1.0.44
 	github.com/redis/rueidis/rueidishook v1.0.44
 	github.com/riverqueue/river v0.11.4
-	github.com/rs/xid v1.5.0
+	github.com/rs/xid v1.6.0
 	github.com/samber/slog-common v0.17.1
 	github.com/samber/slog-fiber v1.16.2
 	github.com/samber/slog-http v1.4.2
 	github.com/samber/slog-logrus/v2 v2.5.0
-	github.com/samber/slog-multi v1.2.0
+	github.com/samber/slog-multi v1.2.1
 	github.com/samber/slog-sentry/v2 v2.8.0
 	github.com/samber/slog-zap/v2 v2.6.0
 	github.com/samber/slog-zerolog/v2 v2.7.0
@@ -119,7 +119,7 @@ require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
-	github.com/bits-and-blooms/bitset v1.14.0 // indirect
+	github.com/bits-and-blooms/bitset v1.14.2 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
