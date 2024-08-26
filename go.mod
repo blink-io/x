@@ -1,6 +1,6 @@
 module github.com/blink-io/x
 
-go 1.22.5
+go 1.23
 
 require (
 	github.com/BurntSushi/toml v1.4.0
@@ -42,13 +42,14 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.1.0
 	github.com/guregu/null/v5 v5.0.0
 	github.com/h2non/filetype v1.1.3
-	github.com/hashicorp/consul/api v1.29.3
+	github.com/hashicorp/consul/api v1.29.4
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.5
+	github.com/jackc/puddle/v2 v2.2.1
 	github.com/jaevor/go-nanoid v1.4.0
 	github.com/jaswdr/faker/v2 v2.3.0
-	github.com/jellydator/ttlcache/v3 v3.2.0
+	github.com/jellydator/ttlcache/v3 v3.2.1
 	github.com/joho/godotenv v1.5.1
 	github.com/karlseguin/ccache/v3 v3.0.5
 	github.com/linkedin/goavro/v2 v2.13.0
@@ -74,19 +75,21 @@ require (
 	github.com/redis/go-redis/v9 v9.6.1
 	github.com/redis/rueidis v1.0.44
 	github.com/redis/rueidis/rueidishook v1.0.44
+	github.com/reugn/go-quartz v0.12.0
 	github.com/riverqueue/river v0.11.4
-	github.com/rs/xid v1.5.0
+	github.com/rs/xid v1.6.0
 	github.com/samber/slog-common v0.17.1
 	github.com/samber/slog-fiber v1.16.2
 	github.com/samber/slog-http v1.4.2
 	github.com/samber/slog-logrus/v2 v2.5.0
-	github.com/samber/slog-multi v1.2.0
+	github.com/samber/slog-multi v1.2.1
 	github.com/samber/slog-sentry/v2 v2.8.0
 	github.com/samber/slog-zap/v2 v2.6.0
 	github.com/samber/slog-zerolog/v2 v2.7.0
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.1
 	github.com/segmentio/encoding v0.4.0
 	github.com/segmentio/ksuid v1.0.4
+	github.com/sethvargo/go-password v0.3.1
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cast v1.7.0
@@ -100,6 +103,7 @@ require (
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
+	github.com/zitadel/passwap v0.6.0
 	gitlab.com/greyxor/slogor v1.2.11
 	go.etcd.io/etcd/client/v3 v3.5.15
 	go.mongodb.org/mongo-driver v1.16.1
@@ -119,7 +123,7 @@ require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
-	github.com/bits-and-blooms/bitset v1.14.0 // indirect
+	github.com/bits-and-blooms/bitset v1.14.2 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
@@ -157,7 +161,6 @@ require (
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jackc/pgx/v5 v5.6.0 // indirect
-	github.com/jackc/puddle/v2 v2.2.1 // indirect
 	github.com/jonboulle/clockwork v0.4.0 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
