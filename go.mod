@@ -5,14 +5,17 @@ go 1.23
 require (
 	github.com/BurntSushi/toml v1.4.0
 	github.com/IBM/sarama v1.43.3
+	github.com/Netflix/go-env v0.1.0
 	github.com/VictoriaMetrics/fastcache v1.12.2
 	github.com/allegro/bigcache/v3 v3.1.0
 	github.com/ammario/tlru v0.4.0
 	github.com/apache/thrift v0.20.0
+	github.com/apple/pkl-go v0.8.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
+	github.com/bokwoon95/sq v0.5.0
 	github.com/brianvoe/gofakeit/v7 v7.0.4
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v10 v10.0.0
@@ -36,6 +39,7 @@ require (
 	github.com/go-resty/resty/v2 v2.14.0
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
+	github.com/gocraft/dbr/v2 v2.7.6
 	github.com/gofiber/fiber/v3 v3.0.0-beta.3
 	github.com/gofrs/uuid/v5 v5.3.0
 	github.com/gogo/protobuf v1.3.2
@@ -51,6 +55,7 @@ require (
 	github.com/jaevor/go-nanoid v1.4.0
 	github.com/jaswdr/faker/v2 v2.3.0
 	github.com/jellydator/ttlcache/v3 v3.3.0
+	github.com/jmoiron/sqlx v1.4.0
 	github.com/joho/godotenv v1.5.1
 	github.com/karlseguin/ccache/v3 v3.0.5
 	github.com/linkedin/goavro/v2 v2.13.0
@@ -64,7 +69,7 @@ require (
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/oklog/ulid/v2 v2.1.0
-	github.com/onsi/ginkgo/v2 v2.20.1
+	github.com/onsi/ginkgo/v2 v2.20.2
 	github.com/onsi/gomega v1.34.1
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/pelletier/go-toml/v2 v2.2.3
@@ -74,8 +79,8 @@ require (
 	github.com/quic-go/quic-go v0.46.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.5.3
 	github.com/redis/go-redis/v9 v9.6.1
-	github.com/redis/rueidis v1.0.44
-	github.com/redis/rueidis/rueidishook v1.0.44
+	github.com/redis/rueidis v1.0.45
+	github.com/redis/rueidis/rueidishook v1.0.45
 	github.com/reugn/go-quartz v0.12.0
 	github.com/riverqueue/river v0.11.4
 	github.com/rs/xid v1.6.0
@@ -89,6 +94,7 @@ require (
 	github.com/samber/slog-zerolog/v2 v2.7.0
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.1
 	github.com/segmentio/encoding v0.4.0
+	github.com/segmentio/kafka-go v0.4.47
 	github.com/segmentio/ksuid v1.0.4
 	github.com/sethvargo/go-password v0.3.1
 	github.com/smartystreets/goconvey v1.8.1
@@ -118,6 +124,7 @@ require (
 	google.golang.org/grpc v1.66.0
 	google.golang.org/protobuf v1.34.2
 	gopkg.in/yaml.v3 v3.0.1
+	modernc.org/sqlite v1.32.0
 )
 
 require (
@@ -149,7 +156,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/pprof v0.0.0-20240827171923-fa2c70bbbfe5 // indirect
+	github.com/google/pprof v0.0.0-20240829160300-da1f7e9f2b25 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
@@ -219,7 +226,7 @@ require (
 	go.opentelemetry.io/otel/log v0.5.0 // indirect
 	go.opentelemetry.io/otel/metric v1.29.0 // indirect
 	go.opentelemetry.io/otel/trace v1.29.0 // indirect
-	go.temporal.io/api v1.38.0 // indirect
+	go.temporal.io/api v1.39.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/mock v0.4.0 // indirect
@@ -232,10 +239,9 @@ require (
 	golang.org/x/tools v0.24.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240827150818-7e3bb234dfed // indirect
 	modernc.org/gc/v3 v3.0.0-20240801135723-a856999a2e4a // indirect
-	modernc.org/libc v1.59.9 // indirect
+	modernc.org/libc v1.60.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.8.0 // indirect
-	modernc.org/sqlite v1.32.0 // indirect
 	modernc.org/strutil v1.2.0 // indirect
 	modernc.org/token v1.1.0 // indirect
 )

@@ -7,7 +7,11 @@ import (
 	"testing"
 
 	"github.com/gofiber/fiber/v3"
-	slogfiber "github.com/samber/slog-fiber"
+	"github.com/gofiber/fiber/v3/middleware/healthcheck"
+	"github.com/gofiber/fiber/v3/middleware/logger"
+	"github.com/gofiber/fiber/v3/middleware/pprof"
+	"github.com/gofiber/fiber/v3/middleware/recover"
+	"github.com/gofiber/fiber/v3/middleware/requestid"
 	"github.com/stretchr/testify/require"
 )
 
@@ -15,28 +19,40 @@ func init() {
 }
 
 func TestFiber_1(t *testing.T) {
-	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
+	log := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 
 	app := fiber.New(fiber.Config{
 		AppName: "Test Fiber Server",
 	})
-	app.Use(slogfiber.New(logger))
+	//app.Use(slogfiber.New(log))
+	app.Use(logger.New())
+	app.Use(pprof.New())
+	app.Use(recover.New())
+	app.Use(requestid.New())
 
 	app.Hooks().OnRoute(func(r fiber.Route) error {
-		logger.Info("Route info",
+		log.Info("Route info",
 			slog.String("name", r.Name),
 			slog.String("method", r.Method),
 			slog.String("path", r.Path),
 		)
 		return nil
 	})
+
+	app.Get(healthcheck.DefaultLivenessEndpoint, healthcheck.NewHealthChecker())
+
 	app.Get("/", func(c fiber.Ctx) error {
+		req := c.Request()
+		log.Info("req: " + req.String())
+
 		c.WriteString("Hello World")
 		return nil
 	})
 
 	app.Get("/json", func(c fiber.Ctx) error {
 		action := c.Params("action")
+		req := c.Request()
+		log.Info("req: " + req.String())
 		fmt.Println(action)
 		c.JSON(fiber.Map{
 			"hello": "world",
