@@ -26,41 +26,53 @@ func New(sl *slog.Logger, lv slog.Leveler) dbr.EventReceiver {
 }
 
 func (l *loggerEventReceiver) Event(eventName string) {
-	l.sl.LogAttrs(l.ctx, l.lv.Level(), "Invoke Event", slog.String("event_name", eventName))
+	l.sl.LogAttrs(l.ctx, l.lv.Level(), "Invoke Event", eventNameToAttr(eventName))
 }
 
 func (l *loggerEventReceiver) EventKv(eventName string, kvs map[string]string) {
 	attrs := kvsToAttrs(kvs, 1)
-	attrs = append(attrs, slog.String("event_name", eventName))
+	attrs = append(attrs, eventNameToAttr(eventName))
 	l.sl.LogAttrs(l.ctx, l.lv.Level(), "Invoke EventErrKv", attrs...)
 }
 
 func (l *loggerEventReceiver) EventErr(eventName string, err error) error {
 	l.sl.LogAttrs(l.ctx, l.lv.Level(), "Invoke EventErr",
-		slog.String("event_name", eventName),
-		slog.Any("err", err),
+		eventNameToAttr(eventName),
+		errToAttr(err),
 	)
 	return err
 }
 
 func (l *loggerEventReceiver) EventErrKv(eventName string, err error, kvs map[string]string) error {
 	attrs := kvsToAttrs(kvs, 2)
-	attrs = append(attrs, slog.String("event_name", eventName), slog.Any("err", err))
+	attrs = append(attrs, eventNameToAttr(eventName), errToAttr(err))
 	l.sl.LogAttrs(l.ctx, l.lv.Level(), "Invoke EventErrKv", attrs...)
 	return err
 }
 
 func (l *loggerEventReceiver) Timing(eventName string, nanoseconds int64) {
 	l.sl.LogAttrs(l.ctx, l.lv.Level(), "Invoke Timing",
-		slog.String("event_name", eventName),
-		slog.Int64("nanoseconds", nanoseconds),
+		eventNameToAttr(eventName),
+		nsToAttr(nanoseconds),
 	)
 }
 
 func (l *loggerEventReceiver) TimingKv(eventName string, nanoseconds int64, kvs map[string]string) {
 	attrs := kvsToAttrs(kvs, 2)
-	attrs = append(attrs, slog.String("event_name", eventName), slog.Int64("nanoseconds", nanoseconds))
+	attrs = append(attrs, eventNameToAttr(eventName), nsToAttr(nanoseconds))
 	l.sl.LogAttrs(l.ctx, l.lv.Level(), "Invoke TimingKv", attrs...)
+}
+
+func errToAttr(err error) slog.Attr {
+	return slog.Any("err", err)
+}
+
+func nsToAttr(nanoseconds int64) slog.Attr {
+	return slog.Int64("ns", nanoseconds)
+}
+
+func eventNameToAttr(eventName string) slog.Attr {
+	return slog.String("event_name", eventName)
 }
 
 func kvsToAttrs(kvs map[string]string, xlen int) []slog.Attr {
