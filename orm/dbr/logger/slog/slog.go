@@ -76,7 +76,8 @@ func eventNameToAttr(eventName string) slog.Attr {
 }
 
 func kvsToAttrs(kvs map[string]string, xlen int) []slog.Attr {
-	attrs := make([]slog.Attr, len(kvs)+xlen)
+	nlen := len(kvs) + xlen
+	attrs := make([]slog.Attr, nlen, nlen)
 	for i, k := range slices.Collect(maps.Keys(kvs)) {
 		attrs[i] = slog.String(k, kvs[k])
 	}

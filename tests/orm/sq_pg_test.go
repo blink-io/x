@@ -15,6 +15,7 @@ import (
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/sanity-io/litter"
 	"github.com/stretchr/testify/require"
+	"github.com/uptrace/bun"
 )
 
 type UserTable struct {
@@ -66,8 +67,9 @@ func (m UserDevice) String() string {
 }
 
 type Model struct {
-	Name    string `db:"name"`
-	Version string `db:"version"`
+	Name    string       `db:"name"`
+	Version string       `db:"version"`
+	Now     bun.NullTime `db:"now"`
 }
 
 func (m Model) String() string {
@@ -77,13 +79,8 @@ func (m Model) String() string {
 var _ fmt.Stringer = (*User)(nil)
 var _ fmt.Stringer = (*UserDevice)(nil)
 
-func getSqliteDB() *sql.DB {
-	db, err := sql.Open("sqlite", "./orm_demo.db")
-	if err != nil {
-		log.Fatalf("failed to open db: %v", err)
-	}
-	return db
-}
+var userTable = sq.New[UserTable]("u1")
+var userDeviceTable = sq.New[UserDeviceTable]("u2")
 
 func getPgDB() *sql.DB {
 	dsn := "postgres://blink:888asdf%21%23%25@192.168.50.88:5432/orm_demo?sslmode=disable"
@@ -124,9 +121,6 @@ func TestSq_1(t *testing.T) {
 
 	fmt.Println(m)
 }
-
-var userTable = sq.New[UserTable]("u1")
-var userDeviceTable = sq.New[UserDeviceTable]("u2")
 
 func TestSq_Pg_Insert_User_1(t *testing.T) {
 	db := getPgDB()
@@ -212,7 +206,7 @@ func TestSq_Pg_Insert_UserDevice_1(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestSq_Pg_Insert_User_ColumnMapper_1(t *testing.T) {
+func TestSq_Pg_User_Insert_ColumnMapper_1(t *testing.T) {
 	db := getPgDB()
 	tbl := userTable
 
@@ -231,7 +225,7 @@ func TestSq_Pg_Insert_User_ColumnMapper_1(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestSq_Pg_Insert_UserDevice_ColumnMapper_1(t *testing.T) {
+func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 	db := getPgDB()
 	tbl := userDeviceTable
 
@@ -290,13 +284,30 @@ func TestSq_Pg_User_Delete_1(t *testing.T) {
 func userModelRowMapper() func(*sq.Row) *User {
 	return func(r *sq.Row) *User {
 		tbl := userTable
+
 		u := &User{
-			ID:        r.IntField(tbl.ID),
-			Username:  r.StringField(tbl.Username),
-			Score:     r.Float64Field(tbl.Score),
-			CreatedAt: r.TimeField(tbl.CreatedAt),
-			UpdatedAt: r.TimeField(tbl.UpdatedAt),
+			ID:       r.IntField(tbl.ID),
+			GUID:     r.StringField(tbl.GUID),
+			Username: r.StringField(tbl.Username),
+			Score:    r.Float64Field(tbl.Score),
 		}
+
+		dd := sq.DefaultDialect.Load()
+		dz := sq.DialectSQLite
+		if dz == *dd {
+			crstr := r.String("created_at")
+			upstr := r.String("updated_at")
+			if ct, err := time.Parse(time.RFC3339Nano, crstr); err == nil {
+				u.CreatedAt = ct
+			}
+			if ct, err := time.Parse(time.RFC3339Nano, upstr); err == nil {
+				u.UpdatedAt = ct
+			}
+		} else {
+			u.CreatedAt = r.TimeField(tbl.CreatedAt)
+			u.UpdatedAt = r.TimeField(tbl.UpdatedAt)
+		}
+
 		return u
 	}
 }
@@ -318,8 +329,8 @@ func userDeviceInsertColumnMapper(col *sq.Column, r *UserDevice) {
 	col.Set(tbl.GUID, r.GUID)
 	col.Set(tbl.Device, r.Device)
 	col.Set(tbl.Model, r.Model)
-	col.Set(tbl.CreatedAt, r.CreatedAt)
-	col.Set(tbl.UpdatedAt, r.UpdatedAt)
+	col.SetTime(tbl.CreatedAt, r.CreatedAt)
+	col.SetTime(tbl.UpdatedAt, r.UpdatedAt)
 }
 
 func TestURL_1(t *testing.T) {
@@ -336,24 +347,26 @@ func TestURL_1(t *testing.T) {
 }
 
 func randomUser() *User {
+	ln := time.Now().Local()
 	u := &User{
 		GUID:      gofakeit.UUID(),
 		Username:  gofakeit.Username(),
 		Score:     gofakeit.Float64(),
-		CreatedAt: gofakeit.PastDate(),
-		UpdatedAt: time.Now(),
+		CreatedAt: ln,
+		UpdatedAt: ln,
 	}
 	return u
 }
 
 func randomUserDevice() *UserDevice {
+	ln := time.Now().Local()
 	u := &UserDevice{
 		UserID:    gofakeit.IntRange(1, 30),
 		GUID:      gofakeit.UUID(),
 		Device:    gofakeit.AppName(),
 		Model:     gofakeit.CarModel(),
-		CreatedAt: gofakeit.PastDate(),
-		UpdatedAt: time.Now(),
+		CreatedAt: ln,
+		UpdatedAt: ln,
 	}
 	return u
 }
