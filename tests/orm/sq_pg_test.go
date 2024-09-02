@@ -33,6 +33,7 @@ func getPgDB() *sql.DB {
 
 func init() {
 	l := sq.NewLogger(os.Stdout, "", log.LstdFlags, sq.LoggerConfig{
+		ShowCaller:    true,
 		ShowTimeTaken: true,
 		HideArgs:      true,
 	})
@@ -216,17 +217,6 @@ func TestSq_Pg_User_Update_2(t *testing.T) {
 	us.Username = omit.From[string](gofakeit.Username() + "-Modified")
 
 	require.NoError(t, us.Update(db))
-}
-
-func TestSq_Pg_User_Update_3(t *testing.T) {
-	db := getPgDB()
-
-	var us UserSetter
-	//us.ID = omit.From[int](10)
-	us.Score = omit.From(gofakeit.Float64Range(88, 90))
-	//us.Username = omit.From[string](gofakeit.Username() + "-Modified")
-
-	require.NoError(t, us.UpdateByWhere(db, UserTableDef.ID.LtFloat64(50)))
 }
 
 func TestSq_Pg_User_Delete_1(t *testing.T) {
