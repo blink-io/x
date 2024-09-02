@@ -72,6 +72,7 @@ func (c *Consul) Read() (map[string]interface{}, error) {
 		// "parent1.ModifyIndex"
 		// "parent1.Session"
 		// "parent1.Value"
+
 		if c.cfg.Detailed {
 			for _, pair := range pairs {
 				m := make(map[string]interface{})
