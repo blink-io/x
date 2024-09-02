@@ -5,85 +5,22 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"net/url"
 	"os"
 	"testing"
 	"time"
 
+	"github.com/aarondl/opt/omit"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	_ "github.com/jackc/pgx/v5/stdlib"
-	"github.com/sanity-io/litter"
 	"github.com/stretchr/testify/require"
-	"github.com/uptrace/bun"
 )
 
-type UserTable struct {
-	sq.TableStruct `sq:"users"`
-	ID             sq.NumberField `sq:"id"`
-	GUID           sq.StringField `sq:"guid"`
-	Username       sq.StringField `sq:"username"`
-	Score          sq.NumberField `sq:"score"`
-	CreatedAt      sq.TimeField   `sq:"created_at"`
-	UpdatedAt      sq.TimeField   `sq:"updated_at"`
-}
-
-type UserDeviceTable struct {
-	sq.TableStruct `sq:"user_devices"`
-	ID             sq.NumberField `sq:"id"`
-	GUID           sq.StringField `sq:"guid"`
-	UserID         sq.NumberField `sq:"user_id"`
-	Device         sq.StringField `sq:"device"`
-	Model          sq.StringField `sq:"model"`
-	CreatedAt      sq.TimeField   `sq:"created_at"`
-	UpdatedAt      sq.TimeField   `sq:"updated_at"`
-}
-
-type User struct {
-	ID        int       `db:"id"`
-	GUID      string    `db:"guid"`
-	Username  string    `db:"username"`
-	Score     float64   `db:"score"`
-	CreatedAt time.Time `db:"created_at"`
-	UpdatedAt time.Time `db:"updated_at"`
-}
-
-func (m User) String() string {
-	return litter.Sdump(m)
-}
-
-type UserDevice struct {
-	ID        int       `db:"id"`
-	GUID      string    `db:"guid"`
-	UserID    int       `db:"user_id"`
-	Device    string    `db:"device"`
-	Model     string    `db:"score"`
-	CreatedAt time.Time `db:"created_at"`
-	UpdatedAt time.Time `db:"updated_at"`
-}
-
-func (m UserDevice) String() string {
-	return litter.Sdump(m)
-}
-
-type Model struct {
-	Name    string       `db:"name"`
-	Version string       `db:"version"`
-	Now     bun.NullTime `db:"now"`
-}
-
-func (m Model) String() string {
-	return litter.Sdump(m)
-}
-
-var _ fmt.Stringer = (*User)(nil)
-var _ fmt.Stringer = (*UserDevice)(nil)
-
-var userTable = sq.New[UserTable]("u1")
-var userDeviceTable = sq.New[UserDeviceTable]("u2")
-
 func getPgDB() *sql.DB {
-	dsn := "postgres://blink:888asdf%21%23%25@192.168.50.88:5432/orm_demo?sslmode=disable"
+	dialect := sq.DialectPostgres
+	sq.DefaultDialect.Store(&dialect)
+
+	dsn := "postgres://blink:888asdf%21%23%25@192.168.50.88:5432/orm-demo?sslmode=disable"
 	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		log.Fatalf("failed to open db: %v", err)
@@ -127,14 +64,14 @@ func TestSq_Pg_Insert_User_1(t *testing.T) {
 
 	now := time.Now()
 	_, err := sq.Exec(db, sq.
-		InsertInto(userTable).
+		InsertInto(UserTableDef).
 		Columns(
-			//userTable.ID,
-			userTable.GUID,
-			userTable.Username,
-			userTable.Score,
-			userTable.CreatedAt,
-			userTable.UpdatedAt,
+			//UserTableDef.ID,
+			UserTableDef.GUID,
+			UserTableDef.Username,
+			UserTableDef.Score,
+			UserTableDef.CreatedAt,
+			UserTableDef.UpdatedAt,
 		).
 		Values(
 			gofakeit.UUID(),
@@ -165,7 +102,7 @@ func TestSq_Pg_Insert_User_1(t *testing.T) {
 
 func TestSq_Pg_Insert_UserDevice_1(t *testing.T) {
 	db := getPgDB()
-	tbl := userDeviceTable
+	tbl := UserDeviceTableDef
 	now := time.Now()
 
 	_, err := sq.Exec(db, sq.
@@ -208,7 +145,7 @@ func TestSq_Pg_Insert_UserDevice_1(t *testing.T) {
 
 func TestSq_Pg_User_Insert_ColumnMapper_1(t *testing.T) {
 	db := getPgDB()
-	tbl := userTable
+	tbl := UserTableDef
 
 	records := []*User{
 		randomUser(),
@@ -227,7 +164,7 @@ func TestSq_Pg_User_Insert_ColumnMapper_1(t *testing.T) {
 
 func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 	db := getPgDB()
-	tbl := userDeviceTable
+	tbl := UserDeviceTableDef
 
 	records := []*UserDevice{
 		randomUserDevice(),
@@ -246,7 +183,7 @@ func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 
 func TestSq_Pg_User_FetchAll_1(t *testing.T) {
 	db := getPgDB()
-	tbl := userTable
+	tbl := UserTableDef
 
 	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
 	records, err := sq.FetchAll(db, query, userModelRowMapper())
@@ -257,7 +194,7 @@ func TestSq_Pg_User_FetchAll_1(t *testing.T) {
 
 func TestSq_Pg_User_Update_1(t *testing.T) {
 	db := getPgDB()
-	tbl := userTable
+	tbl := UserTableDef
 
 	_, err := sq.Exec(db, sq.
 		Update(tbl).
@@ -270,9 +207,31 @@ func TestSq_Pg_User_Update_1(t *testing.T) {
 	require.NoError(t, err)
 }
 
+func TestSq_Pg_User_Update_2(t *testing.T) {
+	db := getPgDB()
+
+	var us UserSetter
+	us.ID = omit.From[int](10)
+	us.Score = omit.From(gofakeit.Float64Range(55, 90))
+	us.Username = omit.From[string](gofakeit.Username() + "-Modified")
+
+	require.NoError(t, us.UpdateByID(db))
+}
+
+func TestSq_Pg_User_Update_3(t *testing.T) {
+	db := getPgDB()
+
+	var us UserSetter
+	//us.ID = omit.From[int](10)
+	us.Score = omit.From(gofakeit.Float64Range(88, 90))
+	//us.Username = omit.From[string](gofakeit.Username() + "-Modified")
+
+	require.NoError(t, us.UpdateByWhere(db, UserTableDef.ID.LtFloat64(50)))
+}
+
 func TestSq_Pg_User_Delete_1(t *testing.T) {
 	db := getPgDB()
-	tbl := userTable
+	tbl := UserTableDef
 
 	_, err := sq.Exec(db, sq.
 		DeleteFrom(tbl).
@@ -281,92 +240,27 @@ func TestSq_Pg_User_Delete_1(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func userModelRowMapper() func(*sq.Row) *User {
-	return func(r *sq.Row) *User {
-		tbl := userTable
+func TestSq_Pg_Tag_Insert_1(t *testing.T) {
+	db := getPgDB()
 
-		u := &User{
-			ID:       r.IntField(tbl.ID),
-			GUID:     r.StringField(tbl.GUID),
-			Username: r.StringField(tbl.Username),
-			Score:    r.Float64Field(tbl.Score),
+	tbl := TagTableDef
+
+	records := []*Tag{
+		randomTag(nil),
+		randomTag(Ptr(gofakeit.City())),
+		randomTag(nil),
+	}
+
+	_, err := sq.Exec(db, sq.
+		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
+		for _, r := range records {
+			tagInsertColumnMapper(col, r)
 		}
+	}))
 
-		dd := sq.DefaultDialect.Load()
-		dz := sq.DialectSQLite
-		if dz == *dd {
-			crstr := r.String("created_at")
-			upstr := r.String("updated_at")
-			if ct, err := time.Parse(time.RFC3339Nano, crstr); err == nil {
-				u.CreatedAt = ct
-			}
-			if ct, err := time.Parse(time.RFC3339Nano, upstr); err == nil {
-				u.UpdatedAt = ct
-			}
-		} else {
-			u.CreatedAt = r.TimeField(tbl.CreatedAt)
-			u.UpdatedAt = r.TimeField(tbl.UpdatedAt)
-		}
-
-		return u
-	}
+	require.NoError(t, err)
 }
 
-func userInsertColumnMapper(col *sq.Column, r *User) {
-	tbl := userTable
-
-	col.Set(tbl.GUID, r.GUID)
-	col.Set(tbl.Username, r.Username)
-	col.Set(tbl.Score, r.Score)
-	col.Set(tbl.CreatedAt, r.CreatedAt)
-	col.Set(tbl.UpdatedAt, r.UpdatedAt)
-}
-
-func userDeviceInsertColumnMapper(col *sq.Column, r *UserDevice) {
-	tbl := userDeviceTable
-
-	col.Set(tbl.UserID, r.UserID)
-	col.Set(tbl.GUID, r.GUID)
-	col.Set(tbl.Device, r.Device)
-	col.Set(tbl.Model, r.Model)
-	col.SetTime(tbl.CreatedAt, r.CreatedAt)
-	col.SetTime(tbl.UpdatedAt, r.UpdatedAt)
-}
-
-func TestURL_1(t *testing.T) {
-	u := &url.URL{
-		Scheme:   "postgres",
-		Host:     "192.168.50.88:5432",
-		Path:     "orm_demo",
-		User:     url.UserPassword("blink", "888asdf!#%"),
-		RawQuery: "sslmode=disable",
-	}
-
-	fmt.Println(u)
-	fmt.Println(u.RequestURI())
-}
-
-func randomUser() *User {
-	ln := time.Now().Local()
-	u := &User{
-		GUID:      gofakeit.UUID(),
-		Username:  gofakeit.Username(),
-		Score:     gofakeit.Float64(),
-		CreatedAt: ln,
-		UpdatedAt: ln,
-	}
-	return u
-}
-
-func randomUserDevice() *UserDevice {
-	ln := time.Now().Local()
-	u := &UserDevice{
-		UserID:    gofakeit.IntRange(1, 30),
-		GUID:      gofakeit.UUID(),
-		Device:    gofakeit.AppName(),
-		Model:     gofakeit.CarModel(),
-		CreatedAt: ln,
-		UpdatedAt: ln,
-	}
-	return u
+func Ptr[T any](v T) *T {
+	return &v
 }

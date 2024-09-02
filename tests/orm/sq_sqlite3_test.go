@@ -5,12 +5,13 @@ import (
 	"log/slog"
 	"testing"
 
-	"github.com/blink-io/x/tests/orm/msqlite3"
+	"github.com/blink-io/x/tests/orm/nsqlite3"
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
-	_ "modernc.org/sqlite"
-	//_ "github.com/ncruces/go-sqlite3/driver"
-	//_ "github.com/ncruces/go-sqlite3/embed"
+	//_ "modernc.org/sqlite"
+	//_ "github.com/mattn/go-sqlite3"
+	_ "github.com/ncruces/go-sqlite3/driver"
+	_ "github.com/ncruces/go-sqlite3/embed"
 )
 
 func init() {
@@ -19,13 +20,12 @@ func init() {
 	slog.Info("Using dialect", "dialect", dialect)
 }
 
-func getSqliteDB() *sql.DB {
-	dsn := "./orm_demo.db"
-	return msqlite3.GetSqliteDB(dsn)
+func getSqlite3DB() *sql.DB {
+	return nsqlite3.GetSQLiteDB("./orm_demo.db")
 }
 
-func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDB()
+func TestSq_Sqlite3_User_Insert_ColumnMapper_1(t *testing.T) {
+	db := getSqlite3DB()
 	tbl := UserTableDef
 
 	records := []*User{
@@ -43,7 +43,7 @@ func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestSq_Sqlite_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
+func TestSq_Sqlite3_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 	db := getSqliteDB()
 	tbl := UserDeviceTableDef
 
@@ -63,7 +63,7 @@ func TestSq_Sqlite_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 	require.NotNil(t, rt)
 }
 
-func TestSq_Sqlite_User_FetchAll_1(t *testing.T) {
+func TestSq_Sqlite3_User_FetchAll_1(t *testing.T) {
 	db := getSqliteDB()
 	tbl := UserTableDef
 
@@ -74,7 +74,7 @@ func TestSq_Sqlite_User_FetchAll_1(t *testing.T) {
 	require.NotNil(t, records)
 }
 
-func TestSq_Sqlite_User_Delete_All(t *testing.T) {
+func TestSq_Sqlite3_User_Delete_All(t *testing.T) {
 	db := getSqliteDB()
 	tbl := UserTableDef
 
@@ -83,34 +83,4 @@ func TestSq_Sqlite_User_Delete_All(t *testing.T) {
 		Where(tbl.ID.GtInt(0)),
 	)
 	require.NoError(t, err)
-}
-
-func TestSq_Sqlite_Device_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := DeviceTableDef
-
-	records := []*Device{
-		randomDevice(),
-		randomDevice(),
-		randomDevice(),
-	}
-
-	_, err := sq.Exec(db, sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
-		for _, r := range records {
-			deviceInsertColumnMapper(col, r)
-		}
-	}))
-	require.NoError(t, err)
-}
-
-func TestSq_Sqlite_Device_FetchAll_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := DeviceTableDef
-
-	query := sq.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
-	records, err := sq.FetchAll(db, query, deviceRowMapper())
-
-	require.NoError(t, err)
-	require.NotNil(t, records)
 }
