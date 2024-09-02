@@ -106,7 +106,7 @@ func (m UserSetter) Insert(db sq.DB) error {
 	return err
 }
 
-func (m UserSetter) UpdateByID(db sq.DB) error {
+func (m UserSetter) Update(db sq.DB, IDs ...int) error {
 	tbl := UserTableDef
 	if id, ok := m.ID.Get(); ok {
 		_, err := sq.Exec(
@@ -119,21 +119,6 @@ func (m UserSetter) UpdateByID(db sq.DB) error {
 	} else {
 		return errors.New("id is required")
 	}
-}
-
-func (m UserSetter) UpdateByWhere(db sq.DB, where ...sq.Predicate) error {
-	if len(where) == 0 {
-		return errors.New("where is empty")
-	}
-	tbl := UserTableDef
-	_, err := sq.Exec(
-		db,
-		sq.Update(tbl).
-			SetFunc(m.SetColumns).
-			Where(where...),
-	)
-	return err
-
 }
 
 func (m UserSetter) setColumns(c *sq.Column, withID bool) {
@@ -202,6 +187,19 @@ type Tag struct {
 	Description omitnull.Val[string] `db:"description"`
 }
 
+func (t Tag) Insert(db sq.DB) error {
+	tbl := TagTableDef
+	_, err := sq.Exec(db, sq.InsertInto(tbl).ColumnValues(func(c *sq.Column) {
+		c.SetString(tbl.GUID, t.GUID)
+		c.SetString(tbl.NAME, t.Name)
+		c.SetString(tbl.CODE, t.Code)
+		if v, ok := t.Description.Get(); ok {
+			c.SetString(tbl.DESCRIPTION, v)
+		}
+	}))
+	return err
+}
+
 type Model struct {
 	Name    string `db:"name"`
 	Version string `db:"version"`
@@ -219,7 +217,7 @@ var (
 	UserTableDef       = sq.New[UserTable]("u1")
 	UserDeviceTableDef = sq.New[UserDeviceTable]("u2")
 	DeviceTableDef     = sq.New[DeviceTable]("u3")
-	TagTableDef        = sq.New[TagTable]("u4")
+	TagTableDef        = sq.New[TAGS]("u4")
 )
 
 func userModelRowMapper() func(*sq.Row) *User {
@@ -287,9 +285,9 @@ func tagInsertColumnMapper(col *sq.Column, r *Tag) {
 	tbl := TagTableDef
 
 	col.SetString(tbl.GUID, r.GUID)
-	col.SetString(tbl.Name, r.Name)
-	col.SetString(tbl.Code, r.Code)
-	col.Set(tbl.Description, r.Description)
+	col.SetString(tbl.NAME, r.Name)
+	col.SetString(tbl.CODE, r.Code)
+	col.Set(tbl.DESCRIPTION, r.Description)
 }
 
 func deviceRowMapper() func(*sq.Row) *Device {
@@ -351,7 +349,7 @@ func randomDevice() *Device {
 func randomTag(desc *string) *Tag {
 	u := &Tag{
 		GUID:        gofakeit.UUID(),
-		Code:        gofakeit.Fruit(),
+		Code:        gofakeit.City(),
 		Name:        gofakeit.DomainName(),
 		Description: omitnull.FromPtr(desc),
 	}

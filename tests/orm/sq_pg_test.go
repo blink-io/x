@@ -215,7 +215,7 @@ func TestSq_Pg_User_Update_2(t *testing.T) {
 	us.Score = omit.From(gofakeit.Float64Range(55, 90))
 	us.Username = omit.From[string](gofakeit.Username() + "-Modified")
 
-	require.NoError(t, us.UpdateByID(db))
+	require.NoError(t, us.Update(db))
 }
 
 func TestSq_Pg_User_Update_3(t *testing.T) {
@@ -258,6 +258,27 @@ func TestSq_Pg_Tag_Insert_1(t *testing.T) {
 		}
 	}))
 
+	require.NoError(t, err)
+}
+
+func TestSq_Pg_Tag_Insert_2(t *testing.T) {
+	db := getPgDB()
+
+	err := randomTag(nil).Insert(db)
+	require.NoError(t, err)
+
+	err = randomTag(Ptr(gofakeit.School())).Insert(db)
+	require.NoError(t, err)
+}
+
+func TestSq_Pg_Enum_Insert_1(t *testing.T) {
+	db := getPgDB()
+	tbl := sq.New[ENUMS]("e")
+	_, err := sq.Exec(db, sq.
+		InsertInto(tbl).
+		Columns(tbl.STATUS).
+		Values("blacocked"),
+	)
 	require.NoError(t, err)
 }
 
