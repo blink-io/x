@@ -7,8 +7,8 @@ import (
 
 type Mapper[T sq.Table, M any] interface {
 	Table() T
-	InsertColumns(...M) func(*sq.Column)
-	RowMapper() func(*sq.Row) M
+	InsertMapper(...M) func(*sq.Column)
+	QueryMapper() func(*sq.Row) M
 }
 
 type UserMappers struct {
@@ -49,19 +49,21 @@ func (m UserMappers) RowMapper() func(*sq.Row) *User {
 	}
 }
 
-type TagMappers struct {
+type TagMapper struct {
 	tbl TAGS
 }
 
-func NewTagMappers(tbl TAGS) Mapper[TAGS, Tag] {
-	return TagMappers{tbl: tbl}
+func NewTagMapper() Mapper[TAGS, Tag] {
+	return TagMapper{
+		tbl: sq.New[TAGS]("tags"),
+	}
 }
 
-func (m TagMappers) Table() TAGS {
+func (m TagMapper) Table() TAGS {
 	return m.tbl
 }
 
-func (m TagMappers) InsertColumns(vv ...Tag) func(*sq.Column) {
+func (m TagMapper) InsertMapper(vv ...Tag) func(*sq.Column) {
 	tbl := m.tbl
 	return func(col *sq.Column) {
 		for _, r := range vv {
@@ -73,7 +75,7 @@ func (m TagMappers) InsertColumns(vv ...Tag) func(*sq.Column) {
 	}
 }
 
-func (m TagMappers) RowMapper() func(*sq.Row) Tag {
+func (m TagMapper) QueryMapper() func(*sq.Row) Tag {
 	tbl := m.tbl
 	return func(r *sq.Row) Tag {
 		u := Tag{

@@ -47,3 +47,10 @@ func TestPtr_1(t *testing.T) {
 	fmt.Printf("mm ptr1: %p\n", mmptr1)
 	fmt.Printf("mm name ptr after: %p\n", &mmptr.name)
 }
+
+func TestPtr_2(t *testing.T) {
+	mmptr := &mm
+	mmptr.name = "after-after"
+
+	fmt.Printf("mm ptr: %p\n", mmptr)
+}

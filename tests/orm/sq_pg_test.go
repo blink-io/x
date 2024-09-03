@@ -286,16 +286,32 @@ func TestSq_Pg_Tag_Insert_2(t *testing.T) {
 
 func TestSq_Pg_Tag_Mapper_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
-	mm := NewTagMappers(TagTable)
+	mm := NewTagMapper()
+	tbl := mm.Table()
 
 	d1 := *randomTag(nil)
 	d2 := *randomTag(ptr.Of("Hello, Hi, 你好"))
 
 	_, err := sq.Exec(sq.Log(db), sq.
-		InsertInto(mm.Table()).
-		ColumnValues(mm.InsertColumns(d1, d2)),
+		InsertInto(tbl).
+		ColumnValues(mm.InsertMapper(d1, d2)),
 	)
 	require.NoError(t, err)
+}
+
+func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
+	db := getPgDBForSQ()
+	mm := NewTagMapper()
+	tbl := mm.Table()
+
+	query := sq.
+		From(tbl).
+		Where(tbl.ID.GtInt(0)).
+		Limit(100)
+	records, err := sq.FetchAll(db, query, mm.QueryMapper())
+
+	require.NoError(t, err)
+	require.NotNil(t, records)
 }
 
 func TestSq_Pg_Enum_Insert_1(t *testing.T) {
