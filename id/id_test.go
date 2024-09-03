@@ -33,6 +33,11 @@ func TestID_1(t *testing.T) {
 	fmt.Println("GUID(),        len: ", len(guidv), " id: ", guidv)
 }
 
+func TestGUID_1(t *testing.T) {
+	id := GUID()
+	fmt.Println(id)
+}
+
 func TestSnowflake_1(t *testing.T) {
 	id := snowflake.ID(123456789012345678)
 

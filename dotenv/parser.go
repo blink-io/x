@@ -2,7 +2,7 @@ package dotenv
 
 import (
 	goenv "github.com/Netflix/go-env"
-	"github.com/caarlos0/env/v10"
+	"github.com/caarlos0/env/v11"
 )
 
 var (

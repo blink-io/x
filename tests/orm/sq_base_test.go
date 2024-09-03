@@ -291,6 +291,8 @@ func userModelRowMapper() func(*sq.Row) *User {
 			u.UpdatedAt = r.TimeField(tbl.UPDATED_AT)
 		}
 
+		panic(errors.New("my custom error"))
+
 		return u
 	}
 }
