@@ -1,8 +1,11 @@
 package orm
 
 import (
+	"context"
 	"errors"
 	"fmt"
+	"log"
+	"os"
 	"time"
 
 	"github.com/aarondl/opt/omit"
@@ -12,43 +15,36 @@ import (
 	"github.com/sanity-io/litter"
 )
 
-type UserTable struct {
-	sq.TableStruct `sq:"users"`
-	ID             sq.NumberField `sq:"id"`
-	GUID           sq.StringField `sq:"guid"`
-	Username       sq.StringField `sq:"username"`
-	Score          sq.NumberField `sq:"score"`
-	CreatedAt      sq.TimeField   `sq:"created_at"`
-	UpdatedAt      sq.TimeField   `sq:"updated_at"`
+func init() {
+	l := sq.NewLogger(os.Stdout, "", log.LstdFlags, sq.LoggerConfig{
+		ShowCaller:    true,
+		ShowTimeTaken: true,
+		HideArgs:      true,
+	})
+	sq.SetDefaultLogQuery(func(ctx context.Context, stats sq.QueryStats) {
+		l.SqLogQuery(ctx, stats)
+	})
 }
 
-type UserDeviceTable struct {
-	sq.TableStruct `sq:"user_devices"`
-	ID             sq.NumberField `sq:"id"`
-	GUID           sq.StringField `sq:"guid"`
-	UserID         sq.NumberField `sq:"user_id"`
-	Device         sq.StringField `sq:"device"`
-	Model          sq.StringField `sq:"model"`
-	CreatedAt      sq.TimeField   `sq:"created_at"`
-	UpdatedAt      sq.TimeField   `sq:"updated_at"`
-}
+var _ fmt.Stringer = (*User)(nil)
+var _ fmt.Stringer = (*UserDevice)(nil)
 
-type DeviceTable struct {
-	sq.TableStruct `sq:"devices"`
-	ID             sq.NumberField `sq:"id"`
-	GUID           sq.StringField `sq:"guid"`
-	Name           sq.StringField `sq:"name"`
-	CreatedAtTS    sq.TimeField   `sq:"created_at_ts"`
-	UpdatedAtTS    sq.TimeField   `sq:"updated_at_ts"`
-}
+var (
+	UserTable       = sq.New[USERS]("u1")
+	UserDeviceTable = sq.New[USER_DEVICES]("u2")
+	DeviceTable     = sq.New[DEVICES]("u3")
+	TagTable        = sq.New[TAGS]("u4")
+)
 
-type TagTable struct {
-	sq.TableStruct `sq:"tags"`
-	ID             sq.NumberField `sq:"id"`
-	GUID           sq.StringField `sq:"guid"`
-	Code           sq.StringField `sq:"code"`
-	Name           sq.StringField `sq:"name"`
-	Description    sq.StringField `sq:"description"`
+type UserStatus string
+
+const (
+	UserStatusActive  UserStatus = "active"
+	UserStatusBlocked UserStatus = "blocked"
+)
+
+func (v UserStatus) String() string {
+	return string(v)
 }
 
 type User struct {
@@ -61,6 +57,19 @@ type User struct {
 }
 
 func (m User) String() string {
+	return litter.Sdump(m)
+}
+
+type UserWithDevice struct {
+	ID          int64  `db:"id"`
+	GUID        string `db:"guid"`
+	Username    string `db:"username"`
+	DeviceGUID  string `db:"device_guid"`
+	DeviceName  string `db:"device_name"`
+	DeviceModel string `db:"device_model"`
+}
+
+func (m UserWithDevice) String() string {
 	return litter.Sdump(m)
 }
 
@@ -94,20 +103,8 @@ func (m UserSetter) Overwrite(r *User) {
 	}
 }
 
-func (m UserSetter) Insert(db sq.DB) error {
-	tbl := UserTableDef
-	_, err := sq.Exec(
-		db,
-		sq.InsertInto(tbl).
-			ColumnValues(func(c *sq.Column) {
-				m.setColumns(c, false)
-			}),
-	)
-	return err
-}
-
-func (m UserSetter) Update(db sq.DB, IDs ...int) error {
-	tbl := UserTableDef
+func (m UserSetter) Update(db sq.DB) error {
+	tbl := UserTable
 	if id, ok := m.ID.Get(); ok {
 		_, err := sq.Exec(
 			db,
@@ -122,7 +119,7 @@ func (m UserSetter) Update(db sq.DB, IDs ...int) error {
 }
 
 func (m UserSetter) setColumns(c *sq.Column, withID bool) {
-	tbl := UserTableDef
+	tbl := UserTable
 	if withID && !m.ID.IsUnset() {
 		v, _ := m.ID.Get()
 		c.SetInt(tbl.ID, v)
@@ -133,19 +130,19 @@ func (m UserSetter) setColumns(c *sq.Column, withID bool) {
 	}
 	if !m.Username.IsUnset() {
 		v, _ := m.Username.Get()
-		c.SetString(tbl.Username, v)
+		c.SetString(tbl.USERNAME, v)
 	}
 	if !m.Score.IsUnset() {
 		v, _ := m.Score.Get()
-		c.SetFloat64(tbl.Score, v)
+		c.SetFloat64(tbl.SCORE, v)
 	}
 	if !m.CreatedAt.IsUnset() {
 		v, _ := m.CreatedAt.Get()
-		c.SetTime(tbl.CreatedAt, v)
+		c.SetTime(tbl.CREATED_AT, v)
 	}
 	if !m.UpdatedAt.IsUnset() {
 		v, _ := m.UpdatedAt.Get()
-		c.SetTime(tbl.UpdatedAt, v)
+		c.SetTime(tbl.UPDATED_AT, v)
 	}
 }
 
@@ -154,13 +151,14 @@ func (m UserSetter) SetColumns(c *sq.Column) {
 }
 
 type UserDevice struct {
-	ID        int       `db:"id"`
-	GUID      string    `db:"guid"`
-	UserID    int       `db:"user_id"`
-	Device    string    `db:"device"`
-	Model     string    `db:"score"`
-	CreatedAt time.Time `db:"created_at"`
-	UpdatedAt time.Time `db:"updated_at"`
+	ID          int                  `db:"id"`
+	GUID        string               `db:"guid"`
+	UserID      int                  `db:"user_id"`
+	Name        string               `db:"name"`
+	Model       string               `db:"score"`
+	Description omitnull.Val[string] `db:"description"`
+	CreatedAt   time.Time            `db:"created_at"`
+	UpdatedAt   time.Time            `db:"updated_at"`
 }
 
 func (m UserDevice) String() string {
@@ -168,11 +166,24 @@ func (m UserDevice) String() string {
 }
 
 type Device struct {
-	ID          int       `db:"id"`
-	GUID        string    `db:"guid"`
-	Name        string    `db:"name"`
-	CreatedAtTS time.Time `db:"created_at_ts"`
-	UpdatedAtTS time.Time `db:"updated_at_ts"`
+	ID        int       `db:"id"`
+	GUID      string    `db:"guid"`
+	Name      string    `db:"name"`
+	Model     string    `db:"model"`
+	CreatedAt time.Time `db:"created_at"`
+	UpdatedAt time.Time `db:"updated_at"`
+}
+
+func (m Device) Insert(db sq.DB) error {
+	tbl := DeviceTable
+	_, err := sq.Exec(db, sq.InsertInto(tbl).ColumnValues(func(c *sq.Column) {
+		c.SetString(tbl.GUID, m.GUID)
+		c.SetString(tbl.NAME, m.Name)
+		c.SetString(tbl.MODEL, m.Model)
+		c.SetTime(tbl.CREATED_AT, m.CreatedAt)
+		c.SetTime(tbl.UPDATED_AT, m.UpdatedAt)
+	}))
+	return err
 }
 
 func (m Device) String() string {
@@ -187,13 +198,13 @@ type Tag struct {
 	Description omitnull.Val[string] `db:"description"`
 }
 
-func (t Tag) Insert(db sq.DB) error {
-	tbl := TagTableDef
+func (m Tag) Insert(db sq.DB) error {
+	tbl := TagTable
 	_, err := sq.Exec(db, sq.InsertInto(tbl).ColumnValues(func(c *sq.Column) {
-		c.SetString(tbl.GUID, t.GUID)
-		c.SetString(tbl.NAME, t.Name)
-		c.SetString(tbl.CODE, t.Code)
-		if v, ok := t.Description.Get(); ok {
+		c.SetString(tbl.GUID, m.GUID)
+		c.SetString(tbl.NAME, m.Name)
+		c.SetString(tbl.CODE, m.Code)
+		if v, ok := m.Description.Get(); ok {
 			c.SetString(tbl.DESCRIPTION, v)
 		}
 	}))
@@ -210,25 +221,58 @@ func (m Model) String() string {
 	return litter.Sdump(m)
 }
 
-var _ fmt.Stringer = (*User)(nil)
-var _ fmt.Stringer = (*UserDevice)(nil)
+func userJoinDeviceMapRowMapper() func(*sq.Row) map[string]any {
+	return func(r *sq.Row) map[string]any {
+		//tbl := UserTable
+		//joinTbl := UserDeviceTable
+		mm := make(map[string]any)
+		mm["id"] = r.Int64("id")
+		mm["guid"] = r.String("guid")
+		mm["username"] = r.String("username")
+		mm["device_guid"] = r.String("device_guid")
+		mm["device_name"] = r.String("device_name")
+		mm["device_model"] = r.String("device_model")
+		return mm
+	}
+}
 
-var (
-	UserTableDef       = sq.New[UserTable]("u1")
-	UserDeviceTableDef = sq.New[UserDeviceTable]("u2")
-	DeviceTableDef     = sq.New[DeviceTable]("u3")
-	TagTableDef        = sq.New[TAGS]("u4")
-)
+func userWithDeviceSelect() (sq.Fields, func(*sq.Row) *UserWithDevice) {
+	tbl := UserTable
+	joinTbl := UserDeviceTable
+	fields := sq.Fields{
+		tbl.ID,
+		tbl.GUID,
+		tbl.USERNAME,
+		joinTbl.GUID.As("device_guid"),
+		joinTbl.NAME.As("device_name"),
+		joinTbl.MODEL.As("device_model"),
+	}
+	return fields, userJoinDeviceRowMapper()
+}
+
+func userJoinDeviceRowMapper() func(*sq.Row) *UserWithDevice {
+	return func(r *sq.Row) *UserWithDevice {
+		v := &UserWithDevice{
+			ID:          r.Int64("id"),
+			GUID:        r.String("guid"),
+			Username:    r.String("username"),
+			DeviceGUID:  r.String("device_guid"),
+			DeviceName:  r.String("device_name"),
+			DeviceModel: r.String("device_model"),
+		}
+		return v
+	}
+}
 
 func userModelRowMapper() func(*sq.Row) *User {
 	return func(r *sq.Row) *User {
-		tbl := UserTableDef
+		tbl := UserTable
 
 		u := &User{
 			ID:       r.IntField(tbl.ID),
 			GUID:     r.StringField(tbl.GUID),
-			Username: r.StringField(tbl.Username),
-			Score:    r.Float64Field(tbl.Score),
+			Username: r.StringField(tbl.USERNAME),
+			Score:    r.Float64Field(tbl.SCORE),
 		}
 
 		dd := sq.DefaultDialect.Load()
@@ -243,8 +287,8 @@ func userModelRowMapper() func(*sq.Row) *User {
 				u.UpdatedAt = ct
 			}
 		} else {
-			u.CreatedAt = r.TimeField(tbl.CreatedAt)
-			u.UpdatedAt = r.TimeField(tbl.UpdatedAt)
+			u.CreatedAt = r.TimeField(tbl.CREATED_AT)
+			u.UpdatedAt = r.TimeField(tbl.UPDATED_AT)
 		}
 
 		return u
@@ -252,37 +296,37 @@ func userModelRowMapper() func(*sq.Row) *User {
 }
 
 func userInsertColumnMapper(col *sq.Column, r *User) {
-	tbl := UserTableDef
+	tbl := UserTable
 
 	col.Set(tbl.GUID, r.GUID)
-	col.Set(tbl.Username, r.Username)
-	col.Set(tbl.Score, r.Score)
-	col.Set(tbl.CreatedAt, r.CreatedAt)
-	col.Set(tbl.UpdatedAt, r.UpdatedAt)
+	col.Set(tbl.USERNAME, r.Username)
+	col.Set(tbl.SCORE, r.Score)
+	col.Set(tbl.CREATED_AT, r.CreatedAt)
+	col.Set(tbl.UPDATED_AT, r.UpdatedAt)
 }
 
 func userDeviceInsertColumnMapper(col *sq.Column, r *UserDevice) {
-	tbl := UserDeviceTableDef
+	tbl := UserDeviceTable
 
-	col.Set(tbl.UserID, r.UserID)
+	col.Set(tbl.USER_ID, r.UserID)
 	col.Set(tbl.GUID, r.GUID)
-	col.Set(tbl.Device, r.Device)
-	col.Set(tbl.Model, r.Model)
-	col.SetTime(tbl.CreatedAt, r.CreatedAt)
-	col.SetTime(tbl.UpdatedAt, r.UpdatedAt)
+	col.Set(tbl.NAME, r.Name)
+	col.Set(tbl.MODEL, r.Model)
+	col.SetTime(tbl.CREATED_AT, r.CreatedAt)
+	col.SetTime(tbl.UPDATED_AT, r.UpdatedAt)
 }
 
 func deviceInsertColumnMapper(col *sq.Column, r *Device) {
-	tbl := DeviceTableDef
+	tbl := DeviceTable
 
 	col.SetString(tbl.GUID, r.GUID)
-	col.SetString(tbl.Name, r.Name)
-	col.SetTime(tbl.CreatedAtTS, r.CreatedAtTS)
-	col.SetTime(tbl.UpdatedAtTS, r.UpdatedAtTS)
+	col.SetString(tbl.NAME, r.Name)
+	col.SetTime(tbl.CREATED_AT, r.CreatedAt)
+	col.SetTime(tbl.UPDATED_AT, r.UpdatedAt)
 }
 
 func tagInsertColumnMapper(col *sq.Column, r *Tag) {
-	tbl := TagTableDef
+	tbl := TagTable
 
 	col.SetString(tbl.GUID, r.GUID)
 	col.SetString(tbl.NAME, r.Name)
@@ -292,18 +336,13 @@ func tagInsertColumnMapper(col *sq.Column, r *Tag) {
 
 func deviceRowMapper() func(*sq.Row) *Device {
 	return func(r *sq.Row) *Device {
-		tbl := DeviceTableDef
+		tbl := DeviceTable
 
-		cc := r.Int64("created_at_ts")
-		uu := r.Int64("updated_at_ts")
-
-		aa := time.UnixMilli(cc)
-		bb := time.UnixMilli(uu)
 		u := &Device{
-			ID:          r.IntField(tbl.ID),
-			GUID:        r.StringField(tbl.GUID),
-			CreatedAtTS: aa,
-			UpdatedAtTS: bb,
+			ID:        r.IntField(tbl.ID),
+			GUID:      r.StringField(tbl.GUID),
+			CreatedAt: r.TimeField(tbl.CREATED_AT),
+			UpdatedAt: r.TimeField(tbl.UPDATED_AT),
 		}
 
 		return u
@@ -327,7 +366,7 @@ func randomUserDevice() *UserDevice {
 	u := &UserDevice{
 		UserID:    gofakeit.IntRange(1, 30),
 		GUID:      gofakeit.UUID(),
-		Device:    gofakeit.AppName(),
+		Name:      gofakeit.AppName(),
 		Model:     gofakeit.CarModel(),
 		CreatedAt: ln,
 		UpdatedAt: ln,
@@ -338,10 +377,10 @@ func randomUserDevice() *UserDevice {
 func randomDevice() *Device {
 	ln := time.Now().Local()
 	u := &Device{
-		GUID:        gofakeit.UUID(),
-		Name:        gofakeit.AppName(),
-		CreatedAtTS: ln,
-		UpdatedAtTS: ln,
+		GUID:      gofakeit.UUID(),
+		Name:      gofakeit.AppName(),
+		CreatedAt: ln,
+		UpdatedAt: ln,
 	}
 	return u
 }

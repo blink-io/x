@@ -3,30 +3,40 @@ package orm
 import (
 	"database/sql"
 	"log/slog"
+	"sync"
 	"testing"
 
 	"github.com/blink-io/x/tests/orm/nsqlite3"
+
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
-	//_ "modernc.org/sqlite"
-	//_ "github.com/mattn/go-sqlite3"
-	_ "github.com/ncruces/go-sqlite3/driver"
-	_ "github.com/ncruces/go-sqlite3/embed"
 )
 
-func init() {
-	dialect := sq.DialectSQLite
-	sq.DefaultDialect.Store(&dialect)
-	slog.Info("Using dialect", "dialect", dialect)
-}
+var sqliteOnce sync.Once
+
+var sqliteDSN = "./orm_demo.db"
 
 func getSqlite3DB() *sql.DB {
-	return nsqlite3.GetSQLiteDB("./orm_demo.db")
+	sqliteOnce.Do(func() {
+		setupSqlite3Dialect()
+	})
+
+	return nsqlite3.GetSQLiteDB(sqliteDSN)
+}
+
+func getSqlite3DBForSQ() sq.DB {
+	return sq.Log(getSqlite3DB())
+}
+
+func setupSqlite3Dialect() {
+	dialect := sq.DialectSQLite
+	sq.DefaultDialect.Store(&dialect)
+	slog.Info("Setup database dialect", "dialect", dialect)
 }
 
 func TestSq_Sqlite3_User_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqlite3DB()
-	tbl := UserTableDef
+	db := getSqlite3DBForSQ()
+	tbl := UserTable
 
 	records := []*User{
 		randomUser(),
@@ -44,8 +54,8 @@ func TestSq_Sqlite3_User_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Sqlite3_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := UserDeviceTableDef
+	db := getSqliteDBForSQ()
+	tbl := UserDeviceTable
 
 	records := []*UserDevice{
 		randomUserDevice(),
@@ -64,8 +74,8 @@ func TestSq_Sqlite3_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Sqlite3_User_FetchAll_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := UserTableDef
+	db := getSqliteDBForSQ()
+	tbl := UserTable
 
 	query := sq.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
 	records, err := sq.FetchAll(db, query, userModelRowMapper())
@@ -75,8 +85,8 @@ func TestSq_Sqlite3_User_FetchAll_1(t *testing.T) {
 }
 
 func TestSq_Sqlite3_User_Delete_All(t *testing.T) {
-	db := getSqliteDB()
-	tbl := UserTableDef
+	db := getSqliteDBForSQ()
+	tbl := UserTable
 
 	_, err := sq.Exec(db, sq.
 		DeleteFrom(tbl).

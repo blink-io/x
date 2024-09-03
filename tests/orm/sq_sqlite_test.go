@@ -2,31 +2,28 @@ package orm
 
 import (
 	"database/sql"
-	"log/slog"
 	"testing"
 
 	"github.com/blink-io/x/tests/orm/msqlite3"
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
-	_ "modernc.org/sqlite"
-	//_ "github.com/ncruces/go-sqlite3/driver"
-	//_ "github.com/ncruces/go-sqlite3/embed"
 )
 
-func init() {
-	dialect := sq.DialectSQLite
-	sq.DefaultDialect.Store(&dialect)
-	slog.Info("Using dialect", "dialect", dialect)
+func getSqliteDB() *sql.DB {
+	sqliteOnce.Do(func() {
+		setupSqlite3Dialect()
+	})
+
+	return msqlite3.GetSqliteDB(sqliteDSN)
 }
 
-func getSqliteDB() *sql.DB {
-	dsn := "./orm_demo.db"
-	return msqlite3.GetSqliteDB(dsn)
+func getSqliteDBForSQ() *sql.DB {
+	return getSqliteDB()
 }
 
 func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := UserTableDef
+	db := getSqliteDBForSQ()
+	tbl := UserTable
 
 	records := []*User{
 		randomUser(),
@@ -44,8 +41,8 @@ func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := UserDeviceTableDef
+	db := getSqliteDBForSQ()
+	tbl := UserDeviceTable
 
 	records := []*UserDevice{
 		randomUserDevice(),
@@ -64,8 +61,8 @@ func TestSq_Sqlite_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_User_FetchAll_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := UserTableDef
+	db := getSqliteDBForSQ()
+	tbl := UserTable
 
 	query := sq.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
 	records, err := sq.FetchAll(db, query, userModelRowMapper())
@@ -75,8 +72,8 @@ func TestSq_Sqlite_User_FetchAll_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_User_Delete_All(t *testing.T) {
-	db := getSqliteDB()
-	tbl := UserTableDef
+	db := getSqliteDBForSQ()
+	tbl := UserTable
 
 	_, err := sq.Exec(db, sq.
 		DeleteFrom(tbl).
@@ -86,8 +83,8 @@ func TestSq_Sqlite_User_Delete_All(t *testing.T) {
 }
 
 func TestSq_Sqlite_Device_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := DeviceTableDef
+	db := getSqliteDBForSQ()
+	tbl := DeviceTable
 
 	records := []*Device{
 		randomDevice(),
@@ -105,8 +102,8 @@ func TestSq_Sqlite_Device_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_Device_FetchAll_1(t *testing.T) {
-	db := getSqliteDB()
-	tbl := DeviceTableDef
+	db := getSqliteDBForSQ()
+	tbl := DeviceTable
 
 	query := sq.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
 	records, err := sq.FetchAll(db, query, deviceRowMapper())

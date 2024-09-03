@@ -26,7 +26,7 @@ func TestSq_Generic_DB_Select(t *testing.T) {
 			DialectExpr(sq.DialectSQLite, " datetime('now','+8 hour') as current"),
 	)
 
-	db1 := getSqliteDB()
+	db1 := getSqliteDBForSQ()
 	m1, err1 := sq.FetchOne[Model](db1, sel.SetDialect(sq.DialectSQLite), func(r *sq.Row) Model {
 		m := Model{
 			Name:    r.String("name"),
@@ -40,7 +40,7 @@ func TestSq_Generic_DB_Select(t *testing.T) {
 
 	fmt.Println(m1)
 
-	db2 := getPgDB()
+	db2 := getPgDBForSQ()
 	m2, err2 := sq.FetchOne[*Model](db2, sel.SetDialect(sq.DialectPostgres), func(r *sq.Row) *Model {
 		m := &Model{
 			Name:    r.String("name"),
