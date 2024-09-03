@@ -45,3 +45,42 @@ func TestSlicePtr_1(t *testing.T) {
 
 	fmt.Println(litter.Sdump(ss))
 }
+
+type testBun struct {
+	Name    string
+	Version string
+}
+
+func (t testBun) Ptr() *testBun {
+	return &t
+}
+
+func (t testBun) Change() {
+	tptr := &t
+	fmt.Printf("in Change t ptr: %p\n", tptr)
+	tptr.Name = "name is changed"
+}
+
+func (t *testBun) Update() {
+	fmt.Printf("in Update t ptr: %p\n", t)
+	t.Name = "name is changed"
+}
+
+func Test(t *testing.T) {
+	tk := testBun{
+		Name:    "hello",
+		Version: "ver",
+	}
+
+	fmt.Printf("outer t ptr: %p\n", &tk)
+
+	fmt.Println(litter.Sdump(tk))
+
+	tk.Change()
+
+	fmt.Println(litter.Sdump(tk))
+
+	tk.Update()
+
+	fmt.Println(litter.Sdump(tk))
+}
