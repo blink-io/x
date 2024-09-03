@@ -11,33 +11,39 @@ type Mapper[T sq.Table, M any] interface {
 	QueryMapper() func(*sq.Row) M
 }
 
-type UserMappers struct {
+type UserMapper struct {
 	tbl USERS
 }
 
-func NewUserMappers(tbl USERS) UserMappers {
-	return UserMappers{tbl: tbl}
-}
+var _ Mapper[USERS, User] = (*UserMapper)(nil)
 
-func (m UserMappers) Table() USERS {
-	return m.tbl
-}
-
-func (m UserMappers) InsertColumns(r *User) func(*sq.Column) {
-	tbl := m.tbl
-	return func(col *sq.Column) {
-		col.SetString(tbl.GUID, r.GUID)
-		col.SetString(tbl.USERNAME, r.Username)
-		col.SetFloat64(tbl.SCORE, r.Score)
-		col.SetTime(tbl.CREATED_AT, r.CreatedAt)
-		col.SetTime(tbl.UPDATED_AT, r.UpdatedAt)
+func NewUserMapper() Mapper[USERS, User] {
+	return UserMapper{
+		tbl: sq.New[USERS]("users"),
 	}
 }
 
-func (m UserMappers) RowMapper() func(*sq.Row) *User {
+func (m UserMapper) Table() USERS {
+	return m.tbl
+}
+
+func (m UserMapper) InsertMapper(vv ...User) func(*sq.Column) {
 	tbl := m.tbl
-	return func(r *sq.Row) *User {
-		u := &User{
+	return func(col *sq.Column) {
+		for _, v := range vv {
+			col.SetString(tbl.GUID, v.GUID)
+			col.SetString(tbl.USERNAME, v.Username)
+			col.SetFloat64(tbl.SCORE, v.Score)
+			col.SetTime(tbl.CREATED_AT, v.CreatedAt)
+			col.SetTime(tbl.UPDATED_AT, v.UpdatedAt)
+		}
+	}
+}
+
+func (m UserMapper) QueryMapper() func(*sq.Row) User {
+	tbl := m.tbl
+	return func(r *sq.Row) User {
+		u := User{
 			ID:        r.IntField(tbl.ID),
 			GUID:      r.StringField(tbl.GUID),
 			Username:  r.StringField(tbl.USERNAME),
@@ -66,11 +72,11 @@ func (m TagMapper) Table() TAGS {
 func (m TagMapper) InsertMapper(vv ...Tag) func(*sq.Column) {
 	tbl := m.tbl
 	return func(col *sq.Column) {
-		for _, r := range vv {
-			col.SetString(tbl.GUID, r.GUID)
-			col.SetString(tbl.NAME, r.Name)
-			col.SetString(tbl.CODE, r.Code)
-			col.SetString(tbl.DESCRIPTION, r.Description.GetOrZero())
+		for _, v := range vv {
+			col.SetString(tbl.GUID, v.GUID)
+			col.SetString(tbl.NAME, v.Name)
+			col.SetString(tbl.CODE, v.Code)
+			col.SetString(tbl.DESCRIPTION, v.Description.GetOrZero())
 		}
 	}
 }

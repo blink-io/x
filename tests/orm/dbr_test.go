@@ -13,7 +13,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func getDBRConn() *dbr.Connection {
+func getSqlite3DBRConn() *dbr.Connection {
 	sl := dbrslog.New(slog.Default(), slog.LevelInfo)
 
 	db := getSqliteDBForSQ()
@@ -26,8 +26,21 @@ func getDBRConn() *dbr.Connection {
 
 	return cc
 }
+func getPgDBRConn() *dbr.Connection {
+	sl := dbrslog.New(slog.Default(), slog.LevelInfo)
+
+	db := getPgDB()
+	dd := dialect.SQLite3
+	cc := &dbr.Connection{
+		DB:            db,
+		EventReceiver: sl,
+		Dialect:       dd,
+	}
+
+	return cc
+}
 func TestDBR_1(t *testing.T) {
-	cc := getDBRConn()
+	cc := getSqlite3DBRConn()
 	sess := cc.NewSession(nil)
 
 	m := new(Model)
@@ -41,8 +54,8 @@ func TestDBR_1(t *testing.T) {
 	fmt.Println(m)
 }
 
-func TestDBR_User_Insert_1(t *testing.T) {
-	cc := getDBRConn()
+func TestDBR_Sqlite3_User_Insert_1(t *testing.T) {
+	cc := getSqlite3DBRConn()
 
 	sess := cc.NewSession(nil)
 
@@ -54,6 +67,50 @@ func TestDBR_User_Insert_1(t *testing.T) {
 		Record(m1).
 		Record(m2).
 		Exec()
+	require.NoError(t, err)
+
+	fmt.Println("done")
+}
+
+func TestDBR_Pg_User_Insert_1(t *testing.T) {
+	cc := getPgDBRConn()
+
+	sess := cc.NewSession(nil)
+
+	m1 := randomUser()
+	m2 := randomUser()
+
+	_, err := sess.InsertInto("users").
+		Columns([]string{"username", "guid", "score", "created_at", "updated_at"}...).
+		Record(m1).
+		Record(m2).
+		Exec()
+	require.NoError(t, err)
+
+	fmt.Println("done")
+}
+
+func TestDBR_Sqlite3_User_Select_1(t *testing.T) {
+	cc := getSqlite3DBRConn()
+
+	sess := cc.NewSession(nil)
+
+	var records []User
+
+	_, err := sess.Select("*").From("users").Load(&records)
+	require.NoError(t, err)
+
+	fmt.Println("done")
+}
+
+func TestDBR_Pg_User_Select_1(t *testing.T) {
+	cc := getPgDBRConn()
+
+	sess := cc.NewSession(nil)
+
+	var records []User
+
+	_, err := sess.Select("*").From("users").Load(&records)
 	require.NoError(t, err)
 
 	fmt.Println("done")

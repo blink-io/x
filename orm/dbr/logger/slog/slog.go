@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"maps"
 	"slices"
+	"time"
 
 	"github.com/gocraft/dbr/v2"
 )
@@ -67,8 +68,8 @@ func errToAttr(err error) slog.Attr {
 	return slog.Any("err", err)
 }
 
-func nsToAttr(nanoseconds int64) slog.Attr {
-	return slog.Int64("ns", nanoseconds)
+func nsToAttr(ns int64) slog.Attr {
+	return slog.Int64("ms", time.Duration(ns).Milliseconds())
 }
 
 func eventNameToAttr(eventName string) slog.Attr {

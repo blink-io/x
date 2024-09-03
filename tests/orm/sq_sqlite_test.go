@@ -25,7 +25,7 @@ func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
 	db := getSqliteDBForSQ()
 	tbl := UserTable
 
-	records := []*User{
+	records := []User{
 		randomUser(),
 		randomUser(),
 		randomUser(),

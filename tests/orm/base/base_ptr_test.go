@@ -3,6 +3,8 @@ package base
 import (
 	"fmt"
 	"testing"
+
+	"github.com/blink-io/x/ptr"
 )
 
 type model struct {
@@ -53,4 +55,12 @@ func TestPtr_2(t *testing.T) {
 	mmptr.name = "after-after"
 
 	fmt.Printf("mm ptr: %p\n", mmptr)
+}
+
+func TestPtr_3(t *testing.T) {
+	mmptr := ptr.Of(mm)
+	mmfptr := ptr.Of(getMM())
+
+	fmt.Printf("mm ptr: %p\n", mmptr)
+	fmt.Printf("mm fptr: %p\n", mmfptr)
 }

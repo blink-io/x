@@ -150,7 +150,7 @@ func TestSq_Pg_User_Insert_ColumnMapper_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := UserTable
 
-	records := []*User{
+	records := []User{
 		randomUser(),
 		randomUser(),
 		randomUser(),
@@ -162,6 +162,24 @@ func TestSq_Pg_User_Insert_ColumnMapper_1(t *testing.T) {
 			userInsertColumnMapper(col, r)
 		}
 	}))
+	require.NoError(t, err)
+}
+
+func TestSq_Pg_User_Mapper_Insert_1(t *testing.T) {
+	db := getPgDBForSQ()
+	var mm Mapper[USERS, User] = NewUserMapper()
+	tbl := mm.Table()
+
+	records := []User{
+		randomUser(),
+		randomUser(),
+		randomUser(),
+	}
+
+	_, err := sq.Exec(db, sq.
+		InsertInto(tbl).
+		ColumnValues(mm.InsertMapper(records...)),
+	)
 	require.NoError(t, err)
 }
 
@@ -257,7 +275,7 @@ func TestSq_Pg_Tag_Insert_1(t *testing.T) {
 
 	tbl := TagTable
 
-	records := []*Tag{
+	records := []Tag{
 		randomTag(nil),
 		randomTag(Ptr(gofakeit.City())),
 		randomTag(nil),
@@ -289,8 +307,8 @@ func TestSq_Pg_Tag_Mapper_Insert_1(t *testing.T) {
 	mm := NewTagMapper()
 	tbl := mm.Table()
 
-	d1 := *randomTag(nil)
-	d2 := *randomTag(ptr.Of("Hello, Hi, 你好"))
+	d1 := randomTag(nil)
+	d2 := randomTag(ptr.Of("Hello, Hi, 你好"))
 
 	_, err := sq.Exec(sq.Log(db), sq.
 		InsertInto(tbl).

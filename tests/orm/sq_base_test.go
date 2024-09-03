@@ -295,7 +295,7 @@ func userModelRowMapper() func(*sq.Row) *User {
 	}
 }
 
-func userInsertColumnMapper(col *sq.Column, r *User) {
+func userInsertColumnMapper(col *sq.Column, r User) {
 	tbl := UserTable
 
 	col.Set(tbl.GUID, r.GUID)
@@ -325,7 +325,7 @@ func deviceInsertColumnMapper(col *sq.Column, r *Device) {
 	col.SetTime(tbl.UPDATED_AT, r.UpdatedAt)
 }
 
-func tagInsertColumnMapper(col *sq.Column, r *Tag) {
+func tagInsertColumnMapper(col *sq.Column, r Tag) {
 	tbl := TagTable
 
 	col.SetString(tbl.GUID, r.GUID)
@@ -349,9 +349,9 @@ func deviceRowMapper() func(*sq.Row) *Device {
 	}
 }
 
-func randomUser() *User {
+func randomUser() User {
 	ln := time.Now().Local()
-	u := &User{
+	u := User{
 		GUID:      gofakeit.UUID(),
 		Username:  gofakeit.Username(),
 		Score:     gofakeit.Float64(),
@@ -385,8 +385,8 @@ func randomDevice() *Device {
 	return u
 }
 
-func randomTag(desc *string) *Tag {
-	u := &Tag{
+func randomTag(desc *string) Tag {
+	u := Tag{
 		GUID:        gofakeit.UUID(),
 		Code:        gofakeit.City(),
 		Name:        gofakeit.DomainName(),
