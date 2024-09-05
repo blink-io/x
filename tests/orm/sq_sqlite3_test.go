@@ -24,8 +24,8 @@ func getSqlite3DB() *sql.DB {
 	return nsqlite3.GetSQLiteDB(sqliteDSN)
 }
 
-func getSqlite3DBForSQ() sq.DB {
-	return sq.Log(getSqlite3DB())
+func getSqlite3DBForSQ() *sql.DB {
+	return getSqlite3DB()
 }
 
 func setupSqlite3Dialect() {
@@ -37,6 +37,10 @@ func setupSqlite3Dialect() {
 func TestSq_Sqlite3_User_Insert_ColumnMapper_1(t *testing.T) {
 	db := getSqlite3DBForSQ()
 	tbl := UserTable
+
+	defer func() {
+		_ = db.Close()
+	}()
 
 	records := []User{
 		randomUser(),

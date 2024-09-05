@@ -76,6 +76,7 @@ func (m TagMapper) InsertMapper(vv ...Tag) func(*sq.Column) {
 			col.SetString(tbl.GUID, v.GUID)
 			col.SetString(tbl.NAME, v.Name)
 			col.SetString(tbl.CODE, v.Code)
+			col.SetTime(tbl.CREATED_AT, v.CreatedAt)
 			col.SetString(tbl.DESCRIPTION, v.Description.GetOrZero())
 		}
 	}

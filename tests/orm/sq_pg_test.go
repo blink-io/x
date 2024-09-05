@@ -332,6 +332,21 @@ func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
 	require.NotNil(t, records)
 }
 
+func TestSq_Pg_Tag_Mapper_FetchOne_ByPK(t *testing.T) {
+	db := getPgDBForSQ()
+	mm := NewTagMapper()
+	tbl := mm.Table()
+
+	idWhere := tbl.PrimaryKeyValues(23)
+	query := sq.
+		From(tbl).
+		Where(idWhere)
+	records, err := sq.FetchOne(db, query, mm.QueryMapper())
+
+	require.NoError(t, err)
+	require.NotNil(t, records)
+}
+
 func TestSq_Pg_Enum_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := sq.New[ENUMS]("e")

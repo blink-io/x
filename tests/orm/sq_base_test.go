@@ -195,6 +195,7 @@ type Tag struct {
 	GUID        string               `db:"guid"`
 	Code        string               `db:"code"`
 	Name        string               `db:"name"`
+	CreatedAt   time.Time            `db:"created_at"`
 	Description omitnull.Val[string] `db:"description"`
 }
 
@@ -298,6 +299,9 @@ func userModelRowMapper() func(*sq.Row) *User {
 func userInsertColumnMapper(col *sq.Column, r User) {
 	tbl := UserTable
 
+	if r.ID > 0 {
+		col.SetInt(tbl.ID, r.ID)
+	}
 	col.Set(tbl.GUID, r.GUID)
 	col.Set(tbl.USERNAME, r.Username)
 	col.Set(tbl.SCORE, r.Score)
@@ -391,6 +395,7 @@ func randomTag(desc *string) Tag {
 		Code:        gofakeit.City(),
 		Name:        gofakeit.DomainName(),
 		Description: omitnull.FromPtr(desc),
+		CreatedAt:   time.Now().Local(),
 	}
 	return u
 }

@@ -25,6 +25,7 @@ type TAGS struct {
 	NAME        sq.StringField `ddl:"type=varchar(60) notnull"`
 	CODE        sq.StringField `ddl:"type=varchar(60) notnull"`
 	DESCRIPTION sq.StringField `ddl:"type=text"`
+	CREATED_AT  sq.TimeField   `ddl:"type=timestamptz notnull"`
 	GUID        sq.StringField `ddl:"type=varchar(60) notnull unique"`
 }
 
@@ -48,4 +49,12 @@ type USERS struct {
 	SCORE      sq.NumberField `ddl:"type={double precision} notnull"`
 	CREATED_AT sq.TimeField   `ddl:"type=timestamptz notnull"`
 	UPDATED_AT sq.TimeField   `ddl:"type=timestamptz notnull"`
+}
+
+type TVALS struct {
+	sq.TableStruct `ddl:"primarykey=iid,sid"`
+	IID            sq.NumberField `ddl:"type=int notnull"`
+	SID            sq.StringField `ddl:"type=int notnull"`
+	NAME           sq.StringField `ddl:"type=varchar(60) notnull"`
+	CREATED_AT     sq.TimeField   `ddl:"type=timestamptz notnull"`
 }
