@@ -21,7 +21,7 @@ require (
 	github.com/bokwoon95/sq v0.5.1
 	github.com/brianvoe/gofakeit/v7 v7.0.4
 	github.com/bwmarrin/snowflake v0.3.0
-	github.com/caarlos0/env/v10 v10.0.0
+	github.com/caarlos0/env/v11 v11.2.2
 	github.com/carlmjohnson/requests v0.24.2
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cohesivestack/valgo v0.4.1
