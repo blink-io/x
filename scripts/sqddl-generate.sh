@@ -5,5 +5,7 @@ DB="$DATABASE_URL"
 
 go install -tags=fts5 github.com/bokwoon95/sqddl@latest
 
-sqddl generate -src "$DB" \
-  -dest tables.go -accept-warnings
+sqddl generate \
+    -src $DB \
+    -dest ./tables.go \
+    -output-dir ./migrations

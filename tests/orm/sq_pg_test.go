@@ -29,7 +29,7 @@ func getPgDB() *sql.DB {
 		setupPgDialect()
 	})
 
-	dsn := "postgres://blink:888asdf%21%23%25@192.168.50.88:5432/orm-demo?sslmode=disable"
+	dsn := "postgres://test:test@192.168.50.88:5432/test?sslmode=disable"
 	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		log.Fatalf("failed to open pg db: %v", err)

@@ -12,8 +12,8 @@ func TestURL_1(t *testing.T) {
 	u := &url.URL{
 		Scheme:   "postgres",
 		Host:     "192.168.50.88:5432",
-		Path:     "orm_demo",
-		User:     url.UserPassword("blink", "888asdf!#%"),
+		Path:     "test",
+		User:     url.UserPassword("test", "test"),
 		RawQuery: "sslmode=disable",
 	}
 
