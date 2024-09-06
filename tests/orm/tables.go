@@ -1,6 +1,10 @@
 package orm
 
-import "github.com/bokwoon95/sq"
+import (
+	"time"
+
+	"github.com/bokwoon95/sq"
+)
 
 type DEVICES struct {
 	sq.TableStruct
@@ -57,4 +61,29 @@ type TVALS struct {
 	SID            sq.StringField `ddl:"type=int notnull"`
 	NAME           sq.StringField `ddl:"type=varchar(60) notnull"`
 	CREATED_AT     sq.TimeField   `ddl:"type=timestamptz notnull"`
+}
+
+type MKEYS struct {
+	sq.TableStruct `ddl:"primarykey=id1,id2"`
+	ID1            sq.NumberField `ddl:"type=int notnull"`
+	ID2            sq.NumberField `ddl:"type=int notnull"`
+	NAME           sq.StringField `ddl:"type=varchar(60) notnull"`
+	CREATED_AT     sq.TimeField   `ddl:"type=timestamptz notnull"`
+	GUID           sq.StringField `ddl:"type=varchar(60) notnull unique"`
+}
+
+func (s MKEYS) PrimaryKeys() sq.RowValue {
+	return sq.RowValue{s.ID1, s.ID2}
+}
+
+func (s MKEYS) PrimaryKeyValues(id1, id2 int64) sq.Predicate {
+	return s.PrimaryKeys().In(sq.RowValues{{id1, id2}})
+}
+
+type Mkey struct {
+	ID1       int       `db:"id1"`
+	ID2       int       `db:"id2"`
+	GUID      string    `db:"guid"`
+	Name      string    `db:"name"`
+	CreatedAt time.Time `db:"created_at"`
 }

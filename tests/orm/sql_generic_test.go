@@ -104,3 +104,33 @@ func TestEmitnull_1(t *testing.T) {
 	tt := omitnull.From(time.Now())
 	require.NotNil(t, tt)
 }
+
+func TestModel_2(t *testing.T) {
+	var mm = Model{
+		Name:    "abc",
+		Version: "efg",
+		Current: "hij",
+	}
+
+	fmt.Printf("mm ptr 1: %p\n", &mm)
+
+	mm1 := mm.WithName("new-name")
+	mm = mm1
+
+	fmt.Printf("mm ptr 2: %p\n", &mm)
+
+	mm2 := mm.WithVersion("new-version")
+	mm = mm2
+
+	fmt.Printf("mm ptr 3: %p\n", &mm)
+
+	mm3 := mm.WithName("after-name").
+		WithVersion("after-version")
+	mm = mm3
+
+	fmt.Printf("mm ptr 3: %p\n", &mm)
+
+	fmt.Printf("mm 1: %p\n", &mm1)
+	fmt.Printf("mm 2: %p\n", &mm2)
+	fmt.Printf("mm 3: %p\n", &mm3)
+}

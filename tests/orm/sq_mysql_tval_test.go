@@ -22,18 +22,20 @@ func TestSq_Mysql_TVAL_Insert_1(t *testing.T) {
 		Values(gofakeit.Uint8(), gofakeit.UUID(), prefix+gofakeit.Username(), time.Now())
 	ss.RowAlias = ""
 
-	_, err := sq.Exec(sq.VerboseLog(db), ss)
+	rt, err := sq.Exec(sq.VerboseLog(db), ss)
 	require.NoError(t, err)
+	require.NotNil(t, rt)
 }
 
 func TestSq_Mysql_TVAL_FetchOne_ByID(t *testing.T) {
 	db := getMysqlDBForSQ()
 	idb := sq.VerboseLog(db)
-	tbl := Tvals
+	tbl := Tables.Tvals
 
 	idWhere := tbl.PrimaryKeyValues(36, "9ea443a7-ac20-44ad-881a-28578e92250d")
 	query := sq.Select(tbl.IID, tbl.SID, tbl.NAME).
-		From(tbl).Where(idWhere)
+		From(tbl).
+		Where(idWhere, idWhere, tbl.NAME.LikeString("from-sq%"))
 
 	type result struct {
 		ID1  int
@@ -57,19 +59,23 @@ func TestSq_Mysql_TVAL_FetchOne_ByID(t *testing.T) {
 func TestSq_Mysql_TVAL_FetchAll_1(t *testing.T) {
 	db := getMysqlDBForSQ()
 	ldb := sq.VerboseLog(db)
-	tbl := MkeyTable
+	tbl := Tables.Tvals
 
-	where := sq.RowValue{MkeyTable.ID1}.Eq(11)
-	query := sq.From(tbl).Where(where).
+	//idWhere := tbl.PrimaryKeyValues(36, "9ea443a7-ac20-44ad-881a-28578e92250d")
+	iidGtZero := tbl.IID.GtInt64(0)
+	query := sq.From(tbl).Where(
+		iidGtZero,
+		tbl.NAME.LikeString("%Bruen%"),
+	).
+		OrderBy(tbl.SID.Desc()).
 		Limit(100)
 
-	records, err := sq.FetchAll(ldb, query, func(r *sq.Row) Mkey {
-		return Mkey{
-			ID1:       r.IntField(tbl.ID1),
-			ID2:       r.IntField(tbl.ID2),
-			Name:      r.StringField(tbl.NAME),
-			GUID:      r.StringField(tbl.GUID),
-			CreatedAt: r.TimeField(tbl.CREATED_AT),
+	records, err := sq.FetchAll(ldb, query, func(r *sq.Row) map[string]any {
+		return map[string]any{
+			"IID":       r.IntField(tbl.IID),
+			"SID":       r.StringField(tbl.SID),
+			"Name":      r.StringField(tbl.NAME),
+			"CreatedAt": r.TimeField(tbl.CREATED_AT),
 		}
 	})
 
