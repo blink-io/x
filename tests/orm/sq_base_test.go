@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"testing"
 	"time"
 
 	"github.com/aarondl/opt/omit"
@@ -218,6 +219,16 @@ type Model struct {
 	Current string `db:"current"`
 }
 
+func (m Model) WithName(name string) Model {
+	m.Name = name
+	return m
+}
+
+func (m Model) WithVersion(version string) Model {
+	m.Version = version
+	return m
+}
+
 func (m Model) String() string {
 	return litter.Sdump(m)
 }
@@ -400,4 +411,10 @@ func randomTag(desc *string) Tag {
 		CreatedAt:   time.Now().Local(),
 	}
 	return u
+}
+
+func TestTables_1(t *testing.T) {
+	var tt = sq.New[TAGS]("a")
+	kk := tt
+	fmt.Printf("tt: %p\nkk: %p\n", &tt, &kk)
 }

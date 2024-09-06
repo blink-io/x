@@ -11,7 +11,7 @@ import (
 func TestSq_Mysql_Tag_Mapper_Insert_1(t *testing.T) {
 	db := getMysqlDBForSQ()
 	mm := NewTagMapper()
-	tbl := sq.New[TAGS]("")
+	tbl := Tables.Tags
 
 	d1 := randomTag(nil)
 	d2 := randomTag(ptr.Of("Hello, Hi, 你好"))

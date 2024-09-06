@@ -4,6 +4,7 @@ go 1.23
 
 require (
 	github.com/BurntSushi/toml v1.4.0
+	github.com/Code-Hex/go-generics-cache v1.5.1
 	github.com/IBM/sarama v1.43.3
 	github.com/Netflix/go-env v0.1.0
 	github.com/ProtonMail/gopenpgp/v2 v2.7.5
@@ -170,6 +171,7 @@ require (
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
+	github.com/gomodule/redigo v1.9.2 // indirect
 	github.com/google/flatbuffers v24.3.25+incompatible // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
