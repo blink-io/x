@@ -45,8 +45,7 @@ var (
 	// bb is default bb
 	bb         = New(DefaultOptions)
 	log Logger = func(format string, args ...any) {
-		msg := fmt.Sprintf(format, args...)
-		slog.Info(msg)
+		slog.Info(fmt.Sprintf(format, args...))
 	}
 	// Compilation time type check
 	_ Bundler = (*Bundle)(nil)
