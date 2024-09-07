@@ -1,7 +1,6 @@
 package orm
 
 import (
-	"github.com/aarondl/opt/omit"
 	"github.com/bokwoon95/sq"
 )
 
@@ -21,7 +20,6 @@ var Tables = tables{
 
 func (t TAGS) Insert(db sq.DB, ms ...Tag) (sq.Result, error) {
 	q := sq.InsertInto(t).ColumnValues(func(col *sq.Column) {
-		omit.FromPtr()
 		for _, m := range ms {
 			col.SetString(t.GUID, m.GUID)
 			col.SetString(t.NAME, m.Name)

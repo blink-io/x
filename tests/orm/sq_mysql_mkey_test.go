@@ -29,7 +29,7 @@ func TestSq_Mysql_Mkey_Insert_1(t *testing.T) {
 func TestSq_Mysql_Mkey_FetchOne_ByID(t *testing.T) {
 	db := getMysqlDBForSQ()
 	idb := sq.VerboseLog(db)
-	tbl := MkeyTable
+	tbl := Tables.Mkeys
 
 	query := sq.Select(tbl.ID1, tbl.ID2, tbl.NAME).
 		From(tbl).Where(
@@ -58,9 +58,9 @@ func TestSq_Mysql_Mkey_FetchOne_ByID(t *testing.T) {
 func TestSq_Mysql_Mkey_FetchAll_1(t *testing.T) {
 	db := getMysqlDBForSQ()
 	ldb := sq.VerboseLog(db)
-	tbl := MkeyTable
+	tbl := Tables.Mkeys
 
-	where := sq.RowValue{MkeyTable.ID1}.Eq(11)
+	where := sq.RowValue{tbl.ID1}.Eq(11)
 	query := sq.From(tbl).Where(where).
 		Limit(100)
 
