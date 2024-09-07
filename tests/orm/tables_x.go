@@ -1,6 +1,9 @@
 package orm
 
-import "github.com/bokwoon95/sq"
+import (
+	"github.com/aarondl/opt/omit"
+	"github.com/bokwoon95/sq"
+)
 
 type tables struct {
 	Tags  TAGS
@@ -16,16 +19,56 @@ var Tables = tables{
 	Mkeys: sq.New[MKEYS](""),
 }
 
-func (s TAGS) PrimaryKeys() sq.RowValue {
-	return sq.RowValue{s.ID}
+func (t TAGS) Insert(db sq.DB, ms ...Tag) (sq.Result, error) {
+	q := sq.InsertInto(t).ColumnValues(func(col *sq.Column) {
+		omit.FromPtr()
+		for _, m := range ms {
+			col.SetString(t.GUID, m.GUID)
+			col.SetString(t.NAME, m.Name)
+			col.SetString(t.CODE, m.Code)
+			col.SetTime(t.CREATED_AT, m.CreatedAt)
+			col.SetString(t.DESCRIPTION, m.Description.GetOr(""))
+		}
+	})
+	return sq.Exec(db, q)
 }
 
-func (s TAGS) PrimaryKeyValues(id int64) sq.Predicate {
-	return s.PrimaryKeys().Eq(id)
+func (t TAGS) Update(db sq.DB, m TagSetter) (sq.Result, error) {
+	q := sq.Update(t).SetFunc(func(c *sq.Column) {
+		if !m.ID.IsUnset() {
+			v, _ := m.ID.Get()
+			c.SetInt(t.ID, v)
+		}
+		if !m.GUID.IsUnset() {
+			v, _ := m.GUID.Get()
+			c.SetString(t.GUID, v)
+		}
+		if !m.Name.IsUnset() {
+			v, _ := m.Name.Get()
+			c.SetString(t.NAME, v)
+		}
+		if !m.Code.IsUnset() {
+			v, _ := m.Code.Get()
+			c.SetString(t.CODE, v)
+		}
+		if !m.Description.IsUnset() {
+			v, _ := m.Description.Get()
+			c.SetString(t.DESCRIPTION, v)
+		}
+	})
+	return sq.Exec(db, q)
 }
 
-func (s TVALS) PrimaryKeys() sq.RowValue {
-	return sq.RowValue{s.IID, s.SID}
+func (t TAGS) PrimaryKeys() sq.RowValue {
+	return sq.RowValue{t.ID}
+}
+
+func (t TAGS) PrimaryKeyValues(id int64) sq.Predicate {
+	return t.PrimaryKeys().Eq(id)
+}
+
+func (t TVALS) PrimaryKeys() sq.RowValue {
+	return sq.RowValue{t.IID, t.SID}
 }
 
 func (s TVALS) PrimaryKeyValues(iid int64, sid string) sq.Predicate {

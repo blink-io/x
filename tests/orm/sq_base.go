@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"testing"
 	"time"
 
 	"github.com/aarondl/opt/omit"
@@ -213,6 +212,15 @@ func (m Tag) Insert(db sq.DB) error {
 	return err
 }
 
+type TagSetter struct {
+	ID          omit.Val[int]        `db:"id"`
+	GUID        omit.Val[string]     `db:"guid"`
+	Code        omit.Val[string]     `db:"code"`
+	Name        omit.Val[string]     `db:"name"`
+	CreatedAt   omit.Val[time.Time]  `db:"created_at"`
+	Description omitnull.Val[string] `db:"description"`
+}
+
 type Model struct {
 	Name    string `db:"name"`
 	Version string `db:"version"`
@@ -413,8 +421,6 @@ func randomTag(desc *string) Tag {
 	return u
 }
 
-func TestTables_1(t *testing.T) {
-	var tt = sq.New[TAGS]("a")
-	kk := tt
-	fmt.Printf("tt: %p\nkk: %p\n", &tt, &kk)
+type Mod[T any] interface {
+	Apply(T)
 }
