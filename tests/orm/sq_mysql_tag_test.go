@@ -5,6 +5,7 @@ import (
 
 	"github.com/blink-io/x/ptr"
 	"github.com/bokwoon95/sq"
+	"github.com/brianvoe/gofakeit/v7"
 	"github.com/stretchr/testify/require"
 )
 
@@ -16,23 +17,52 @@ func TestSq_Mysql_Tag_Mapper_Insert_1(t *testing.T) {
 	d1 := randomTag(nil)
 	d2 := randomTag(ptr.Of("Hello, Hi, 你好"))
 
-	_, err := sq.Exec(sq.VerboseLog(db), sq.
-		InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(d1, d2)),
-	)
+	q := sq.InsertInto(tbl).
+		ColumnValues(mm.InsertMapper(d1, d2))
+
+	_, err := sq.Exec(sq.VerboseLog(db), q)
+	require.NoError(t, err)
+}
+
+func TestSq_Mysql_Tag_Update_1(t *testing.T) {
+	db := getMysqlDBForSQ()
+	mm := NewTagMapper()
+	tbl := mm.Table()
+
+	idWhere := tbl.PrimaryKeyValues(4)
+	q := sq.Update(tbl).Where(idWhere).
+		SetFunc(func(c *sq.Column) {
+			c.SetString(tbl.DESCRIPTION, gofakeit.DomainName())
+		}).
+		Set(tbl.CODE.SetString(gofakeit.UUID()))
+
+	_, err := sq.Exec(sq.VerboseLog(db), q)
+	require.NoError(t, err)
+}
+
+func TestSq_Mysql_Tag_Update_2(t *testing.T) {
+	db := getMysqlDBForSQ()
+	mm := NewTagMapper()
+	tbl := mm.Table()
+
+	idWhere := tbl.PrimaryKeyValues(4)
+	q := sq.Update(tbl).
+		Where(idWhere).
+		Set(tbl.CODE.SetString(gofakeit.UUID()))
+
+	_, err := sq.Exec(sq.VerboseLog(db), q)
 	require.NoError(t, err)
 }
 
 func TestSq_Mysql_Tag_FetchOne_ByID(t *testing.T) {
 	db := getMysqlDBForSQ()
-	idb := sq.VerboseLog(db)
 	tbl := TagTable
 
 	idWhere := tbl.PrimaryKeyValues(4)
 	query := sq.
 		From(tbl).Where(idWhere)
 
-	records, err := sq.FetchOne(idb, query, func(r *sq.Row) Tag {
+	records, err := sq.FetchOne(sq.VerboseLog(db), query, func(r *sq.Row) Tag {
 		return Tag{
 			ID:   r.Int("id"),
 			Code: r.String("code"),
