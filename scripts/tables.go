@@ -2,6 +2,17 @@ package tables
 
 import "github.com/bokwoon95/sq"
 
+type ARRAYS struct {
+	sq.TableStruct
+	ID          sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('arrays_id_seq'::regclass)"`
+	STR_ARRAYS  sq.ArrayField  `ddl:"type=varchar[] notnull"`
+	INT4_ARRAYS sq.ArrayField  `ddl:"type=int[] notnull"`
+	BOOL_ARRAYS sq.ArrayField  `ddl:"type=boolean[] notnull"`
+	CREATED_AT  sq.TimeField   `ddl:"type=timestamptz notnull"`
+	V_JSONB     sq.JSONField   `ddl:"type=jsonb"`
+	V_JSON      sq.JSONField   `ddl:"type=json"`
+}
+
 type DEVICES struct {
 	sq.TableStruct
 	ID         sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('devices_id_seq'::regclass)"`

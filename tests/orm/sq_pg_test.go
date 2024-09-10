@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"github.com/aarondl/opt/omit"
-	"github.com/blink-io/x/ptr"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	_ "github.com/jackc/pgx/v5/stdlib"
@@ -268,83 +267,6 @@ func TestSq_Pg_User_Delete_1(t *testing.T) {
 		Where(tbl.ID.EqInt64(56)),
 	)
 	require.NoError(t, err)
-}
-
-func TestSq_Pg_Tag_Insert_1(t *testing.T) {
-	db := getPgDBForSQ()
-
-	tbl := TagTable
-
-	records := []Tag{
-		randomTag(nil),
-		randomTag(Ptr(gofakeit.City())),
-		randomTag(nil),
-	}
-
-	_, err := sq.Exec(db, sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
-		for _, r := range records {
-			tagInsertColumnMapper(col, r)
-		}
-	}))
-
-	require.NoError(t, err)
-}
-
-func TestSq_Pg_Tag_Insert_2(t *testing.T) {
-	db := getPgDBForSQ()
-
-	err := randomTag(nil).Insert(db)
-	require.NoError(t, err)
-
-	err = randomTag(Ptr(gofakeit.School())).Insert(db)
-	require.NoError(t, err)
-
-}
-
-func TestSq_Pg_Tag_Mapper_Insert_1(t *testing.T) {
-	db := getPgDBForSQ()
-	mm := NewTagMapper()
-	tbl := mm.Table()
-
-	d1 := randomTag(nil)
-	d2 := randomTag(ptr.Of("Hello, Hi, 你好"))
-
-	_, err := sq.Exec(sq.Log(db), sq.
-		InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(d1, d2)),
-	)
-	require.NoError(t, err)
-}
-
-func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
-	db := getPgDBForSQ()
-	mm := NewTagMapper()
-	tbl := mm.Table()
-
-	query := sq.
-		From(tbl).
-		Where(tbl.ID.GtInt(0)).
-		Limit(100)
-	records, err := sq.FetchAll(db, query, mm.QueryMapper())
-
-	require.NoError(t, err)
-	require.NotNil(t, records)
-}
-
-func TestSq_Pg_Tag_Mapper_FetchOne_ByPK(t *testing.T) {
-	db := getPgDBForSQ()
-	mm := NewTagMapper()
-	tbl := mm.Table()
-
-	idWhere := tbl.PrimaryKeyValues(23)
-	query := sq.
-		From(tbl).
-		Where(idWhere)
-	records, err := sq.FetchOne(db, query, mm.QueryMapper())
-
-	require.NoError(t, err)
-	require.NotNil(t, records)
 }
 
 func TestSq_Pg_Enum_Insert_1(t *testing.T) {

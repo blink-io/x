@@ -5,15 +5,21 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"log/slog"
 	"os"
 	"time"
 
 	"github.com/aarondl/opt/omit"
 	"github.com/aarondl/opt/omitnull"
+	"github.com/blink-io/x/log/slog/handlers/color"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/sanity-io/litter"
 )
+
+var _log = slog.New(color.New(os.Stderr, color.Options{
+	Level: slog.LevelDebug,
+}))
 
 func init() {
 	l := sq.NewLogger(os.Stdout, "", log.LstdFlags, sq.LoggerConfig{
@@ -348,15 +354,6 @@ func deviceInsertColumnMapper(col *sq.Column, r *Device) {
 	col.SetString(tbl.NAME, r.Name)
 	col.SetTime(tbl.CREATED_AT, r.CreatedAt)
 	col.SetTime(tbl.UPDATED_AT, r.UpdatedAt)
-}
-
-func tagInsertColumnMapper(col *sq.Column, r Tag) {
-	tbl := TagTable
-
-	col.SetString(tbl.GUID, r.GUID)
-	col.SetString(tbl.NAME, r.Name)
-	col.SetString(tbl.CODE, r.Code)
-	col.Set(tbl.DESCRIPTION, r.Description)
 }
 
 func deviceRowMapper() func(*sq.Row) *Device {
