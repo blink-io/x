@@ -32,10 +32,11 @@ require (
 	github.com/failsafe-go/failsafe-go v0.6.8
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/georgysavva/scany/v2 v2.1.3
-	github.com/getsentry/sentry-go v0.28.1
+	github.com/getsentry/sentry-go v0.29.0
 	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-co-op/gocron/v2 v2.11.0
 	github.com/go-crypt/crypt v0.3.0
+	github.com/go-faker/faker/v4 v4.5.0
 	github.com/go-faster/city v1.0.1
 	github.com/go-kit/log v0.2.1
 	github.com/go-kratos/kratos/v2 v2.8.0
@@ -58,8 +59,8 @@ require (
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.5
-	github.com/jackc/pgx/v5 v5.7.0
-	github.com/jackc/puddle/v2 v2.2.1
+	github.com/jackc/pgx/v5 v5.7.1
+	github.com/jackc/puddle/v2 v2.2.2
 	github.com/jaevor/go-nanoid v1.4.0
 	github.com/jaswdr/faker/v2 v2.3.0
 	github.com/jellydator/ttlcache/v3 v3.3.0
@@ -70,7 +71,7 @@ require (
 	github.com/linkedin/goavro/v2 v2.13.0
 	github.com/lithammer/shortuuid/v4 v4.0.0
 	github.com/lmittmann/tint v1.0.5
-	github.com/marcboeker/go-duckdb v1.7.1
+	github.com/marcboeker/go-duckdb v1.8.0
 	github.com/matthewhartstonge/argon2 v1.0.0
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.23
@@ -86,7 +87,7 @@ require (
 	github.com/onsi/gomega v1.34.2
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/pelletier/go-toml/v2 v2.2.3
-	github.com/phuslu/log v1.0.110
+	github.com/phuslu/log v1.0.111
 	github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910
 	github.com/qiniu/qmgo v1.1.8
 	github.com/quic-go/quic-go v0.47.0
@@ -133,7 +134,7 @@ require (
 	golang.org/x/sys v0.25.0
 	golang.org/x/text v0.18.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20240903143218-8af14fe29dc1
-	google.golang.org/grpc v1.66.0
+	google.golang.org/grpc v1.66.1
 	google.golang.org/protobuf v1.34.2
 	gopkg.in/yaml.v3 v3.0.1
 	modernc.org/sqlite v1.33.0
@@ -162,7 +163,6 @@ require (
 	github.com/fatih/color v1.17.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.5 // indirect
 	github.com/go-crypt/x v0.3.0 // indirect
-	github.com/go-faker/faker/v4 v4.5.0 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/go-playground/form/v4 v4.2.1 // indirect
@@ -176,7 +176,7 @@ require (
 	github.com/google/flatbuffers v24.3.25+incompatible // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/pprof v0.0.0-20240903155634-a8630aee4ab9 // indirect
+	github.com/google/pprof v0.0.0-20240910150728-a0b0bb1d4134 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
@@ -252,12 +252,12 @@ require (
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/mock v0.4.0 // indirect
-	golang.org/x/exp v0.0.0-20240904232852-e7e105dedf7e // indirect
+	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
 	golang.org/x/mod v0.21.0 // indirect
 	golang.org/x/net v0.29.0 // indirect
 	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/time v0.6.0 // indirect
-	golang.org/x/tools v0.24.0 // indirect
+	golang.org/x/tools v0.25.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1 // indirect
 	modernc.org/gc/v3 v3.0.0-20240801135723-a856999a2e4a // indirect
