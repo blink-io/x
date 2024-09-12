@@ -126,7 +126,7 @@ require (
 	gitlab.com/greyxor/slogor v1.2.11
 	go.etcd.io/etcd/client/v3 v3.5.16
 	go.mongodb.org/mongo-driver v1.16.1
-	go.temporal.io/sdk v1.29.0
+	go.temporal.io/sdk v1.29.1
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
 	go.uber.org/zap/exp v0.2.0
@@ -134,11 +134,13 @@ require (
 	golang.org/x/sys v0.25.0
 	golang.org/x/text v0.18.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20240903143218-8af14fe29dc1
-	google.golang.org/grpc v1.66.1
+	google.golang.org/grpc v1.66.2
 	google.golang.org/protobuf v1.34.2
 	gopkg.in/yaml.v3 v3.0.1
 	modernc.org/sqlite v1.33.0
 )
+
+replace github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect

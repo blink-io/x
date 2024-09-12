@@ -43,10 +43,10 @@ func TestSq_Pg_Mkey_FetchOne_ByID(t *testing.T) {
 	}
 	records, err := sq.FetchAll(idb, query, func(r *sq.Row) result {
 		return result{
-			ID1:  r.Int("id1"),
-			ID2:  r.Int("id2"),
-			Name: r.String("name"),
-			GUID: r.String("guid"),
+			ID1:  r.Int(tbl.ID1.GetName()),
+			ID2:  r.Int(tbl.ID2.GetName()),
+			Name: r.String(tbl.NAME.GetName()),
+			GUID: r.String(tbl.GUID.GetName()),
 			//CreatedAt: r.TimeField(tbl.CREATED_AT),
 		}
 	})
