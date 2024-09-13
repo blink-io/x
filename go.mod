@@ -3,6 +3,7 @@ module github.com/blink-io/x
 go 1.23
 
 require (
+	github.com/42wim/httpsig v1.2.2
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
 	github.com/IBM/sarama v1.43.3
@@ -82,6 +83,7 @@ require (
 	github.com/ncruces/go-sqlite3 v0.18.2
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
+	github.com/nyaruka/phonenumbers v1.4.0
 	github.com/oklog/ulid/v2 v2.1.0
 	github.com/onsi/ginkgo/v2 v2.20.2
 	github.com/onsi/gomega v1.34.2
