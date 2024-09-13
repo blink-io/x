@@ -21,3 +21,7 @@ func TestSq_Fields_1(t *testing.T) {
 
 	require.NotNil(t, tf2)
 }
+
+func TestSq_Fields_2(t *testing.T) {
+
+}
