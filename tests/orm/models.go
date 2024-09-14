@@ -11,3 +11,16 @@ type Array struct {
 	VJsonb     map[string]any `db:"v_jsonb"`
 	VJson      map[string]any `db:"v_json"`
 }
+
+type User struct {
+	ID        int       `db:"id"`
+	GUID      string    `db:"guid"`
+	Username  string    `db:"username"`
+	FirstName string    `db:"first_name"`
+	LastName  string    `db:"last_name"`
+	Score     float64   `db:"score"`
+	Level     int       `db:"level"`
+	CreatedAt time.Time `db:"created_at"`
+	UpdatedAt time.Time `db:"updated_at"`
+	TenantID  int       `db:"tenant_id"`
+}

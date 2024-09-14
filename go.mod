@@ -80,7 +80,7 @@ require (
 	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.37.0
-	github.com/ncruces/go-sqlite3 v0.18.2
+	github.com/ncruces/go-sqlite3 v0.18.3
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/nyaruka/phonenumbers v1.4.0

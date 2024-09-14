@@ -1,6 +1,7 @@
 package orm
 
 import (
+	"context"
 	"database/sql"
 	"errors"
 	"fmt"
@@ -102,52 +103,9 @@ func TestSq_Pg_Insert_User_1(t *testing.T) {
 	gofakeit.Date()
 }
 
-func TestSq_Pg_Insert_UserDevice_1(t *testing.T) {
+func TestSq_Pg_User_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
-	tbl := UserDeviceTable
-	now := time.Now()
-
-	_, err := sq.Exec(db, sq.
-		InsertInto(tbl).
-		Columns(
-			tbl.USER_ID,
-			tbl.GUID,
-			tbl.NAME,
-			tbl.MODEL,
-			tbl.CREATED_AT,
-			tbl.UPDATED_AT,
-		).
-		Values(
-			gofakeit.IntRange(1, 30),
-			gofakeit.UUID(),
-			gofakeit.AppName(),
-			gofakeit.CarModel(),
-			now,
-			now,
-		).
-		Values(
-			gofakeit.IntRange(1, 30),
-			gofakeit.UUID(),
-			gofakeit.AppName(),
-			gofakeit.CarModel(),
-			now,
-			now,
-		).
-		Values(
-			gofakeit.IntRange(1, 30),
-			gofakeit.UUID(),
-			gofakeit.AppName(),
-			gofakeit.CarModel(),
-			now,
-			now,
-		),
-	)
-	require.NoError(t, err)
-}
-
-func TestSq_Pg_User_Insert_ColumnMapper_1(t *testing.T) {
-	db := getPgDBForSQ()
-	tbl := UserTable
+	tbl := Tables.Users
 
 	records := []User{
 		randomUser(),
@@ -155,31 +113,34 @@ func TestSq_Pg_User_Insert_ColumnMapper_1(t *testing.T) {
 		randomUser(),
 	}
 
-	_, err := sq.Exec(db, sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
-		for _, r := range records {
-			userInsertColumnMapper(col, r)
-		}
-	}))
+	_, err := sq.Exec(db,
+		sq.InsertInto(tbl).
+			ColumnValues(tbl.InsertMapper(records...)),
+	)
 	require.NoError(t, err)
 }
 
-func TestSq_Pg_User_Mapper_Insert_1(t *testing.T) {
+func TestSq_Pg_User_FetchAll_WithTenantID_1(t *testing.T) {
 	db := getPgDBForSQ()
-	var mm Mapper[USERS, User] = NewUserMapper()
-	tbl := mm.Table()
+	tbl := Tables.Users
+	vctx := context.WithValue(ctx, tbl.TENANT_ID.GetName(), 3)
 
-	records := []User{
-		randomUser(),
-		randomUser(),
-		randomUser(),
-	}
+	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
+	records, err := sq.FetchAllContext(vctx, db, query, tbl.QueryMapper())
 
-	_, err := sq.Exec(db, sq.
-		InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(records...)),
-	)
 	require.NoError(t, err)
+	require.NotNil(t, records)
+}
+
+func TestSq_Pg_User_FetchAll_2(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Users
+
+	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
+	records, err := sq.FetchAllContext(ctx, sq.Log(db), query, tbl.QueryMapper())
+
+	require.NoError(t, err)
+	require.NotNil(t, records)
 }
 
 func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
@@ -199,17 +160,6 @@ func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 		}
 	}))
 	require.NoError(t, err)
-}
-
-func TestSq_Pg_User_FetchAll_1(t *testing.T) {
-	db := getPgDBForSQ()
-	tbl := UserTable
-
-	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
-	records, err := sq.FetchAll(db, query, userModelRowMapper())
-
-	require.NoError(t, err)
-	require.NotNil(t, records)
 }
 
 func TestSq_Pg_UserWithDevice_FetchAll_Join_1(t *testing.T) {

@@ -61,9 +61,13 @@ type USERS struct {
 	ID         sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('users_id_seq'::regclass)"`
 	GUID       sq.StringField `ddl:"type=varchar(60) notnull unique"`
 	USERNAME   sq.StringField `ddl:"type=varchar(60) notnull unique"`
+	FIRST_NAME sq.StringField `ddl:"type=varchar(60) notnull"`
+	LAST_NAME  sq.StringField `ddl:"type=varchar(60) notnull"`
 	SCORE      sq.NumberField `ddl:"type={double precision} notnull"`
+	LEVEL      sq.NumberField `ddl:"type=int2 notnull"`
 	CREATED_AT sq.TimeField   `ddl:"type=timestamptz notnull"`
 	UPDATED_AT sq.TimeField   `ddl:"type=timestamptz notnull"`
+	TENANT_ID  sq.NumberField `ddl:"type=bigint notnull"`
 }
 
 type TVALS struct {

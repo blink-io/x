@@ -21,6 +21,8 @@ var _log = slog.New(color.New(os.Stderr, color.Options{
 	Level: slog.LevelDebug,
 }))
 
+var ctx = context.Background()
+
 func init() {
 	l := sq.NewLogger(os.Stdout, "", log.LstdFlags, sq.LoggerConfig{
 		ShowCaller:    true,
@@ -51,15 +53,6 @@ const (
 
 func (v UserStatus) String() string {
 	return string(v)
-}
-
-type User struct {
-	ID        int       `db:"id"`
-	GUID      string    `db:"guid"`
-	Username  string    `db:"username"`
-	Score     float64   `db:"score"`
-	CreatedAt time.Time `db:"created_at"`
-	UpdatedAt time.Time `db:"updated_at"`
 }
 
 func (m User) String() string {
@@ -292,13 +285,17 @@ func userJoinDeviceRowMapper() func(*sq.Row) *UserWithDevice {
 
 func userModelRowMapper() func(*sq.Row) *User {
 	return func(r *sq.Row) *User {
-		tbl := UserTable
+		tbl := Tables.Users
 
 		u := &User{
-			ID:       r.IntField(tbl.ID),
-			GUID:     r.StringField(tbl.GUID),
-			Username: r.StringField(tbl.USERNAME),
-			Score:    r.Float64Field(tbl.SCORE),
+			ID:        r.IntField(tbl.ID),
+			GUID:      r.StringField(tbl.GUID),
+			Username:  r.StringField(tbl.USERNAME),
+			FirstName: r.StringField(tbl.FIRST_NAME),
+			LastName:  r.StringField(tbl.LAST_NAME),
+			Score:     r.Float64Field(tbl.SCORE),
+			Level:     r.IntField(tbl.LEVEL),
+			TenantID:  r.IntField(tbl.TENANT_ID),
 		}
 
 		dd := sq.DefaultDialect.Load()
@@ -316,8 +313,6 @@ func userModelRowMapper() func(*sq.Row) *User {
 			u.CreatedAt = r.TimeField(tbl.CREATED_AT)
 			u.UpdatedAt = r.TimeField(tbl.UPDATED_AT)
 		}
-
-		panic(errors.New("my custom error"))
 
 		return u
 	}
@@ -376,9 +371,13 @@ func randomUser() User {
 	u := User{
 		GUID:      gofakeit.UUID(),
 		Username:  gofakeit.Username(),
+		FirstName: gofakeit.FirstName(),
+		LastName:  gofakeit.LastName(),
 		Score:     gofakeit.Float64(),
+		Level:     gofakeit.IntRange(1, 99),
 		CreatedAt: ln,
 		UpdatedAt: ln,
+		TenantID:  gofakeit.IntRange(1, 5),
 	}
 	return u
 }
