@@ -5,6 +5,7 @@ import (
 	"testing"
 	"unique"
 
+	"github.com/sanity-io/litter"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -69,4 +70,34 @@ func TestUnique_1(t *testing.T) {
 	assert.True(t, b1 == b2)
 
 	assert.False(t, aptr == bptr)
+}
+
+func TestSlice_1(t *testing.T) {
+	type user struct {
+		Name string
+		Age  int
+	}
+
+	arr := []user{
+		{
+			Name: "John",
+			Age:  88,
+		},
+		{
+			Name: "mary",
+			Age:  33,
+		},
+		{
+			Name: "nick",
+			Age:  21,
+		},
+	}
+
+	fmt.Println("before", litter.Sdump(arr))
+
+	a1ptr := &arr[1]
+	a1ptr.Name = "Super Mary"
+	a1ptr.Age = 77
+
+	fmt.Println("after", litter.Sdump(arr))
 }

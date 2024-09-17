@@ -35,7 +35,7 @@ require (
 	github.com/georgysavva/scany/v2 v2.1.3
 	github.com/getsentry/sentry-go v0.29.0
 	github.com/go-chi/chi/v5 v5.1.0
-	github.com/go-co-op/gocron/v2 v2.11.0
+	github.com/go-co-op/gocron/v2 v2.12.0
 	github.com/go-crypt/crypt v0.3.0
 	github.com/go-faker/faker/v4 v4.5.0
 	github.com/go-faster/city v1.0.1
@@ -43,7 +43,7 @@ require (
 	github.com/go-kratos/kratos/v2 v2.8.0
 	github.com/go-logr/logr v1.4.2
 	github.com/go-logr/stdr v1.2.2
-	github.com/go-resty/resty/v2 v2.14.0
+	github.com/go-resty/resty/v2 v2.15.0
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/goccy/go-json v0.10.3
@@ -95,8 +95,8 @@ require (
 	github.com/quic-go/quic-go v0.47.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.5.3
 	github.com/redis/go-redis/v9 v9.6.1
-	github.com/redis/rueidis v1.0.45
-	github.com/redis/rueidis/rueidishook v1.0.45
+	github.com/redis/rueidis v1.0.46
+	github.com/redis/rueidis/rueidishook v1.0.46
 	github.com/reugn/go-quartz v0.12.0
 	github.com/riverqueue/river v0.11.4
 	github.com/rs/xid v1.6.0
@@ -125,7 +125,7 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
 	github.com/zitadel/passwap v0.6.0
-	gitlab.com/greyxor/slogor v1.2.11
+	gitlab.com/greyxor/slogor v1.3.0
 	go.etcd.io/etcd/client/v3 v3.5.16
 	go.mongodb.org/mongo-driver v1.16.1
 	go.temporal.io/sdk v1.29.1
@@ -265,7 +265,7 @@ require (
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1 // indirect
 	modernc.org/gc/v3 v3.0.0-20240801135723-a856999a2e4a // indirect
-	modernc.org/libc v1.60.1 // indirect
+	modernc.org/libc v1.61.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.8.0 // indirect
 	modernc.org/strutil v1.2.0 // indirect
