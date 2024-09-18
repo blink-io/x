@@ -99,5 +99,8 @@ func TestSlice_1(t *testing.T) {
 	a1ptr.Name = "Super Mary"
 	a1ptr.Age = 77
 
+	a2dir := arr[2]
+	a2dir.Name = "Super Nick"
+
 	fmt.Println("after", litter.Sdump(arr))
 }

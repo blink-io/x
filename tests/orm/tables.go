@@ -15,6 +15,7 @@ type ARRAYS struct {
 	CREATED_AT  sq.TimeField   `ddl:"type=timestamptz notnull"`
 	V_JSONB     sq.JSONField   `ddl:"type=jsonb"`
 	V_JSON      sq.JSONField   `ddl:"type=json"`
+	V_UUID      sq.UUIDField   `ddl:"type=uuid"`
 }
 
 type DEVICES struct {
