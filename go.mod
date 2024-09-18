@@ -127,7 +127,7 @@ require (
 	github.com/zitadel/passwap v0.6.0
 	gitlab.com/greyxor/slogor v1.3.0
 	go.etcd.io/etcd/client/v3 v3.5.16
-	go.mongodb.org/mongo-driver v1.16.1
+	go.mongodb.org/mongo-driver v1.17.0
 	go.temporal.io/sdk v1.29.1
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0

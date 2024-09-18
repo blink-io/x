@@ -17,10 +17,10 @@ func TestSq_Pg_Mkey_Insert_1(t *testing.T) {
 
 	_, err := sq.Exec(sq.VerboseLog(db), sq.
 		InsertInto(tbl).
-		Columns(tbl.ID1, tbl.ID2, tbl.GUID, tbl.NAME, tbl.CREATED_AT).
-		Values(11, 12, gofakeit.UUID(), prefix+gofakeit.Username(), time.Now()).
-		Values(13, 14, gofakeit.UUID(), prefix+gofakeit.Username(), time.Now()).
-		Values(23, 24, gofakeit.UUID(), prefix+gofakeit.Username(), time.Now()),
+		Columns(tbl.GUID, tbl.NAME, tbl.CREATED_AT).
+		Values(gofakeit.UUID(), prefix+gofakeit.Username(), time.Now()).
+		Values(gofakeit.UUID(), prefix+gofakeit.Username(), time.Now()).
+		Values(gofakeit.UUID(), prefix+gofakeit.Username(), time.Now()),
 	)
 	require.NoError(t, err)
 }
