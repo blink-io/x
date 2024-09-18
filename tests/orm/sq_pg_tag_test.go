@@ -6,6 +6,7 @@ import (
 
 	"github.com/blink-io/x/ptr"
 	"github.com/blink-io/x/sql/misc"
+	"github.com/blink-io/x/types/tuplen"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/stretchr/testify/require"
@@ -73,6 +74,27 @@ func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
 	records, err := sq.FetchAll(db, query, mm.QueryMapper())
+
+	require.NoError(t, err)
+	require.NotNil(t, records)
+}
+
+func TestSq_Pg_Tag_Fetch_Custom_1(t *testing.T) {
+	db := getPgDBForSQ()
+	mm := NewTagMapper()
+	tbl := mm.Table()
+
+	query := sq.
+		From(tbl).
+		Where(tbl.ID.GtInt(0)).
+		Limit(100)
+	records, err := sq.FetchAll(db, query, func(r *sq.Row) tuplen.Tuple3[int, string, string] {
+		return tuplen.Of3(
+			r.Int(tbl.ID.GetName()),
+			r.String(tbl.CODE.GetName()),
+			r.String(tbl.NAME.GetName()),
+		)
+	})
 
 	require.NoError(t, err)
 	require.NotNil(t, records)
