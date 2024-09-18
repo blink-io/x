@@ -13,6 +13,7 @@ require (
 	github.com/aarondl/opt v0.0.0-20240623220848-083f18ab9536
 	github.com/alexedwards/argon2id v1.0.0
 	github.com/allegro/bigcache/v3 v3.1.0
+	github.com/alphadose/haxmap v1.4.0
 	github.com/ammario/tlru v0.4.0
 	github.com/apache/thrift v0.20.0
 	github.com/apple/pkl-go v0.8.0
@@ -46,6 +47,7 @@ require (
 	github.com/go-resty/resty/v2 v2.15.0
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/go-task/slim-sprig/v3 v3.0.0
+	github.com/go-test/deep v1.1.1
 	github.com/goccy/go-json v0.10.3
 	github.com/gocraft/dbr/v2 v2.7.6
 	github.com/gofiber/fiber/v3 v3.0.0-beta.3
@@ -100,6 +102,7 @@ require (
 	github.com/reugn/go-quartz v0.12.0
 	github.com/riverqueue/river v0.11.4
 	github.com/rs/xid v1.6.0
+	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/slog-common v0.17.1
 	github.com/samber/slog-http v1.4.2
 	github.com/samber/slog-logrus/v2 v2.5.0
@@ -140,6 +143,7 @@ require (
 	google.golang.org/protobuf v1.34.2
 	gopkg.in/yaml.v3 v3.0.1
 	modernc.org/sqlite v1.33.1
+	resenje.org/singleflight v0.4.3
 )
 
 replace github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
