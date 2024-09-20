@@ -6,6 +6,15 @@ import (
 	"github.com/bokwoon95/sq"
 )
 
+type NEW_WORDS struct {
+	sq.TableStruct `sq:"public.new words"`
+	ID             sq.NumberField `ddl:"type=bigint notnull primarykey default={nextval('\"new words_id_seq\"'::regclass)}"`
+	GUID           sq.StringField `ddl:"type=varchar(60) notnull unique"`
+	CREATED_AT     sq.TimeField   `ddl:"type=timestamptz notnull"`
+	UPDATED_AT     sq.TimeField   `ddl:"type=timestamptz notnull"`
+	CONTENT        sq.StringField `ddl:"type=varchar(200) notnull"`
+}
+
 type ARRAYS struct {
 	sq.TableStruct
 	ID          sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('arrays_id_seq'::regclass)"`

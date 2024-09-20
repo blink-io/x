@@ -20,6 +20,7 @@ func TestID_1(t *testing.T) {
 	shortidv := ShortID()
 	ulidv := ULID()
 	guidv := GUID()
+	mid := MachineID()
 
 	fmt.Println("UUID(),        len: ", len(uuidv), " id: ", uuidv)
 	fmt.Println("UUIDV4(),      len: ", len(uuidv4v), " id: ", uuidv4v)
@@ -31,6 +32,7 @@ func TestID_1(t *testing.T) {
 	fmt.Println("XID(),         len: ", len(xidv), " id: ", xidv)
 	fmt.Println("ULID(),        len: ", len(ulidv), " id: ", ulidv)
 	fmt.Println("GUID(),        len: ", len(guidv), " id: ", guidv)
+	fmt.Println("MachineID(),   len: ", len(mid), " id: ", mid)
 }
 
 func TestGUID_1(t *testing.T) {
