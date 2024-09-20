@@ -1,6 +1,11 @@
 package orm
 
-import "time"
+import (
+	"time"
+
+	"github.com/gofrs/uuid/v5"
+	guuid "github.com/google/uuid"
+)
 
 type Array struct {
 	ID         int64          `db:"id"`
@@ -10,6 +15,8 @@ type Array struct {
 	CreatedAt  time.Time      `db:"created_at"`
 	VJsonb     map[string]any `db:"v_jsonb"`
 	VJson      map[string]any `db:"v_json"`
+	VUUID      uuid.UUID      `db:"v_uuid"`
+	VUUID2     guuid.UUID     `db:"v_uuid"`
 }
 
 type User struct {

@@ -2,12 +2,15 @@ package orm
 
 import (
 	"fmt"
+	"log/slog"
 	"testing"
 	"time"
 
 	"github.com/blink-io/x/sql/misc"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
+	"github.com/gofrs/uuid/v5"
+	guuid "github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 )
 
@@ -95,6 +98,8 @@ func TestSq_Pg_Array_FetchAll_2(t *testing.T) {
 }
 
 func randomArray() Array {
+	vuuid, _ := uuid.NewV4()
+	vuuid2 := guuid.New()
 	return Array{
 		CreatedAt: time.Now().Local(),
 
@@ -127,6 +132,10 @@ func randomArray() Array {
 			"cat":   gofakeit.Cat(),
 			"fruit": gofakeit.Fruit(),
 		},
+
+		VUUID: vuuid,
+
+		VUUID2: vuuid2,
 	}
 }
 
@@ -166,4 +175,11 @@ func arrayInsertMapper(c *sq.Column, r Array) {
 
 	c.SetJSON(tbl.V_JSONB, r.VJsonb)
 	c.SetJSON(tbl.V_JSON, r.VJson)
+
+	if int(gofakeit.IntRange(1, 10)%2) == 0 {
+		c.SetUUID(tbl.V_UUID, r.VUUID)
+	} else {
+		slog.Info("use google uuid")
+		c.SetUUID(tbl.V_UUID, r.VUUID2)
+	}
 }

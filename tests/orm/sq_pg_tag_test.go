@@ -85,12 +85,13 @@ func TestSq_Pg_Tag_Fetch_Custom_1(t *testing.T) {
 	tbl := mm.Table()
 
 	query := sq.
-		Queryf("select id code, name from tags limit 5")
-	records, err := sq.FetchAll(db, query, func(r *sq.Row) tuplen.Tuple3[int, string, string] {
-		return tuplen.Of3(
+		Queryf("select id, code, name, {} as status from tags limit 5", sq.Literal("OK"))
+	records, err := sq.FetchAll(db, query, func(r *sq.Row) tuplen.Tuple4[int, string, string, string] {
+		return tuplen.Of4(
 			r.Int(tbl.ID.GetName()),
 			r.String(tbl.CODE.GetName()),
 			r.String(tbl.NAME.GetName()),
+			r.String("status"),
 		)
 	})
 
