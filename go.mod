@@ -15,7 +15,7 @@ require (
 	github.com/allegro/bigcache/v3 v3.1.0
 	github.com/alphadose/haxmap v1.4.0
 	github.com/ammario/tlru v0.4.0
-	github.com/apache/thrift v0.20.0
+	github.com/apache/thrift v0.21.0
 	github.com/apple/pkl-go v0.8.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.0
@@ -44,7 +44,7 @@ require (
 	github.com/go-kratos/kratos/v2 v2.8.0
 	github.com/go-logr/logr v1.4.2
 	github.com/go-logr/stdr v1.2.2
-	github.com/go-resty/resty/v2 v2.15.1
+	github.com/go-resty/resty/v2 v2.15.2
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/go-test/deep v1.1.1
@@ -92,6 +92,7 @@ require (
 	github.com/onsi/ginkgo/v2 v2.20.2
 	github.com/onsi/gomega v1.34.2
 	github.com/outcaste-io/ristretto v0.2.3
+	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.3
 	github.com/phuslu/log v1.0.111
 	github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910
@@ -107,7 +108,7 @@ require (
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/slog-common v0.17.1
-	github.com/samber/slog-http v1.4.2
+	github.com/samber/slog-http v1.4.3
 	github.com/samber/slog-logrus/v2 v2.5.0
 	github.com/samber/slog-multi v1.2.2
 	github.com/samber/slog-sentry/v2 v2.8.0
@@ -126,7 +127,7 @@ require (
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
 	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.13
-	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.1
+	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
@@ -222,7 +223,6 @@ require (
 	github.com/nats-io/nuid v1.0.1 // indirect
 	github.com/ncruces/julianday v1.0.0 // indirect
 	github.com/nexus-rpc/sdk-go v0.0.10 // indirect
-	github.com/pborman/uuid v1.2.1 // indirect
 	github.com/pierrec/lz4/v4 v4.1.21 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
@@ -242,7 +242,7 @@ require (
 	github.com/smarty/assertions v1.16.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/tetratelabs/wazero v1.8.0 // indirect
-	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.1 // indirect
+	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.55.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
