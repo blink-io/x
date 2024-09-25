@@ -34,9 +34,10 @@ func (l *logger) SqLogSettings(ctx context.Context, settings *sq.LogSettings) {
 
 func (l *logger) SqLogQuery(ctx context.Context, stats sq.QueryStats) {
 	attrs := []slog.Attr{
-		slog.String("query", stats.Query),
 		slog.String("dialect", stats.Dialect),
+		slog.String("query", stats.Query),
 		slog.Time("started_at", stats.StartedAt),
+		slog.String("results", stats.Results),
 	}
 	if l.cfg.ShowTimeTaken {
 		attrs = append(attrs, slog.Duration("time_taken", stats.TimeTaken))

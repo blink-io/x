@@ -2,6 +2,8 @@ module github.com/blink-io/x
 
 go 1.23
 
+//godebug default=go1.23
+
 require (
 	github.com/42wim/httpsig v1.2.2
 	github.com/BurntSushi/toml v1.4.0

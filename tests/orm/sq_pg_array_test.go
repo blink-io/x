@@ -18,17 +18,17 @@ func TestSq_Pg_Array_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := Tables.Arrays
 
-	records := []Array{
+	nrs := []Array{
 		randomArray(),
 		randomArray(),
 		randomArray(),
-		randomArray(),
-		randomArray(),
+		//randomArray(),
+		//randomArray(),
 	}
 
-	_, err := sq.Exec(db, sq.
+	_, err := sq.Exec(sq.Log(db), sq.
 		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
-		for _, r := range records {
+		for _, r := range nrs {
 			arrayInsertMapper(col, r)
 		}
 	}))
@@ -136,6 +136,45 @@ func randomArray() Array {
 		VUUID: vuuid,
 
 		VUUID2: vuuid2,
+
+		JsonArrays: []string{
+			`{"name":"GZ"}`,
+			`{"Loc":"GZ"}`,
+		},
+
+		JsonbArrays: []string{
+			`{"name":"AA"}`,
+			`{"Loc":"BVB"}`,
+		},
+
+		UUIDArrays: []string{
+			guuid.New().String(),
+			guuid.New().String(),
+		},
+
+		//JsonArrays: []map[string]any{
+		//	{
+		//		"country": gofakeit.Country(),
+		//		"state":   gofakeit.State(),
+		//		"city":    gofakeit.City(),
+		//	},
+		//	{
+		//		"dog":   gofakeit.Dog(),
+		//		"cat":   gofakeit.Cat(),
+		//		"fruit": gofakeit.Fruit(),
+		//	},
+		//},
+
+		//JsonbArrays: []map[string]any{
+		//	{
+		//		"country": gofakeit.Country(),
+		//		"state":   gofakeit.State(),
+		//	},
+		//	{
+		//		"dog": gofakeit.Dog(),
+		//		"cat": gofakeit.Cat(),
+		//	},
+		//},
 	}
 }
 
@@ -175,6 +214,11 @@ func arrayInsertMapper(c *sq.Column, r Array) {
 
 	c.SetJSON(tbl.V_JSONB, r.VJsonb)
 	c.SetJSON(tbl.V_JSON, r.VJson)
+
+	c.SetArray(tbl.JSON_ARRAYS, r.JsonArrays)
+	c.SetArray(tbl.JSONB_ARRAYS, r.JsonbArrays)
+
+	c.SetArray(tbl.UUID_ARRAYS, r.UUIDArrays)
 
 	if int(gofakeit.IntRange(1, 10)%2) == 0 {
 		c.SetUUID(tbl.V_UUID, r.VUUID)

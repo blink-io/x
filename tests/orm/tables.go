@@ -17,14 +17,17 @@ type NEW_WORDS struct {
 
 type ARRAYS struct {
 	sq.TableStruct
-	ID          sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('arrays_id_seq'::regclass)"`
-	STR_ARRAYS  sq.ArrayField  `ddl:"type=varchar[] notnull"`
-	INT4_ARRAYS sq.ArrayField  `ddl:"type=int[] notnull"`
-	BOOL_ARRAYS sq.ArrayField  `ddl:"type=boolean[] notnull"`
-	CREATED_AT  sq.TimeField   `ddl:"type=timestamptz notnull"`
-	V_JSONB     sq.JSONField   `ddl:"type=jsonb"`
-	V_JSON      sq.JSONField   `ddl:"type=json"`
-	V_UUID      sq.UUIDField   `ddl:"type=uuid"`
+	ID           sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('arrays_id_seq'::regclass)"`
+	STR_ARRAYS   sq.ArrayField  `ddl:"type=varchar[] notnull"`
+	INT4_ARRAYS  sq.ArrayField  `ddl:"type=int[] notnull"`
+	BOOL_ARRAYS  sq.ArrayField  `ddl:"type=boolean[] notnull"`
+	CREATED_AT   sq.TimeField   `ddl:"type=timestamptz notnull"`
+	V_JSONB      sq.JSONField   `ddl:"type=jsonb"`
+	V_JSON       sq.JSONField   `ddl:"type=json"`
+	V_UUID       sq.UUIDField   `ddl:"type=uuid"`
+	JSONB_ARRAYS sq.ArrayField  `ddl:"type=jsonb[]"`
+	JSON_ARRAYS  sq.ArrayField  `ddl:"type=json[]"`
+	UUID_ARRAYS  sq.ArrayField  `ddl:"type=uuid[]"`
 }
 
 type DEVICES struct {

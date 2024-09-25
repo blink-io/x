@@ -22,13 +22,9 @@ func TestSq_Pg_Tag_Insert_1(t *testing.T) {
 		randomTag(Ptr(gofakeit.City())),
 		randomTag(nil),
 		randomTag(nil),
-		randomTag(nil),
-		randomTag(nil),
-		randomTag(nil),
-		randomTag(nil),
 	}
 
-	_, err := sq.Exec(db, sq.
+	_, err := sq.Exec(sq.Log(db), sq.
 		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
 		for _, r := range records {
 			tagInsertColumnMapper(col, r)
@@ -52,6 +48,7 @@ func TestSq_Pg_Tag_Insert_2(t *testing.T) {
 func TestSq_Pg_Tag_Insert_OnConflict_1(t *testing.T) {
 	db := getPgDBForSQ()
 	mm := NewTagMapper()
+	tbl := mm.Table()
 
 	r1 := randomTag(nil)
 	r1.ID = 1
@@ -62,10 +59,10 @@ func TestSq_Pg_Tag_Insert_OnConflict_1(t *testing.T) {
 
 	nrs := []Tag{r1, r2, r3}
 
-	q := sq.Postgres.InsertInto(mm.Table()).
+	q := sq.Postgres.InsertInto(tbl).
 		ColumnValues(mm.InsertMapper(nrs...)).
-		OnConflict().
-		DoNothing()
+		OnConflict(tbl.ID).
+		DoUpdateSet(tbl.DESCRIPTION.SetString("DoUpdateSet"))
 
 	rt, err := sq.Exec(sq.Log(db), q)
 	require.NoError(t, err)
