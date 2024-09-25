@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/aarondl/opt/omit"
+	sqx "github.com/blink-io/x/sql/orm/sq"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	_ "github.com/jackc/pgx/v5/stdlib"
@@ -43,7 +44,7 @@ func getPgDB() *sql.DB {
 
 func setupPgDialect() {
 	dialect := sq.DialectPostgres
-	sq.DefaultDialect.Store(&dialect)
+	sqx.SetDefaultDialect(dialect)
 	slog.Info("Setup database dialect", "dialect", dialect)
 }
 

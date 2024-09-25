@@ -78,7 +78,6 @@ require (
 	github.com/linkedin/goavro/v2 v2.13.0
 	github.com/lithammer/shortuuid/v4 v4.0.0
 	github.com/lmittmann/tint v1.0.5
-	github.com/marcboeker/go-duckdb v1.8.1
 	github.com/matthewhartstonge/argon2 v1.0.1
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.23
@@ -161,7 +160,6 @@ require (
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/aarondl/json v0.0.0-20221020222930-8b0db17ef1bf // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
-	github.com/apache/arrow/go/v17 v17.0.0 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/bits-and-blooms/bitset v1.14.3 // indirect
@@ -188,7 +186,6 @@ require (
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
-	github.com/google/flatbuffers v24.3.25+incompatible // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/pprof v0.0.0-20240910150728-a0b0bb1d4134 // indirect
@@ -274,7 +271,6 @@ require (
 	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/time v0.6.0 // indirect
 	golang.org/x/tools v0.25.0 // indirect
-	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240924160255-9d4c2d233b61 // indirect
 	modernc.org/gc/v3 v3.0.0-20240801135723-a856999a2e4a // indirect
 	modernc.org/libc v1.61.0 // indirect

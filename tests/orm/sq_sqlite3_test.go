@@ -6,6 +6,7 @@ import (
 	"sync"
 	"testing"
 
+	sqx "github.com/blink-io/x/sql/orm/sq"
 	"github.com/blink-io/x/tests/orm/nsqlite3"
 
 	"github.com/bokwoon95/sq"
@@ -30,7 +31,7 @@ func getSqlite3DBForSQ() *sql.DB {
 
 func setupSqlite3Dialect() {
 	dialect := sq.DialectSQLite
-	sq.DefaultDialect.Store(&dialect)
+	sqx.SetDefaultDialect(dialect)
 	slog.Info("Setup database dialect", "dialect", dialect)
 }
 

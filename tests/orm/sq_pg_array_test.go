@@ -3,16 +3,22 @@ package orm
 import (
 	"fmt"
 	"log/slog"
+	"os"
 	"testing"
 	"time"
 
+	"github.com/blink-io/x/log/slog/handlers/color"
 	"github.com/blink-io/x/sql/misc"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
-	"github.com/gofrs/uuid/v5"
+	fuuid "github.com/gofrs/uuid/v5"
 	guuid "github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 )
+
+var _clog = slog.New(color.New(os.Stderr, color.Options{
+	Level: slog.LevelDebug,
+}))
 
 func TestSq_Pg_Array_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
@@ -22,8 +28,6 @@ func TestSq_Pg_Array_Insert_1(t *testing.T) {
 		randomArray(),
 		randomArray(),
 		randomArray(),
-		//randomArray(),
-		//randomArray(),
 	}
 
 	_, err := sq.Exec(sq.Log(db), sq.
@@ -56,7 +60,6 @@ func TestSq_Pg_Array_FetchAll_Paging(t *testing.T) {
 	tbl := Tables.Arrays
 	perPage := 3
 	qm := arrayQueryMapper
-	vdb := sq.VerboseLog(db)
 
 	bq := sq.
 		From(tbl).
@@ -66,17 +69,17 @@ func TestSq_Pg_Array_FetchAll_Paging(t *testing.T) {
 
 	t.Run("pagination", func(t *testing.T) {
 		q1 := bq.Offset(misc.ToOffset(1, perPage))
-		rs1, err1 := sq.FetchAll(vdb, q1, qm)
+		rs1, err1 := sq.FetchAll(sq.Log(db), q1, qm)
 		require.NoError(t, err1)
 		require.NotNil(t, rs1)
 
 		q2 := bq.Offset(misc.ToOffset(2, perPage))
-		rs2, err2 := sq.FetchAll(vdb, q2, qm)
+		rs2, err2 := sq.FetchAll(sq.Log(db), q2, qm)
 		require.NoError(t, err2)
 		require.NotNil(t, rs2)
 
 		q3 := bq.Offset(misc.ToOffset(3, perPage))
-		rs3, err3 := sq.FetchAll(vdb, q3, qm)
+		rs3, err3 := sq.FetchAll(sq.Log(db), q3, qm)
 		require.NoError(t, err3)
 		require.NotNil(t, rs3)
 	})
@@ -98,9 +101,7 @@ func TestSq_Pg_Array_FetchAll_2(t *testing.T) {
 }
 
 func randomArray() Array {
-	vuuid, _ := uuid.NewV4()
-	vuuid2 := guuid.New()
-	return Array{
+	v := Array{
 		CreatedAt: time.Now().Local(),
 
 		StrArrays: []string{
@@ -132,10 +133,6 @@ func randomArray() Array {
 			"cat":   gofakeit.Cat(),
 			"fruit": gofakeit.Fruit(),
 		},
-
-		VUUID: vuuid,
-
-		VUUID2: vuuid2,
 
 		JsonArrays: []string{
 			`{"name":"GZ"}`,
@@ -176,6 +173,20 @@ func randomArray() Array {
 		//	},
 		//},
 	}
+
+	f := gofakeit.IntRange(1, 100) % 2
+	//_clog.Info("Random value: ", "flag", f)
+	if f == 0 {
+		vuuid, _ := fuuid.NewV4()
+		v.VUUID = vuuid
+	} else {
+		vuuid := guuid.New()
+		v.VUUID = vuuid
+
+		_clog.Info("Use google uuid")
+	}
+
+	return v
 }
 
 func arrayQueryMapper(r *sq.Row) Array {
@@ -220,10 +231,5 @@ func arrayInsertMapper(c *sq.Column, r Array) {
 
 	c.SetArray(tbl.UUID_ARRAYS, r.UUIDArrays)
 
-	if int(gofakeit.IntRange(1, 10)%2) == 0 {
-		c.SetUUID(tbl.V_UUID, r.VUUID)
-	} else {
-		slog.Info("use google uuid")
-		c.SetUUID(tbl.V_UUID, r.VUUID2)
-	}
+	c.SetUUID(tbl.V_UUID, r.VUUID)
 }

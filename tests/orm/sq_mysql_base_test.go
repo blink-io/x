@@ -6,6 +6,7 @@ import (
 	"log/slog"
 	"sync"
 
+	sqx "github.com/blink-io/x/sql/orm/sq"
 	"github.com/bokwoon95/sq"
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -35,6 +36,6 @@ func getMysqlDB() *sql.DB {
 
 func setupMysqlDialect() {
 	dialect := sq.DialectMySQL
-	sq.DefaultDialect.Store(&dialect)
+	sqx.SetDefaultDialect(dialect)
 	slog.Info("Setup database dialect", "dialect", dialect)
 }
