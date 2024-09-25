@@ -8,19 +8,21 @@ import (
 )
 
 type tables struct {
-	Tags   TAGS
-	Users  USERS
-	Tvals  TVALS
-	Mkeys  MKEYS
-	Arrays ARRAYS
+	Tags    TAGS
+	TagsBak TAGS_BAK
+	Users   USERS
+	Tvals   TVALS
+	Mkeys   MKEYS
+	Arrays  ARRAYS
 }
 
 var Tables = tables{
-	Tags:   sq.New[TAGS](""),
-	Users:  sq.New[USERS](""),
-	Tvals:  sq.New[TVALS](""),
-	Mkeys:  sq.New[MKEYS](""),
-	Arrays: sq.New[ARRAYS](""),
+	Tags:    sq.New[TAGS](""),
+	TagsBak: sq.New[TAGS_BAK](""),
+	Users:   sq.New[USERS](""),
+	Tvals:   sq.New[TVALS](""),
+	Mkeys:   sq.New[MKEYS](""),
+	Arrays:  sq.New[ARRAYS](""),
 }
 
 func (t TAGS) Insert(db sq.DB, ms ...Tag) (sq.Result, error) {

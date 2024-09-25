@@ -49,6 +49,68 @@ func TestSq_Pg_Tag_Insert_2(t *testing.T) {
 
 }
 
+func TestSq_Pg_Tag_Insert_OnConflict_1(t *testing.T) {
+	db := getPgDBForSQ()
+	mm := NewTagMapper()
+
+	r1 := randomTag(nil)
+	r1.ID = 1
+	r2 := randomTag(Ptr(gofakeit.City()))
+	r2.ID = 2
+	r3 := randomTag(nil)
+	r3.ID = 3
+
+	nrs := []Tag{r1, r2, r3}
+
+	q := sq.Postgres.InsertInto(mm.Table()).
+		ColumnValues(mm.InsertMapper(nrs...)).
+		OnConflict().
+		DoNothing()
+
+	rt, err := sq.Exec(sq.Log(db), q)
+	require.NoError(t, err)
+
+	fmt.Println(rt)
+}
+
+func TestSq_Pg_Tag_Insert_Returning_1(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+	mm := NewTagMapper()
+
+	nrs := []Tag{
+		randomTag(nil),
+		randomTag(Ptr(gofakeit.City())),
+	}
+
+	rr, err := sq.FetchAll(db, sq.Postgres.
+		InsertInto(tbl).
+		ColumnValues(mm.InsertMapper(nrs...)),
+		mm.QueryMapper(),
+	)
+
+	require.NoError(t, err)
+	require.NotNil(t, rr)
+}
+
+func TestSq_Pg_Tag_Insert_Select_1(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.TagsBak
+	fTbl := Tables.Tags
+
+	_, err := sq.Exec(db, sq.Postgres.
+		InsertInto(tbl).
+		Columns(tbl.GUID, tbl.NAME, tbl.CODE, tbl.DESCRIPTION, tbl.CREATED_AT).
+		Select(sq.
+			Select(fTbl.GUID, fTbl.NAME, fTbl.CODE, fTbl.DESCRIPTION, fTbl.CREATED_AT).
+			From(fTbl).
+			Where(fTbl.DESCRIPTION.IsNotNull()),
+		).
+		SetDialect(sq.DialectPostgres),
+	)
+	require.NoError(t, err)
+}
+
 func TestSq_Pg_Tag_Mapper_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
 	mm := NewTagMapper()

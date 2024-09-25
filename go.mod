@@ -76,7 +76,7 @@ require (
 	github.com/linkedin/goavro/v2 v2.13.0
 	github.com/lithammer/shortuuid/v4 v4.0.0
 	github.com/lmittmann/tint v1.0.5
-	github.com/marcboeker/go-duckdb v1.8.0
+	github.com/marcboeker/go-duckdb v1.8.1
 	github.com/matthewhartstonge/argon2 v1.0.1
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.23
@@ -84,7 +84,7 @@ require (
 	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.37.0
-	github.com/ncruces/go-sqlite3 v0.18.3
+	github.com/ncruces/go-sqlite3 v0.18.4
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
 	github.com/nyaruka/phonenumbers v1.4.0
@@ -104,7 +104,7 @@ require (
 	github.com/redis/rueidis v1.0.46
 	github.com/redis/rueidis/rueidishook v1.0.46
 	github.com/reugn/go-quartz v0.12.0
-	github.com/riverqueue/river v0.11.4
+	github.com/riverqueue/river v0.12.0
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/slog-common v0.17.1
@@ -143,7 +143,7 @@ require (
 	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0
 	golang.org/x/sys v0.25.0
 	golang.org/x/text v0.18.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20240903143218-8af14fe29dc1
+	google.golang.org/genproto/googleapis/api v0.0.0-20240924160255-9d4c2d233b61
 	google.golang.org/grpc v1.67.0
 	google.golang.org/protobuf v1.34.2
 	gopkg.in/yaml.v3 v3.0.1
@@ -213,7 +213,7 @@ require (
 	github.com/jfcg/sixb v1.4.1 // indirect
 	github.com/jonboulle/clockwork v0.4.0 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
-	github.com/klauspost/compress v1.17.9 // indirect
+	github.com/klauspost/compress v1.17.10 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -229,9 +229,9 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.11.4 // indirect
-	github.com/riverqueue/river/rivershared v0.11.4 // indirect
-	github.com/riverqueue/river/rivertype v0.11.4 // indirect
+	github.com/riverqueue/river/riverdriver v0.12.0 // indirect
+	github.com/riverqueue/river/rivershared v0.12.0 // indirect
+	github.com/riverqueue/river/rivertype v0.12.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -242,9 +242,13 @@ require (
 	github.com/smarty/assertions v1.16.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/tetratelabs/wazero v1.8.0 // indirect
+	github.com/tidwall/gjson v1.17.3 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.1 // indirect
+	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.55.0 // indirect
+	github.com/valyala/fasthttp v1.56.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
@@ -269,7 +273,7 @@ require (
 	golang.org/x/time v0.6.0 // indirect
 	golang.org/x/tools v0.25.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20240924160255-9d4c2d233b61 // indirect
 	modernc.org/gc/v3 v3.0.0-20240801135723-a856999a2e4a // indirect
 	modernc.org/libc v1.61.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect

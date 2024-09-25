@@ -8,4 +8,6 @@ type (
 	Query     = sq.Query
 	Row       = sq.Row
 	SQLWriter = sq.SQLWriter
+
+	JSONMap map[string]any
 )

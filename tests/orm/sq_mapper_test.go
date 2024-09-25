@@ -27,13 +27,16 @@ func (m TagMapper) Table() TAGS {
 
 func (m TagMapper) InsertMapper(vv ...Tag) func(*sq.Column) {
 	tbl := m.tbl
-	return func(col *sq.Column) {
+	return func(c *sq.Column) {
 		for _, v := range vv {
-			col.SetString(tbl.GUID, v.GUID)
-			col.SetString(tbl.NAME, v.Name)
-			col.SetString(tbl.CODE, v.Code)
-			col.SetTime(tbl.CREATED_AT, v.CreatedAt)
-			col.SetString(tbl.DESCRIPTION, v.Description.GetOrZero())
+			if v.ID > 0 {
+				c.SetInt(tbl.ID, v.ID)
+			}
+			c.SetString(tbl.GUID, v.GUID)
+			c.SetString(tbl.NAME, v.Name)
+			c.SetString(tbl.CODE, v.Code)
+			c.SetTime(tbl.CREATED_AT, v.CreatedAt)
+			c.SetString(tbl.DESCRIPTION, v.Description.GetOrZero())
 		}
 	}
 }

@@ -42,7 +42,11 @@ func (l *logger) SqLogQuery(ctx context.Context, stats sq.QueryStats) {
 		attrs = append(attrs, slog.Duration("time_taken", stats.TimeTaken))
 	}
 	if l.cfg.ShowCaller {
-		attrs = append(attrs, slog.String("caller_file", stats.CallerFile))
+		attrs = append(attrs,
+			slog.String("caller_file", stats.CallerFile),
+			slog.Int("caller_line", stats.CallerLine),
+			slog.String("caller_function", stats.CallerFunction),
+		)
 	}
 	l.sl.LogAttrs(l.ctx, l.lv.Level(), "Query stats", attrs...)
 }
