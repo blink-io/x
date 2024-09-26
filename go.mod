@@ -95,7 +95,7 @@ require (
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.3
-	github.com/phuslu/log v1.0.111
+	github.com/phuslu/log v1.0.112
 	github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910
 	github.com/projectdiscovery/machineid v0.0.0-20240226150047-2e2c51e35983
 	github.com/qiniu/qmgo v1.1.8
@@ -188,7 +188,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/pprof v0.0.0-20240910150728-a0b0bb1d4134 // indirect
+	github.com/google/pprof v0.0.0-20240925223930-fa3061bff0bc // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
