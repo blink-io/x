@@ -567,8 +567,8 @@ github.com/redis/rueidis/rueidishook v1.0.46 h1:5w6ycde2W4zzGpNMVAvSMLHoGIVTjDDM
 github.com/redis/rueidis/rueidishook v1.0.46/go.mod h1:96FGxqFO668w/94Y+i60cdlZv4nU38ohgM3Rnu6HbC4=
 github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec h1:W09IVJc94icq4NjY3clb7Lk8O1qJ8BdBEF8z0ibU0rE=
 github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec/go.mod h1:qqbHyh8v60DhA7CoWK5oRCqLrMHRGoxYCSS9EjAz6Eo=
-github.com/reugn/go-quartz v0.12.0 h1:RsrklW++R5Swc7mCPYseXM06PTWN4N7/f1rsYkhHiww=
-github.com/reugn/go-quartz v0.12.0/go.mod h1:no4ktgYbAAuY0E1SchR8cTx1LF4jYIzdgaQhzRPSkpk=
+github.com/reugn/go-quartz v0.13.0 h1:0eMxvj28Qu1npIDdN9Mzg9hwyksGH6XJt4Cz0QB8EUk=
+github.com/reugn/go-quartz v0.13.0/go.mod h1:0ghKksELp8MJ4h84T203aTHRF3Kug5BrxEW3ErBvhzY=
 github.com/riverqueue/river v0.12.1 h1:TS3FVioPStlvb7yj1dYgtgX+zn/3JkLdPn+S6qNBcZ0=
 github.com/riverqueue/river v0.12.1/go.mod h1:j7O42JlHo76YgXkAFX66E63Ke890/oSUUlui/ImyLuU=
 github.com/riverqueue/river/riverdriver v0.12.1 h1:MqAh6mw9h/m/nNXImJTXXtCefTDPdmZSlgsUdSYUHe0=
@@ -688,6 +688,12 @@ github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 h1:3/aHKUq7qaFMWxyQV0W
 github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2/go.mod h1:Zit4b8AQXaXvA68+nzmbyDzqiyFRISyw1JiD5JqUBjw=
 github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2 h1:cj/Z6FKTTYBnstI0Lni9PA+k2foounKIPUmj1LBwNiQ=
 github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2/go.mod h1:LDaXk90gKEC2nC7JH3Lpnhfu+2V7o/TsqomJJmqA39o=
+github.com/valkey-io/valkey-go v1.0.46 h1:t+k4mgjGRfvZVcuBXXqDIthukOdqQsGwR5RzzvaxhqY=
+github.com/valkey-io/valkey-go v1.0.46/go.mod h1:BXlVAPIL9rFQinSFM+N32JfWzfCaUAqBpZkc4vPY6fM=
+github.com/valkey-io/valkey-go/mock v1.0.46 h1:nOqvcMggWQLRR/LdeNKU8L5QlttfYqRkzHGj9m4WO0s=
+github.com/valkey-io/valkey-go/mock v1.0.46/go.mod h1:BvB+V4EDO2Ncw2o2llhKaN4ctiPPkLQVXMmhBgPlrEY=
+github.com/valkey-io/valkey-go/valkeyhook v1.0.46 h1:VcJdWDGCOJGgAXLlx1Qyzt0jgQAcFEN1O7S/Bz1KSck=
+github.com/valkey-io/valkey-go/valkeyhook v1.0.46/go.mod h1:/pYhqxg4316UzQeBXwJHr4fhJJv63fQDSMKDk23nD7Q=
 github.com/valyala/bytebufferpool v1.0.0 h1:GqA5TC/0021Y/b9FG4Oi9Mr3q7XYx6KllzawFIhcdPw=
 github.com/valyala/bytebufferpool v1.0.0/go.mod h1:6bBcMArwyJ5K/AmCkWv1jt77kVWyCJ6HpOuEn7z0Csc=
 github.com/valyala/fasthttp v1.56.0 h1:bEZdJev/6LCBlpdORfrLu/WOZXXxvrUQSiyniuaoW8U=

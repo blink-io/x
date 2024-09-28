@@ -104,7 +104,7 @@ require (
 	github.com/redis/go-redis/v9 v9.6.1
 	github.com/redis/rueidis v1.0.46
 	github.com/redis/rueidis/rueidishook v1.0.46
-	github.com/reugn/go-quartz v0.12.0
+	github.com/reugn/go-quartz v0.13.0
 	github.com/riverqueue/river v0.12.1
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
@@ -129,6 +129,8 @@ require (
 	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.13
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
+	github.com/valkey-io/valkey-go v1.0.46
+	github.com/valkey-io/valkey-go/valkeyhook v1.0.46
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
