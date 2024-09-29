@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	sqx "github.com/blink-io/x/sql/orm/sq"
-	"github.com/blink-io/x/tests/orm/nsqlite3"
+	sqlite3 "github.com/blink-io/x/tests/orm/nsqlite3"
 
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
@@ -22,7 +22,7 @@ func getSqlite3DB() *sql.DB {
 		setupSqlite3Dialect()
 	})
 
-	return nsqlite3.GetSQLiteDB(sqliteDSN)
+	return sqlite3.GetSQLiteDB(sqliteDSN)
 }
 
 func getSqlite3DBForSQ() *sql.DB {

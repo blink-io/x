@@ -11,6 +11,7 @@ require (
 	github.com/IBM/sarama v1.43.3
 	github.com/Netflix/go-env v0.1.0
 	github.com/ProtonMail/gopenpgp/v2 v2.7.5
+	github.com/VictoriaMetrics/easyproto v0.1.4
 	github.com/VictoriaMetrics/fastcache v1.12.2
 	github.com/aarondl/opt v0.0.0-20240623220848-083f18ab9536
 	github.com/alexedwards/argon2id v1.0.0

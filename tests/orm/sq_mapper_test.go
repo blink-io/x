@@ -1,14 +1,17 @@
 package orm
 
 import (
+	"context"
+	"time"
+
 	"github.com/aarondl/opt/omitnull"
 	"github.com/bokwoon95/sq"
 )
 
 type Mapper[T sq.Table, M any] interface {
 	Table() T
-	InsertMapper(...M) func(*sq.Column)
-	QueryMapper() func(*sq.Row) M
+	InsertMapper(context.Context, ...M) func(*sq.Column)
+	QueryMapper(context.Context) func(*sq.Row) M
 }
 
 type TagMapper struct {
@@ -25,7 +28,7 @@ func (m TagMapper) Table() TAGS {
 	return m.tbl
 }
 
-func (m TagMapper) InsertMapper(vv ...Tag) func(*sq.Column) {
+func (m TagMapper) InsertMapper(ctx context.Context, vv ...Tag) func(*sq.Column) {
 	tbl := m.tbl
 	return func(c *sq.Column) {
 		for _, v := range vv {
@@ -41,7 +44,7 @@ func (m TagMapper) InsertMapper(vv ...Tag) func(*sq.Column) {
 	}
 }
 
-func (m TagMapper) QueryMapper() func(*sq.Row) Tag {
+func (m TagMapper) QueryMapper(ctx context.Context) func(*sq.Row) Tag {
 	tbl := m.tbl
 	return func(r *sq.Row) Tag {
 		u := Tag{
@@ -51,6 +54,24 @@ func (m TagMapper) QueryMapper() func(*sq.Row) Tag {
 			Name:        r.StringField(tbl.NAME),
 			Description: omitnull.From(r.NullStringField(tbl.DESCRIPTION).String),
 		}
+		if IsIntegerTime(ctx) {
+			it := r.Int64(tbl.CREATED_AT.GetName())
+			ct := time.Unix(it, 0)
+			u.CreatedAt = ct
+		} else {
+			u.CreatedAt = r.TimeField(tbl.CREATED_AT)
+		}
 		return u
 	}
+}
+
+type integerTime struct{}
+
+func SetIntegerTime(ctx context.Context) context.Context {
+	return context.WithValue(ctx, integerTime{}, true)
+}
+
+func IsIntegerTime(ctx context.Context) bool {
+	flag, ok := ctx.Value(integerTime{}).(bool)
+	return ok && flag
 }

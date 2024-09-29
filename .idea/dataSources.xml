@@ -11,15 +11,5 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="orm-demo-duck.db" read-only="true" uuid="4d1d17d4-3c13-4359-b02f-114850cbdec4">
-      <driver-ref>duckdb</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.duckdb.DuckDBDriver</jdbc-driver>
-      <jdbc-url>jdbc:duckdb:$PROJECT_DIR$/tests/orm/orm-demo-duck.db</jdbc-url>
-      <jdbc-additional-properties>
-        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
-      </jdbc-additional-properties>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
   </component>
 </project>

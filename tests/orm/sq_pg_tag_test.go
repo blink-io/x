@@ -60,7 +60,7 @@ func TestSq_Pg_Tag_Insert_OnConflict_1(t *testing.T) {
 	nrs := []Tag{r1, r2, r3}
 
 	q := sq.Postgres.InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(nrs...)).
+		ColumnValues(mm.InsertMapper(ctx, nrs...)).
 		OnConflict(tbl.ID).
 		DoUpdateSet(tbl.DESCRIPTION.SetString("DoUpdateSet"))
 
@@ -82,8 +82,8 @@ func TestSq_Pg_Tag_Insert_Returning_1(t *testing.T) {
 
 	rr, err := sq.FetchAll(db, sq.Postgres.
 		InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(nrs...)),
-		mm.QueryMapper(),
+		ColumnValues(mm.InsertMapper(ctx, nrs...)),
+		mm.QueryMapper(ctx),
 	)
 
 	require.NoError(t, err)
@@ -118,7 +118,7 @@ func TestSq_Pg_Tag_Mapper_Insert_1(t *testing.T) {
 
 	_, err := sq.Exec(sq.Log(db), sq.
 		InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(d1, d2)),
+		ColumnValues(mm.InsertMapper(ctx, d1, d2)),
 	)
 	require.NoError(t, err)
 }
@@ -132,7 +132,7 @@ func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, query, mm.QueryMapper())
+	records, err := sq.FetchAll(db, query, mm.QueryMapper(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)
@@ -163,7 +163,7 @@ func TestSq_Pg_Tag_Mapper_FetchAll_Paging(t *testing.T) {
 	mm := NewTagMapper()
 	tbl := mm.Table()
 	perPage := 3
-	qm := mm.QueryMapper()
+	qm := mm.QueryMapper(ctx)
 	vdb := sq.VerboseLog(db)
 
 	bq := sq.
@@ -201,7 +201,7 @@ func TestSq_Pg_Tag_Mapper_FetchOne_ByPK(t *testing.T) {
 	query := sq.
 		From(tbl).
 		Where(idWhere)
-	records, err := sq.FetchOne(db, query, mm.QueryMapper())
+	records, err := sq.FetchOne(db, query, mm.QueryMapper(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)

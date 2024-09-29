@@ -31,3 +31,7 @@ func SetDefaultDialect(dialect string) {
 func UnsetDefaultDialect() {
 	sq.DefaultDialect.Store(nil)
 }
+
+func Quote(dialect string) string {
+	return ""
+}

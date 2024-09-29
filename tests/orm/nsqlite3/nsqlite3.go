@@ -9,6 +9,7 @@ import (
 
 func GetSQLiteDB(dsn string) *sql.DB {
 	db, err := sql.Open("sqlite3", dsn)
+
 	if err != nil {
 		panic(err)
 	}

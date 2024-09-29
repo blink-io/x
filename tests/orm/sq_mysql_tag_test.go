@@ -18,7 +18,7 @@ func TestSq_Mysql_Tag_Mapper_Insert_1(t *testing.T) {
 	d2 := randomTag(ptr.Of("Hello, Hi, 你好"))
 
 	q := sq.InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(d1, d2))
+		ColumnValues(mm.InsertMapper(ctx, d1, d2))
 
 	_, err := sq.Exec(sq.VerboseLog(db), q)
 	require.NoError(t, err)
