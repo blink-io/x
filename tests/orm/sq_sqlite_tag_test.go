@@ -8,8 +8,8 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestSq_Sqlite3_Tag_Insert_1(t *testing.T) {
-	db := getSqlite3DBForSQ()
+func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
+	db := getSqliteDBForSQ()
 	sb := sq.SQLite
 	tbl := Tables.Tags
 
@@ -30,8 +30,8 @@ func TestSq_Sqlite3_Tag_Insert_1(t *testing.T) {
 	require.NotNil(t, rt)
 }
 
-func TestSq_Sqlite3_Tag_Insert_2(t *testing.T) {
-	db := getSqlite3DBForSQ()
+func TestSq_Sqlite_Tag_Insert_2(t *testing.T) {
+	db := getSqliteDBForSQ()
 
 	err := randomTag(nil).Insert(db)
 	require.NoError(t, err)
@@ -40,8 +40,8 @@ func TestSq_Sqlite3_Tag_Insert_2(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestSq_Sqlite3_Tag_Insert_Select_1(t *testing.T) {
-	db := getSqlite3DBForSQ()
+func TestSq_Sqlite_Tag_Insert_Select_1(t *testing.T) {
+	db := getSqliteDBForSQ()
 	tbl := Tables.TagsBak
 	fTbl := Tables.Tags
 
@@ -74,8 +74,8 @@ func TestSq_Sqlite_Tag_Mapper_FetchAll_1(t *testing.T) {
 	require.NotNil(t, records)
 }
 
-func TestSq_Sqlite3_Tag_Mapper_FetchAll_1(t *testing.T) {
-	db := getSqlite3DBForSQ()
+func TestSq_Sqlite_Tag_Mapper_FetchAll_2(t *testing.T) {
+	db := getSqliteDBForSQ()
 	mm := NewTagMapper()
 	tbl := mm.Table()
 

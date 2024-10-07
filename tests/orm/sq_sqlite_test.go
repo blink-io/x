@@ -2,12 +2,19 @@ package orm
 
 import (
 	"database/sql"
+	"log/slog"
+	"sync"
 	"testing"
 
+	sqx "github.com/blink-io/x/sql/orm/sq"
 	"github.com/blink-io/x/tests/orm/msqlite3"
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
 )
+
+var sqliteOnce sync.Once
+
+var sqliteDSN = "./orm_demo.db"
 
 func getSqliteDB() *sql.DB {
 	sqliteOnce.Do(func() {
@@ -15,6 +22,12 @@ func getSqliteDB() *sql.DB {
 	})
 
 	return msqlite3.GetSqliteDB(sqliteDSN)
+}
+
+func setupSqlite3Dialect() {
+	dialect := sq.DialectSQLite
+	sqx.SetDefaultDialect(dialect)
+	slog.Info("Setup database dialect", "dialect", dialect)
 }
 
 func getSqliteDBForSQ() *sql.DB {

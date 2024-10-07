@@ -8,8 +8,8 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestSq_Sqlite3_Datetime_1(t *testing.T) {
-	db := getSqlite3DBForSQ()
+func TestSq_Sqlite_Datetime_1(t *testing.T) {
+	db := getSqliteDBForSQ()
 
 	defer db.Close()
 
