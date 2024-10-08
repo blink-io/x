@@ -66,6 +66,7 @@ require (
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.5
+	github.com/http-wasm/http-wasm-host-go v0.7.0
 	github.com/jackc/pgx/v5 v5.7.1
 	github.com/jackc/puddle/v2 v2.2.2
 	github.com/jaevor/go-nanoid v1.4.0
@@ -129,6 +130,7 @@ require (
 	github.com/tidwall/gjson v1.18.0
 	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.13
+	github.com/unrolled/render v1.7.0
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/valkey-io/valkey-go v1.0.47
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.47
@@ -180,6 +182,7 @@ require (
 	github.com/eapache/queue v1.1.0 // indirect
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
 	github.com/fatih/color v1.17.0 // indirect
+	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.5 // indirect
 	github.com/go-crypt/x v0.3.1 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
@@ -246,6 +249,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/smarty/assertions v1.16.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
+	github.com/tetratelabs/wazero v1.8.1 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
