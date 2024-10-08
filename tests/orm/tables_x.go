@@ -38,6 +38,30 @@ func (t TAGS) Insert(db sq.DB, ms ...Tag) (sq.Result, error) {
 	return sq.Exec(db, q)
 }
 
+func (t TAGS) Insert2(db sq.DB, ms ...TagSetter) (sq.Result, error) {
+	q := sq.InsertInto(t).ColumnValues(func(c *sq.Column) {
+		for _, m := range ms {
+			m.ID.IfSet(func(v int) {
+				c.SetInt(t.ID, v)
+			})
+			m.GUID.IfSet(func(v string) {
+				c.SetString(t.GUID, v)
+			})
+			m.Name.IfSet(func(v string) {
+				c.SetString(t.NAME, v)
+			})
+			m.Code.IfSet(func(v string) {
+				c.SetString(t.CODE, v)
+			})
+			m.CreatedAt.IfSet(func(v time.Time) {
+				c.SetTime(t.CREATED_AT, v)
+			})
+			c.SetString(t.DESCRIPTION, m.Description.GetOr(""))
+		}
+	})
+	return sq.Exec(db, q)
+}
+
 func (t TAGS) Update(db sq.DB, m TagSetter) (sq.Result, error) {
 	q := sq.Update(t).SetFunc(func(c *sq.Column) {
 		if !m.ID.IsUnset() {

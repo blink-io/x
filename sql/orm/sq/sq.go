@@ -2,6 +2,7 @@ package sq
 
 import (
 	"log/slog"
+	"strings"
 
 	"github.com/bokwoon95/sq"
 )
@@ -17,11 +18,11 @@ type (
 )
 
 func SetDefaultDialect(dialect string) {
-	switch dialect {
-	case sq.DialectPostgres:
-	case sq.DialectSQLite:
-	case sq.DialectSQLServer:
-	case sq.DialectMySQL:
+	switch dialect := strings.ToLower(dialect); dialect {
+	case sq.DialectPostgres,
+		sq.DialectSQLite,
+		sq.DialectSQLServer,
+		sq.DialectMySQL:
 		sq.DefaultDialect.Store(&dialect)
 	default:
 		slog.Warn("")

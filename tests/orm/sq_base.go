@@ -204,11 +204,26 @@ func (m Tag) Insert(db sq.DB) error {
 		c.SetString(tbl.GUID, m.GUID)
 		c.SetString(tbl.NAME, m.Name)
 		c.SetString(tbl.CODE, m.Code)
+		c.SetTime(tbl.CREATED_AT, m.CreatedAt)
 		if v, ok := m.Description.Get(); ok {
 			c.SetString(tbl.DESCRIPTION, v)
 		}
 	}))
 	return err
+}
+
+func (m Tag) Setter() TagSetter {
+	ss := TagSetter{
+		GUID:        omit.From(m.GUID),
+		Code:        omit.From(m.Code),
+		Name:        omit.From(m.Name),
+		CreatedAt:   omit.From(m.CreatedAt),
+		Description: m.Description,
+	}
+	if m.ID > 0 {
+		ss.ID = omit.From(m.ID)
+	}
+	return ss
 }
 
 type TagSetter struct {

@@ -14,17 +14,14 @@ import (
 
 func TestSq_Pg_Tag_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
-
-	tbl := TagTable
+	tbl := Tables.Tags
 
 	records := []Tag{
 		randomTag(nil),
 		randomTag(Ptr(gofakeit.City())),
-		randomTag(nil),
-		randomTag(nil),
 	}
 
-	_, err := sq.Exec(sq.Log(db), sq.
+	_, err := sq.Exec(sq.VerboseLog(db), sq.
 		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
 		for _, r := range records {
 			tagInsertColumnMapper(col, r)
@@ -37,12 +34,22 @@ func TestSq_Pg_Tag_Insert_1(t *testing.T) {
 func TestSq_Pg_Tag_Insert_2(t *testing.T) {
 	db := getPgDBForSQ()
 
-	err := randomTag(nil).Insert(db)
+	err := randomTag(nil).Insert(sq.VerboseLog(db))
 	require.NoError(t, err)
 
-	err = randomTag(Ptr(gofakeit.School())).Insert(db)
+	err = randomTag(Ptr(gofakeit.School())).Insert(sq.VerboseLog(db))
 	require.NoError(t, err)
 
+}
+
+func TestSq_Pg_Tag_Insert_3(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+
+	setter := randomTag(nil).Setter()
+
+	_, err := tbl.Insert2(sq.Log(db), setter)
+	require.NoError(t, err)
 }
 
 func TestSq_Pg_Tag_Insert_OnConflict_1(t *testing.T) {
