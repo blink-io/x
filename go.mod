@@ -154,8 +154,10 @@ require (
 	resenje.org/singleflight v0.4.3
 )
 
-replace github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
-
+replace (
+	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
+	github.com/aarondl/opt v0.0.0-20240623220848-083f18ab9536 => github.com/blink-io/opt v0.0.0-20241008132531-89ff275b9859
+)
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/ProtonMail/go-crypto v1.0.0 // indirect
