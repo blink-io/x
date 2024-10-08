@@ -34,6 +34,7 @@ require (
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
+	github.com/elliotchance/pie/v2 v2.9.0
 	github.com/failsafe-go/failsafe-go v0.6.8
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/georgysavva/scany/v2 v2.1.3
@@ -155,9 +156,10 @@ require (
 )
 
 replace (
-	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
 	github.com/aarondl/opt v0.0.0-20240623220848-083f18ab9536 => github.com/blink-io/opt v0.0.0-20241008132531-89ff275b9859
+	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
 )
+
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/ProtonMail/go-crypto v1.0.0 // indirect
