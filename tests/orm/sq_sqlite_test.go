@@ -7,21 +7,29 @@ import (
 	"testing"
 
 	sqx "github.com/blink-io/x/sql/orm/sq"
-	"github.com/blink-io/x/tests/orm/msqlite3"
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
+	_ "modernc.org/sqlite"
 )
 
 var sqliteOnce sync.Once
 
 var sqliteDSN = "./orm_demo.db"
 
+func GetSqliteDB(dsn string) *sql.DB {
+	db, err := sql.Open("sqlite", dsn)
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
+
 func getSqliteDB() *sql.DB {
 	sqliteOnce.Do(func() {
 		setupSqlite3Dialect()
 	})
 
-	return msqlite3.GetSqliteDB(sqliteDSN)
+	return GetSqliteDB(sqliteDSN)
 }
 
 func setupSqlite3Dialect() {

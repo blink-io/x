@@ -104,7 +104,7 @@ require (
 	github.com/redis/rueidis v1.0.47
 	github.com/redis/rueidis/rueidishook v1.0.47
 	github.com/reugn/go-quartz v0.13.0
-	github.com/riverqueue/river v0.12.1
+	github.com/riverqueue/river v0.13.0
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/slog-common v0.17.1
@@ -125,6 +125,7 @@ require (
 	github.com/spf13/cast v1.7.0
 	github.com/stretchr/testify v1.9.0
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
+	github.com/tidwall/gjson v1.18.0
 	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.13
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
@@ -189,7 +190,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/pprof v0.0.0-20241001023024-f4c0cfd0cf1d // indirect
+	github.com/google/pprof v0.0.0-20241008032058-148460133af7 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
@@ -229,9 +230,9 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.12.1 // indirect
-	github.com/riverqueue/river/rivershared v0.12.1 // indirect
-	github.com/riverqueue/river/rivertype v0.12.1 // indirect
+	github.com/riverqueue/river/riverdriver v0.13.0 // indirect
+	github.com/riverqueue/river/rivershared v0.13.0 // indirect
+	github.com/riverqueue/river/rivertype v0.13.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -241,7 +242,6 @@ require (
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/smarty/assertions v1.16.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
-	github.com/tidwall/gjson v1.18.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
