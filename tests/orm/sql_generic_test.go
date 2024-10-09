@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aarondl/opt/omitnull"
-	_ "github.com/aarondl/opt/omitnull"
+	"github.com/blink-io/opt/omitnull"
+	_ "github.com/blink-io/opt/omitnull"
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
 )

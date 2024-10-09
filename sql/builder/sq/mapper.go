@@ -12,7 +12,7 @@ type (
 
 		InsertT(context.Context, ...S) func(*sq.Column)
 
-		UpdateT(context.Context, ...S) func(*sq.Column)
+		UpdateT(context.Context, S) func(*sq.Column)
 
 		QueryT(context.Context) func(*sq.Row) M
 	}

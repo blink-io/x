@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/aarondl/opt/omit"
+	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/x/id"
 	"github.com/blink-io/x/ptr"
 	sqx "github.com/blink-io/x/sql/builder/sq"
@@ -19,40 +19,38 @@ func TestSq_Pg_Tag_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := Tables.Tags
 
-	records := []Tag{
-		randomTag(nil),
-		randomTag(Ptr(gofakeit.City())),
-	}
-
-	_, err := sq.Exec(sq.VerboseLog(db), sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
-		for _, r := range records {
-			tagInsertColumnMapper(col, r)
-		}
-	}))
+	s1 := randomTag(nil).Setter()
+	s2 := randomTag(Ptr(gofakeit.School())).Setter()
+	rt, err := tbl.Insert(ctx, sq.Log(db), s1, s2)
 
 	require.NoError(t, err)
+	require.NotNil(t, rt)
 }
 
 func TestSq_Pg_Tag_Insert_2(t *testing.T) {
-	db := getPgDBForSQ()
-
-	err := randomTag(nil).Insert(sq.VerboseLog(db))
-	require.NoError(t, err)
-
-	err = randomTag(Ptr(gofakeit.School())).Insert(sq.VerboseLog(db))
-	require.NoError(t, err)
-
-}
-
-func TestSq_Pg_Tag_Insert_3(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := Tables.Tags
 
 	setter := randomTag(nil).Setter()
 
-	_, err := tbl.Insert2(sq.Log(db), setter)
+	_, err := tbl.Insert(ctx, sq.Log(db), setter)
 	require.NoError(t, err)
+}
+
+func TestSq_Pg_Tag_Update_1(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+
+	s := TagSetter{
+		ID:   omit.From(15),
+		Name: omit.From(gofakeit.City()),
+		Code: omit.From(id.ShortID()),
+	}
+
+	rt, err := tbl.Update(ctx, sq.Log(db), s, tbl.ID.EqInt(15))
+
+	require.NoError(t, err)
+	require.NotNil(t, rt)
 }
 
 func TestSq_Pg_Tag_Mapper_Insert_OnConflict_1(t *testing.T) {
@@ -85,15 +83,14 @@ func TestSq_Pg_Tag_Mapper_Update_1(t *testing.T) {
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 
-	ss := []TagSetter{
-		{
-			Name: omit.From(gofakeit.City()),
-			Code: omit.From(id.ShortID()),
-		},
+	s := TagSetter{
+		ID:   omit.From(15),
+		Name: omit.From(gofakeit.City()),
+		Code: omit.From(id.ShortID()),
 	}
 
 	q := sq.Update(tbl).
-		SetFunc(mm.UpdateT(ctx, ss...)).
+		SetFunc(mm.UpdateT(ctx, s)).
 		Where(sqx.AlwaysTrueExpr, sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
 
 	rt, err := sq.Exec(sq.Log(db), q)
@@ -236,14 +233,4 @@ func TestSq_Pg_Tag_Mapper_FetchOne_ByPK(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, records)
-}
-
-func tagInsertColumnMapper(c *sq.Column, r Tag) {
-	tbl := Tables.Tags
-
-	c.SetString(tbl.GUID, r.GUID)
-	c.SetString(tbl.NAME, r.Name)
-	c.SetString(tbl.CODE, r.Code)
-	c.Set(tbl.DESCRIPTION, r.Description)
-	c.SetTime(tbl.CREATED_AT, r.CreatedAt)
 }

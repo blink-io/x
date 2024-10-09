@@ -25,67 +25,55 @@ var Tables = tables{
 	Arrays:  sq.New[ARRAYS](""),
 }
 
-func (t TAGS) Insert(db sq.DB, ms ...Tag) (sq.Result, error) {
-	q := sq.InsertInto(t).ColumnValues(func(col *sq.Column) {
-		for _, m := range ms {
-			col.SetString(t.GUID, m.GUID)
-			col.SetString(t.NAME, m.Name)
-			col.SetString(t.CODE, m.Code)
-			col.SetTime(t.CREATED_AT, m.CreatedAt)
-			col.SetString(t.DESCRIPTION, m.Description.GetOr(""))
-		}
+func (t TAGS) setterToColumn(s TagSetter, c *sq.Column) {
+	s.ID.IfSet(func(v int) {
+		c.SetInt(t.ID, v)
 	})
+	s.GUID.IfSet(func(v string) {
+		c.SetString(t.GUID, v)
+	})
+	s.Name.IfSet(func(v string) {
+		c.SetString(t.NAME, v)
+	})
+	s.Code.IfSet(func(v string) {
+		c.SetString(t.CODE, v)
+	})
+	s.CreatedAt.IfSet(func(v time.Time) {
+		c.SetTime(t.CREATED_AT, v)
+	})
+	s.Description.IfSet(func(v string) {
+		c.SetString(t.DESCRIPTION, v)
+	})
+}
+
+func (t TAGS) Insert(ctx context.Context, db sq.DB, ss ...TagSetter) (sq.Result, error) {
+	q := sq.InsertInto(t).ColumnValues(t.InsertT(ctx, ss...))
 	return sq.Exec(db, q)
 }
 
-func (t TAGS) Insert2(db sq.DB, ms ...TagSetter) (sq.Result, error) {
-	q := sq.InsertInto(t).ColumnValues(func(c *sq.Column) {
-		for _, m := range ms {
-			m.ID.IfSet(func(v int) {
-				c.SetInt(t.ID, v)
-			})
-			m.GUID.IfSet(func(v string) {
-				c.SetString(t.GUID, v)
-			})
-			m.Name.IfSet(func(v string) {
-				c.SetString(t.NAME, v)
-			})
-			m.Code.IfSet(func(v string) {
-				c.SetString(t.CODE, v)
-			})
-			m.CreatedAt.IfSet(func(v time.Time) {
-				c.SetTime(t.CREATED_AT, v)
-			})
-			c.SetString(t.DESCRIPTION, m.Description.GetOr(""))
-		}
-	})
+func (t TAGS) Update(ctx context.Context, db sq.DB, s TagSetter, where sq.Predicate) (sq.Result, error) {
+	q := sq.Update(t).
+		SetFunc(t.UpdateT(ctx, s)).
+		Where(where)
 	return sq.Exec(db, q)
 }
 
-func (t TAGS) Update(db sq.DB, m TagSetter) (sq.Result, error) {
-	q := sq.Update(t).SetFunc(func(c *sq.Column) {
-		if !m.ID.IsUnset() {
-			v, _ := m.ID.Get()
-			c.SetInt(t.ID, v)
+func (t TAGS) InsertT(ctx context.Context, ss ...TagSetter) func(c *sq.Column) {
+	q := func(c *sq.Column) {
+		for _, s := range ss {
+			s.ID.Unset()
+			t.setterToColumn(s, c)
 		}
-		if !m.GUID.IsUnset() {
-			v, _ := m.GUID.Get()
-			c.SetString(t.GUID, v)
-		}
-		if !m.Name.IsUnset() {
-			v, _ := m.Name.Get()
-			c.SetString(t.NAME, v)
-		}
-		if !m.Code.IsUnset() {
-			v, _ := m.Code.Get()
-			c.SetString(t.CODE, v)
-		}
-		if !m.Description.IsUnset() {
-			v, _ := m.Description.Get()
-			c.SetString(t.DESCRIPTION, v)
-		}
-	})
-	return sq.Exec(db, q)
+	}
+	return q
+}
+
+func (t TAGS) UpdateT(ctx context.Context, s TagSetter) func(c *sq.Column) {
+	q := func(c *sq.Column) {
+		s.ID.Unset()
+		t.setterToColumn(s, c)
+	}
+	return q
 }
 
 func (t TAGS) PrimaryKeys() sq.RowValue {
@@ -100,8 +88,8 @@ func (t TVALS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.IID, t.SID}
 }
 
-func (s TVALS) PrimaryKeyValues(iid int64, sid string) sq.Predicate {
-	return s.PrimaryKeys().Eq(sq.RowValues{{iid, sid}})
+func (t TVALS) PrimaryKeyValues(iid int64, sid string) sq.Predicate {
+	return t.PrimaryKeys().Eq(sq.RowValues{{iid, sid}})
 }
 
 var alwaysTrueExpr = sq.Expr("1 = {}", 1)

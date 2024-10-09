@@ -13,7 +13,6 @@ require (
 	github.com/ProtonMail/gopenpgp/v2 v2.7.5
 	github.com/VictoriaMetrics/easyproto v0.1.4
 	github.com/VictoriaMetrics/fastcache v1.12.2
-	github.com/aarondl/opt v0.0.0-20240623220848-083f18ab9536
 	github.com/alexedwards/argon2id v1.0.0
 	github.com/allegro/bigcache/v3 v3.1.0
 	github.com/alphadose/haxmap v1.4.0
@@ -24,6 +23,7 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
+	github.com/blink-io/opt v0.0.0-20241009121109-00fad4fc82a0
 	github.com/bokwoon95/sq v0.5.1
 	github.com/brianvoe/gofakeit/v7 v7.0.4
 	github.com/bwmarrin/snowflake v0.3.0
@@ -157,10 +157,7 @@ require (
 	resenje.org/singleflight v0.4.3
 )
 
-replace (
-	github.com/aarondl/opt v0.0.0-20240623220848-083f18ab9536 => github.com/blink-io/opt v0.0.0-20241009065040-b00eaa0192fb
-	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
-)
+replace github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect

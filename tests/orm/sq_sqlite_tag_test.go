@@ -13,19 +13,17 @@ func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
 	sb := sq.SQLite
 	tbl := Tables.Tags
 
-	records := []Tag{
-		randomTag(nil),
-		randomTag(Ptr(gofakeit.City())),
-		randomTag(nil),
+	ss := []TagSetter{
+		randomTag(nil).Setter(),
+		randomTag(Ptr(gofakeit.City())).Setter(),
+		randomTag(nil).Setter(),
 	}
 
-	rt, err := sq.Exec(sq.Log(db), sb.
-		InsertInto(tbl).
-		ColumnValues(func(col *sq.Column) {
-			for _, r := range records {
-				tagInsertColumnMapper(col, r)
-			}
-		}))
+	rt, err := sq.Exec(
+		sq.Log(db),
+		sb.InsertInto(tbl).
+			ColumnValues(tbl.InsertT(ctx, ss...)),
+	)
 
 	require.NoError(t, err)
 	require.NotNil(t, rt)
@@ -33,12 +31,15 @@ func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
 
 func TestSq_Sqlite_Tag_Insert_2(t *testing.T) {
 	db := getSqliteDBForSQ()
+	//sb := sq.SQLite
+	tbl := Tables.Tags
 
-	err := randomTag(nil).Insert(db)
-	require.NoError(t, err)
+	s1 := randomTag(nil).Setter()
+	s2 := randomTag(Ptr(gofakeit.School())).Setter()
 
-	err = randomTag(Ptr(gofakeit.School())).Insert(db)
+	rt, err := tbl.Insert(ctx, sq.Log(db), s1, s2)
 	require.NoError(t, err)
+	require.NotNil(t, rt)
 }
 
 func TestSq_Sqlite_Tag_Insert_Select_1(t *testing.T) {

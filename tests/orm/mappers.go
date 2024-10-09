@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/aarondl/opt/null"
+	"github.com/blink-io/opt/null"
 	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/bokwoon95/sq"
 )
@@ -17,21 +17,11 @@ var Mappers = mappers{
 	TAGS: NewTagMapper(),
 }
 
-type Mapper[T sq.Table, M any, S any] interface {
-	Table() T
-
-	InsertT(context.Context, ...S) func(*sq.Column)
-
-	UpdateT(context.Context, ...S) func(*sq.Column)
-
-	QueryT(context.Context) func(*sq.Row) M
-}
-
 type TagMapper struct {
 	tbl TAGS
 }
 
-func NewTagMapper() Mapper[TAGS, Tag, TagSetter] {
+func NewTagMapper() sqx.Mapper[TAGS, Tag, TagSetter] {
 	return TagMapper{
 		tbl: sq.New[TAGS](""),
 	}
@@ -71,11 +61,9 @@ func (m TagMapper) InsertT(ctx context.Context, vv ...TagSetter) func(*sq.Column
 	}
 }
 
-func (m TagMapper) UpdateT(ctx context.Context, vv ...TagSetter) func(*sq.Column) {
+func (m TagMapper) UpdateT(ctx context.Context, v TagSetter) func(*sq.Column) {
 	return func(c *sq.Column) {
-		for _, v := range vv {
-			m.columnSetter(c, v)
-		}
+		m.columnSetter(c, v)
 	}
 }
 

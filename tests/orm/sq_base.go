@@ -9,9 +9,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/aarondl/opt/null"
-	"github.com/aarondl/opt/omit"
-	"github.com/aarondl/opt/omitnull"
+	"github.com/blink-io/opt/null"
+	"github.com/blink-io/opt/omit"
+	"github.com/blink-io/opt/omitnull"
 	"github.com/blink-io/x/log/slog/handlers/color"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
@@ -197,20 +197,6 @@ type Tag struct {
 	Name        string           `db:"name"`
 	CreatedAt   time.Time        `db:"created_at"`
 	Description null.Val[string] `db:"description"`
-}
-
-func (m Tag) Insert(db sq.DB) error {
-	tbl := TagTable
-	_, err := sq.Exec(db, sq.InsertInto(tbl).ColumnValues(func(c *sq.Column) {
-		c.SetString(tbl.GUID, m.GUID)
-		c.SetString(tbl.NAME, m.Name)
-		c.SetString(tbl.CODE, m.Code)
-		c.SetTime(tbl.CREATED_AT, m.CreatedAt)
-		if v, ok := m.Description.Get(); ok {
-			c.SetString(tbl.DESCRIPTION, v)
-		}
-	}))
-	return err
 }
 
 func (m Tag) Setter() TagSetter {

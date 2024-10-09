@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aarondl/opt/omit"
+	"github.com/blink-io/opt/omit"
 	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
