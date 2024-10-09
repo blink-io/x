@@ -30,7 +30,7 @@ func getPgDB() *sql.DB {
 		setupPgDialect()
 	})
 
-	dsn := "postgres://test:test@192.168.50.88:5432/test?sslmode=disable"
+	dsn := "postgres://test:test@192.168.50.88:5432/test?sslmode=disable&TimeZone=Asia/Shanghai"
 	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		log.Fatalf("failed to open pg db: %v", err)
@@ -51,7 +51,7 @@ func setupPgDialect() {
 func TestSq_1(t *testing.T) {
 	db := getPgDBForSQ()
 
-	qr := sq.SQLite.Queryf("select 'heison' as name, version() as version")
+	qr := sq.Postgres.Queryf("select 'heison' as name, version() as version")
 	m, err := sq.FetchOne[*Model](db, qr, func(row *sq.Row) *Model {
 		return &Model{
 			Name:    row.String("name"),
@@ -296,6 +296,10 @@ func TestSq_Pg_Enum_Insert_Tx_Fail_1(t *testing.T) {
 	)
 
 	require.NoError(t, err)
+}
+
+func TestSq_Pg_SelectDBNameAndVersion(t *testing.T) {
+
 }
 
 func Ptr[T any](v T) *T {

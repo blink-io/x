@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestSq_Generic_DB_Select(t *testing.T) {
+func selectDBNameAndVersion() sq.SelectQuery {
 	sel := sq.Select(
 		sq.DialectExpr("'no name' as name").
 			DialectExpr(sq.DialectPostgres, "current_database() as name").
@@ -22,13 +22,19 @@ func TestSq_Generic_DB_Select(t *testing.T) {
 			DialectExpr(sq.DialectSQLite, "sqlite_version() as version"),
 
 		sq.DialectExpr("'no now datetime' as current").
-			DialectExpr(sq.DialectPostgres, "now() as current").
+			DialectExpr(sq.DialectPostgres, "to_char(now(), 'YYYY-MM-DD HH24:MI:SS') as current").
 			DialectExpr(sq.DialectSQLite, " datetime('now','+8 hour') as current"),
 	)
+	return sel
+}
+
+func TestSq_Generic_DB_Select(t *testing.T) {
+	sel := selectDBNameAndVersion()
 
 	db1 := getSqliteDBForSQ()
-	m1, err1 := sq.FetchOne[Model](db1, sel.SetDialect(sq.DialectSQLite), func(r *sq.Row) Model {
+	m1, err1 := sq.FetchOne[Model](sq.Log(db1), sel.SetDialect(sq.DialectSQLite), func(r *sq.Row) Model {
 		m := Model{
+			Dialect: sq.DialectSQLite,
 			Name:    r.String("name"),
 			Version: r.String("version"),
 			Current: r.String("current"),
@@ -38,20 +44,30 @@ func TestSq_Generic_DB_Select(t *testing.T) {
 	require.NoError(t, err1)
 	require.NotNil(t, m1)
 
+	fmt.Println("-------------------------------------------------------------------------------")
+
 	fmt.Println(m1)
 
+	fmt.Println("-------------------------------------------------------------------------------")
+
 	db2 := getPgDBForSQ()
-	m2, err2 := sq.FetchOne[*Model](db2, sel.SetDialect(sq.DialectPostgres), func(r *sq.Row) *Model {
+	m2, err2 := sq.FetchOne[*Model](sq.Log(db2), sel.SetDialect(sq.DialectPostgres), func(r *sq.Row) *Model {
 		m := &Model{
+			Dialect: sq.DialectPostgres,
 			Name:    r.String("name"),
 			Version: r.String("version"),
+			Current: r.String("current"),
 		}
 		return m
 	})
 	require.NoError(t, err2)
 	require.NotNil(t, m2)
 
+	fmt.Println("-------------------------------------------------------------------------------")
+
 	fmt.Println(m2)
+
+	fmt.Println("-------------------------------------------------------------------------------")
 }
 
 func TestPtr_1(t *testing.T) {

@@ -4,7 +4,10 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/aarondl/opt/omit"
+	"github.com/blink-io/x/id"
 	"github.com/blink-io/x/ptr"
+	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/blink-io/x/sql/misc"
 	"github.com/blink-io/x/types/tuplen"
 	"github.com/bokwoon95/sq"
@@ -52,9 +55,9 @@ func TestSq_Pg_Tag_Insert_3(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestSq_Pg_Tag_Insert_OnConflict_1(t *testing.T) {
+func TestSq_Pg_Tag_Mapper_Insert_OnConflict_1(t *testing.T) {
 	db := getPgDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 
 	r1 := randomTag(nil)
@@ -64,10 +67,10 @@ func TestSq_Pg_Tag_Insert_OnConflict_1(t *testing.T) {
 	r3 := randomTag(nil)
 	r3.ID = 3
 
-	nrs := []Tag{r1, r2, r3}
+	nrs := []TagSetter{r1.Setter(), r2.Setter(), r3.Setter()}
 
 	q := sq.Postgres.InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(ctx, nrs...)).
+		ColumnValues(mm.InsertT(ctx, nrs...)).
 		OnConflict(tbl.ID).
 		DoUpdateSet(tbl.DESCRIPTION.SetString("DoUpdateSet"))
 
@@ -77,20 +80,41 @@ func TestSq_Pg_Tag_Insert_OnConflict_1(t *testing.T) {
 	fmt.Println(rt)
 }
 
-func TestSq_Pg_Tag_Insert_Returning_1(t *testing.T) {
+func TestSq_Pg_Tag_Mapper_Update_1(t *testing.T) {
+	db := getPgDBForSQ()
+	mm := Mappers.TAGS
+	tbl := mm.Table()
+
+	ss := []TagSetter{
+		{
+			Name: omit.From(gofakeit.City()),
+			Code: omit.From(id.ShortID()),
+		},
+	}
+
+	q := sq.Update(tbl).
+		SetFunc(mm.UpdateT(ctx, ss...)).
+		Where(sqx.AlwaysTrueExpr, sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
+
+	rt, err := sq.Exec(sq.Log(db), q)
+	require.NoError(t, err)
+	require.NotNil(t, rt)
+}
+
+func TestSq_Pg_Tag_Mapper_Insert_Returning_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := Tables.Tags
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 
-	nrs := []Tag{
-		randomTag(nil),
-		randomTag(Ptr(gofakeit.City())),
+	nrs := []TagSetter{
+		randomTag(nil).Setter(),
+		randomTag(Ptr(gofakeit.City())).Setter(),
 	}
 
 	rr, err := sq.FetchAll(db, sq.Postgres.
 		InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(ctx, nrs...)),
-		mm.QueryMapper(ctx),
+		ColumnValues(mm.InsertT(ctx, nrs...)),
+		mm.QueryT(ctx),
 	)
 
 	require.NoError(t, err)
@@ -117,29 +141,29 @@ func TestSq_Pg_Tag_Insert_Select_1(t *testing.T) {
 
 func TestSq_Pg_Tag_Mapper_Insert_1(t *testing.T) {
 	db := getPgDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 
-	d1 := randomTag(nil)
-	d2 := randomTag(ptr.Of("Hello, Hi, 你好"))
+	d1 := randomTag(nil).Setter()
+	d2 := randomTag(ptr.Of("Hello, Hi, 你好")).Setter()
 
 	_, err := sq.Exec(sq.Log(db), sq.
 		InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(ctx, d1, d2)),
+		ColumnValues(mm.InsertT(ctx, d1, d2)),
 	)
 	require.NoError(t, err)
 }
 
 func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
 	db := getPgDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 
 	query := sq.
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, query, mm.QueryMapper(ctx))
+	records, err := sq.FetchAll(db, query, mm.QueryT(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)
@@ -147,7 +171,7 @@ func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
 
 func TestSq_Pg_Tag_Fetch_Custom_1(t *testing.T) {
 	db := getPgDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 
 	query := sq.
@@ -167,10 +191,10 @@ func TestSq_Pg_Tag_Fetch_Custom_1(t *testing.T) {
 
 func TestSq_Pg_Tag_Mapper_FetchAll_Paging(t *testing.T) {
 	db := getPgDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 	perPage := 3
-	qm := mm.QueryMapper(ctx)
+	qm := mm.QueryT(ctx)
 	vdb := sq.VerboseLog(db)
 
 	bq := sq.
@@ -201,14 +225,14 @@ func TestSq_Pg_Tag_Mapper_FetchAll_Paging(t *testing.T) {
 
 func TestSq_Pg_Tag_Mapper_FetchOne_ByPK(t *testing.T) {
 	db := getPgDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 
 	idWhere := tbl.PrimaryKeyValues(23)
 	query := sq.
 		From(tbl).
 		Where(idWhere)
-	records, err := sq.FetchOne(db, query, mm.QueryMapper(ctx))
+	records, err := sq.FetchOne(db, query, mm.QueryT(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)

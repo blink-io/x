@@ -158,7 +158,7 @@ require (
 )
 
 replace (
-	github.com/aarondl/opt v0.0.0-20240623220848-083f18ab9536 => github.com/blink-io/opt v0.0.0-20241008132531-89ff275b9859
+	github.com/aarondl/opt v0.0.0-20240623220848-083f18ab9536 => github.com/blink-io/opt v0.0.0-20241009065040-b00eaa0192fb
 	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
 )
 

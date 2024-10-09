@@ -14,3 +14,5 @@ type mysql struct {
 
 type postgres struct {
 }
+
+var AlwaysTrueExpr = sq.Expr("1 = 1")

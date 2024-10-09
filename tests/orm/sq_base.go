@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/aarondl/opt/null"
 	"github.com/aarondl/opt/omit"
 	"github.com/aarondl/opt/omitnull"
 	"github.com/blink-io/x/log/slog/handlers/color"
@@ -150,14 +151,14 @@ func (m UserSetter) SetColumns(c *sq.Column) {
 }
 
 type UserDevice struct {
-	ID          int                  `db:"id"`
-	GUID        string               `db:"guid"`
-	UserID      int                  `db:"user_id"`
-	Name        string               `db:"name"`
-	Model       string               `db:"score"`
-	Description omitnull.Val[string] `db:"description"`
-	CreatedAt   time.Time            `db:"created_at"`
-	UpdatedAt   time.Time            `db:"updated_at"`
+	ID          int              `db:"id"`
+	GUID        string           `db:"guid"`
+	UserID      int              `db:"user_id"`
+	Name        string           `db:"name"`
+	Model       string           `db:"score"`
+	Description null.Val[string] `db:"description"`
+	CreatedAt   time.Time        `db:"created_at"`
+	UpdatedAt   time.Time        `db:"updated_at"`
 }
 
 func (m UserDevice) String() string {
@@ -190,12 +191,12 @@ func (m Device) String() string {
 }
 
 type Tag struct {
-	ID          int                  `db:"id"`
-	GUID        string               `db:"guid"`
-	Code        string               `db:"code"`
-	Name        string               `db:"name"`
-	CreatedAt   time.Time            `db:"created_at"`
-	Description omitnull.Val[string] `db:"description"`
+	ID          int              `db:"id"`
+	GUID        string           `db:"guid"`
+	Code        string           `db:"code"`
+	Name        string           `db:"name"`
+	CreatedAt   time.Time        `db:"created_at"`
+	Description null.Val[string] `db:"description"`
 }
 
 func (m Tag) Insert(db sq.DB) error {
@@ -218,7 +219,7 @@ func (m Tag) Setter() TagSetter {
 		Code:        omit.From(m.Code),
 		Name:        omit.From(m.Name),
 		CreatedAt:   omit.From(m.CreatedAt),
-		Description: m.Description,
+		Description: omitnull.FromNull(m.Description),
 	}
 	if m.ID > 0 {
 		ss.ID = omit.From(m.ID)
@@ -236,6 +237,7 @@ type TagSetter struct {
 }
 
 type Model struct {
+	Dialect string `db:"dialect"`
 	Name    string `db:"name"`
 	Version string `db:"version"`
 	Current string `db:"current"`
@@ -426,7 +428,7 @@ func randomTag(desc *string) Tag {
 		GUID:        gofakeit.UUID(),
 		Code:        gofakeit.City(),
 		Name:        gofakeit.DomainName(),
-		Description: omitnull.FromPtr(desc),
+		Description: null.FromPtr(desc),
 		CreatedAt:   time.Now().Local(),
 	}
 	return u

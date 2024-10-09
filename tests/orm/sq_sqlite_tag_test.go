@@ -20,11 +20,12 @@ func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
 	}
 
 	rt, err := sq.Exec(sq.Log(db), sb.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
-		for _, r := range records {
-			tagInsertColumnMapper(col, r)
-		}
-	}))
+		InsertInto(tbl).
+		ColumnValues(func(col *sq.Column) {
+			for _, r := range records {
+				tagInsertColumnMapper(col, r)
+			}
+		}))
 
 	require.NoError(t, err)
 	require.NotNil(t, rt)
@@ -60,15 +61,14 @@ func TestSq_Sqlite_Tag_Insert_Select_1(t *testing.T) {
 
 func TestSq_Sqlite_Tag_Mapper_FetchAll_1(t *testing.T) {
 	db := getSqliteDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
-	vctx := SetIntegerTime(ctx)
 
 	q := sq.
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, q, mm.QueryMapper(vctx))
+	records, err := sq.FetchAll(db, q, mm.QueryT(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)
@@ -76,14 +76,14 @@ func TestSq_Sqlite_Tag_Mapper_FetchAll_1(t *testing.T) {
 
 func TestSq_Sqlite_Tag_Mapper_FetchAll_2(t *testing.T) {
 	db := getSqliteDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 
 	q := sq.
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, q, mm.QueryMapper(ctx))
+	records, err := sq.FetchAll(db, q, mm.QueryT(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)

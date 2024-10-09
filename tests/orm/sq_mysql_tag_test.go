@@ -11,14 +11,14 @@ import (
 
 func TestSq_Mysql_Tag_Mapper_Insert_1(t *testing.T) {
 	db := getMysqlDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := Tables.Tags
 
-	d1 := randomTag(nil)
-	d2 := randomTag(ptr.Of("Hello, Hi, 你好"))
+	d1 := randomTag(nil).Setter()
+	d2 := randomTag(ptr.Of("Hello, Hi, 你好")).Setter()
 
 	q := sq.InsertInto(tbl).
-		ColumnValues(mm.InsertMapper(ctx, d1, d2))
+		ColumnValues(mm.InsertT(ctx, d1, d2))
 
 	_, err := sq.Exec(sq.VerboseLog(db), q)
 	require.NoError(t, err)
@@ -26,7 +26,7 @@ func TestSq_Mysql_Tag_Mapper_Insert_1(t *testing.T) {
 
 func TestSq_Mysql_Tag_Update_1(t *testing.T) {
 	db := getMysqlDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 
 	idWhere := tbl.PrimaryKeyValues(4)
@@ -42,7 +42,7 @@ func TestSq_Mysql_Tag_Update_1(t *testing.T) {
 
 func TestSq_Mysql_Tag_Update_2(t *testing.T) {
 	db := getMysqlDBForSQ()
-	mm := NewTagMapper()
+	mm := Mappers.TAGS
 	tbl := mm.Table()
 
 	idWhere := tbl.PrimaryKeyValues(4)
@@ -56,7 +56,8 @@ func TestSq_Mysql_Tag_Update_2(t *testing.T) {
 
 func TestSq_Mysql_Tag_FetchOne_ByID(t *testing.T) {
 	db := getMysqlDBForSQ()
-	tbl := TagTable
+	mm := Mappers.TAGS
+	tbl := mm.Table()
 
 	idWhere := tbl.PrimaryKeyValues(4)
 	query := sq.
