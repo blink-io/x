@@ -23,7 +23,8 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20241009123339-c55b00f01224
+	github.com/blink-io/hyperbun v0.0.0-20241009145627-a19277936c53
+	github.com/blink-io/hypersql v0.0.0-20241009082220-51e7c2b9a433
 	github.com/blink-io/opt v0.0.0-20241009121109-00fad4fc82a0
 	github.com/bokwoon95/sq v0.5.1
 	github.com/brianvoe/gofakeit/v7 v7.0.4
@@ -132,6 +133,7 @@ require (
 	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.13
 	github.com/unrolled/render v1.7.0
+	github.com/uptrace/bun v1.2.3
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/valkey-io/valkey-go v1.0.47
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.47
@@ -171,7 +173,6 @@ require (
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/bits-and-blooms/bitset v1.14.3 // indirect
-	github.com/blink-io/hypersql v0.0.0-20241009082220-51e7c2b9a433 // indirect
 	github.com/cloudflare/circl v1.4.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
@@ -261,7 +262,6 @@ require (
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
-	github.com/uptrace/bun v1.2.3 // indirect
 	github.com/uptrace/bun/dialect/mysqldialect v1.2.3 // indirect
 	github.com/uptrace/bun/dialect/pgdialect v1.2.3 // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.3 // indirect

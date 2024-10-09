@@ -79,8 +79,8 @@ github.com/bits-and-blooms/bitset v1.14.3 h1:Gd2c8lSNf9pKXom5JtD7AaKO8o7fGQ2LtFj
 github.com/bits-and-blooms/bitset v1.14.3/go.mod h1:7hO7Gc7Pp1vODcmWvKMRA9BNmbv6a/7QIWpPxHddWR8=
 github.com/bits-and-blooms/bloom/v3 v3.7.0 h1:VfknkqV4xI+PsaDIsoHueyxVDZrfvMn56jeWUzvzdls=
 github.com/bits-and-blooms/bloom/v3 v3.7.0/go.mod h1:VKlUSvp0lFIYqxJjzdnSsZEw4iHb1kOL2tfHTgyJBHg=
-github.com/blink-io/hyperbun v0.0.0-20241009123339-c55b00f01224 h1:7Ey6q/gR93oAu4aEgkvEg10C/4Ly7zQwpBcXnaiFwyI=
-github.com/blink-io/hyperbun v0.0.0-20241009123339-c55b00f01224/go.mod h1:TI16mKVQoaL+InWVT2s/ryN1REGnrWywDV9G06nVfdQ=
+github.com/blink-io/hyperbun v0.0.0-20241009145627-a19277936c53 h1:jytM6PYFm6SZMfUr5ivKlO3kZkXcDy8TfmLGJcKPt2A=
+github.com/blink-io/hyperbun v0.0.0-20241009145627-a19277936c53/go.mod h1:TI16mKVQoaL+InWVT2s/ryN1REGnrWywDV9G06nVfdQ=
 github.com/blink-io/hypersql v0.0.0-20241009082220-51e7c2b9a433 h1:kWdGlFNB3MLAgoMBfVlmvV2zAxykuRHWUts23LFWyDY=
 github.com/blink-io/hypersql v0.0.0-20241009082220-51e7c2b9a433/go.mod h1:10fBxHQJJbKrmkdIn8LYord5A9tWb+axqZuhapnFGes=
 github.com/blink-io/opt v0.0.0-20241009121109-00fad4fc82a0 h1:ek/VGvpLNBQz61fwGUO1CXRo8YQaJdOMjSvXfJYzduc=

@@ -12,7 +12,6 @@ import (
 	"time"
 
 	"github.com/blink-io/hyperbun"
-	"github.com/blink-io/hypersql"
 	"github.com/blink-io/opt/omit"
 	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/bokwoon95/sq"
@@ -29,7 +28,7 @@ func getPgDBForSQ() *sql.DB {
 
 func getPgDBForBun() *hyperbun.DB {
 	sqlDB := getPgDBForSQ()
-	db, err := hyperbun.NewFromSqlDB(sqlDB, hypersql.DialectPostgres)
+	db, err := hyperbun.NewFromSqlDB(sqlDB, hyperbun.DialectPostgres)
 	if err != nil {
 		panic(err)
 	}
