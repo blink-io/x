@@ -6,7 +6,7 @@ import (
 	"sync"
 	"testing"
 
-	sqx "github.com/blink-io/x/sql/orm/sq"
+	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
 	_ "modernc.org/sqlite"

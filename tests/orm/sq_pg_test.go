@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/aarondl/opt/omit"
-	sqx "github.com/blink-io/x/sql/orm/sq"
+	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	_ "github.com/jackc/pgx/v5/stdlib"

@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/blink-io/x/sql/orm/dbr/dialect"
-	dbrslog "github.com/blink-io/x/sql/orm/dbr/logger/slog"
+	"github.com/blink-io/x/sql/builder/dbr/dialect"
+	dbrslog "github.com/blink-io/x/sql/builder/dbr/logger/slog"
 	"github.com/gocraft/dbr/v2"
 	"github.com/guregu/null/v5"
 	"github.com/stretchr/testify/require"
