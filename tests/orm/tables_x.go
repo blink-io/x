@@ -25,64 +25,11 @@ var Tables = tables{
 	Arrays:  sq.New[ARRAYS](""),
 }
 
-func (t TAGS) setterToColumn(s TagSetter, c *sq.Column) {
-	s.ID.IfSet(func(v int) {
-		c.SetInt(t.ID, v)
-	})
-	s.GUID.IfSet(func(v string) {
-		c.SetString(t.GUID, v)
-	})
-	s.Name.IfSet(func(v string) {
-		c.SetString(t.NAME, v)
-	})
-	s.Code.IfSet(func(v string) {
-		c.SetString(t.CODE, v)
-	})
-	s.CreatedAt.IfSet(func(v time.Time) {
-		c.SetTime(t.CREATED_AT, v)
-	})
-	s.Description.IfSet(func(v string) {
-		c.SetString(t.DESCRIPTION, v)
-	})
-}
+var alwaysTrueExpr = sq.Expr("1 = {}", 1)
 
-func (t TAGS) Insert(ctx context.Context, db sq.DB, ss ...TagSetter) (sq.Result, error) {
-	q := sq.InsertInto(t).ColumnValues(t.InsertT(ctx, ss...))
-	return sq.Exec(db, q)
-}
-
-func (t TAGS) Update(ctx context.Context, db sq.DB, s TagSetter, where sq.Predicate) (sq.Result, error) {
-	q := sq.Update(t).
-		SetFunc(t.UpdateT(ctx, s)).
-		Where(where)
-	return sq.Exec(db, q)
-}
-
-func (t TAGS) InsertT(ctx context.Context, ss ...TagSetter) func(c *sq.Column) {
-	q := func(c *sq.Column) {
-		for _, s := range ss {
-			s.ID.Unset()
-			t.setterToColumn(s, c)
-		}
-	}
-	return q
-}
-
-func (t TAGS) UpdateT(ctx context.Context, s TagSetter) func(c *sq.Column) {
-	q := func(c *sq.Column) {
-		s.ID.Unset()
-		t.setterToColumn(s, c)
-	}
-	return q
-}
-
-func (t TAGS) PrimaryKeys() sq.RowValue {
-	return sq.RowValue{t.ID}
-}
-
-func (t TAGS) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().Eq(id)
-}
+const (
+	defaultTenantID = 1
+)
 
 func (t TVALS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.IID, t.SID}
@@ -91,12 +38,6 @@ func (t TVALS) PrimaryKeys() sq.RowValue {
 func (t TVALS) PrimaryKeyValues(iid int64, sid string) sq.Predicate {
 	return t.PrimaryKeys().Eq(sq.RowValues{{iid, sid}})
 }
-
-var alwaysTrueExpr = sq.Expr("1 = {}", 1)
-
-const (
-	defaultTenantID = 1
-)
 
 func (tbl USERS) Policy(ctx context.Context, dialect string) (sq.Predicate, error) {
 	tenantID, ok := ctx.Value(tbl.TENANT_ID.GetName()).(int)

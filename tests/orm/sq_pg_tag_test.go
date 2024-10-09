@@ -1,10 +1,14 @@
 package orm
 
 import (
+	"context"
+	"database/sql"
+	"errors"
 	"fmt"
 	"testing"
 
 	"github.com/blink-io/opt/omit"
+	"github.com/blink-io/opt/omitnull"
 	"github.com/blink-io/x/id"
 	"github.com/blink-io/x/ptr"
 	sqx "github.com/blink-io/x/sql/builder/sq"
@@ -13,6 +17,7 @@ import (
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/stretchr/testify/require"
+	"github.com/uptrace/bun"
 )
 
 func TestSq_Pg_Tag_Insert_1(t *testing.T) {
@@ -47,10 +52,98 @@ func TestSq_Pg_Tag_Update_1(t *testing.T) {
 		Code: omit.From(id.ShortID()),
 	}
 
-	rt, err := tbl.Update(ctx, sq.Log(db), s, tbl.ID.EqInt(15))
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
+	rt, err := tbl.Update(ctx, sq.Log(db), where, s)
 
 	require.NoError(t, err)
 	require.NotNil(t, rt)
+}
+
+func TestSq_Pg_Tag_Update_WithTx_2(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
+
+	runInTxFn := func(ctx context.Context, tx *sql.Tx) error {
+		row, err := tbl.One(ctx, sq.Log(tx), where)
+		if err != nil {
+			return err
+		}
+
+		s := row.Setter()
+		s.Name = omit.From(gofakeit.City() + "-Modified")
+		s.Description = omitnull.From(gofakeit.Animal())
+
+		rt, err := tbl.Update(ctx, sq.Log(tx), where, s)
+		if err != nil {
+			return err
+		}
+		require.NotNil(t, rt)
+
+		return nil
+	}
+
+	t.Run("tx with commit", func(t *testing.T) {
+		err := sqx.RunInTx(ctx, db, nil, runInTxFn)
+
+		require.NoError(t, err)
+	})
+
+	t.Run("tx with rollback", func(t *testing.T) {
+		err := sqx.RunInTx(ctx, db, nil, func(ctx context.Context, tx *sql.Tx) error {
+			_ = runInTxFn(ctx, tx)
+			return errors.New("tx with rollback")
+		})
+
+		require.Error(t, err)
+	})
+
+	t.Run("tx with bun and commit", func(t *testing.T) {
+		bundb := getPgDBForBun()
+		require.NoError(t, bundb.HealthCheck(ctx))
+
+		err := bundb.RunInTx(ctx, nil, func(ctx context.Context, tx bun.Tx) error {
+			return runInTxFn(ctx, tx.Tx)
+		})
+		require.NoError(t, err)
+	})
+}
+
+func TestSq_Pg_Tag_One_1(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(0))
+
+	row, err := tbl.One(ctx, sq.Log(db), where)
+
+	require.NoError(t, err)
+	require.NotNil(t, row)
+}
+
+func TestSq_Pg_Tag_All_1(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(0))
+
+	rows, err := tbl.All(ctx, sq.Log(db), where)
+
+	require.NoError(t, err)
+	require.NotNil(t, rows)
+}
+
+func TestSq_Pg_Tag_Delete_1(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(40))
+
+	rows, err := tbl.Delete(ctx, sq.Log(db), where)
+
+	require.NoError(t, err)
+	require.NotNil(t, rows)
 }
 
 func TestSq_Pg_Tag_Mapper_Insert_OnConflict_1(t *testing.T) {

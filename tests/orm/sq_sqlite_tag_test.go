@@ -22,7 +22,7 @@ func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
 	rt, err := sq.Exec(
 		sq.Log(db),
 		sb.InsertInto(tbl).
-			ColumnValues(tbl.InsertT(ctx, ss...)),
+			ColumnValues(tbl.InsertQ(ctx, ss...)),
 	)
 
 	require.NoError(t, err)
