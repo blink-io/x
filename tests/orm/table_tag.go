@@ -9,8 +9,8 @@ import (
 )
 
 func (t TAGS) setterToColumn(ctx context.Context, s TagSetter, c *sq.Column) {
-	s.ID.IfSet(func(v int) {
-		c.SetInt(t.ID, v)
+	s.ID.IfSet(func(v int64) {
+		c.SetInt64(t.ID, v)
 	})
 	s.GUID.IfSet(func(v string) {
 		c.SetString(t.GUID, v)
@@ -60,28 +60,26 @@ func (t TAGS) All(ctx context.Context, db sq.DB, where sq.Predicate) ([]Tag, err
 	return rows, err
 }
 
-func (t TAGS) InsertQ(ctx context.Context, ss ...TagSetter) func(c *sq.Column) {
+func (t TAGS) InsertQ(ctx context.Context, ss ...TagSetter) func(*sq.Column) {
 	q := func(c *sq.Column) {
 		for _, s := range ss {
-			s.ID.Unset()
 			t.setterToColumn(ctx, s, c)
 		}
 	}
 	return q
 }
 
-func (t TAGS) UpdateQ(ctx context.Context, s TagSetter) func(c *sq.Column) {
+func (t TAGS) UpdateQ(ctx context.Context, s TagSetter) func(*sq.Column) {
 	q := func(c *sq.Column) {
-		s.ID.Unset()
 		t.setterToColumn(ctx, s, c)
 	}
 	return q
 }
 
-func (t TAGS) SelectQ(ctx context.Context) func(c *sq.Row) Tag {
+func (t TAGS) SelectQ(ctx context.Context) func(*sq.Row) Tag {
 	return func(r *sq.Row) Tag {
 		v := Tag{}
-		v.ID = r.IntField(t.ID)
+		v.ID = r.Int64Field(t.ID)
 		v.GUID = r.StringField(t.GUID)
 		v.Name = r.StringField(t.NAME)
 		v.Code = r.StringField(t.CODE)

@@ -30,7 +30,7 @@ func NewTagMapper() sqx.Mapper[TAGS, Tag, TagSetter] {
 func (m TagMapper) columnSetter(c *sq.Column, v TagSetter) {
 	tbl := m.tbl
 	if iv := v.ID.GetOrZero(); iv > 0 {
-		c.SetInt(tbl.ID, iv)
+		c.SetInt64(tbl.ID, iv)
 	}
 	v.GUID.IfSet(func(iv string) {
 		c.SetString(tbl.GUID, iv)
@@ -71,7 +71,7 @@ func (m TagMapper) QueryT(ctx context.Context) func(*sq.Row) Tag {
 	tbl := m.tbl
 	return func(r *sq.Row) Tag {
 		v := Tag{
-			ID:        r.IntField(tbl.ID),
+			ID:        r.Int64Field(tbl.ID),
 			GUID:      r.StringField(tbl.GUID),
 			Code:      r.StringField(tbl.CODE),
 			Name:      r.StringField(tbl.NAME),

@@ -191,7 +191,7 @@ func (m Device) String() string {
 }
 
 type Tag struct {
-	ID          int              `db:"id"`
+	ID          int64            `db:"id"`
 	GUID        string           `db:"guid"`
 	Code        string           `db:"code"`
 	Name        string           `db:"name"`
@@ -214,7 +214,7 @@ func (m Tag) Setter() TagSetter {
 }
 
 type TagSetter struct {
-	ID          omit.Val[int]        `db:"id"`
+	ID          omit.Val[int64]      `db:"id"`
 	GUID        omit.Val[string]     `db:"guid"`
 	Code        omit.Val[string]     `db:"code"`
 	Name        omit.Val[string]     `db:"name"`

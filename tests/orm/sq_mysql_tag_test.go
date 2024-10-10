@@ -65,7 +65,7 @@ func TestSq_Mysql_Tag_FetchOne_ByID(t *testing.T) {
 
 	records, err := sq.FetchOne(sq.VerboseLog(db), query, func(r *sq.Row) Tag {
 		return Tag{
-			ID:   r.Int("id"),
+			ID:   r.Int64("id"),
 			Code: r.String("code"),
 			Name: r.String("name"),
 			GUID: r.String("guid"),
@@ -86,7 +86,7 @@ func TestSq_Mysql_Tag_FetchAll_BySQL_1(t *testing.T) {
 
 	records, err := sq.FetchOne(idb, query, func(r *sq.Row) Tag {
 		return Tag{
-			ID:   r.Int("id"),
+			ID:   r.Int64("id"),
 			Code: r.String("code"),
 			Name: r.String("name"),
 			GUID: r.String("guid"),

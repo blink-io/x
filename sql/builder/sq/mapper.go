@@ -16,4 +16,16 @@ type (
 
 		QueryT(context.Context) func(*sq.Row) M
 	}
+
+	Executor[M any, S any] interface {
+		Insert(ctx context.Context, db sq.DB, ss ...S) (sq.Result, error)
+
+		Update(ctx context.Context, db sq.DB, where sq.Predicate, s S) (sq.Result, error)
+
+		Delete(ctx context.Context, db sq.DB, where sq.Predicate) (sq.Result, error)
+
+		One(ctx context.Context, db sq.DB, where sq.Predicate) (M, error)
+
+		All(ctx context.Context, db sq.DB, where sq.Predicate) ([]M, error)
+	}
 )

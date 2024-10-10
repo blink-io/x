@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"testing"
+	"time"
 
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
@@ -15,6 +16,7 @@ import (
 	"github.com/blink-io/x/types/tuplen"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
+	"github.com/spf13/cast"
 	"github.com/stretchr/testify/require"
 	"github.com/uptrace/bun"
 )
@@ -41,17 +43,34 @@ func TestSq_Pg_Tag_Insert_2(t *testing.T) {
 	require.NoError(t, err)
 }
 
+func TestSq_Pg_Tag_Insert_3(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+
+	var iii = time.Now().Unix()
+	s1 := randomTag(Ptr("")).Setter()
+	s1.ID = omit.From(iii + 10)
+
+	s2 := randomTag(Ptr(gofakeit.AppName())).Setter()
+	s2.ID = omit.From(iii + 30)
+
+	_, err := tbl.Insert(ctx, sq.Log(db), s1, s2)
+	require.NoError(t, err)
+}
+
 func TestSq_Pg_Tag_Update_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := Tables.Tags
 
+	var vid int64 = 40
+
 	s := TagSetter{
-		ID:   omit.From(15),
+		ID:   omit.From[int64](vid),
 		Name: omit.From(gofakeit.City()),
 		Code: omit.From(id.ShortID()),
 	}
 
-	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.EqInt64(vid))
 	rt, err := tbl.Update(ctx, sq.Log(db), where, s)
 
 	require.NoError(t, err)
@@ -205,6 +224,32 @@ func TestSq_Pg_Tag_One_1(t *testing.T) {
 	require.NotNil(t, row)
 }
 
+func TestSq_Pg_Tag_One_2(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(1000))
+
+	fields := []sq.Field{
+		tbl.ID,
+		tbl.NAME,
+		tbl.CODE,
+	}
+
+	q := sq.From(tbl).Select(fields...).Where(where)
+	row, err := sq.FetchOne(sq.Log(db), q, func(r *sq.Row) map[string]string {
+		m := map[string]string{
+			"id":   cast.ToString(r.Int64(tbl.ID.GetName())),
+			"name": r.String(tbl.NAME.GetName()),
+			"code": r.String(tbl.CODE.GetName()),
+		}
+		return m
+	})
+
+	require.NoError(t, err)
+	require.NotNil(t, row)
+}
+
 func TestSq_Pg_Tag_All_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := Tables.Tags
@@ -221,7 +266,7 @@ func TestSq_Pg_Tag_Delete_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := Tables.Tags
 
-	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(40))
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(1000000))
 
 	rows, err := tbl.Delete(ctx, sq.Log(db), where)
 
@@ -260,7 +305,7 @@ func TestSq_Pg_Tag_Mapper_Update_1(t *testing.T) {
 	tbl := mm.Table()
 
 	s := TagSetter{
-		ID:   omit.From(15),
+		ID:   omit.From[int64](15),
 		Name: omit.From(gofakeit.City()),
 		Code: omit.From(id.ShortID()),
 	}
