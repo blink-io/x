@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"sync"
 
-	sqx "github.com/blink-io/x/sql/builder/sq"
+	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
 	"github.com/qustavo/sqlhooks/v2"
 	"github.com/qustavo/sqlhooks/v2/hooks/loghooks"

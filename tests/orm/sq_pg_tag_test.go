@@ -9,9 +9,9 @@ import (
 
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
+	"github.com/blink-io/sqx"
 	"github.com/blink-io/x/id"
 	"github.com/blink-io/x/ptr"
-	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/blink-io/x/sql/misc"
 	"github.com/blink-io/x/types/tuplen"
 	"github.com/bokwoon95/sq"

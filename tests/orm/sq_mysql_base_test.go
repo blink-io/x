@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"sync"
 
-	sqx "github.com/blink-io/x/sql/builder/sq"
+	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
 	"github.com/go-sql-driver/mysql"
 	_ "github.com/go-sql-driver/mysql"

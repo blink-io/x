@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"sync"
 
-	sqx "github.com/blink-io/x/sql/builder/sq"
+	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
 	"github.com/jackc/pgx/v5/stdlib"
 	"github.com/jmoiron/sqlx"

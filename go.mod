@@ -1,6 +1,8 @@
 module github.com/blink-io/x
 
-go 1.23
+go 1.23.0
+
+toolchain go1.23.2
 
 //godebug default=go1.23
 
@@ -23,8 +25,9 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20241010005143-01f200d5cd44
-	github.com/blink-io/opt v0.0.0-20241009121109-00fad4fc82a0
+	github.com/blink-io/hyperbun v0.0.0-20241010141505-9df71dbfcee3
+	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
+	github.com/blink-io/sqx v0.0.0-20241010144617-d1e84304fa20
 	github.com/bokwoon95/sq v0.5.1
 	github.com/brianvoe/gofakeit/v7 v7.0.4
 	github.com/bwmarrin/snowflake v0.3.0
@@ -102,6 +105,7 @@ require (
 	github.com/projectdiscovery/machineid v0.0.0-20240226150047-2e2c51e35983
 	github.com/qiniu/qmgo v1.1.8
 	github.com/quic-go/quic-go v0.47.0
+	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.5.3
 	github.com/redis/go-redis/v9 v9.6.1
 	github.com/redis/rueidis v1.0.47
@@ -172,7 +176,7 @@ require (
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/bits-and-blooms/bitset v1.14.3 // indirect
-	github.com/blink-io/hypersql v0.0.0-20241009082220-51e7c2b9a433 // indirect
+	github.com/blink-io/hypersql v0.0.0-20241010054008-37ce7d161055 // indirect
 	github.com/cloudflare/circl v1.4.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
@@ -241,7 +245,6 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/puzpuzpuz/xsync/v3 v3.4.0 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
-	github.com/qustavo/sqlhooks/v2 v2.1.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/riverqueue/river/riverdriver v0.13.0 // indirect

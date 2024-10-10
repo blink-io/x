@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	sqx "github.com/blink-io/x/sql/builder/sq"
+	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
 )
@@ -24,19 +24,30 @@ func TestSq_Sqlite_Chain_1(t *testing.T) {
 		fmt.Println("Invoke f3")
 		return db
 	}
-	chain := sqx.NewChain(f1, f2, f3)
 
 	q := sq.Queryf("select sqlite_version() as ver")
-
-	ver, err := sq.FetchOne(sq.Log(chain.Then(db)), q, func(r *sq.Row) string {
+	rm := func(r *sq.Row) string {
 		return r.String("ver")
-	})
-	require.NoError(t, err)
+	}
 
-	fmt.Println("sqlite version: ", ver)
+	t.Run("NewChain", func(t *testing.T) {
+		chain := sqx.NewChain(f1, f2, f3)
+		ver, err := sq.FetchOne(sq.Log(chain.Then(db)), q, rm)
+		require.NoError(t, err)
+
+		fmt.Println("sqlite version: ", ver)
+	})
+
+	t.Run("ChainFunc", func(t *testing.T) {
+		ver, err := sq.FetchOne(sq.Log(sqx.ChainFunc(db, f1, f2, f3)), q, rm)
+		require.NoError(t, err)
+
+		fmt.Println("sqlite version: ", ver)
+	})
+
 }
 
-func TestSq_Sqlite_Chain_2(t *testing.T) {
+func TestSq_Sqlite_InTx(t *testing.T) {
 	rdb := getSqliteDBForSQ()
 	db := sqx.InTx(rdb)
 

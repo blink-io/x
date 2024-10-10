@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	sqx "github.com/blink-io/x/sql/builder/sq"
+	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
 )
 

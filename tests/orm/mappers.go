@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/blink-io/opt/null"
-	sqx "github.com/blink-io/x/sql/builder/sq"
+	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
 )
 
@@ -67,7 +67,7 @@ func (m TagMapper) UpdateT(ctx context.Context, v TagSetter) func(*sq.Column) {
 	}
 }
 
-func (m TagMapper) QueryT(ctx context.Context) func(*sq.Row) Tag {
+func (m TagMapper) SelectT(ctx context.Context) func(*sq.Row) Tag {
 	tbl := m.tbl
 	return func(r *sq.Row) Tag {
 		v := Tag{
