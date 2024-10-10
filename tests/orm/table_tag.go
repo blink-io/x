@@ -8,7 +8,7 @@ import (
 	"github.com/bokwoon95/sq"
 )
 
-func (t TAGS) setterToColumn(s TagSetter, c *sq.Column) {
+func (t TAGS) setterToColumn(ctx context.Context, s TagSetter, c *sq.Column) {
 	s.ID.IfSet(func(v int) {
 		c.SetInt(t.ID, v)
 	})
@@ -64,7 +64,7 @@ func (t TAGS) InsertQ(ctx context.Context, ss ...TagSetter) func(c *sq.Column) {
 	q := func(c *sq.Column) {
 		for _, s := range ss {
 			s.ID.Unset()
-			t.setterToColumn(s, c)
+			t.setterToColumn(ctx, s, c)
 		}
 	}
 	return q
@@ -73,20 +73,19 @@ func (t TAGS) InsertQ(ctx context.Context, ss ...TagSetter) func(c *sq.Column) {
 func (t TAGS) UpdateQ(ctx context.Context, s TagSetter) func(c *sq.Column) {
 	q := func(c *sq.Column) {
 		s.ID.Unset()
-		t.setterToColumn(s, c)
+		t.setterToColumn(ctx, s, c)
 	}
 	return q
 }
 
 func (t TAGS) SelectQ(ctx context.Context) func(c *sq.Row) Tag {
 	return func(r *sq.Row) Tag {
-		v := Tag{
-			ID:        r.IntField(t.ID),
-			GUID:      r.StringField(t.GUID),
-			Name:      r.StringField(t.NAME),
-			Code:      r.StringField(t.CODE),
-			CreatedAt: r.TimeField(t.CREATED_AT),
-		}
+		v := Tag{}
+		v.ID = r.IntField(t.ID)
+		v.GUID = r.StringField(t.GUID)
+		v.Name = r.StringField(t.NAME)
+		v.Code = r.StringField(t.CODE)
+		v.CreatedAt = r.TimeField(t.CREATED_AT)
 		desc := r.NullStringField(t.DESCRIPTION)
 		v.Description = null.FromCond(desc.String, desc.Valid)
 		return v

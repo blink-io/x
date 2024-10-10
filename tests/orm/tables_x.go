@@ -4,6 +4,7 @@ import (
 	"context"
 	"time"
 
+	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/bokwoon95/sq"
 )
 
@@ -25,7 +26,7 @@ var Tables = tables{
 	Arrays:  sq.New[ARRAYS](""),
 }
 
-var alwaysTrueExpr = sq.Expr("1 = {}", 1)
+var _ sq.PolicyTable = Tables.Users
 
 const (
 	defaultTenantID = 1
@@ -42,7 +43,7 @@ func (t TVALS) PrimaryKeyValues(iid int64, sid string) sq.Predicate {
 func (tbl USERS) Policy(ctx context.Context, dialect string) (sq.Predicate, error) {
 	tenantID, ok := ctx.Value(tbl.TENANT_ID.GetName()).(int)
 	if !ok {
-		return sq.And(alwaysTrueExpr, tbl.TENANT_ID.EqInt(defaultTenantID)), nil
+		return sq.And(sqx.AlwaysTrueExpr, tbl.TENANT_ID.EqInt(defaultTenantID)), nil
 	}
 	return tbl.TENANT_ID.EqInt(tenantID), nil
 }

@@ -23,8 +23,7 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20241009145627-a19277936c53
-	github.com/blink-io/hypersql v0.0.0-20241009082220-51e7c2b9a433
+	github.com/blink-io/hyperbun v0.0.0-20241010005143-01f200d5cd44
 	github.com/blink-io/opt v0.0.0-20241009121109-00fad4fc82a0
 	github.com/bokwoon95/sq v0.5.1
 	github.com/brianvoe/gofakeit/v7 v7.0.4
@@ -72,7 +71,7 @@ require (
 	github.com/jackc/pgx/v5 v5.7.1
 	github.com/jackc/puddle/v2 v2.2.2
 	github.com/jaevor/go-nanoid v1.4.0
-	github.com/jaswdr/faker/v2 v2.3.0
+	github.com/jaswdr/faker/v2 v2.3.2
 	github.com/jellydator/ttlcache/v3 v3.3.0
 	github.com/jfcg/sorty/v2 v2.1.1
 	github.com/jmoiron/sqlx v1.4.0
@@ -149,7 +148,7 @@ require (
 	go.uber.org/zap v1.27.0
 	go.uber.org/zap/exp v0.2.0
 	golang.org/x/crypto v0.28.0
-	golang.org/x/exp v0.0.0-20241004190924-225e2abe05e6
+	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c
 	golang.org/x/sys v0.26.0
 	golang.org/x/text v0.19.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20241007155032-5fefd90f89a9
@@ -169,10 +168,11 @@ require (
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/XSAM/otelsql v0.34.0 // indirect
 	github.com/aarondl/json v0.0.0-20221020222930-8b0db17ef1bf // indirect
-	github.com/andybalholm/brotli v1.1.0 // indirect
+	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/bits-and-blooms/bitset v1.14.3 // indirect
+	github.com/blink-io/hypersql v0.0.0-20241009082220-51e7c2b9a433 // indirect
 	github.com/cloudflare/circl v1.4.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
@@ -199,7 +199,7 @@ require (
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/pprof v0.0.0-20241008150032-332c0e1a4a34 // indirect
+	github.com/google/pprof v0.0.0-20241009165004-a3522334989c // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect

@@ -2,7 +2,6 @@ package orm
 
 import (
 	"context"
-	"database/sql"
 	"errors"
 	"fmt"
 	"testing"
@@ -59,14 +58,14 @@ func TestSq_Pg_Tag_Update_1(t *testing.T) {
 	require.NotNil(t, rt)
 }
 
-func TestSq_Pg_Tag_Update_WithTx_2(t *testing.T) {
+func TestSq_Pg_Tag_Update_WithTx_1(t *testing.T) {
 	db := getPgDBForSQ()
 	tbl := Tables.Tags
 
 	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
 
-	runInTxFn := func(ctx context.Context, tx *sql.Tx) error {
-		row, err := tbl.One(ctx, sq.Log(tx), where)
+	runInTxFn := func(ctx context.Context, db sq.DB) error {
+		row, err := tbl.One(ctx, sq.Log(db), where)
 		if err != nil {
 			return err
 		}
@@ -75,7 +74,7 @@ func TestSq_Pg_Tag_Update_WithTx_2(t *testing.T) {
 		s.Name = omit.From(gofakeit.City() + "-Modified")
 		s.Description = omitnull.From(gofakeit.Animal())
 
-		rt, err := tbl.Update(ctx, sq.Log(tx), where, s)
+		rt, err := tbl.Update(ctx, sq.Log(db), where, s)
 		if err != nil {
 			return err
 		}
@@ -86,12 +85,11 @@ func TestSq_Pg_Tag_Update_WithTx_2(t *testing.T) {
 
 	t.Run("tx with commit", func(t *testing.T) {
 		err := sqx.RunInTx(ctx, db, nil, runInTxFn)
-
 		require.NoError(t, err)
 	})
 
 	t.Run("tx with rollback", func(t *testing.T) {
-		err := sqx.RunInTx(ctx, db, nil, func(ctx context.Context, tx *sql.Tx) error {
+		err := sqx.RunInTx(ctx, db, nil, func(ctx context.Context, tx sq.DB) error {
 			_ = runInTxFn(ctx, tx)
 			return errors.New("tx with rollback")
 		})
@@ -107,6 +105,91 @@ func TestSq_Pg_Tag_Update_WithTx_2(t *testing.T) {
 			return runInTxFn(ctx, tx.Tx)
 		})
 		require.NoError(t, err)
+	})
+}
+
+func TestSq_Pg_Tag_Update_WithBun_WithTx_1(t *testing.T) {
+	t.Parallel()
+
+	db := getPgDBForBun()
+	tbl := Tables.Tags
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
+
+	runInTxFn := func(ctx context.Context, tx bun.Tx) error {
+		row, err := tbl.One(ctx, sq.Log(tx.Tx), where)
+		if err != nil {
+			return err
+		}
+
+		s := row.Setter()
+		s.Name = omit.From(gofakeit.City() + "-Modified")
+		s.Description = omitnull.From(gofakeit.Animal())
+
+		rt, err := tbl.Update(ctx, sq.Log(tx.Tx), where, s)
+		if err != nil {
+			return err
+		}
+		require.NotNil(t, rt)
+
+		return nil
+	}
+
+	t.Run("tx with bun and commit", func(t *testing.T) {
+		err := db.RunInTx(ctx, nil, func(ctx context.Context, tx bun.Tx) error {
+			return runInTxFn(ctx, tx)
+		})
+		require.NoError(t, err)
+	})
+
+	t.Run("tx with bun and rollback", func(t *testing.T) {
+		err := db.RunInTx(ctx, nil, func(ctx context.Context, tx bun.Tx) error {
+			_ = runInTxFn(ctx, tx)
+			return errors.New("tx with rollback")
+		})
+
+		require.Error(t, err)
+	})
+}
+
+func TestSq_Pg_Tag_Update_WithSqlx_WithTx_1(t *testing.T) {
+	t.Parallel()
+
+	db := getPgDBForSqlx()
+	tbl := Tables.Tags
+	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
+
+	db.Begin()
+
+	runInTxFn := func(ctx context.Context, db sq.DB) error {
+		row, err := tbl.One(ctx, sq.Log(db), where)
+		if err != nil {
+			return err
+		}
+
+		s := row.Setter()
+		s.Name = omit.From(gofakeit.City() + "-Modified")
+		s.Description = omitnull.From(gofakeit.Animal())
+
+		rt, err := tbl.Update(ctx, sq.Log(db), where, s)
+		if err != nil {
+			return err
+		}
+		require.NotNil(t, rt)
+
+		return nil
+	}
+
+	t.Run("tx with sqlx and commit", func(t *testing.T) {
+		err := sqx.RunInTx(ctx, db, nil, runInTxFn)
+		require.NoError(t, err)
+	})
+
+	t.Run("tx with sqlx and rollback", func(t *testing.T) {
+		err := sqx.RunInTx(ctx, db, nil, func(ctx context.Context, db sq.DB) error {
+			_ = runInTxFn(ctx, db)
+			return errors.New("tx with rollback")
+		})
+		require.Error(t, err)
 	})
 }
 

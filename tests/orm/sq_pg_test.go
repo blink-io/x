@@ -5,58 +5,16 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"log"
 	"log/slog"
-	"sync"
 	"testing"
 	"time"
 
-	"github.com/blink-io/hyperbun"
 	"github.com/blink-io/opt/omit"
-	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/stretchr/testify/require"
 )
-
-var pgOnce sync.Once
-
-func getPgDBForSQ() *sql.DB {
-	return getPgDB()
-}
-
-func getPgDBForBun() *hyperbun.DB {
-	sqlDB := getPgDBForSQ()
-	db, err := hyperbun.NewFromSqlDB(sqlDB, hyperbun.DialectPostgres)
-	if err != nil {
-		panic(err)
-	}
-	return db
-}
-
-func getPgDB() *sql.DB {
-	pgOnce.Do(func() {
-		setupPgDialect()
-	})
-
-	dsn := "postgres://test:test@192.168.50.88:5432/test?sslmode=disable&TimeZone=Asia/Shanghai"
-	db, err := sql.Open("pgx", dsn)
-	if err != nil {
-		log.Fatalf("failed to open pg db: %v", err)
-	}
-	if err := db.Ping(); err != nil {
-		log.Fatalf("failed to ping pg db: %v", err)
-	}
-
-	return db
-}
-
-func setupPgDialect() {
-	dialect := sq.DialectPostgres
-	sqx.SetDefaultDialect(dialect)
-	slog.Info("Setup database dialect", "dialect", dialect)
-}
 
 func TestSq_1(t *testing.T) {
 	db := getPgDBForSQ()

@@ -1,46 +1,12 @@
 package orm
 
 import (
-	"database/sql"
-	"log/slog"
-	"sync"
 	"testing"
 
-	sqx "github.com/blink-io/x/sql/builder/sq"
 	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
 	_ "modernc.org/sqlite"
 )
-
-var sqliteOnce sync.Once
-
-var sqliteDSN = "./orm_demo.db"
-
-func GetSqliteDB(dsn string) *sql.DB {
-	db, err := sql.Open("sqlite", dsn)
-	if err != nil {
-		panic(err)
-	}
-	return db
-}
-
-func getSqliteDB() *sql.DB {
-	sqliteOnce.Do(func() {
-		setupSqlite3Dialect()
-	})
-
-	return GetSqliteDB(sqliteDSN)
-}
-
-func setupSqlite3Dialect() {
-	dialect := sq.DialectSQLite
-	sqx.SetDefaultDialect(dialect)
-	slog.Info("Setup database dialect", "dialect", dialect)
-}
-
-func getSqliteDBForSQ() *sql.DB {
-	return getSqliteDB()
-}
 
 func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
 	db := getSqliteDBForSQ()
