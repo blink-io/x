@@ -69,7 +69,7 @@ func TestSq_Sqlite_Tag_Mapper_FetchAll_1(t *testing.T) {
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, q, mm.QueryT(ctx))
+	records, err := sq.FetchAll(db, q, mm.SelectT(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)
@@ -84,7 +84,7 @@ func TestSq_Sqlite_Tag_Mapper_FetchAll_2(t *testing.T) {
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, q, mm.QueryT(ctx))
+	records, err := sq.FetchAll(db, q, mm.SelectT(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)

@@ -5,12 +5,13 @@ import (
 	"log"
 	"log/slog"
 	"sync"
+	"time"
 
+	"github.com/blink-io/hypersql"
+	pgparams "github.com/blink-io/hypersql/postgres/params"
 	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
-	"github.com/jackc/pgx/v5/stdlib"
 	"github.com/jmoiron/sqlx"
-	"github.com/qustavo/sqlhooks/v2"
 	"github.com/qustavo/sqlhooks/v2/hooks/loghooks"
 )
 
@@ -33,10 +34,29 @@ func getPgDB() *sql.DB {
 		setupPgDialect()
 	})
 
-	sql.Register(pgDriverName, sqlhooks.Wrap(stdlib.GetDefaultDriver(), loghooks.New()))
+	//sql.Register(pgDriverName, sqlhooks.Wrap(stdlib.GetDefaultDriver(), loghooks.New()))
 
-	dsn := "postgres://test:test@192.168.50.88:5432/test?sslmode=disable&TimeZone=Asia/Shanghai"
-	db, err := sql.Open(pgDriverName, dsn)
+	c := &hypersql.Config{
+		Dialect:  hypersql.DialectPostgres,
+		Host:     "192.168.50.88",
+		Port:     5432,
+		User:     "test",
+		Password: "test",
+		Name:     "test",
+		Params: hypersql.ConfigParams{
+			pgparams.ApplicationName: "go-client-test-n1",
+			//pgparams.SSLMode:         "disable",
+			"TimeZone": "Asia/Shanghai",
+		},
+		DriverHooks: hypersql.DriverHooks{
+			loghooks.New(),
+		},
+		Loc: time.Local,
+	}
+
+	//dsn := "postgres://test:test@:5432/test?sslmode=disable&TimeZone=Asia/Shanghai"
+	//db, err := sql.Open(pgDriverName, dsn)
+	db, err := hypersql.NewSqlDB(c)
 	if err != nil {
 		log.Fatalf("failed to open pg db: %v", err)
 	}

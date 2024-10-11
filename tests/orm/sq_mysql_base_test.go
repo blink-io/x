@@ -5,12 +5,12 @@ import (
 	"log"
 	"log/slog"
 	"sync"
+	"time"
 
+	"github.com/blink-io/hypersql"
 	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
-	"github.com/go-sql-driver/mysql"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/qustavo/sqlhooks/v2"
 	"github.com/qustavo/sqlhooks/v2/hooks/loghooks"
 )
 
@@ -29,10 +29,29 @@ func getMysqlDB() *sql.DB {
 		setupMysqlDialect()
 	})
 
-	sql.Register(mysqlDriverName, sqlhooks.Wrap(&mysql.MySQLDriver{}, loghooks.New()))
+	//sql.Register(mysqlDriverName, sqlhooks.Wrap(&mysql.MySQLDriver{}, loghooks.New()))
 
-	dsn := "test:test@tcp(192.168.50.88:3306)/test?parseTime=true&loc=Local"
-	db, err := sql.Open(mysqlDriverName, dsn)
+	c := &hypersql.Config{
+		Dialect:  hypersql.DialectMySQL,
+		Host:     "192.168.50.88",
+		Port:     3306,
+		User:     "test",
+		Password: "test",
+		Name:     "test",
+		Params: hypersql.ConfigParams{
+			"ParseTime": "true",
+			"TimeZone":  "Asia/Shanghai",
+		},
+		DriverHooks: hypersql.DriverHooks{
+			loghooks.New(),
+		},
+		Loc: time.Local,
+	}
+
+	db, err := hypersql.NewSqlDB(c)
+
+	//dsn := "test:test@tcp(192.168.50.88:3306)/test?parseTime=true&loc=Local"
+	//db, err := sql.Open(mysqlDriverName, dsn)
 	if err != nil {
 		log.Fatalf("failed to open mysql db: %v", err)
 	}

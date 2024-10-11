@@ -224,6 +224,24 @@ func TestSq_Pg_Enum_Insert_Tx_Success_1(t *testing.T) {
 	require.NoError(t, err)
 }
 
+func TestSq_ShowAll(t *testing.T) {
+	db := getPgDBForSQ()
+
+	sql := "show all"
+	qr := sq.Postgres.Queryf(sql)
+	m, err := sq.FetchAll(db, qr, func(row *sq.Row) map[string]string {
+		return map[string]string{
+			"name":        row.String("name"),
+			"setting":     row.String("setting"),
+			"description": row.String("description"),
+		}
+	})
+	require.NoError(t, err)
+	require.NotNil(t, m)
+
+	fmt.Println(m)
+}
+
 func handleTxPanic(tx *sql.Tx) {
 	if r := recover(); r != nil {
 		errx := tx.Rollback()

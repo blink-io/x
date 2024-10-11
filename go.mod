@@ -20,12 +20,13 @@ require (
 	github.com/alphadose/haxmap v1.4.0
 	github.com/ammario/tlru v0.4.0
 	github.com/apache/thrift v0.21.0
-	github.com/apple/pkl-go v0.8.0
+	github.com/apple/pkl-go v0.8.1
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20241010141505-9df71dbfcee3
+	github.com/blink-io/hypersql v0.0.0-20241011054659-24c825063f84
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241010144617-d1e84304fa20
 	github.com/bokwoon95/sq v0.5.1
@@ -170,14 +171,12 @@ require (
 	github.com/Masterminds/squirrel v1.5.4 // indirect
 	github.com/ProtonMail/go-crypto v1.0.0 // indirect
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
-	github.com/XSAM/otelsql v0.34.0 // indirect
 	github.com/aarondl/json v0.0.0-20221020222930-8b0db17ef1bf // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/bits-and-blooms/bitset v1.14.3 // indirect
-	github.com/blink-io/hypersql v0.0.0-20241010054008-37ce7d161055 // indirect
-	github.com/cloudflare/circl v1.4.0 // indirect
+	github.com/cloudflare/circl v1.5.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
@@ -268,7 +267,6 @@ require (
 	github.com/uptrace/bun/dialect/mysqldialect v1.2.3 // indirect
 	github.com/uptrace/bun/dialect/pgdialect v1.2.3 // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.3 // indirect
-	github.com/uptrace/opentelemetry-go-extra/otelsql v0.3.2 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.56.0 // indirect
@@ -286,6 +284,7 @@ require (
 	go.opentelemetry.io/otel v1.30.0 // indirect
 	go.opentelemetry.io/otel/log v0.6.0 // indirect
 	go.opentelemetry.io/otel/metric v1.30.0 // indirect
+	go.opentelemetry.io/otel/sdk v1.30.0 // indirect
 	go.opentelemetry.io/otel/trace v1.30.0 // indirect
 	go.temporal.io/api v1.39.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
