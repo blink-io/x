@@ -25,8 +25,8 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20241010141505-9df71dbfcee3
-	github.com/blink-io/hypersql v0.0.0-20241012142609-405682bb8de3
+	github.com/blink-io/hyperbun v0.0.0-20241013141424-9662cd707bc6
+	github.com/blink-io/hypersql v0.0.0-20241013144710-c7bd3516706b
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241010144617-d1e84304fa20
 	github.com/bokwoon95/sq v0.5.1
@@ -43,14 +43,14 @@ require (
 	github.com/failsafe-go/failsafe-go v0.6.8
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/georgysavva/scany/v2 v2.1.3
-	github.com/getsentry/sentry-go v0.29.0
+	github.com/getsentry/sentry-go v0.29.1
 	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-co-op/gocron/v2 v2.12.1
 	github.com/go-crypt/crypt v0.3.1
 	github.com/go-faker/faker/v4 v4.5.0
 	github.com/go-faster/city v1.0.1
 	github.com/go-kit/log v0.2.1
-	github.com/go-kratos/kratos/v2 v2.8.0
+	github.com/go-kratos/kratos/v2 v2.8.1
 	github.com/go-logr/logr v1.4.2
 	github.com/go-logr/stdr v1.2.2
 	github.com/go-resty/resty/v2 v2.15.3
@@ -108,7 +108,7 @@ require (
 	github.com/quic-go/quic-go v0.47.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.5.3
-	github.com/redis/go-redis/v9 v9.6.1
+	github.com/redis/go-redis/v9 v9.6.2
 	github.com/redis/rueidis v1.0.47
 	github.com/redis/rueidis/rueidishook v1.0.47
 	github.com/reugn/go-quartz v0.13.0
@@ -145,7 +145,7 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
 	github.com/zitadel/passwap v0.6.0
-	gitlab.com/greyxor/slogor v1.3.0
+	gitlab.com/greyxor/slogor v1.4.0
 	go.etcd.io/etcd/client/v3 v3.5.16
 	go.mongodb.org/mongo-driver v1.17.1
 	go.temporal.io/sdk v1.29.1
