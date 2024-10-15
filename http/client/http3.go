@@ -23,7 +23,7 @@ func HTTP3Transport(tlsConf *tls.Config) http.RoundTripper {
 }
 
 func HTTP3TransportConf(tlsConf *tls.Config, qconf *quic.Config) http.RoundTripper {
-	return &http3.RoundTripper{
+	return &http3.Transport{
 		TLSClientConfig: tlsConf,
 		QUICConfig:      qconf,
 	}
