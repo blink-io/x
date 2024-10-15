@@ -1,15 +1,17 @@
 package registrar
 
 import (
+	"context"
 	"testing"
 
-	"github.com/IBM/sarama"
+	"github.com/apache/pulsar-client-go/pulsar"
 	"github.com/stretchr/testify/require"
 )
 
 func TestIface(t *testing.T) {
+	ctx := context.Background()
 	var rr ServiceRegistrar
-	c, err := sarama.NewClient([]string{""}, &sarama.Config{})
+	c, err := pulsar.NewClient(pulsar.ClientOptions{})
 	require.NoError(t, err)
 	rr = c
 	require.NotNil(t, rr)
@@ -19,6 +21,6 @@ func TestIface(t *testing.T) {
 
 	})
 
-	err = r.RegisterToSaramaKafka(nil, nil)
+	err = r.RegisterToPulsar(ctx, c)
 	require.NoError(t, err)
 }

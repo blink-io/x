@@ -274,6 +274,16 @@ func TestSq_Pg_Tag_Delete_1(t *testing.T) {
 	require.NotNil(t, rows)
 }
 
+func TestSq_Pg_Tag_Executor_1(t *testing.T) {
+	db := getPgDBForSQ()
+	tbl := Tables.Tags
+	exec := tbl.Executor()
+	wh := tbl.ID.EqInt(40)
+	r, err := exec.One(ctx, sq.Log(db), wh)
+	require.NoError(t, err)
+	require.NotNil(t, r)
+}
+
 func TestSq_Pg_Tag_Mapper_Insert_OnConflict_1(t *testing.T) {
 	db := getPgDBForSQ()
 	mm := Mappers.TAGS
@@ -293,7 +303,7 @@ func TestSq_Pg_Tag_Mapper_Insert_OnConflict_1(t *testing.T) {
 		OnConflict(tbl.ID).
 		DoUpdateSet(tbl.DESCRIPTION.SetString("DoUpdateSet"))
 
-	rt, err := sq.Exec(sq.Log(db), q)
+	rt, err := sq.ExecContext(ctx, sq.Log(db), q)
 	require.NoError(t, err)
 
 	fmt.Println(rt)
@@ -381,7 +391,7 @@ func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, query, mm.SelectT(ctx))
+	records, err := sq.FetchAllContext(ctx, db, query, mm.SelectT(ctx))
 
 	require.NoError(t, err)
 	require.NotNil(t, records)

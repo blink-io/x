@@ -1,17 +1,23 @@
 package registrar
 
 import (
+	"context"
 	"testing"
 
-	"github.com/IBM/sarama"
+	"github.com/Azure/go-amqp"
 	"github.com/stretchr/testify/require"
 )
 
 func TestIface(t *testing.T) {
+	ctx := context.Background()
 	var rr ServiceRegistrar
-	c, err := sarama.NewClient([]string{""}, &sarama.Config{})
+	c, err := amqp.Dial(ctx, "amqp://localhost", &amqp.ConnOptions{})
 	require.NoError(t, err)
-	rr = c
+
+	sess, err := c.NewSession(ctx, &amqp.SessionOptions{})
+	require.NoError(t, err)
+
+	rr = sess
 	require.NotNil(t, rr)
 
 	str := "Hello"
@@ -19,6 +25,6 @@ func TestIface(t *testing.T) {
 
 	})
 
-	err = r.RegisterToSaramaKafka(nil, nil)
+	err = r.RegisterToAMQPv1(ctx, sess)
 	require.NoError(t, err)
 }

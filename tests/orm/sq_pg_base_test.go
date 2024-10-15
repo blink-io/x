@@ -44,7 +44,7 @@ func getPgDB() *sql.DB {
 		Password: "test",
 		Name:     "test",
 		Params: hypersql.ConfigParams{
-			pgparams.ApplicationName: "go-client-test-n1",
+			pgparams.ConnParams.ApplicationName: "go-client-test-n1",
 			//pgparams.SSLMode:         "disable",
 			"TimeZone": "Asia/Shanghai",
 		},

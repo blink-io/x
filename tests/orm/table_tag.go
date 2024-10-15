@@ -5,8 +5,17 @@ import (
 	"time"
 
 	"github.com/blink-io/opt/null"
+	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
 )
+
+func (t TAGS) Mapper() sqx.Mapper[TAGS, Tag, TagSetter] {
+	return NewTagMapper()
+}
+
+func (t TAGS) Executor() sqx.Executor[Tag, TagSetter] {
+	return sqx.NewExecutor(t.Mapper())
+}
 
 func (t TAGS) setterToColumn(ctx context.Context, s TagSetter, c *sq.Column) {
 	s.ID.IfSet(func(v int64) {
@@ -49,7 +58,7 @@ func (t TAGS) Delete(ctx context.Context, db sq.DB, where sq.Predicate) (sq.Resu
 }
 
 func (t TAGS) One(ctx context.Context, db sq.DB, where sq.Predicate) (Tag, error) {
-	q := sq.From(t).Where(where).Limit(1)
+	q := sq.From(t).Where(where)
 	row, err := sq.FetchOne(db, q, t.SelectQ(ctx))
 	return row, err
 }
