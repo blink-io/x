@@ -31,7 +31,7 @@ func selectDBNameAndVersion() sq.SelectQuery {
 func TestSq_Generic_DB_Select(t *testing.T) {
 	sel := selectDBNameAndVersion()
 
-	db1 := getSqliteDBForSQ()
+	db1 := GetSqliteDB()
 	m1, err1 := sq.FetchOne[Model](sq.Log(db1), sel.SetDialect(sq.DialectSQLite), func(r *sq.Row) Model {
 		m := Model{
 			Dialect: sq.DialectSQLite,

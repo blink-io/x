@@ -16,7 +16,7 @@ import (
 func getSqlite3DBRConn() *dbr.Connection {
 	sl := dbrslog.New(slog.Default(), slog.LevelInfo)
 
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	dd := dialect.SQLite3
 	cc := &dbr.Connection{
 		DB:            db,

@@ -11,7 +11,7 @@ import (
 )
 
 func TestSq_Sqlite_Chain_1(t *testing.T) {
-	var db sq.DB = getSqliteDBForSQ()
+	var db sq.DB = GetSqliteDB()
 	f1 := func(db sq.DB) sq.DB {
 		fmt.Println("Invoke f1")
 		return db
@@ -48,7 +48,7 @@ func TestSq_Sqlite_Chain_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_InTx(t *testing.T) {
-	rdb := getSqliteDBForSQ()
+	rdb := GetSqliteDB()
 	db := sqx.InTx(rdb)
 
 	err := db.RunInTx(ctx, nil, func(ctx context.Context, db sq.DB) error {

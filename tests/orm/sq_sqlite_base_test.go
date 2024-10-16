@@ -7,23 +7,36 @@ import (
 
 	"github.com/blink-io/sqx"
 	"github.com/bokwoon95/sq"
+	"github.com/mattn/go-sqlite3"
 	"github.com/qustavo/sqlhooks/v2"
 	"github.com/qustavo/sqlhooks/v2/hooks/loghooks"
 	"modernc.org/sqlite"
 )
 
 const (
-	sqliteDriverName = "sqlite-with-hooks"
+	sqliteDriverName  = "sqlite-with-hooks"
+	sqlite3DriverName = "sqlite3-with-hooks"
 )
 
 var sqliteOnce sync.Once
 
 var sqliteDSN = "./orm_demo.db"
 
-func GetSqliteDB(dsn string) *sql.DB {
+func init() {
 	sql.Register(sqliteDriverName, sqlhooks.Wrap(&sqlite.Driver{}, loghooks.New()))
+	sql.Register(sqlite3DriverName, sqlhooks.Wrap(&sqlite3.SQLiteDriver{}, loghooks.New()))
+}
 
-	db, err := sql.Open(sqliteDriverName, dsn)
+func MustGetSqliteDB() *sql.DB {
+	db, err := sql.Open(sqliteDriverName, sqliteDSN)
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
+
+func MustGetSqlite3DB() *sql.DB {
+	db, err := sql.Open(sqlite3DriverName, sqliteDSN)
 	if err != nil {
 		panic(err)
 	}
@@ -35,7 +48,15 @@ func getSqliteDB() *sql.DB {
 		setupSqlite3Dialect()
 	})
 
-	return GetSqliteDB(sqliteDSN)
+	return MustGetSqliteDB()
+}
+
+func getSqlite3DB() *sql.DB {
+	sqliteOnce.Do(func() {
+		setupSqlite3Dialect()
+	})
+
+	return MustGetSqlite3DB()
 }
 
 func setupSqlite3Dialect() {
@@ -44,6 +65,10 @@ func setupSqlite3Dialect() {
 	slog.Info("Setup database dialect", "dialect", dialect)
 }
 
-func getSqliteDBForSQ() *sql.DB {
+func GetSqliteDB() *sql.DB {
 	return getSqliteDB()
+}
+
+func GetSqlite3DB() *sql.DB {
+	return getSqlite3DB()
 }

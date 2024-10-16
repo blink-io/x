@@ -9,8 +9,7 @@ import (
 )
 
 func TestSqlx_1(t *testing.T) {
-	db := sqlx.MustOpen("sqlite", "./orm_demo.db")
-
+	db := sqlx.NewDb(MustGetSqlite3DB(), sqlite3DriverName)
 	m := new(Model)
 
 	err := db.Get(m, "select 'heison' as name, sqlite_version() as version")

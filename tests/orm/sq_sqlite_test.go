@@ -9,7 +9,7 @@ import (
 )
 
 func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	tbl := UserTable
 
 	records := []User{
@@ -28,7 +28,7 @@ func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	tbl := UserDeviceTable
 
 	records := []*UserDevice{
@@ -48,7 +48,7 @@ func TestSq_Sqlite_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_User_FetchAll_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	tbl := UserTable
 
 	query := sq.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
@@ -59,7 +59,7 @@ func TestSq_Sqlite_User_FetchAll_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_User_Delete_All(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	tbl := UserTable
 
 	_, err := sq.Exec(db, sq.
@@ -70,7 +70,7 @@ func TestSq_Sqlite_User_Delete_All(t *testing.T) {
 }
 
 func TestSq_Sqlite_Device_Insert_ColumnMapper_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	tbl := DeviceTable
 
 	records := []*Device{
@@ -89,7 +89,7 @@ func TestSq_Sqlite_Device_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_Device_FetchAll_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	tbl := DeviceTable
 
 	query := sq.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)

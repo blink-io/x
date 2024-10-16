@@ -9,7 +9,7 @@ import (
 )
 
 func TestSq_Sqlite_Datetime_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 
 	defer db.Close()
 

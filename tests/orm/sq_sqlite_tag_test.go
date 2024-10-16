@@ -9,7 +9,7 @@ import (
 )
 
 func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	sb := sq.SQLite
 	tbl := Tables.Tags
 
@@ -30,7 +30,7 @@ func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_Tag_Insert_2(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	//sb := sq.SQLite
 	tbl := Tables.Tags
 
@@ -43,7 +43,7 @@ func TestSq_Sqlite_Tag_Insert_2(t *testing.T) {
 }
 
 func TestSq_Sqlite_Tag_Insert_Select_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	tbl := Tables.TagsBak
 	fTbl := Tables.Tags
 
@@ -61,7 +61,7 @@ func TestSq_Sqlite_Tag_Insert_Select_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_Tag_Mapper_FetchAll_1(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 
@@ -76,7 +76,7 @@ func TestSq_Sqlite_Tag_Mapper_FetchAll_1(t *testing.T) {
 }
 
 func TestSq_Sqlite_Tag_Mapper_FetchAll_2(t *testing.T) {
-	db := getSqliteDBForSQ()
+	db := GetSqliteDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 
