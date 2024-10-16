@@ -67,6 +67,7 @@ require (
 	github.com/gogo/protobuf v1.3.2
 	github.com/gomodule/redigo v1.9.2
 	github.com/google/uuid v1.6.0
+	github.com/graphql-go/graphql v0.8.1
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.1.0
 	github.com/guregu/null/v5 v5.0.0
 	github.com/h2non/filetype v1.1.3
@@ -91,6 +92,7 @@ require (
 	github.com/lmittmann/tint v1.0.5
 	github.com/matthewhartstonge/argon2 v1.0.1
 	github.com/mattn/go-runewidth v0.0.16
+	github.com/mattn/go-sqlite3 v1.14.24
 	github.com/miekg/dns v1.1.62
 	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
@@ -253,7 +255,6 @@ require (
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/mattn/go-sqlite3 v1.14.24 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect

@@ -9,21 +9,23 @@ import (
 )
 
 type tables struct {
-	Tags    TAGS
-	TagsBak TAGS_BAK
-	Users   USERS
-	Tvals   TVALS
-	Mkeys   MKEYS
-	Arrays  ARRAYS
+	Tags        TAGS
+	TagsBak     TAGS_BAK
+	Users       USERS
+	UserDevices USER_DEVICES
+	Tvals       TVALS
+	Mkeys       MKEYS
+	Arrays      ARRAYS
 }
 
 var Tables = tables{
-	Tags:    sq.New[TAGS](""),
-	TagsBak: sq.New[TAGS_BAK](""),
-	Users:   sq.New[USERS](""),
-	Tvals:   sq.New[TVALS](""),
-	Mkeys:   sq.New[MKEYS](""),
-	Arrays:  sq.New[ARRAYS](""),
+	Tags:        sq.New[TAGS](""),
+	TagsBak:     sq.New[TAGS_BAK](""),
+	Users:       sq.New[USERS](""),
+	UserDevices: sq.New[USER_DEVICES](""),
+	Tvals:       sq.New[TVALS](""),
+	Mkeys:       sq.New[MKEYS](""),
+	Arrays:      sq.New[ARRAYS](""),
 }
 
 var _ sq.PolicyTable = Tables.Users

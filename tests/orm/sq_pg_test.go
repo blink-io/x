@@ -286,8 +286,49 @@ func TestSq_Pg_Enum_Insert_Tx_Fail_1(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestSq_Pg_SelectDBNameAndVersion(t *testing.T) {
+func TestSq_Pg_UserWithDevice_Exists_1(t *testing.T) {
+	db := GetPgDB()
+	tbl := Tables.Users
+	joinTbl := Tables.UserDevices
+	sb := sq.Postgres
 
+	query := sb.
+		Select().
+		From(tbl).
+		Where(sq.Exists(sq.SelectOne().From(joinTbl).Where(joinTbl.USER_ID.Eq(tbl.ID)))).
+		Limit(100).
+		OrderBy(tbl.GUID.Desc())
+	rs, err := sq.FetchAllContext(ctx, db, query, userModelRowMapper())
+
+	require.NoError(t, err)
+	require.NotNil(t, rs)
+}
+
+func TestSq_Pg_UserWithDevice_CTE_1(t *testing.T) {
+	db := GetPgDB()
+	tbl := Tables.Users
+	joinTbl := Tables.UserDevices
+	sb := sq.Postgres
+
+	// create the CTE
+	devicesCTE := sq.NewCTE("devices", nil, sq.Postgres.
+		Select(
+			joinTbl.USER_ID,
+		).
+		From(joinTbl).
+		GroupBy(joinTbl.USER_ID),
+	)
+
+	query := sb.
+		With(devicesCTE).
+		From(tbl).
+		Join(devicesCTE, devicesCTE.Field("user_id").Eq(tbl.ID)).
+		Limit(100).
+		OrderBy(tbl.GUID.Desc())
+	rs, err := sq.FetchAllContext(ctx, db, query, userModelRowMapper())
+
+	require.NoError(t, err)
+	require.NotNil(t, rs)
 }
 
 func Ptr[T any](v T) *T {
