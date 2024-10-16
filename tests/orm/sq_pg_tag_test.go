@@ -16,6 +16,7 @@ import (
 	"github.com/blink-io/x/types/tuplen"
 	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
+	"github.com/sanity-io/litter"
 	"github.com/spf13/cast"
 	"github.com/stretchr/testify/require"
 	"github.com/uptrace/bun"
@@ -464,4 +465,46 @@ func TestSq_Pg_Tag_Mapper_FetchOne_ByPK(t *testing.T) {
 
 	require.NoError(t, err)
 	require.NotNil(t, records)
+}
+
+func TestSq_Pg_Tag_Mapper_FetchCursor_1(t *testing.T) {
+	db := GetPgDB()
+	mm := Mappers.TAGS
+	tbl := mm.Table()
+
+	q := sq.
+		From(tbl).
+		Where(tbl.ID.GtInt(0)).
+		Limit(3)
+	cursor, err := sq.FetchCursorContext(ctx, db, q, mm.SelectT(ctx))
+
+	require.NoError(t, err)
+	require.NotNil(t, cursor)
+
+	defer cursor.Close()
+
+	for cursor.Next() {
+		item, err := cursor.Result()
+		require.NoError(t, err)
+		fmt.Println(litter.Sdump(item))
+	}
+}
+
+func TestSq_Pg_Tag_Mapper_CompileFetch_1(t *testing.T) {
+	db := GetPgDB()
+	mm := Mappers.TAGS
+	tbl := mm.Table()
+
+	q := sq.
+		From(tbl).
+		Where(tbl.ID.GtInt(0)).
+		Limit(3)
+
+	cq, err := sq.CompileFetch(q, mm.SelectT(ctx))
+	require.NoError(t, err)
+
+	cursor, err := cq.FetchAllContext(ctx, sq.Log(db), sq.Params{})
+
+	require.NoError(t, err)
+	require.NotNil(t, cursor)
 }

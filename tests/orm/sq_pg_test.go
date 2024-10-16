@@ -135,20 +135,22 @@ func TestSq_Pg_UserWithDevice_FetchAll_Join_1(t *testing.T) {
 	db := GetPgDB()
 	tbl := UserTable
 	joinTbl := UserDeviceTable
+	sb := sq.Postgres
 
 	fields, rowMapper := userWithDeviceSelect()
-	query := sq.
+	query := sb.
 		Select(
 			fields...,
 		).
 		From(tbl).
-		Join(joinTbl, tbl.ID.Eq(joinTbl.USER_ID)).
+		LeftJoin(joinTbl, tbl.ID.Eq(joinTbl.USER_ID)).
 		Where(tbl.ID.GtInt(0)).
-		Limit(100)
-	records, err := sq.FetchAll(db, query, rowMapper)
+		Limit(100).
+		OrderBy(tbl.GUID.Desc())
+	rs, err := sq.FetchAllContext(ctx, db, query, rowMapper)
 
 	require.NoError(t, err)
-	require.NotNil(t, records)
+	require.NotNil(t, rs)
 }
 
 func TestSq_Pg_User_Update_1(t *testing.T) {
