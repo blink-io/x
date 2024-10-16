@@ -107,10 +107,10 @@ func TestSq_Mysql_FetchAll_BySQL_1(t *testing.T) {
 
 	records, err := sq.FetchOne(idb, query, func(r *sq.Row) Tag {
 		return Tag{
-			//ID:   r.Int("c1"),
+			//UserID:   r.Int("c1"),
 			Code: r.String("code"),
 			Name: r.String("name"),
-			//GUID: r.String("guid"),
+			//UserGUID: r.String("guid"),
 			//CreatedAt: r.TimeField(tbl.CREATED_AT),
 		}
 	})

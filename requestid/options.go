@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	DefaultHeader = "X-Request-ID"
+	DefaultHeader = "X-Request-UserID"
 )
 
 type options struct {

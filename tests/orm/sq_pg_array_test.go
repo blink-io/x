@@ -21,7 +21,7 @@ var _clog = slog.New(color.New(os.Stderr, color.Options{
 }))
 
 func TestSq_Pg_Array_Insert_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Arrays
 
 	nrs := []Array{
@@ -41,7 +41,7 @@ func TestSq_Pg_Array_Insert_1(t *testing.T) {
 }
 
 func TestSq_Pg_Array_FetchAll_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Arrays
 	qm := arrayQueryMapper
 
@@ -56,7 +56,7 @@ func TestSq_Pg_Array_FetchAll_1(t *testing.T) {
 }
 
 func TestSq_Pg_Array_FetchAll_Paging(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Arrays
 	perPage := 3
 	qm := arrayQueryMapper
@@ -88,7 +88,7 @@ func TestSq_Pg_Array_FetchAll_Paging(t *testing.T) {
 }
 
 func TestSq_Pg_Array_FetchAll_2(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Arrays
 	qm := arrayQueryMapper
 

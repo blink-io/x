@@ -22,7 +22,7 @@ import (
 )
 
 func TestSq_Pg_Tag_Insert_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	s1 := randomTag(nil).Setter()
@@ -34,7 +34,7 @@ func TestSq_Pg_Tag_Insert_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Insert_2(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	setter := randomTag(nil).Setter()
@@ -44,7 +44,7 @@ func TestSq_Pg_Tag_Insert_2(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Insert_3(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	var iii = time.Now().Unix()
@@ -59,7 +59,7 @@ func TestSq_Pg_Tag_Insert_3(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Update_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	var vid int64 = 40
@@ -78,7 +78,7 @@ func TestSq_Pg_Tag_Update_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Update_WithTx_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.EqInt(15))
@@ -213,7 +213,7 @@ func TestSq_Pg_Tag_Update_WithSqlx_WithTx_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_One_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(0))
@@ -225,7 +225,7 @@ func TestSq_Pg_Tag_One_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_One_2(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(1000))
@@ -251,7 +251,7 @@ func TestSq_Pg_Tag_One_2(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_All_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(0))
@@ -263,7 +263,7 @@ func TestSq_Pg_Tag_All_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Delete_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 
 	where := sq.And(sqx.AlwaysTrueExpr, tbl.ID.GtInt(1000000))
@@ -275,7 +275,7 @@ func TestSq_Pg_Tag_Delete_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Executor_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 	exec := tbl.Executor()
 	wh := tbl.ID.EqInt(40)
@@ -285,7 +285,7 @@ func TestSq_Pg_Tag_Executor_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Mapper_Insert_OnConflict_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 
@@ -310,7 +310,7 @@ func TestSq_Pg_Tag_Mapper_Insert_OnConflict_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Mapper_Update_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 
@@ -330,7 +330,7 @@ func TestSq_Pg_Tag_Mapper_Update_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Mapper_Insert_Returning_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Tags
 	mm := Mappers.TAGS
 
@@ -350,7 +350,7 @@ func TestSq_Pg_Tag_Mapper_Insert_Returning_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Insert_Select_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.TagsBak
 	fTbl := Tables.Tags
 
@@ -368,7 +368,7 @@ func TestSq_Pg_Tag_Insert_Select_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Mapper_Insert_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 
@@ -383,7 +383,7 @@ func TestSq_Pg_Tag_Mapper_Insert_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 
@@ -398,7 +398,7 @@ func TestSq_Pg_Tag_Mapper_FetchAll_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Fetch_Custom_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 
@@ -418,7 +418,7 @@ func TestSq_Pg_Tag_Fetch_Custom_1(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Mapper_FetchAll_Paging(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 	perPage := 3
@@ -452,7 +452,7 @@ func TestSq_Pg_Tag_Mapper_FetchAll_Paging(t *testing.T) {
 }
 
 func TestSq_Pg_Tag_Mapper_FetchOne_ByPK(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	mm := Mappers.TAGS
 	tbl := mm.Table()
 

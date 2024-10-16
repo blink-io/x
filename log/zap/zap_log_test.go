@@ -54,7 +54,7 @@ func TestLog(t *testing.T) {
 	sugar.Infof(`failed to "fetch" [URLVar]: %s`, "http://example.com")
 	sugar.Debugw("Slow query",
 		"sql", `SELECT * FROM TABLE
-	WHERE ID="abc"`,
+	WHERE UserID="abc"`,
 		"duration", 1300*time.Millisecond,
 		"process keys", 1500,
 	)
@@ -101,7 +101,7 @@ func TestLog(t *testing.T) {
 	ts.assertMessages(
 		`[INFO] [zap_log_test.go:49] ["failed to fetch URLVar"] [url=http://example.com] [attempt=3] [backoff=1s]`,
 		`[INFO] [zap_log_test.go:54] ["failed to \"fetch\" [URLVar]: http://example.com"]`,
-		`[DEBUG] [zap_log_test.go:55] ["Slow query"] [sql="SELECT * FROM TABLE\n\tWHERE ID=\"abc\""] [duration=1.3s] ["process keys"=1500]`,
+		`[DEBUG] [zap_log_test.go:55] ["Slow query"] [sql="SELECT * FROM TABLE\n\tWHERE UserID=\"abc\""] [duration=1.3s] ["process keys"=1500]`,
 		`[INFO] [zap_log_test.go:61] [Welcome]`,
 		`[INFO] [zap_log_test.go:62] ["Welcome TiDB"]`,
 		`[INFO] [zap_log_test.go:63] [欢迎]`,

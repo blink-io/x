@@ -10,7 +10,7 @@ import (
 )
 
 func TestSq_Pg_Mkey_Insert_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Mkeys
 
 	prefix := "from-sq:"
@@ -26,7 +26,7 @@ func TestSq_Pg_Mkey_Insert_1(t *testing.T) {
 }
 
 func TestSq_Pg_Mkey_FetchOne_ByID(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	idb := sq.VerboseLog(db)
 	tbl := Tables.Mkeys
 
@@ -56,7 +56,7 @@ func TestSq_Pg_Mkey_FetchOne_ByID(t *testing.T) {
 }
 
 func TestSq_Pg_Mkey_FetchAll_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	ldb := sq.VerboseLog(db)
 	tbl := Tables.Mkeys
 

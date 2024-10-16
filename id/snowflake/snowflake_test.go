@@ -15,21 +15,21 @@ func TestSnowflake_1(t *testing.T) {
 		return
 	}
 
-	// Generate a snowflake ID.
+	// Generate a snowflake UserID.
 	id := node.Generate()
 
-	// Print out the ID in a few different ways.
-	fmt.Printf("Int64  ID: %d\n", id)
-	fmt.Printf("String ID: %s\n", id)
-	fmt.Printf("Base2  ID: %s\n", id.Base2())
-	fmt.Printf("Base64 ID: %s\n", id.Base64())
+	// Print out the UserID in a few different ways.
+	fmt.Printf("Int64  UserID: %d\n", id)
+	fmt.Printf("String UserID: %s\n", id)
+	fmt.Printf("Base2  UserID: %s\n", id.Base2())
+	fmt.Printf("Base64 UserID: %s\n", id.Base64())
 
-	// Print out the ID's timestamp
-	fmt.Printf("ID Time  : %d\n", id.Time())
+	// Print out the UserID's timestamp
+	fmt.Printf("UserID Time  : %d\n", id.Time())
 
-	// Print out the ID's node number
-	fmt.Printf("ID Node  : %d\n", id.Node())
+	// Print out the UserID's node number
+	fmt.Printf("UserID Node  : %d\n", id.Node())
 
-	// Print out the ID's sequence number
-	fmt.Printf("ID Step  : %d\n", id.Step())
+	// Print out the UserID's sequence number
+	fmt.Printf("UserID Step  : %d\n", id.Step())
 }

@@ -61,8 +61,8 @@ func (m User) String() string {
 }
 
 type UserWithDevice struct {
-	ID          int64  `db:"id"`
-	GUID        string `db:"guid"`
+	UserID      int64  `db:"user_id"`
+	UserGUID    string `db:"user_guid"`
 	Username    string `db:"username"`
 	DeviceGUID  string `db:"device_guid"`
 	DeviceName  string `db:"device_name"`
@@ -262,8 +262,8 @@ func userWithDeviceSelect() (sq.Fields, func(*sq.Row) *UserWithDevice) {
 	tbl := UserTable
 	joinTbl := UserDeviceTable
 	fields := sq.Fields{
-		tbl.ID,
-		tbl.GUID,
+		tbl.ID.As("user_id"),
+		tbl.GUID.As("user_guid"),
 		tbl.USERNAME,
 		joinTbl.GUID.As("device_guid"),
 		joinTbl.NAME.As("device_name"),
@@ -275,8 +275,8 @@ func userWithDeviceSelect() (sq.Fields, func(*sq.Row) *UserWithDevice) {
 func userJoinDeviceRowMapper() func(*sq.Row) *UserWithDevice {
 	return func(r *sq.Row) *UserWithDevice {
 		v := &UserWithDevice{
-			ID:          r.Int64("id"),
-			GUID:        r.String("guid"),
+			UserID:      r.Int64("user_id"),
+			UserGUID:    r.String("user_guid"),
 			Username:    r.String("username"),
 			DeviceGUID:  r.String("device_guid"),
 			DeviceName:  r.String("device_name"),

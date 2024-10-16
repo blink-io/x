@@ -21,7 +21,7 @@ const (
 
 var pgOnce sync.Once
 
-func getPgDBForSQ() *sql.DB {
+func GetPgDB() *sql.DB {
 	return getPgDB()
 }
 

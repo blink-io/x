@@ -30,7 +30,7 @@ type ServiceRegistrar interface {
 	// RemoveJob removes the job with the provided id.
 	RemoveJob(uuid.UUID) error
 	// Update replaces the existing Job's JobDefinition with the provided
-	// JobDefinition. The Job's Job.ID() remains the same.
+	// JobDefinition. The Job's Job.UserID() remains the same.
 	Update(uuid.UUID, JobDefinition, Task, ...JobOption) (Job, error)
 }
 

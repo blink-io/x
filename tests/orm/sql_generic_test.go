@@ -50,7 +50,7 @@ func TestSq_Generic_DB_Select(t *testing.T) {
 
 	fmt.Println("-------------------------------------------------------------------------------")
 
-	db2 := getPgDBForSQ()
+	db2 := GetPgDB()
 	m2, err2 := sq.FetchOne[*Model](sq.Log(db2), sel.SetDialect(sq.DialectPostgres), func(r *sq.Row) *Model {
 		m := &Model{
 			Dialect: sq.DialectPostgres,

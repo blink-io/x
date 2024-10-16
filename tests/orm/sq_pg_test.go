@@ -17,7 +17,7 @@ import (
 )
 
 func TestSq_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 
 	qr := sq.Postgres.Queryf("select 'heison' as name, version() as version")
 	m, err := sq.FetchOne[*Model](db, qr, func(row *sq.Row) *Model {
@@ -33,7 +33,7 @@ func TestSq_1(t *testing.T) {
 }
 
 func TestSq_Pg_Insert_User_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 
 	now := time.Now()
 	_, err := sq.Exec(db, sq.
@@ -73,7 +73,7 @@ func TestSq_Pg_Insert_User_1(t *testing.T) {
 }
 
 func TestSq_Pg_User_Insert_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Users
 
 	records := []User{
@@ -90,7 +90,7 @@ func TestSq_Pg_User_Insert_1(t *testing.T) {
 }
 
 func TestSq_Pg_User_FetchAll_WithTenantID_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Users
 	vctx := context.WithValue(ctx, tbl.TENANT_ID.GetName(), 3)
 
@@ -102,7 +102,7 @@ func TestSq_Pg_User_FetchAll_WithTenantID_1(t *testing.T) {
 }
 
 func TestSq_Pg_User_FetchAll_2(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := Tables.Users
 
 	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
@@ -113,7 +113,7 @@ func TestSq_Pg_User_FetchAll_2(t *testing.T) {
 }
 
 func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := UserDeviceTable
 
 	records := []*UserDevice{
@@ -132,7 +132,7 @@ func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 }
 
 func TestSq_Pg_UserWithDevice_FetchAll_Join_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := UserTable
 	joinTbl := UserDeviceTable
 
@@ -152,7 +152,7 @@ func TestSq_Pg_UserWithDevice_FetchAll_Join_1(t *testing.T) {
 }
 
 func TestSq_Pg_User_Update_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := UserTable
 
 	_, err := sq.Exec(db, sq.
@@ -167,7 +167,7 @@ func TestSq_Pg_User_Update_1(t *testing.T) {
 }
 
 func TestSq_Pg_User_Update_2(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 
 	var us UserSetter
 	us.ID = omit.From[int](10)
@@ -178,7 +178,7 @@ func TestSq_Pg_User_Update_2(t *testing.T) {
 }
 
 func TestSq_Pg_User_Delete_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := UserTable
 
 	_, err := sq.Exec(db, sq.
@@ -189,7 +189,7 @@ func TestSq_Pg_User_Delete_1(t *testing.T) {
 }
 
 func TestSq_Pg_Enum_Insert_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := sq.New[ENUMS]("e")
 	_, err := sq.Exec(db, sq.
 		InsertInto(tbl).
@@ -201,7 +201,7 @@ func TestSq_Pg_Enum_Insert_1(t *testing.T) {
 }
 
 func TestSq_Pg_Enum_Insert_Tx_Success_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := sq.New[ENUMS]("e")
 
 	tx, err := db.Begin()
@@ -225,7 +225,7 @@ func TestSq_Pg_Enum_Insert_Tx_Success_1(t *testing.T) {
 }
 
 func TestSq_ShowAll(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 
 	sql := "show all"
 	qr := sq.Postgres.Queryf(sql)
@@ -256,7 +256,7 @@ func handleTxPanic(tx *sql.Tx) {
 }
 
 func TestSq_Pg_Enum_Insert_Tx_Fail_1(t *testing.T) {
-	db := getPgDBForSQ()
+	db := GetPgDB()
 	tbl := sq.New[ENUMS]("e")
 
 	tx, err := db.Begin()
