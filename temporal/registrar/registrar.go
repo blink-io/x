@@ -14,7 +14,21 @@ type WithRegistrar interface {
 
 type ServiceRegistrar interface {
 	client.Client
-	Origin() client.Client
+	Client() client.Client
+}
+
+type cc = client.Client
+
+type serviceRegistrar struct {
+	cc
+}
+
+func NewServiceRegistrar(cc client.Client) ServiceRegistrar {
+	return serviceRegistrar{cc: cc}
+}
+
+func (r serviceRegistrar) Client() client.Client {
+	return r.cc
 }
 
 type Func[S any] func(ServiceRegistrar, S)

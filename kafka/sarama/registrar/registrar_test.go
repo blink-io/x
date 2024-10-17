@@ -11,7 +11,8 @@ func TestIface(t *testing.T) {
 	var rr ServiceRegistrar
 	c, err := sarama.NewClient([]string{""}, &sarama.Config{})
 	require.NoError(t, err)
-	rr = c
+
+	rr = NewServiceRegistrar(c)
 	require.NotNil(t, rr)
 
 	str := "Hello"

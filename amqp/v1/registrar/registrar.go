@@ -17,6 +17,14 @@ type ServiceRegistrar interface {
 	NewSender(ctx context.Context, target string, opts *amqp.SenderOptions) (*amqp.Sender, error)
 }
 
+type serviceRegistrar struct {
+	*amqp.Session
+}
+
+func NewServiceRegistrar(c *amqp.Session) ServiceRegistrar {
+	return serviceRegistrar{c}
+}
+
 type Func[S any] func(ServiceRegistrar, S)
 
 type FuncWithErr[S any] func(ServiceRegistrar, S) error

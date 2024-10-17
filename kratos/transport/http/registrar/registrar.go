@@ -7,32 +7,37 @@ import (
 	khttp "github.com/go-kratos/kratos/v2/transport/http"
 )
 
-type RouterRegistrar interface {
-	Handle(path string, h http.Handler)
-	HandleFunc(path string, h http.HandlerFunc)
-	HandleHeader(key, val string, h http.HandlerFunc)
-	HandlePrefix(prefix string, h http.Handler)
-	//Route(prefix string, filters ...khttp.FilterFunc) *khttp.Router
-}
-
-var _ RouterRegistrar = (*khttp.Server)(nil)
-
-type RegisterFunc func(context.Context, RouterRegistrar) error
+type RegisterFunc func(context.Context, ServiceRegistrar) error
 
 type WithRegistrar interface {
 	HTTPRegistrar(context.Context) RegisterFunc
 }
 
-type Func[S any] func(RouterRegistrar, S)
+type ServiceRegistrar interface {
+	Handle(path string, h http.Handler)
+	HandleFunc(path string, h http.HandlerFunc)
+	HandleHeader(key, val string, h http.HandlerFunc)
+	HandlePrefix(prefix string, h http.Handler)
+}
 
-type FuncWithErr[S any] func(RouterRegistrar, S) error
+type serviceRegistrar struct {
+	*khttp.Server
+}
 
-type CtxFunc[S any] func(context.Context, RouterRegistrar, S)
+func NewServiceRegistrar(s *khttp.Server) ServiceRegistrar {
+	return serviceRegistrar{s}
+}
 
-type CtxFuncWithErr[S any] func(context.Context, RouterRegistrar, S) error
+type Func[S any] func(ServiceRegistrar, S)
+
+type FuncWithErr[S any] func(ServiceRegistrar, S) error
+
+type CtxFunc[S any] func(context.Context, ServiceRegistrar, S)
+
+type CtxFuncWithErr[S any] func(context.Context, ServiceRegistrar, S) error
 
 type Registrar interface {
-	RegisterToHTTP(context.Context, RouterRegistrar) error
+	RegisterToHTTP(context.Context, ServiceRegistrar) error
 }
 
 type registrar[S any] struct {
@@ -43,7 +48,7 @@ type registrar[S any] struct {
 var _ Registrar = (*registrar[any])(nil)
 
 func New[S any](s S, f Func[S]) Registrar {
-	cf := func(ctx context.Context, r RouterRegistrar, s S) error {
+	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
 		f(r, s)
 		return nil
 	}
@@ -51,7 +56,7 @@ func New[S any](s S, f Func[S]) Registrar {
 }
 
 func NewCtx[S any](s S, f CtxFunc[S]) Registrar {
-	cf := func(ctx context.Context, r RouterRegistrar, s S) error {
+	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
 		f(ctx, r, s)
 		return nil
 	}
@@ -60,7 +65,7 @@ func NewCtx[S any](s S, f CtxFunc[S]) Registrar {
 
 // NewWithErr creates a registrar with returning error.
 func NewWithErr[S any](s S, f FuncWithErr[S]) Registrar {
-	cf := func(ctx context.Context, r RouterRegistrar, s S) error {
+	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
 		return f(r, s)
 	}
 	return NewCtxWithErr(s, cf)
@@ -75,7 +80,7 @@ func NewCtxWithErr[S any](s S, f CtxFuncWithErr[S]) Registrar {
 	return h
 }
 
-func (h registrar[S]) RegisterToHTTP(ctx context.Context, rr RouterRegistrar) error {
+func (h registrar[S]) RegisterToHTTP(ctx context.Context, rr ServiceRegistrar) error {
 	return h.f(ctx, rr, h.s)
 }
 

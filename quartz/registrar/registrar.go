@@ -26,6 +26,14 @@ type ServiceRegistrar interface {
 	ScheduleJob(jobDetail *JobDetail, trigger Trigger) error
 }
 
+type serviceRegistrar struct {
+	quartz.Scheduler
+}
+
+func NewServiceRegistrar(c quartz.Scheduler) ServiceRegistrar {
+	return serviceRegistrar{c}
+}
+
 type Func[S any] func(ServiceRegistrar, S)
 
 type FuncWithErr[S any] func(ServiceRegistrar, S) error

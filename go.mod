@@ -42,6 +42,8 @@ require (
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
+	github.com/elastic/elastic-transport-go/v8 v8.6.0
+	github.com/elastic/go-elasticsearch/v8 v8.15.0
 	github.com/elliotchance/pie/v2 v2.9.0
 	github.com/failsafe-go/failsafe-go v0.6.8
 	github.com/fxamacker/cbor/v2 v2.7.0
@@ -93,16 +95,18 @@ require (
 	github.com/matthewhartstonge/argon2 v1.0.1
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.24
+	github.com/meilisearch/meilisearch-go v0.28.0
 	github.com/miekg/dns v1.1.62
 	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.37.0
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.1
-	github.com/nyaruka/phonenumbers v1.4.0
+	github.com/nyaruka/phonenumbers v1.4.1
 	github.com/oklog/ulid/v2 v2.1.0
 	github.com/onsi/ginkgo/v2 v2.20.2
 	github.com/onsi/gomega v1.34.2
+	github.com/opensearch-project/opensearch-go/v4 v4.3.0
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.3
@@ -170,7 +174,11 @@ require (
 	resenje.org/singleflight v0.4.3
 )
 
-replace github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
+replace (
+	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
+	github.com/tx7do/kratos-transport v1.1.9 => github.com/blink-io/kratos-transport v0.0.0-20241016014112-952d08e2d007
+	github.com/tx7do/kratos-transport/transport/http3 v1.2.16 => github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20241015161550-d1978697a964
+)
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
@@ -213,6 +221,7 @@ require (
 	github.com/go-playground/validator/v10 v10.22.1 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.6 // indirect
+	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
@@ -247,12 +256,14 @@ require (
 	github.com/jfcg/sixb v1.4.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jonboulle/clockwork v0.4.0 // indirect
+	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
+	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
@@ -295,6 +306,7 @@ require (
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
+	github.com/tx7do/kratos-transport v1.1.9 // indirect
 	github.com/uptrace/bun/dialect/mysqldialect v1.2.3 // indirect
 	github.com/uptrace/bun/dialect/pgdialect v1.2.3 // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.3 // indirect
@@ -315,6 +327,7 @@ require (
 	go.opentelemetry.io/otel v1.31.0 // indirect
 	go.opentelemetry.io/otel/log v0.7.0 // indirect
 	go.opentelemetry.io/otel/metric v1.31.0 // indirect
+	go.opentelemetry.io/otel/sdk v1.31.0 // indirect
 	go.opentelemetry.io/otel/trace v1.31.0 // indirect
 	go.temporal.io/api v1.39.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect

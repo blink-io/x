@@ -3,43 +3,23 @@ package registrar
 import (
 	"context"
 
-	"github.com/go-co-op/gocron/v2"
-	"github.com/google/uuid"
-)
-
-type (
-	Task          = gocron.Task
-	Job           = gocron.Job
-	JobOption     = gocron.JobOption
-	JobDefinition = gocron.JobDefinition
+	"github.com/meilisearch/meilisearch-go"
 )
 
 type RegisterFunc func(context.Context, ServiceRegistrar) error
 
 type WithRegistrar interface {
-	GocronRegistrar(context.Context) RegisterFunc
+	MeiliSearchRegistrar(context.Context) RegisterFunc
 }
 
-type ServiceRegistrar interface {
-	// NewJob creates a new job in the Scheduler. The job is scheduled per the provided
-	// definition when the Scheduler is started. If the Scheduler is already running
-	// the job will be scheduled when the Scheduler is started.
-	NewJob(JobDefinition, Task, ...JobOption) (Job, error)
-	// RemoveByTags removes all jobs that have at least one of the provided tags.
-	RemoveByTags(...string)
-	// RemoveJob removes the job with the provided id.
-	RemoveJob(uuid.UUID) error
-	// Update replaces the existing Job's JobDefinition with the provided
-	// JobDefinition. The Job's Job.UserID() remains the same.
-	Update(uuid.UUID, JobDefinition, Task, ...JobOption) (Job, error)
-}
+type ServiceRegistrar = meilisearch.ServiceManager
 
 type serviceRegistrar struct {
-	gocron.Scheduler
+	meilisearch.ServiceManager
 }
 
-func NewServiceRegistrar(c gocron.Scheduler) ServiceRegistrar {
-	return serviceRegistrar{c}
+func NewServiceRegistrar(s meilisearch.ServiceManager) ServiceRegistrar {
+	return serviceRegistrar{s}
 }
 
 type Func[S any] func(ServiceRegistrar, S)
@@ -51,7 +31,7 @@ type CtxFunc[S any] func(context.Context, ServiceRegistrar, S)
 type CtxFuncWithErr[S any] func(context.Context, ServiceRegistrar, S) error
 
 type Registrar interface {
-	RegisterToGocron(context.Context, ServiceRegistrar) error
+	RegisterToMeiliSearch(context.Context, ServiceRegistrar) error
 }
 
 var _ Registrar = (*registrar[any])(nil)
@@ -92,6 +72,6 @@ type registrar[S any] struct {
 	f CtxFuncWithErr[S]
 }
 
-func (h *registrar[S]) RegisterToGocron(ctx context.Context, r ServiceRegistrar) error {
+func (h *registrar[S]) RegisterToMeiliSearch(ctx context.Context, r ServiceRegistrar) error {
 	return h.f(ctx, r, h.s)
 }

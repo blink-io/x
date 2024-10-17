@@ -17,7 +17,7 @@ func TestIface(t *testing.T) {
 	sess, err := c.NewSession(ctx, &amqp.SessionOptions{})
 	require.NoError(t, err)
 
-	rr = sess
+	rr = NewServiceRegistrar(sess)
 	require.NotNil(t, rr)
 
 	str := "Hello"

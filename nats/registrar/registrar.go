@@ -45,6 +45,16 @@ type ServiceRegistrar interface {
 	QueueSubscribeSyncWithChan(subj, queue string, ch chan *nats.Msg) (*nats.Subscription, error)
 }
 
+var _ ServiceRegistrar = (*nats.Conn)(nil)
+
+type serviceRegistrar struct {
+	*nats.Conn
+}
+
+func NewServiceRegistrar(c *nats.Conn) ServiceRegistrar {
+	return serviceRegistrar{c}
+}
+
 type Func[S any] func(ServiceRegistrar, S)
 
 type FuncWithErr[S any] func(ServiceRegistrar, S) error

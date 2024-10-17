@@ -4,15 +4,15 @@ import (
 	"context"
 	"testing"
 
-	kafkago "github.com/segmentio/kafka-go"
+	"github.com/elastic/go-elasticsearch/v8"
 	"github.com/stretchr/testify/require"
 )
 
 func TestIface(t *testing.T) {
 	ctx := context.Background()
 	var rr ServiceRegistrar
-	c := &kafkago.Client{}
-
+	c, err := elasticsearch.NewClient(elasticsearch.Config{})
+	require.NoError(t, err)
 	rr = NewServiceRegistrar(c)
 	require.NotNil(t, rr)
 
@@ -21,6 +21,6 @@ func TestIface(t *testing.T) {
 
 	})
 
-	err := r.RegisterToGoKafka(ctx, rr)
+	err = r.RegisterToElasticSearch(ctx, rr)
 	require.NoError(t, err)
 }

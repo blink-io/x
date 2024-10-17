@@ -14,6 +14,14 @@ type WithRegistrar interface {
 
 type ServiceRegistrar = pulsar.Client
 
+type serviceRegistrar struct {
+	pulsar.Client
+}
+
+func NewServiceRegistrar(c pulsar.Client) ServiceRegistrar {
+	return serviceRegistrar{c}
+}
+
 type Func[S any] func(ServiceRegistrar, S)
 
 type FuncWithErr[S any] func(ServiceRegistrar, S) error

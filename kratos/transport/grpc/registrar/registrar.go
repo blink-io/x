@@ -7,12 +7,20 @@ import (
 	"google.golang.org/grpc"
 )
 
-type ServiceRegistrar = grpc.ServiceRegistrar
-
 type RegisterFunc func(context.Context, ServiceRegistrar) error
 
 type WithRegistrar interface {
 	GRPCRegistrar(context.Context) RegisterFunc
+}
+
+type ServiceRegistrar = grpc.ServiceRegistrar
+
+type serviceRegistrar struct {
+	grpc.ServiceRegistrar
+}
+
+func NewServiceRegistrar(c grpc.ServiceRegistrar) ServiceRegistrar {
+	return serviceRegistrar{c}
 }
 
 type Func[S any] func(ServiceRegistrar, S)

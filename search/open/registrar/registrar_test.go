@@ -4,16 +4,16 @@ import (
 	"context"
 	"testing"
 
-	kafkago "github.com/segmentio/kafka-go"
+	"github.com/opensearch-project/opensearch-go/v4/opensearchapi"
 	"github.com/stretchr/testify/require"
 )
 
 func TestIface(t *testing.T) {
 	ctx := context.Background()
-	var rr ServiceRegistrar
-	c := &kafkago.Client{}
+	c, err := opensearchapi.NewClient(opensearchapi.Config{})
+	require.NoError(t, err)
 
-	rr = NewServiceRegistrar(c)
+	var rr ServiceRegistrar = c
 	require.NotNil(t, rr)
 
 	str := "Hello"
@@ -21,6 +21,6 @@ func TestIface(t *testing.T) {
 
 	})
 
-	err := r.RegisterToGoKafka(ctx, rr)
+	err = r.RegisterToOpenSearch(ctx, rr)
 	require.NoError(t, err)
 }

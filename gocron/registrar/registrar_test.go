@@ -11,6 +11,8 @@ func TestIface(t *testing.T) {
 	var rr ServiceRegistrar
 	c, err := gocron.NewScheduler(nil)
 	require.NoError(t, err)
-	rr = c
+
+	rr = NewServiceRegistrar(c)
 	require.NotNil(t, rr)
+
 }

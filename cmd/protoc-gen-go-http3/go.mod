@@ -5,6 +5,6 @@ go 1.21
 toolchain go1.23.0
 
 require (
-	google.golang.org/genproto/googleapis/api v0.0.0-20240820151423-278611b39280
-	google.golang.org/protobuf v1.34.2
+	google.golang.org/genproto/googleapis/api v0.0.0-20241015192408-796eee8c2d53
+	google.golang.org/protobuf v1.35.1
 )

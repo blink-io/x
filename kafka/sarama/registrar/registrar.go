@@ -14,6 +14,14 @@ type WithRegistrar interface {
 
 type ServiceRegistrar = sarama.Client
 
+type serviceRegistrar struct {
+	sarama.Client
+}
+
+func NewServiceRegistrar(c sarama.Client) ServiceRegistrar {
+	return serviceRegistrar{c}
+}
+
 type Func[S any] func(ServiceRegistrar, S)
 
 type FuncWithErr[S any] func(ServiceRegistrar, S) error

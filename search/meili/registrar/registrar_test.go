@@ -4,16 +4,16 @@ import (
 	"context"
 	"testing"
 
-	kafkago "github.com/segmentio/kafka-go"
+	"github.com/meilisearch/meilisearch-go"
 	"github.com/stretchr/testify/require"
 )
 
 func TestIface(t *testing.T) {
 	ctx := context.Background()
 	var rr ServiceRegistrar
-	c := &kafkago.Client{}
+	s := meilisearch.New("", meilisearch.WithAPIKey(""))
 
-	rr = NewServiceRegistrar(c)
+	rr = NewServiceRegistrar(s)
 	require.NotNil(t, rr)
 
 	str := "Hello"
@@ -21,6 +21,6 @@ func TestIface(t *testing.T) {
 
 	})
 
-	err := r.RegisterToGoKafka(ctx, rr)
+	err := r.RegisterToMeiliSearch(ctx, rr)
 	require.NoError(t, err)
 }

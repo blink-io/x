@@ -5,13 +5,12 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/go-kratos/kratos/v2/transport/grpc"
-	kgrpc "github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/stretchr/testify/require"
+	khttp3 "github.com/tx7do/kratos-transport/transport/http3"
 )
 
 func TestIsServerThen_1(t *testing.T) {
-	ss := kgrpc.NewServer()
+	ss := khttp3.NewServer()
 
 	rr := NewServiceRegistrar(ss)
 
@@ -19,10 +18,10 @@ func TestIsServerThen_1(t *testing.T) {
 		fmt.Println(r)
 	})
 
-	err := r.RegisterToGRPC(context.Background(), rr)
+	err := r.RegisterToHTTP3(context.Background(), rr)
 	require.NoError(t, err)
 
-	IsServerThen(ss, func(s *grpc.Server) {
+	IsServerThen(ss, func(s *khttp3.Server) {
 		fmt.Println("KKK")
 	})
 }

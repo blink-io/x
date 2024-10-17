@@ -10,10 +10,10 @@ import (
 
 func TestIface(t *testing.T) {
 	ctx := context.Background()
-	var rr ServiceRegistrar
 	c, err := pulsar.NewClient(pulsar.ClientOptions{})
 	require.NoError(t, err)
-	rr = c
+
+	rr := NewServiceRegistrar(c)
 	require.NotNil(t, rr)
 
 	str := "Hello"

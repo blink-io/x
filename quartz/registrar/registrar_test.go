@@ -41,10 +41,9 @@ func TestIface(t *testing.T) {
 	logger.SetDefault(logger.NewSimpleLogger(ll, logger.LevelDebug))
 
 	ctx := context.Background()
-
-	var rr ServiceRegistrar
 	sched := quartz.NewStdScheduler()
-	rr = sched
+
+	rr := NewServiceRegistrar(sched)
 	require.NotNil(t, rr)
 
 	var s = &svc{}
