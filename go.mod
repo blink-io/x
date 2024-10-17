@@ -52,6 +52,7 @@ require (
 	github.com/go-chi/chi/v5 v5.1.0
 	github.com/go-co-op/gocron/v2 v2.12.1
 	github.com/go-crypt/crypt v0.3.1
+	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.5.0
 	github.com/go-faster/city v1.0.1
 	github.com/go-kit/log v0.2.1
@@ -212,6 +213,7 @@ require (
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.6 // indirect
 	github.com/go-crypt/x v0.3.1 // indirect
+	github.com/go-echarts/go-echarts/v2 v2.4.3 // indirect
 	github.com/go-jose/go-jose/v4 v4.0.4 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
@@ -293,6 +295,7 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
+	github.com/rs/cors v1.11.1 // indirect
 	github.com/rs/zerolog v1.33.0 // indirect
 	github.com/samber/lo v1.47.0 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect

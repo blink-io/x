@@ -38,8 +38,8 @@ type serviceRegistrar struct {
 	gocron.Scheduler
 }
 
-func NewServiceRegistrar(c gocron.Scheduler) ServiceRegistrar {
-	return serviceRegistrar{c}
+func NewServiceRegistrar(s gocron.Scheduler) ServiceRegistrar {
+	return serviceRegistrar{s}
 }
 
 type Func[S any] func(ServiceRegistrar, S)
