@@ -119,8 +119,8 @@ require (
 	github.com/quic-go/quic-go v0.48.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/rabbitmq/amqp091-go v1.10.0
-	github.com/redis/go-redis/extra/rediscmd/v9 v9.6.2
-	github.com/redis/go-redis/v9 v9.6.2
+	github.com/redis/go-redis/extra/rediscmd/v9 v9.7.0
+	github.com/redis/go-redis/v9 v9.7.0
 	github.com/redis/rueidis v1.0.47
 	github.com/redis/rueidis/rueidishook v1.0.47
 	github.com/reugn/go-quartz v0.13.0
