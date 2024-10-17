@@ -8,6 +8,7 @@ toolchain go1.23.2
 
 require (
 	github.com/42wim/httpsig v1.2.2
+	github.com/99designs/gqlgen v0.17.55
 	github.com/Azure/go-amqp v1.2.0
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
@@ -138,6 +139,7 @@ require (
 	github.com/segmentio/encoding v0.4.0
 	github.com/segmentio/kafka-go v0.4.47
 	github.com/segmentio/ksuid v1.0.4
+	github.com/sethvargo/go-limiter v1.0.0
 	github.com/sethvargo/go-password v0.3.1
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/sourcegraph/conc v0.3.0
@@ -301,6 +303,7 @@ require (
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/smarty/assertions v1.16.0 // indirect
+	github.com/sosodev/duration v1.3.1 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/stephenafamo/scan v0.6.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
@@ -318,6 +321,7 @@ require (
 	github.com/valyala/fasthttp v1.56.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
+	github.com/vektah/gqlparser/v2 v2.5.18 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
