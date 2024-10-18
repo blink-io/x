@@ -29,7 +29,7 @@ require (
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20241015030232-d9079bcb16f9
-	github.com/blink-io/hypersql v0.0.0-20241014141559-9ff29aa79370
+	github.com/blink-io/hypersql v0.0.0-20241017164810-c645531c225e
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bokwoon95/sq v0.5.1
@@ -75,7 +75,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.1.0
 	github.com/guregu/null/v5 v5.0.0
 	github.com/h2non/filetype v1.1.3
-	github.com/hashicorp/consul/api v1.29.5
+	github.com/hashicorp/consul/api v1.30.0
 	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.5
@@ -94,6 +94,7 @@ require (
 	github.com/linkedin/goavro/v2 v2.13.0
 	github.com/lithammer/shortuuid/v4 v4.0.0
 	github.com/lmittmann/tint v1.0.5
+	github.com/madflojo/testcerts v1.3.0
 	github.com/matthewhartstonge/argon2 v1.0.1
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.24
@@ -178,16 +179,16 @@ require (
 )
 
 replace (
-	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
-	github.com/tx7do/kratos-transport v1.1.9 => github.com/blink-io/kratos-transport v0.0.0-20241016014112-952d08e2d007
-	github.com/tx7do/kratos-transport/transport/http3 v1.2.16 => github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20241015161550-d1978697a964
+	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240918133542-eae3b0c03361
+	github.com/tx7do/kratos-transport v1.1.9 => github.com/blink-io/kratos-transport v0.0.0-20241017035058-133eb57e81ad
+	github.com/tx7do/kratos-transport/transport/http3 v1.2.16 => github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20241017035058-133eb57e81ad
 )
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.2 // indirect
-	github.com/AthenZ/athenz v1.12.1 // indirect
+	github.com/AthenZ/athenz v1.12.2 // indirect
 	github.com/DataDog/zstd v1.5.6 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
 	github.com/ProtonMail/go-crypto v1.0.0 // indirect
@@ -227,13 +228,15 @@ require (
 	github.com/gofiber/utils/v2 v2.0.0-beta.6 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
+	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
+	github.com/golang-sql/sqlexp v0.1.0 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
-	github.com/google/pprof v0.0.0-20241009165004-a3522334989c // indirect
+	github.com/google/pprof v0.0.0-20241017200806-017d972448fc // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
@@ -270,6 +273,7 @@ require (
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/microsoft/go-mssqldb v1.7.2 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
@@ -334,12 +338,11 @@ require (
 	go.opentelemetry.io/otel v1.31.0 // indirect
 	go.opentelemetry.io/otel/log v0.7.0 // indirect
 	go.opentelemetry.io/otel/metric v1.31.0 // indirect
-	go.opentelemetry.io/otel/sdk v1.31.0 // indirect
 	go.opentelemetry.io/otel/trace v1.31.0 // indirect
 	go.temporal.io/api v1.39.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
-	go.uber.org/mock v0.4.0 // indirect
+	go.uber.org/mock v0.5.0 // indirect
 	golang.org/x/mod v0.21.0 // indirect
 	golang.org/x/net v0.30.0 // indirect
 	golang.org/x/oauth2 v0.23.0 // indirect
