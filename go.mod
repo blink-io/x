@@ -29,7 +29,7 @@ require (
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20241015030232-d9079bcb16f9
-	github.com/blink-io/hypersql v0.0.0-20241017164810-c645531c225e
+	github.com/blink-io/hypersql v0.0.0-20241019170329-31e15cbe1a29
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bokwoon95/sq v0.5.1
@@ -100,6 +100,7 @@ require (
 	github.com/mattn/go-sqlite3 v1.14.24
 	github.com/meilisearch/meilisearch-go v0.28.0
 	github.com/miekg/dns v1.1.62
+	github.com/minio/highwayhash v1.0.3
 	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.37.0
@@ -179,7 +180,7 @@ require (
 )
 
 replace (
-	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240918133542-eae3b0c03361
+	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
 	github.com/tx7do/kratos-transport v1.1.9 => github.com/blink-io/kratos-transport v0.0.0-20241017035058-133eb57e81ad
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.16 => github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20241017035058-133eb57e81ad
 )
@@ -225,7 +226,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.22.1 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
-	github.com/gofiber/utils/v2 v2.0.0-beta.6 // indirect
+	github.com/gofiber/utils/v2 v2.0.0-beta.7 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
