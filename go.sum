@@ -120,8 +120,8 @@ github.com/bits-and-blooms/bloom/v3 v3.7.0 h1:VfknkqV4xI+PsaDIsoHueyxVDZrfvMn56j
 github.com/bits-and-blooms/bloom/v3 v3.7.0/go.mod h1:VKlUSvp0lFIYqxJjzdnSsZEw4iHb1kOL2tfHTgyJBHg=
 github.com/blink-io/hyperbun v0.0.0-20241015030232-d9079bcb16f9 h1:gchwT7yAsjjekWBboV+OUB50hCxKss4a2hkHcwUnSck=
 github.com/blink-io/hyperbun v0.0.0-20241015030232-d9079bcb16f9/go.mod h1:LmFgFn4qCapWF8fjkrzyWwHjGhsLsNYv50bNzRc4dto=
-github.com/blink-io/hypersql v0.0.0-20241019170329-31e15cbe1a29 h1:e59jRvM3WaZBBOH0ctO+u+o0g4OGiHbhsRoRPnfoh08=
-github.com/blink-io/hypersql v0.0.0-20241019170329-31e15cbe1a29/go.mod h1:fepIxy+/rbGBdjd2GHmcRXi04lkcCh60bgg4qMQzHw4=
+github.com/blink-io/hypersql v0.0.0-20241021031043-38388cea10a8 h1:VK8XAfz2uYmgnTS8TfpUXmL/tQ/N+jaQr4izm1jKJaE=
+github.com/blink-io/hypersql v0.0.0-20241021031043-38388cea10a8/go.mod h1:fepIxy+/rbGBdjd2GHmcRXi04lkcCh60bgg4qMQzHw4=
 github.com/blink-io/kratos-transport v0.0.0-20241017035058-133eb57e81ad h1:kdnwemBBIweDcZERQOzmOObBIsgBzTwIe3lWb+4Sagk=
 github.com/blink-io/kratos-transport v0.0.0-20241017035058-133eb57e81ad/go.mod h1:tiTF8ZOBk1BsQupjAX5kV/W8KW897gCO++xgQQQnC5g=
 github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20241017035058-133eb57e81ad h1:sreZrYbpUmRbA/idr+J/yEHD1siMzlFTi1U8l/zX4Zk=
@@ -680,8 +680,8 @@ github.com/pborman/uuid v1.2.1/go.mod h1:X/NO0urCmaxf9VXbdlT7C2Yzkj2IKimNn4k+gtP
 github.com/pelletier/go-toml/v2 v2.2.3 h1:YmeHyLY8mFWbdkNWwpr+qIL2bEqT0o95WSdkNHvL12M=
 github.com/pelletier/go-toml/v2 v2.2.3/go.mod h1:MfCQTFTvCcUyyvvwm1+G6H/jORL20Xlb6rzQu9GuUkc=
 github.com/phuslu/log v1.0.106/go.mod h1:F8osGJADo5qLK/0F88djWwdyoZZ9xDJQL1HYRHFEkS0=
-github.com/phuslu/log v1.0.112 h1:vQ0ZFd5O+in/0IQAcjuEl6wRkHiQPw7T0sqwmOjpL0U=
-github.com/phuslu/log v1.0.112/go.mod h1:F8osGJADo5qLK/0F88djWwdyoZZ9xDJQL1HYRHFEkS0=
+github.com/phuslu/log v1.0.113 h1:Koq5A+8ourLX4vhkhW4HCJjo+jEtzMDhqvUUid/5m24=
+github.com/phuslu/log v1.0.113/go.mod h1:F8osGJADo5qLK/0F88djWwdyoZZ9xDJQL1HYRHFEkS0=
 github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910 h1:CS3LBqYjTt3/VnTXQy69/uM+1jHUeFtdhwNBH6UyMtg=
 github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910/go.mod h1:Q8Spqysy7gRger9SegCQArINk2vJF8W3RumTkILzM3I=
 github.com/pierrec/lz4 v2.6.1+incompatible h1:9UY3+iC23yxF0UfGaYrGplQ+79Rg+h/q9FV9ix19jjM=

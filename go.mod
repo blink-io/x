@@ -29,7 +29,7 @@ require (
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20241015030232-d9079bcb16f9
-	github.com/blink-io/hypersql v0.0.0-20241019170329-31e15cbe1a29
+	github.com/blink-io/hypersql v0.0.0-20241021031043-38388cea10a8
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bokwoon95/sq v0.5.1
@@ -114,7 +114,7 @@ require (
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.3
-	github.com/phuslu/log v1.0.112
+	github.com/phuslu/log v1.0.113
 	github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910
 	github.com/projectdiscovery/machineid v0.0.0-20240226150047-2e2c51e35983
 	github.com/qiniu/qmgo v1.1.8
