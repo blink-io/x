@@ -29,7 +29,7 @@ require (
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20241015030232-d9079bcb16f9
-	github.com/blink-io/hypersql v0.0.0-20241021031043-38388cea10a8
+	github.com/blink-io/hypersql v0.0.0-20241023062904-884b6317c557
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bokwoon95/sq v0.5.1
@@ -118,13 +118,13 @@ require (
 	github.com/phuslu/log-contrib/grpc v0.0.0-20240622164905-82dca04dc910
 	github.com/projectdiscovery/machineid v0.0.0-20240226150047-2e2c51e35983
 	github.com/qiniu/qmgo v1.1.8
-	github.com/quic-go/quic-go v0.48.0
+	github.com/quic-go/quic-go v0.48.1
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.7.0
 	github.com/redis/go-redis/v9 v9.7.0
-	github.com/redis/rueidis v1.0.47
-	github.com/redis/rueidis/rueidishook v1.0.47
+	github.com/redis/rueidis v1.0.48
+	github.com/redis/rueidis/rueidishook v1.0.48
 	github.com/reugn/go-quartz v0.13.0
 	github.com/riverqueue/river v0.13.0
 	github.com/rs/xid v1.6.0
@@ -154,8 +154,8 @@ require (
 	github.com/unrolled/render v1.7.0
 	github.com/uptrace/bun v1.2.3
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
-	github.com/valkey-io/valkey-go v1.0.47
-	github.com/valkey-io/valkey-go/valkeyhook v1.0.47
+	github.com/valkey-io/valkey-go v1.0.48
+	github.com/valkey-io/valkey-go/valkeyhook v1.0.48
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
@@ -166,12 +166,12 @@ require (
 	go.temporal.io/sdk v1.29.1
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
-	go.uber.org/zap/exp v0.2.0
+	go.uber.org/zap/exp v0.3.0
 	golang.org/x/crypto v0.28.0
 	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c
 	golang.org/x/sys v0.26.0
 	golang.org/x/text v0.19.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20241015192408-796eee8c2d53
+	google.golang.org/genproto/googleapis/api v0.0.0-20241021214115-324edc3d5d38
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.35.1
 	gopkg.in/yaml.v3 v3.0.1
@@ -213,7 +213,7 @@ require (
 	github.com/eapache/go-xerial-snappy v0.0.0-20230731223053-c322873962e3 // indirect
 	github.com/eapache/queue v1.1.0 // indirect
 	github.com/facebookgo/clock v0.0.0-20150410010913-600d898af40a // indirect
-	github.com/fatih/color v1.17.0 // indirect
+	github.com/fatih/color v1.18.0 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.6 // indirect
 	github.com/go-crypt/x v0.3.1 // indirect
@@ -237,7 +237,7 @@ require (
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
-	github.com/google/pprof v0.0.0-20241017200806-017d972448fc // indirect
+	github.com/google/pprof v0.0.0-20241023014458-598669927662 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
@@ -283,7 +283,7 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/nats-io/nkeys v0.4.7 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
-	github.com/nexus-rpc/sdk-go v0.0.10 // indirect
+	github.com/nexus-rpc/sdk-go v0.0.11 // indirect
 	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
 	github.com/pierrec/lz4/v4 v4.1.21 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
@@ -351,11 +351,11 @@ require (
 	golang.org/x/term v0.25.0 // indirect
 	golang.org/x/time v0.7.0 // indirect
 	golang.org/x/tools v0.26.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241015192408-796eee8c2d53 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241021214115-324edc3d5d38 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	k8s.io/apimachinery v0.31.1 // indirect
-	k8s.io/client-go v0.31.1 // indirect
+	k8s.io/apimachinery v0.31.2 // indirect
+	k8s.io/client-go v0.31.2 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20240921022957-49e7df575cb6 // indirect
 	modernc.org/gc/v3 v3.0.0-20241004144649-1aea3fae8852 // indirect
