@@ -118,8 +118,8 @@ github.com/bits-and-blooms/bitset v1.14.3 h1:Gd2c8lSNf9pKXom5JtD7AaKO8o7fGQ2LtFj
 github.com/bits-and-blooms/bitset v1.14.3/go.mod h1:7hO7Gc7Pp1vODcmWvKMRA9BNmbv6a/7QIWpPxHddWR8=
 github.com/bits-and-blooms/bloom/v3 v3.7.0 h1:VfknkqV4xI+PsaDIsoHueyxVDZrfvMn56jeWUzvzdls=
 github.com/bits-and-blooms/bloom/v3 v3.7.0/go.mod h1:VKlUSvp0lFIYqxJjzdnSsZEw4iHb1kOL2tfHTgyJBHg=
-github.com/blink-io/hyperbun v0.0.0-20241025164429-3c6d256d2420 h1:O+b6r/A1l7eMwKwzsYy29bfIjqu+nTCgi1Uklofdtis=
-github.com/blink-io/hyperbun v0.0.0-20241025164429-3c6d256d2420/go.mod h1:m/BIHsvATfqYGaD6KX8nYXS7kBqr3l77T+qKmEQEFoA=
+github.com/blink-io/hyperbun v0.0.0-20241027132449-c694be1c91b4 h1:He2RJ14VLoH6/OR+xMQh28I8iBeRVXdz5iA1eZaL/fw=
+github.com/blink-io/hyperbun v0.0.0-20241027132449-c694be1c91b4/go.mod h1:vSSTgMv4BH8PJ/p4QgiMkaqTOItqodXE/zVwKCY5nXM=
 github.com/blink-io/hypersql v0.0.0-20241023062904-884b6317c557 h1:wVJv2v4xEc1tmtSqKMVyNC82bXIe0TfbEP7kTyXAVEY=
 github.com/blink-io/hypersql v0.0.0-20241023062904-884b6317c557/go.mod h1:fepIxy+/rbGBdjd2GHmcRXi04lkcCh60bgg4qMQzHw4=
 github.com/blink-io/kratos-transport v0.0.0-20241017035058-133eb57e81ad h1:kdnwemBBIweDcZERQOzmOObBIsgBzTwIe3lWb+4Sagk=

@@ -28,7 +28,7 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20241025164429-3c6d256d2420
+	github.com/blink-io/hyperbun v0.0.0-20241027132449-c694be1c91b4
 	github.com/blink-io/hypersql v0.0.0-20241023062904-884b6317c557
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
