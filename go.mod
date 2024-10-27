@@ -13,13 +13,13 @@ require (
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
 	github.com/IBM/sarama v1.43.3
-	github.com/Netflix/go-env v0.1.0
+	github.com/Netflix/go-env v0.1.1
 	github.com/ProtonMail/gopenpgp/v2 v2.7.5
 	github.com/VictoriaMetrics/easyproto v0.1.4
 	github.com/VictoriaMetrics/fastcache v1.12.2
 	github.com/alexedwards/argon2id v1.0.0
 	github.com/allegro/bigcache/v3 v3.1.0
-	github.com/alphadose/haxmap v1.4.0
+	github.com/alphadose/haxmap v1.4.1
 	github.com/ammario/tlru v0.4.0
 	github.com/apache/pulsar-client-go v0.14.0
 	github.com/apache/thrift v0.21.0
@@ -28,12 +28,12 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20241015030232-d9079bcb16f9
+	github.com/blink-io/hyperbun v0.0.0-20241025164429-3c6d256d2420
 	github.com/blink-io/hypersql v0.0.0-20241023062904-884b6317c557
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bokwoon95/sq v0.5.1
-	github.com/brianvoe/gofakeit/v7 v7.0.4
+	github.com/brianvoe/gofakeit/v7 v7.1.1
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v11 v11.2.2
 	github.com/carlmjohnson/requests v0.24.2
@@ -152,7 +152,7 @@ require (
 	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.16
 	github.com/unrolled/render v1.7.0
-	github.com/uptrace/bun v1.2.3
+	github.com/uptrace/bun v1.2.5
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/valkey-io/valkey-go v1.0.48
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.48
@@ -318,9 +318,9 @@ require (
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/tx7do/kratos-transport v1.1.9 // indirect
-	github.com/uptrace/bun/dialect/mysqldialect v1.2.3 // indirect
-	github.com/uptrace/bun/dialect/pgdialect v1.2.3 // indirect
-	github.com/uptrace/bun/dialect/sqlitedialect v1.2.3 // indirect
+	github.com/uptrace/bun/dialect/mysqldialect v1.2.5 // indirect
+	github.com/uptrace/bun/dialect/pgdialect v1.2.5 // indirect
+	github.com/uptrace/bun/dialect/sqlitedialect v1.2.5 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.56.0 // indirect
@@ -340,7 +340,7 @@ require (
 	go.opentelemetry.io/otel/log v0.7.0 // indirect
 	go.opentelemetry.io/otel/metric v1.31.0 // indirect
 	go.opentelemetry.io/otel/trace v1.31.0 // indirect
-	go.temporal.io/api v1.39.0 // indirect
+	go.temporal.io/api v1.40.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/mock v0.5.0 // indirect
