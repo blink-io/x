@@ -12,6 +12,7 @@ require (
 	github.com/Azure/go-amqp v1.2.0
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
+	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/IBM/sarama v1.43.3
 	github.com/Netflix/go-env v0.1.1
 	github.com/ProtonMail/gopenpgp/v2 v2.7.5
@@ -90,6 +91,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/karlseguin/ccache/v3 v3.0.6
 	github.com/klauspost/cpuid/v2 v2.2.8
+	github.com/leporo/sqlf v1.4.0
 	github.com/libp2p/go-reuseport v0.4.0
 	github.com/linkedin/goavro/v2 v2.13.0
 	github.com/lithammer/shortuuid/v4 v4.0.0
@@ -98,7 +100,7 @@ require (
 	github.com/matthewhartstonge/argon2 v1.0.1
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.24
-	github.com/meilisearch/meilisearch-go v0.28.0
+	github.com/meilisearch/meilisearch-go v0.29.0
 	github.com/miekg/dns v1.1.62
 	github.com/minio/highwayhash v1.0.3
 	github.com/montanaflynn/stats v0.7.1
@@ -132,7 +134,7 @@ require (
 	github.com/samber/slog-common v0.17.1
 	github.com/samber/slog-http v1.4.3
 	github.com/samber/slog-logrus/v2 v2.5.0
-	github.com/samber/slog-multi v1.2.3
+	github.com/samber/slog-multi v1.2.4
 	github.com/samber/slog-sentry/v2 v2.8.0
 	github.com/samber/slog-zap/v2 v2.6.0
 	github.com/samber/slog-zerolog/v2 v2.7.0

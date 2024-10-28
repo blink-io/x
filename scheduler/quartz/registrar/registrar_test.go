@@ -3,11 +3,11 @@ package registrar
 import (
 	"context"
 	"fmt"
-	"log"
-	"os"
+	"log/slog"
 	"testing"
 	"time"
 
+	qslog "github.com/blink-io/x/scheduler/quartz/logger/slog"
 	"github.com/reugn/go-quartz/job"
 	"github.com/reugn/go-quartz/logger"
 	"github.com/reugn/go-quartz/quartz"
@@ -37,8 +37,7 @@ func (s *svc) doRegister(rr ServiceRegistrar) error {
 var _ WithRegistrar = (*svc)(nil)
 
 func TestIface(t *testing.T) {
-	ll := log.New(os.Stdout, "", log.LstdFlags|log.Lmicroseconds|log.Lshortfile)
-	logger.SetDefault(logger.NewSimpleLogger(ll, logger.LevelDebug))
+	logger.SetDefault(qslog.New(slog.Default()))
 
 	ctx := context.Background()
 	sched := quartz.NewStdScheduler()
