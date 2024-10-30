@@ -58,7 +58,7 @@ require (
 	github.com/go-faker/faker/v4 v4.5.0
 	github.com/go-faster/city v1.0.1
 	github.com/go-kit/log v0.2.1
-	github.com/go-kratos/kratos/v2 v2.8.1
+	github.com/go-kratos/kratos/v2 v2.8.2
 	github.com/go-logr/logr v1.4.2
 	github.com/go-logr/stdr v1.2.2
 	github.com/go-resty/resty/v2 v2.15.3
