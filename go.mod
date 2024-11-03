@@ -47,7 +47,7 @@ require (
 	github.com/elastic/elastic-transport-go/v8 v8.6.0
 	github.com/elastic/go-elasticsearch/v8 v8.15.0
 	github.com/elliotchance/pie/v2 v2.9.0
-	github.com/failsafe-go/failsafe-go v0.6.8
+	github.com/failsafe-go/failsafe-go v0.6.9
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/georgysavva/scany/v2 v2.1.3
 	github.com/getsentry/sentry-go v0.29.1
