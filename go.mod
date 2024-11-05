@@ -129,13 +129,15 @@ require (
 	github.com/redis/rueidis v1.0.48
 	github.com/redis/rueidis/rueidishook v1.0.48
 	github.com/reugn/go-quartz v0.13.0
-	github.com/riverqueue/river v0.13.0
+	github.com/riverqueue/river v0.14.1
+	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.14.1
+	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.14.1
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/hot v0.5.1
-	github.com/samber/oops v1.13.1
+	github.com/samber/oops v1.14.1
 	github.com/samber/slog-common v0.17.1
-	github.com/samber/slog-http v1.4.3
+	github.com/samber/slog-http v1.4.4
 	github.com/samber/slog-logrus/v2 v2.5.0
 	github.com/samber/slog-multi v1.2.4
 	github.com/samber/slog-sentry/v2 v2.8.0
@@ -158,6 +160,7 @@ require (
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.16
 	github.com/unrolled/render v1.7.0
 	github.com/uptrace/bun v1.2.5
+	github.com/uptrace/bun/dialect/pgdialect v1.2.5
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/valkey-io/valkey-go v1.0.48
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.48
@@ -176,7 +179,7 @@ require (
 	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c
 	golang.org/x/sys v0.26.0
 	golang.org/x/text v0.19.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20241021214115-324edc3d5d38
+	google.golang.org/genproto/googleapis/api v0.0.0-20241104194629-dd2ea8efbc28
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.35.1
 	gopkg.in/yaml.v3 v3.0.1
@@ -233,7 +236,7 @@ require (
 	github.com/go-playground/validator/v10 v10.22.1 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.7 // indirect
-	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
+	github.com/golang-jwt/jwt/v4 v4.5.1 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect
@@ -277,6 +280,7 @@ require (
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
+	github.com/lib/pq v1.10.9 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -302,9 +306,9 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.13.0 // indirect
-	github.com/riverqueue/river/rivershared v0.13.0 // indirect
-	github.com/riverqueue/river/rivertype v0.13.0 // indirect
+	github.com/riverqueue/river/riverdriver v0.14.1 // indirect
+	github.com/riverqueue/river/rivershared v0.14.1 // indirect
+	github.com/riverqueue/river/rivertype v0.14.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -325,7 +329,6 @@ require (
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/tx7do/kratos-transport v1.1.9 // indirect
 	github.com/uptrace/bun/dialect/mysqldialect v1.2.5 // indirect
-	github.com/uptrace/bun/dialect/pgdialect v1.2.5 // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.5 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
@@ -358,12 +361,12 @@ require (
 	golang.org/x/term v0.25.0 // indirect
 	golang.org/x/time v0.7.0 // indirect
 	golang.org/x/tools v0.26.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241021214115-324edc3d5d38 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241104194629-dd2ea8efbc28 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.31.2 // indirect
 	k8s.io/client-go v0.31.2 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
-	k8s.io/utils v0.0.0-20240921022957-49e7df575cb6 // indirect
+	k8s.io/utils v0.0.0-20241104163129-6fe5fd82f078 // indirect
 	modernc.org/gc/v3 v3.0.0-20241004144649-1aea3fae8852 // indirect
 	modernc.org/libc v1.61.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
