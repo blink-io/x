@@ -130,8 +130,6 @@ require (
 	github.com/redis/rueidis/rueidishook v1.0.48
 	github.com/reugn/go-quartz v0.13.0
 	github.com/riverqueue/river v0.14.1
-	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.14.1
-	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.14.1
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/hot v0.5.1
@@ -160,8 +158,8 @@ require (
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.16
 	github.com/unrolled/render v1.7.0
 	github.com/uptrace/bun v1.2.5
-	github.com/uptrace/bun/dialect/pgdialect v1.2.5
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
+	github.com/uptrace/uptrace-go v1.31.0
 	github.com/valkey-io/valkey-go v1.0.48
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.48
 	github.com/vmihailenco/go-tinylfu v0.2.2
@@ -171,6 +169,8 @@ require (
 	gitlab.com/greyxor/slogor v1.4.1
 	go.etcd.io/etcd/client/v3 v3.5.16
 	go.mongodb.org/mongo-driver/v2 v2.0.0-beta2
+	go.opentelemetry.io/otel v1.31.0
+	go.opentelemetry.io/otel/trace v1.31.0
 	go.temporal.io/sdk v1.30.0
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
@@ -280,7 +280,6 @@ require (
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
-	github.com/lib/pq v1.10.9 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -329,6 +328,7 @@ require (
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/tx7do/kratos-transport v1.1.9 // indirect
 	github.com/uptrace/bun/dialect/mysqldialect v1.2.5 // indirect
+	github.com/uptrace/bun/dialect/pgdialect v1.2.5 // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.5 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
@@ -346,10 +346,18 @@ require (
 	go.etcd.io/etcd/api/v3 v3.5.16 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.16 // indirect
 	go.mongodb.org/mongo-driver v1.17.1 // indirect
-	go.opentelemetry.io/otel v1.31.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/runtime v0.56.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp v0.7.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.31.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.31.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.31.0 // indirect
+	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.31.0 // indirect
 	go.opentelemetry.io/otel/log v0.7.0 // indirect
 	go.opentelemetry.io/otel/metric v1.31.0 // indirect
-	go.opentelemetry.io/otel/trace v1.31.0 // indirect
+	go.opentelemetry.io/otel/sdk v1.31.0 // indirect
+	go.opentelemetry.io/otel/sdk/log v0.7.0 // indirect
+	go.opentelemetry.io/otel/sdk/metric v1.31.0 // indirect
+	go.opentelemetry.io/proto/otlp v1.3.1 // indirect
 	go.temporal.io/api v1.41.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
