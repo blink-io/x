@@ -15,7 +15,7 @@ require (
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/IBM/sarama v1.43.3
 	github.com/Netflix/go-env v0.1.2
-	github.com/ProtonMail/gopenpgp/v2 v2.7.5
+	github.com/ProtonMail/gopenpgp/v2 v2.8.0
 	github.com/VictoriaMetrics/easyproto v0.1.4
 	github.com/VictoriaMetrics/fastcache v1.12.2
 	github.com/alexedwards/argon2id v1.0.0
@@ -90,7 +90,7 @@ require (
 	github.com/jmoiron/sqlx v1.4.0
 	github.com/joho/godotenv v1.5.1
 	github.com/karlseguin/ccache/v3 v3.0.6
-	github.com/klauspost/cpuid/v2 v2.2.8
+	github.com/klauspost/cpuid/v2 v2.2.9
 	github.com/leporo/sqlf v1.4.0
 	github.com/liamg/memoryfs v1.6.0
 	github.com/libp2p/go-reuseport v0.4.0
@@ -130,6 +130,8 @@ require (
 	github.com/redis/rueidis/rueidishook v1.0.48
 	github.com/reugn/go-quartz v0.13.0
 	github.com/riverqueue/river v0.14.1
+	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.14.1
+	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.14.1
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/hot v0.5.1
@@ -158,6 +160,7 @@ require (
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.16
 	github.com/unrolled/render v1.7.0
 	github.com/uptrace/bun v1.2.5
+	github.com/uptrace/bun/dialect/pgdialect v1.2.5
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/uptrace/uptrace-go v1.31.0
 	github.com/valkey-io/valkey-go v1.0.48
@@ -201,7 +204,7 @@ require (
 	github.com/DataDog/zstd v1.5.6 // indirect
 	github.com/DmitriyVTitov/size v1.5.0 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
-	github.com/ProtonMail/go-crypto v1.0.0 // indirect
+	github.com/ProtonMail/go-crypto v1.1.0 // indirect
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/aarondl/json v0.0.0-20221020222930-8b0db17ef1bf // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
@@ -280,6 +283,7 @@ require (
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
+	github.com/lib/pq v1.10.9 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
@@ -328,14 +332,13 @@ require (
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/tx7do/kratos-transport v1.1.9 // indirect
 	github.com/uptrace/bun/dialect/mysqldialect v1.2.5 // indirect
-	github.com/uptrace/bun/dialect/pgdialect v1.2.5 // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.5 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.57.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
-	github.com/vektah/gqlparser/v2 v2.5.18 // indirect
+	github.com/vektah/gqlparser/v2 v2.5.19 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
