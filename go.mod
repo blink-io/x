@@ -129,13 +129,13 @@ require (
 	github.com/redis/rueidis v1.0.48
 	github.com/redis/rueidis/rueidishook v1.0.48
 	github.com/reugn/go-quartz v0.13.0
-	github.com/riverqueue/river v0.13.0
+	github.com/riverqueue/river v0.14.1
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/hot v0.5.1
-	github.com/samber/oops v1.13.1
+	github.com/samber/oops v1.14.1
 	github.com/samber/slog-common v0.17.1
-	github.com/samber/slog-http v1.4.3
+	github.com/samber/slog-http v1.4.4
 	github.com/samber/slog-logrus/v2 v2.5.0
 	github.com/samber/slog-multi v1.2.4
 	github.com/samber/slog-sentry/v2 v2.8.0
@@ -159,6 +159,7 @@ require (
 	github.com/unrolled/render v1.7.0
 	github.com/uptrace/bun v1.2.5
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
+	github.com/uptrace/uptrace-go v1.31.0
 	github.com/valkey-io/valkey-go v1.0.48
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.48
 	github.com/vmihailenco/go-tinylfu v0.2.2
@@ -168,6 +169,8 @@ require (
 	gitlab.com/greyxor/slogor v1.4.1
 	go.etcd.io/etcd/client/v3 v3.5.16
 	go.mongodb.org/mongo-driver/v2 v2.0.0-beta2
+	go.opentelemetry.io/otel v1.31.0
+	go.opentelemetry.io/otel/trace v1.31.0
 	go.temporal.io/sdk v1.30.0
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
@@ -176,7 +179,7 @@ require (
 	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c
 	golang.org/x/sys v0.26.0
 	golang.org/x/text v0.19.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20241021214115-324edc3d5d38
+	google.golang.org/genproto/googleapis/api v0.0.0-20241104194629-dd2ea8efbc28
 	google.golang.org/grpc v1.67.1
 	google.golang.org/protobuf v1.35.1
 	gopkg.in/yaml.v3 v3.0.1
@@ -233,7 +236,7 @@ require (
 	github.com/go-playground/validator/v10 v10.22.1 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.7 // indirect
-	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
+	github.com/golang-jwt/jwt/v4 v4.5.1 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect
@@ -302,9 +305,9 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.13.0 // indirect
-	github.com/riverqueue/river/rivershared v0.13.0 // indirect
-	github.com/riverqueue/river/rivertype v0.13.0 // indirect
+	github.com/riverqueue/river/riverdriver v0.14.1 // indirect
+	github.com/riverqueue/river/rivershared v0.14.1 // indirect
+	github.com/riverqueue/river/rivertype v0.14.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -343,10 +346,18 @@ require (
 	go.etcd.io/etcd/api/v3 v3.5.16 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.16 // indirect
 	go.mongodb.org/mongo-driver v1.17.1 // indirect
-	go.opentelemetry.io/otel v1.31.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/runtime v0.56.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp v0.7.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.31.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.31.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.31.0 // indirect
+	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.31.0 // indirect
 	go.opentelemetry.io/otel/log v0.7.0 // indirect
 	go.opentelemetry.io/otel/metric v1.31.0 // indirect
-	go.opentelemetry.io/otel/trace v1.31.0 // indirect
+	go.opentelemetry.io/otel/sdk v1.31.0 // indirect
+	go.opentelemetry.io/otel/sdk/log v0.7.0 // indirect
+	go.opentelemetry.io/otel/sdk/metric v1.31.0 // indirect
+	go.opentelemetry.io/proto/otlp v1.3.1 // indirect
 	go.temporal.io/api v1.41.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
@@ -358,12 +369,12 @@ require (
 	golang.org/x/term v0.25.0 // indirect
 	golang.org/x/time v0.7.0 // indirect
 	golang.org/x/tools v0.26.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241021214115-324edc3d5d38 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241104194629-dd2ea8efbc28 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.31.2 // indirect
 	k8s.io/client-go v0.31.2 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
-	k8s.io/utils v0.0.0-20240921022957-49e7df575cb6 // indirect
+	k8s.io/utils v0.0.0-20241104163129-6fe5fd82f078 // indirect
 	modernc.org/gc/v3 v3.0.0-20241004144649-1aea3fae8852 // indirect
 	modernc.org/libc v1.61.0 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
