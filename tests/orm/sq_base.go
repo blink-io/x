@@ -18,9 +18,7 @@ import (
 	"github.com/sanity-io/litter"
 )
 
-var _log = slog.New(color.New(os.Stderr, color.Options{
-	Level: slog.LevelDebug,
-}))
+var _log = slog.New(color.New(os.Stderr, color.SetLevel(slog.LevelDebug)))
 
 var ctx = context.Background()
 

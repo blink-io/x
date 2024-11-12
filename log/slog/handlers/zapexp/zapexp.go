@@ -7,9 +7,9 @@ import (
 
 type Handler = zapslog.Handler
 
-type Options = zapslog.HandlerOptions
+type HandlerOption = zapslog.HandlerOption
 
-func New(core zapcore.Core, opts *Options) *Handler {
-	h := zapslog.NewHandler(core, opts)
+func New(core zapcore.Core, opts ...HandlerOption) *Handler {
+	h := zapslog.NewHandler(core, opts...)
 	return h
 }

@@ -12,11 +12,11 @@ import (
 )
 
 func init() {
-	slog.SetDefault(slog.New(slogor.NewHandler(os.Stderr, &slogor.Options{
-		TimeFormat: time.Stamp,
-		Level:      slog.LevelDebug,
-		ShowSource: false,
-	})))
+	slog.SetDefault(slog.New(slogor.NewHandler(os.Stderr,
+		slogor.ShowSource(),
+		slogor.SetTimeFormat(time.Stamp),
+		slogor.SetLevel(slog.LevelDebug),
+	)))
 }
 
 func TestSlog_1(t *testing.T) {

@@ -10,11 +10,11 @@ import (
 )
 
 func TestColor_1(t *testing.T) {
-	crlog := slog.New(slogor.NewHandler(os.Stdout, &slogor.Options{
-		TimeFormat: time.RFC3339,
-		Level:      slog.LevelDebug,
-		ShowSource: false,
-	}))
+	crlog := slog.New(slogor.NewHandler(os.Stderr,
+		slogor.ShowSource(),
+		slogor.SetTimeFormat(time.Stamp),
+		slogor.SetLevel(slog.LevelDebug),
+	))
 
 	crlog.Debug("Level Debug with color")
 	crlog.Info("Level Info with color")
