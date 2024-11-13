@@ -30,7 +30,7 @@ require (
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20241027132449-c694be1c91b4
-	github.com/blink-io/hypersql v0.0.0-20241023062904-884b6317c557
+	github.com/blink-io/hypersql v0.0.0-20241112150409-21d3fe7e1715
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bokwoon95/sq v0.5.1
@@ -157,7 +157,7 @@ require (
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
 	github.com/tidwall/gjson v1.18.0
 	github.com/twmb/murmur3 v1.1.8
-	github.com/tx7do/kratos-transport/transport/http3 v1.2.16
+	github.com/tx7do/kratos-transport/transport/http3 v1.2.17
 	github.com/unrolled/render v1.7.0
 	github.com/uptrace/bun v1.2.5
 	github.com/uptrace/bun/dialect/pgdialect v1.2.5
@@ -169,8 +169,8 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
 	github.com/zitadel/passwap v0.6.0
-	gitlab.com/greyxor/slogor v1.5.1
-	go.etcd.io/etcd/client/v3 v3.5.16
+	gitlab.com/greyxor/slogor v1.5.2
+	go.etcd.io/etcd/client/v3 v3.5.17
 	go.mongodb.org/mongo-driver/v2 v2.0.0-beta2
 	go.opentelemetry.io/otel v1.32.0
 	go.opentelemetry.io/otel/trace v1.32.0
@@ -220,7 +220,7 @@ require (
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
-	github.com/dvsekhvalnov/jose2go v1.7.0 // indirect
+	github.com/dvsekhvalnov/jose2go v1.8.0 // indirect
 	github.com/eapache/go-resiliency v1.7.0 // indirect
 	github.com/eapache/go-xerial-snappy v0.0.0-20230731223053-c322873962e3 // indirect
 	github.com/eapache/queue v1.1.0 // indirect
@@ -330,7 +330,6 @@ require (
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
-	github.com/tx7do/kratos-transport v1.1.9 // indirect
 	github.com/uptrace/bun/dialect/mysqldialect v1.2.5 // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.5 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
@@ -346,8 +345,8 @@ require (
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/xo/dburl v0.23.2 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
-	go.etcd.io/etcd/api/v3 v3.5.16 // indirect
-	go.etcd.io/etcd/client/pkg/v3 v3.5.16 // indirect
+	go.etcd.io/etcd/api/v3 v3.5.17 // indirect
+	go.etcd.io/etcd/client/pkg/v3 v3.5.17 // indirect
 	go.mongodb.org/mongo-driver v1.17.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/runtime v0.57.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp v0.8.0 // indirect
