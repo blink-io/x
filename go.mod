@@ -156,6 +156,8 @@ require (
 	github.com/stretchr/testify v1.9.0
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
 	github.com/tidwall/gjson v1.18.0
+	github.com/twmb/franz-go v1.18.0
+	github.com/twmb/franz-go/pkg/kmsg v1.9.0
 	github.com/twmb/murmur3 v1.1.8
 	github.com/tx7do/kratos-transport/transport/http3 v1.2.18
 	github.com/unrolled/render v1.7.0
