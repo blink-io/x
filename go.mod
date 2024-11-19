@@ -41,6 +41,7 @@ require (
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cohesivestack/valgo v0.4.1
+	github.com/coreos/go-oidc/v3 v3.11.0
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
