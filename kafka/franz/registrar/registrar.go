@@ -14,6 +14,8 @@ type WithRegistrar interface {
 
 type ServiceRegistrar = Client
 
+var _ ServiceRegistrar = (*kgo.Client)(nil)
+
 type serviceRegistrar struct {
 	*kgo.Client
 }

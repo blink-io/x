@@ -45,7 +45,7 @@ require (
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
 	github.com/elastic/elastic-transport-go/v8 v8.6.0
-	github.com/elastic/go-elasticsearch/v8 v8.15.0
+	github.com/elastic/go-elasticsearch/v8 v8.16.0
 	github.com/elliotchance/pie/v2 v2.9.0
 	github.com/failsafe-go/failsafe-go v0.6.9
 	github.com/fxamacker/cbor/v2 v2.7.0
@@ -109,7 +109,7 @@ require (
 	github.com/nats-io/nats.go v1.37.0
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.1
-	github.com/nyaruka/phonenumbers v1.4.1
+	github.com/nyaruka/phonenumbers v1.4.2
 	github.com/oklog/ulid/v2 v2.1.0
 	github.com/onsi/ginkgo/v2 v2.21.0
 	github.com/onsi/gomega v1.35.1
@@ -129,9 +129,9 @@ require (
 	github.com/redis/rueidis v1.0.49
 	github.com/redis/rueidis/rueidishook v1.0.49
 	github.com/reugn/go-quartz v0.13.0
-	github.com/riverqueue/river v0.14.1
-	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.14.1
-	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.14.1
+	github.com/riverqueue/river v0.14.2
+	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.14.2
+	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.14.2
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/hot v0.5.2
@@ -184,11 +184,11 @@ require (
 	golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f
 	golang.org/x/sys v0.27.0
 	golang.org/x/text v0.20.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20241113202542-65e8d215514f
+	google.golang.org/genproto/googleapis/api v0.0.0-20241118233622-e639e219e697
 	google.golang.org/grpc v1.68.0
 	google.golang.org/protobuf v1.35.2
 	gopkg.in/yaml.v3 v3.0.1
-	modernc.org/sqlite v1.33.1
+	modernc.org/sqlite v1.34.1
 	resenje.org/singleflight v0.4.3
 )
 
@@ -202,7 +202,7 @@ require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.2 // indirect
-	github.com/AthenZ/athenz v1.12.3 // indirect
+	github.com/AthenZ/athenz v1.12.4 // indirect
 	github.com/DataDog/zstd v1.5.6 // indirect
 	github.com/DmitriyVTitov/size v1.5.0 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
@@ -238,7 +238,7 @@ require (
 	github.com/go-playground/form/v4 v4.2.1 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.22.1 // indirect
+	github.com/go-playground/validator/v10 v10.23.0 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.7 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.1 // indirect
@@ -311,9 +311,9 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.14.1 // indirect
-	github.com/riverqueue/river/rivershared v0.14.1 // indirect
-	github.com/riverqueue/river/rivertype v0.14.1 // indirect
+	github.com/riverqueue/river/riverdriver v0.14.2 // indirect
+	github.com/riverqueue/river/rivershared v0.14.2 // indirect
+	github.com/riverqueue/river/rivertype v0.14.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -325,7 +325,7 @@ require (
 	github.com/smarty/assertions v1.16.0 // indirect
 	github.com/sosodev/duration v1.3.1 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
-	github.com/stephenafamo/scan v0.6.0 // indirect
+	github.com/stephenafamo/scan v0.6.1 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/tetratelabs/wazero v1.8.1 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
@@ -362,7 +362,7 @@ require (
 	go.opentelemetry.io/otel/sdk/log v0.8.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.32.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.3.1 // indirect
-	go.temporal.io/api v1.41.0 // indirect
+	go.temporal.io/api v1.42.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/mock v0.5.0 // indirect
@@ -373,14 +373,14 @@ require (
 	golang.org/x/term v0.26.0 // indirect
 	golang.org/x/time v0.8.0 // indirect
 	golang.org/x/tools v0.27.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241113202542-65e8d215514f // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241118233622-e639e219e697 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.31.2 // indirect
 	k8s.io/client-go v0.31.2 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20241104163129-6fe5fd82f078 // indirect
 	modernc.org/gc/v3 v3.0.0-20241004144649-1aea3fae8852 // indirect
-	modernc.org/libc v1.61.0 // indirect
+	modernc.org/libc v1.61.2 // indirect
 	modernc.org/mathutil v1.6.0 // indirect
 	modernc.org/memory v1.8.0 // indirect
 	modernc.org/strutil v1.2.0 // indirect
