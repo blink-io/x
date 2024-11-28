@@ -81,6 +81,8 @@ github.com/allegro/bigcache/v3 v3.1.0 h1:H2Vp8VOvxcrB91o86fUSVJFqeuz8kpyyB02eH3b
 github.com/allegro/bigcache/v3 v3.1.0/go.mod h1:aPyh7jEvrog9zAwx5N7+JUQX5dZTSGpxF1LAR4dr35I=
 github.com/alphadose/haxmap v1.4.1 h1:VtD6VCxUkjNIfJk/aWdYFfOzrRddDFjmvmRmILg7x8Q=
 github.com/alphadose/haxmap v1.4.1/go.mod h1:rjHw1IAqbxm0S3U5tD16GoKsiAd8FWx5BJ2IYqXwgmM=
+github.com/amazon-ion/ion-go v1.5.0 h1:fxsAyFda8N9HsM2xYbQSxJ3Qi/oLn0xzLoiXWG3bseg=
+github.com/amazon-ion/ion-go v1.5.0/go.mod h1:3ZEje8i20TiIPVZlN+KE3B2ppZ1B8d9F/KaT7Dtec+k=
 github.com/ammario/tlru v0.4.0 h1:sJ80I0swN3KOX2YxC6w8FbCqpQucWdbb+J36C05FPuU=
 github.com/ammario/tlru v0.4.0/go.mod h1:aYzRFu0XLo4KavE9W8Lx7tzjkX+pAApz+NgcKYIFUBQ=
 github.com/andreyvit/diff v0.0.0-20170406064948-c7f18ee00883 h1:bvNMNQO63//z+xNgfBlViaCIJKLlCJ6/fmUseuG0wVQ=
@@ -122,8 +124,8 @@ github.com/bits-and-blooms/bitset v1.17.0 h1:1X2TS7aHz1ELcC0yU1y2stUs/0ig5oMU6ST
 github.com/bits-and-blooms/bitset v1.17.0/go.mod h1:7hO7Gc7Pp1vODcmWvKMRA9BNmbv6a/7QIWpPxHddWR8=
 github.com/bits-and-blooms/bloom/v3 v3.7.0 h1:VfknkqV4xI+PsaDIsoHueyxVDZrfvMn56jeWUzvzdls=
 github.com/bits-and-blooms/bloom/v3 v3.7.0/go.mod h1:VKlUSvp0lFIYqxJjzdnSsZEw4iHb1kOL2tfHTgyJBHg=
-github.com/blink-io/hyperbun v0.0.0-20241119154906-bd566b1a3eb5 h1:39vDrpoC/DB3nhsw9QQ+lN/XQGIkzxgRGCz52PLUwmU=
-github.com/blink-io/hyperbun v0.0.0-20241119154906-bd566b1a3eb5/go.mod h1:YbiJygl5e4ORUjbK+pyo1WqshmyeExO40xnv9OoJ6j8=
+github.com/blink-io/hyperbun v0.0.0-20241128142638-d655178fbb55 h1:owbH54Jy8C9jC5+YW4skBGsP0Y/xM7THvqUeKry2WLY=
+github.com/blink-io/hyperbun v0.0.0-20241128142638-d655178fbb55/go.mod h1:k2RTa9z/YQYofsyKGJGZ76xv8vN3yx5suRyazK726S0=
 github.com/blink-io/hypersql v0.0.0-20241112150409-21d3fe7e1715 h1:vd4sRcISy+B8VWs2CppnJ4m0oxwUA88+s0gXGcA1HVg=
 github.com/blink-io/hypersql v0.0.0-20241112150409-21d3fe7e1715/go.mod h1:0Nz39X42G2fzSS3n5bzVY81IESRC5FGUVPiWmvt9iWg=
 github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737 h1:1+ec/Wf1LjvpiNULHm/yrqFpUdNPdjp1MWj8g9aCuUI=
@@ -382,6 +384,7 @@ github.com/google/btree v1.0.1/go.mod h1:xXMiIv4Fb/0kKde4SpL7qlzvu5cMJDRkFDxJfI9
 github.com/google/go-cmp v0.2.0/go.mod h1:oXzfMopK8JAjlY9xF4vHSVASa0yLyX7SntLO5aqRK0M=
 github.com/google/go-cmp v0.3.1/go.mod h1:8QqcDgzrUqlUb/G2PQTWiueGozuR1884gddMywk6iLU=
 github.com/google/go-cmp v0.4.0/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
+github.com/google/go-cmp v0.5.0/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/go-cmp v0.5.2/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=

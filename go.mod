@@ -21,6 +21,7 @@ require (
 	github.com/alexedwards/argon2id v1.0.0
 	github.com/allegro/bigcache/v3 v3.1.0
 	github.com/alphadose/haxmap v1.4.1
+	github.com/amazon-ion/ion-go v1.5.0
 	github.com/ammario/tlru v0.4.0
 	github.com/apache/pulsar-client-go v0.14.0
 	github.com/apache/thrift v0.21.0
@@ -29,7 +30,7 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20241119154906-bd566b1a3eb5
+	github.com/blink-io/hyperbun v0.0.0-20241128142638-d655178fbb55
 	github.com/blink-io/hypersql v0.0.0-20241112150409-21d3fe7e1715
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
