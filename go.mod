@@ -99,7 +99,7 @@ require (
 	github.com/liamg/memoryfs v1.6.0
 	github.com/libp2p/go-reuseport v0.4.0
 	github.com/linkedin/goavro/v2 v2.13.0
-	github.com/lithammer/shortuuid/v4 v4.1.0
+	github.com/lithammer/shortuuid/v4 v4.2.0
 	github.com/lmittmann/tint v1.0.5
 	github.com/madflojo/testcerts v1.3.0
 	github.com/matthewhartstonge/argon2 v1.0.2
@@ -192,7 +192,7 @@ require (
 	google.golang.org/grpc v1.68.0
 	google.golang.org/protobuf v1.35.2
 	gopkg.in/yaml.v3 v3.0.1
-	modernc.org/sqlite v1.34.1
+	modernc.org/sqlite v1.34.2
 	resenje.org/singleflight v0.4.3
 )
 
@@ -368,7 +368,7 @@ require (
 	go.opentelemetry.io/otel/sdk v1.32.0 // indirect
 	go.opentelemetry.io/otel/sdk/log v0.8.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.32.0 // indirect
-	go.opentelemetry.io/proto/otlp v1.3.1 // indirect
+	go.opentelemetry.io/proto/otlp v1.4.0 // indirect
 	go.temporal.io/api v1.43.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
