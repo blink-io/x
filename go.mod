@@ -9,7 +9,7 @@ toolchain go1.23.2
 require (
 	github.com/42wim/httpsig v1.2.2
 	github.com/99designs/gqlgen v0.17.57
-	github.com/Azure/go-amqp v1.2.0
+	github.com/Azure/go-amqp v1.3.0
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
 	github.com/DATA-DOG/go-sqlmock v1.5.2
@@ -30,8 +30,8 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20241128142638-d655178fbb55
-	github.com/blink-io/hypersql v0.0.0-20241112150409-21d3fe7e1715
+	github.com/blink-io/hyperbun v0.0.0-20241202150039-208675d23bd1
+	github.com/blink-io/hypersql v0.0.0-20241202150857-6704f370a988
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bmatcuk/doublestar/v4 v4.7.1
@@ -130,8 +130,8 @@ require (
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.7.0
 	github.com/redis/go-redis/v9 v9.7.0
-	github.com/redis/rueidis v1.0.50
-	github.com/redis/rueidis/rueidishook v1.0.50
+	github.com/redis/rueidis v1.0.51
+	github.com/redis/rueidis/rueidishook v1.0.51
 	github.com/reugn/go-quartz v0.13.0
 	github.com/riverqueue/river v0.14.2
 	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.14.2
@@ -169,8 +169,8 @@ require (
 	github.com/uptrace/bun/dialect/pgdialect v1.2.6
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/uptrace/uptrace-go v1.32.0
-	github.com/valkey-io/valkey-go v1.0.50
-	github.com/valkey-io/valkey-go/valkeyhook v1.0.50
+	github.com/valkey-io/valkey-go v1.0.51
+	github.com/valkey-io/valkey-go/valkeyhook v1.0.51
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
@@ -188,7 +188,7 @@ require (
 	golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f
 	golang.org/x/sys v0.27.0
 	golang.org/x/text v0.20.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20241118233622-e639e219e697
+	google.golang.org/genproto/googleapis/api v0.0.0-20241202173237-19429a94021a
 	google.golang.org/grpc v1.68.0
 	google.golang.org/protobuf v1.35.2
 	gopkg.in/yaml.v3 v3.0.1
@@ -257,7 +257,7 @@ require (
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
-	github.com/google/pprof v0.0.0-20241128161848-dc51965c6481 // indirect
+	github.com/google/pprof v0.0.0-20241203143554-1e3fdc7de467 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
@@ -380,7 +380,7 @@ require (
 	golang.org/x/term v0.26.0 // indirect
 	golang.org/x/time v0.8.0 // indirect
 	golang.org/x/tools v0.27.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241118233622-e639e219e697 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241202173237-19429a94021a // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.31.3 // indirect
 	k8s.io/client-go v0.31.3 // indirect
