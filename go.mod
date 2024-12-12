@@ -8,7 +8,7 @@ toolchain go1.23.2
 
 require (
 	github.com/42wim/httpsig v1.2.2
-	github.com/99designs/gqlgen v0.17.58
+	github.com/99designs/gqlgen v0.17.60
 	github.com/Azure/go-amqp v1.3.0
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
@@ -56,7 +56,7 @@ require (
 	github.com/georgysavva/scany/v2 v2.1.3
 	github.com/getsentry/sentry-go v0.30.0
 	github.com/go-chi/chi/v5 v5.1.0
-	github.com/go-co-op/gocron/v2 v2.12.4
+	github.com/go-co-op/gocron/v2 v2.13.0
 	github.com/go-crypt/crypt v0.3.1
 	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.5.0
@@ -69,7 +69,7 @@ require (
 	github.com/go-sql-driver/mysql v1.8.1
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/go-test/deep v1.1.1
-	github.com/goccy/go-json v0.10.3
+	github.com/goccy/go-json v0.10.4
 	github.com/gocraft/dbr/v2 v2.7.7
 	github.com/gofiber/fiber/v3 v3.0.0-beta.3
 	github.com/gofrs/uuid/v5 v5.3.0
@@ -77,7 +77,7 @@ require (
 	github.com/gomodule/redigo v1.9.2
 	github.com/google/uuid v1.6.0
 	github.com/graphql-go/graphql v0.8.1
-	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.1.0
+	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.2.0
 	github.com/guregu/null/v5 v5.0.0
 	github.com/h2non/filetype v1.1.3
 	github.com/hashicorp/consul/api v1.30.0
@@ -102,7 +102,7 @@ require (
 	github.com/lithammer/shortuuid/v4 v4.2.0
 	github.com/lmittmann/tint v1.0.5
 	github.com/madflojo/testcerts v1.3.0
-	github.com/matthewhartstonge/argon2 v1.0.2
+	github.com/matthewhartstonge/argon2 v1.0.3
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.24
 	github.com/meilisearch/meilisearch-go v0.29.0
@@ -177,15 +177,15 @@ require (
 	github.com/zitadel/passwap v0.6.0
 	gitlab.com/greyxor/slogor v1.5.2
 	go.etcd.io/etcd/client/v3 v3.5.17
-	go.mongodb.org/mongo-driver/v2 v2.0.0-beta2
+	go.mongodb.org/mongo-driver/v2 v2.0.0
 	go.opentelemetry.io/otel v1.32.0
 	go.opentelemetry.io/otel/trace v1.32.0
-	go.temporal.io/sdk v1.30.1
+	go.temporal.io/sdk v1.31.0
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
 	go.uber.org/zap/exp v0.3.0
-	golang.org/x/crypto v0.30.0
-	golang.org/x/exp v0.0.0-20241204233417-43b7b7cde48d
+	golang.org/x/crypto v0.31.0
+	golang.org/x/exp v0.0.0-20241210194714-1829a127f884
 	golang.org/x/sys v0.28.0
 	golang.org/x/text v0.21.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20241209162323-e6fa225c2576
@@ -382,8 +382,8 @@ require (
 	golang.org/x/tools v0.28.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241209162323-e6fa225c2576 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/apimachinery v0.31.3 // indirect
-	k8s.io/client-go v0.31.3 // indirect
+	k8s.io/apimachinery v0.32.0 // indirect
+	k8s.io/client-go v0.32.0 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20241210054802-24370beab758 // indirect
 	modernc.org/gc/v3 v3.0.0-20241004144649-1aea3fae8852 // indirect
@@ -393,6 +393,6 @@ require (
 	modernc.org/strutil v1.2.0 // indirect
 	modernc.org/token v1.1.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
-	sigs.k8s.io/structured-merge-diff/v4 v4.4.3 // indirect
+	sigs.k8s.io/structured-merge-diff/v4 v4.5.0 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
