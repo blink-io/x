@@ -25,7 +25,7 @@ require (
 	github.com/ammario/tlru v0.4.0
 	github.com/apache/pulsar-client-go v0.14.0
 	github.com/apache/thrift v0.21.0
-	github.com/apple/pkl-go v0.8.1
+	github.com/apple/pkl-go v0.9.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
@@ -62,7 +62,7 @@ require (
 	github.com/go-faker/faker/v4 v4.5.0
 	github.com/go-faster/city v1.0.1
 	github.com/go-kit/log v0.2.1
-	github.com/go-kratos/kratos/v2 v2.8.2
+	github.com/go-kratos/kratos/v2 v2.8.3
 	github.com/go-logr/logr v1.4.2
 	github.com/go-logr/stdr v1.2.2
 	github.com/go-resty/resty/v2 v2.16.2
@@ -139,7 +139,7 @@ require (
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/hot v0.5.2
-	github.com/samber/oops v1.14.2
+	github.com/samber/oops v1.15.0
 	github.com/samber/slog-common v0.18.0
 	github.com/samber/slog-http v1.4.4
 	github.com/samber/slog-logrus/v2 v2.5.0
@@ -189,10 +189,10 @@ require (
 	golang.org/x/sys v0.28.0
 	golang.org/x/text v0.21.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20241216192217-9240e9c98484
-	google.golang.org/grpc v1.69.0
+	google.golang.org/grpc v1.69.2
 	google.golang.org/protobuf v1.36.0
 	gopkg.in/yaml.v3 v3.0.1
-	modernc.org/sqlite v1.34.2
+	modernc.org/sqlite v1.34.3
 	resenje.org/singleflight v0.4.3
 )
 
@@ -375,7 +375,7 @@ require (
 	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/mock v0.5.0 // indirect
 	golang.org/x/mod v0.22.0 // indirect
-	golang.org/x/net v0.32.0 // indirect
+	golang.org/x/net v0.33.0 // indirect
 	golang.org/x/oauth2 v0.24.0 // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/term v0.27.0 // indirect
