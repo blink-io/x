@@ -8,7 +8,7 @@ toolchain go1.23.2
 
 require (
 	github.com/42wim/httpsig v1.2.2
-	github.com/99designs/gqlgen v0.17.60
+	github.com/99designs/gqlgen v0.17.61
 	github.com/Azure/go-amqp v1.3.0
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
@@ -38,7 +38,7 @@ require (
 	github.com/bokwoon95/sq v0.5.1
 	github.com/brianvoe/gofakeit/v7 v7.1.2
 	github.com/bwmarrin/snowflake v0.3.0
-	github.com/caarlos0/env/v11 v11.3.0
+	github.com/caarlos0/env/v11 v11.3.1
 	github.com/carlmjohnson/requests v0.24.3
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/cespare/xxhash/v2 v2.3.0
@@ -85,7 +85,7 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.5
 	github.com/http-wasm/http-wasm-host-go v0.7.0
-	github.com/jackc/pgx/v5 v5.7.1
+	github.com/jackc/pgx/v5 v5.7.2
 	github.com/jackc/puddle/v2 v2.2.2
 	github.com/jaevor/go-nanoid v1.4.0
 	github.com/jaswdr/faker/v2 v2.3.3
@@ -102,7 +102,7 @@ require (
 	github.com/lithammer/shortuuid/v4 v4.2.0
 	github.com/lmittmann/tint v1.0.6
 	github.com/madflojo/testcerts v1.3.0
-	github.com/matthewhartstonge/argon2 v1.0.3
+	github.com/matthewhartstonge/argon2 v1.1.0
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.24
 	github.com/meilisearch/meilisearch-go v0.29.0
@@ -113,9 +113,9 @@ require (
 	github.com/nats-io/nats.go v1.38.0
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/nicksnyder/go-i18n/v2 v2.4.1
-	github.com/nyaruka/phonenumbers v1.4.3
+	github.com/nyaruka/phonenumbers v1.4.4
 	github.com/oklog/ulid/v2 v2.1.0
-	github.com/onsi/ginkgo/v2 v2.22.0
+	github.com/onsi/ginkgo/v2 v2.22.1
 	github.com/onsi/gomega v1.36.1
 	github.com/opensearch-project/opensearch-go/v4 v4.3.0
 	github.com/outcaste-io/ristretto v0.2.3
@@ -144,7 +144,7 @@ require (
 	github.com/samber/slog-http v1.4.4
 	github.com/samber/slog-logrus/v2 v2.5.0
 	github.com/samber/slog-multi v1.2.4
-	github.com/samber/slog-sentry/v2 v2.8.0
+	github.com/samber/slog-sentry/v2 v2.9.0
 	github.com/samber/slog-zap/v2 v2.6.0
 	github.com/samber/slog-zerolog/v2 v2.7.1
 	github.com/sanity-io/litter v1.5.5
@@ -188,7 +188,7 @@ require (
 	golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67
 	golang.org/x/sys v0.28.0
 	golang.org/x/text v0.21.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20241216192217-9240e9c98484
+	google.golang.org/genproto/googleapis/api v0.0.0-20241219192143-6b3ec007d9bb
 	google.golang.org/grpc v1.69.2
 	google.golang.org/protobuf v1.36.0
 	gopkg.in/yaml.v3 v3.0.1
@@ -206,7 +206,7 @@ require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.2 // indirect
-	github.com/AthenZ/athenz v1.12.6 // indirect
+	github.com/AthenZ/athenz v1.12.7 // indirect
 	github.com/DataDog/zstd v1.5.6 // indirect
 	github.com/DmitriyVTitov/size v1.5.0 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
@@ -262,7 +262,7 @@ require (
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
-	github.com/grpc-ecosystem/grpc-gateway/v2 v2.24.0 // indirect
+	github.com/grpc-ecosystem/grpc-gateway/v2 v2.25.1 // indirect
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
 	github.com/hamba/avro/v2 v2.27.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
@@ -381,7 +381,7 @@ require (
 	golang.org/x/term v0.27.0 // indirect
 	golang.org/x/time v0.8.0 // indirect
 	golang.org/x/tools v0.28.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241216192217-9240e9c98484 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241219192143-6b3ec007d9bb // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.32.0 // indirect
 	k8s.io/client-go v0.32.0 // indirect
