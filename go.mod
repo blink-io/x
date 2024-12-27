@@ -13,7 +13,7 @@ require (
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
 	github.com/DATA-DOG/go-sqlmock v1.5.2
-	github.com/IBM/sarama v1.43.3
+	github.com/IBM/sarama v1.44.0
 	github.com/Netflix/go-env v0.1.2
 	github.com/ProtonMail/gopenpgp/v2 v2.8.1
 	github.com/VictoriaMetrics/easyproto v0.1.4
@@ -130,12 +130,12 @@ require (
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.7.0
 	github.com/redis/go-redis/v9 v9.7.0
-	github.com/redis/rueidis v1.0.51
-	github.com/redis/rueidis/rueidishook v1.0.51
+	github.com/redis/rueidis v1.0.52
+	github.com/redis/rueidis/rueidishook v1.0.52
 	github.com/reugn/go-quartz v0.13.0
-	github.com/riverqueue/river v0.14.3
-	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.14.3
-	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.14.3
+	github.com/riverqueue/river v0.15.0
+	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.15.0
+	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.15.0
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.1
 	github.com/samber/hot v0.5.2
@@ -169,8 +169,8 @@ require (
 	github.com/uptrace/bun/dialect/pgdialect v1.2.6
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/uptrace/uptrace-go v1.32.0
-	github.com/valkey-io/valkey-go v1.0.51
-	github.com/valkey-io/valkey-go/valkeyhook v1.0.51
+	github.com/valkey-io/valkey-go v1.0.52
+	github.com/valkey-io/valkey-go/valkeyhook v1.0.52
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
@@ -317,9 +317,9 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.14.3 // indirect
-	github.com/riverqueue/river/rivershared v0.14.3 // indirect
-	github.com/riverqueue/river/rivertype v0.14.3 // indirect
+	github.com/riverqueue/river/riverdriver v0.15.0 // indirect
+	github.com/riverqueue/river/rivershared v0.15.0 // indirect
+	github.com/riverqueue/river/rivertype v0.15.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -345,7 +345,7 @@ require (
 	github.com/valyala/fasthttp v1.58.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
-	github.com/vektah/gqlparser/v2 v2.5.20 // indirect
+	github.com/vektah/gqlparser/v2 v2.5.21 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/wk8/go-ordered-map/v2 v2.1.9-0.20240816141633-0a40785b4f41 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
