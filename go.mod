@@ -178,8 +178,8 @@ require (
 	gitlab.com/greyxor/slogor v1.6.1
 	go.etcd.io/etcd/client/v3 v3.5.17
 	go.mongodb.org/mongo-driver/v2 v2.0.0
-	go.opentelemetry.io/otel v1.33.0
-	go.opentelemetry.io/otel/trace v1.33.0
+	go.opentelemetry.io/otel v1.34.0
+	go.opentelemetry.io/otel/trace v1.34.0
 	go.temporal.io/sdk v1.32.1
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
@@ -188,11 +188,11 @@ require (
 	golang.org/x/exp v0.0.0-20250106191152-7588d65b2ba8
 	golang.org/x/sys v0.29.0
 	golang.org/x/text v0.21.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20250106144421-5f5ef82da422
+	google.golang.org/genproto/googleapis/api v0.0.0-20250115164207-1a7da9e5054f
 	google.golang.org/grpc v1.69.4
-	google.golang.org/protobuf v1.36.2
+	google.golang.org/protobuf v1.36.3
 	gopkg.in/yaml.v3 v3.0.1
-	modernc.org/sqlite v1.34.4
+	modernc.org/sqlite v1.34.5
 	resenje.org/singleflight v0.4.3
 )
 
@@ -210,7 +210,7 @@ require (
 	github.com/DataDog/zstd v1.5.6 // indirect
 	github.com/DmitriyVTitov/size v1.5.0 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
-	github.com/ProtonMail/go-crypto v1.1.4 // indirect
+	github.com/ProtonMail/go-crypto v1.1.5 // indirect
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/aarondl/json v0.0.0-20221020222930-8b0db17ef1bf // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
@@ -312,7 +312,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/prometheus/client_golang v1.20.5 // indirect
 	github.com/prometheus/client_model v0.6.1 // indirect
-	github.com/prometheus/common v0.61.0 // indirect
+	github.com/prometheus/common v0.62.0 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/puzpuzpuz/xsync/v3 v3.4.0 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
@@ -360,16 +360,16 @@ require (
 	go.mongodb.org/mongo-driver v1.17.2 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/runtime v0.58.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp v0.9.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.33.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.33.0 // indirect
-	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.33.0 // indirect
-	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.33.0 // indirect
-	go.opentelemetry.io/otel/log v0.9.0 // indirect
-	go.opentelemetry.io/otel/metric v1.33.0 // indirect
-	go.opentelemetry.io/otel/sdk v1.33.0 // indirect
-	go.opentelemetry.io/otel/sdk/log v0.9.0 // indirect
-	go.opentelemetry.io/otel/sdk/metric v1.33.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp v0.10.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.34.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.34.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.34.0 // indirect
+	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.34.0 // indirect
+	go.opentelemetry.io/otel/log v0.10.0 // indirect
+	go.opentelemetry.io/otel/metric v1.34.0 // indirect
+	go.opentelemetry.io/otel/sdk v1.34.0 // indirect
+	go.opentelemetry.io/otel/sdk/log v0.10.0 // indirect
+	go.opentelemetry.io/otel/sdk/metric v1.34.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.5.0 // indirect
 	go.temporal.io/api v1.43.1 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
@@ -382,18 +382,15 @@ require (
 	golang.org/x/term v0.28.0 // indirect
 	golang.org/x/time v0.9.0 // indirect
 	golang.org/x/tools v0.29.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250106144421-5f5ef82da422 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250115164207-1a7da9e5054f // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/apimachinery v0.32.0 // indirect
-	k8s.io/client-go v0.32.0 // indirect
+	k8s.io/apimachinery v0.32.1 // indirect
+	k8s.io/client-go v0.32.1 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20241210054802-24370beab758 // indirect
-	modernc.org/gc/v3 v3.0.0-20250105121824-520be1a3aee6 // indirect
-	modernc.org/libc v1.61.7 // indirect
+	modernc.org/libc v1.61.8 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.8.2 // indirect
-	modernc.org/strutil v1.2.1 // indirect
-	modernc.org/token v1.1.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.5.0 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
