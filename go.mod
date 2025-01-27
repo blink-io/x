@@ -30,8 +30,8 @@ require (
 	github.com/avast/retry-go/v4 v4.6.0
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20250106153443-35697809b11a
-	github.com/blink-io/hypersql v0.0.0-20250106155729-4c379e0eeac2
+	github.com/blink-io/hyperbun v0.0.0-20250126155751-71d4e4b91323
+	github.com/blink-io/hypersql v0.0.0-20250126155818-4cdb15a18426
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bmatcuk/doublestar/v4 v4.8.1
@@ -326,7 +326,7 @@ require (
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/cors v1.11.1 // indirect
 	github.com/rs/zerolog v1.33.0 // indirect
-	github.com/samber/lo v1.48.0 // indirect
+	github.com/samber/lo v1.49.0 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/smarty/assertions v1.16.0 // indirect

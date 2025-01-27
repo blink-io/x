@@ -119,10 +119,10 @@ github.com/bits-and-blooms/bitset v1.20.0 h1:2F+rfL86jE2d/bmw7OhqUg2Sj/1rURkBn3M
 github.com/bits-and-blooms/bitset v1.20.0/go.mod h1:7hO7Gc7Pp1vODcmWvKMRA9BNmbv6a/7QIWpPxHddWR8=
 github.com/bits-and-blooms/bloom/v3 v3.7.0 h1:VfknkqV4xI+PsaDIsoHueyxVDZrfvMn56jeWUzvzdls=
 github.com/bits-and-blooms/bloom/v3 v3.7.0/go.mod h1:VKlUSvp0lFIYqxJjzdnSsZEw4iHb1kOL2tfHTgyJBHg=
-github.com/blink-io/hyperbun v0.0.0-20250106153443-35697809b11a h1:GxBObH3LgqV+2rWg5XYbs0IyiQZu9U7qIdrk/ypj4nY=
-github.com/blink-io/hyperbun v0.0.0-20250106153443-35697809b11a/go.mod h1:hoVo/onNjrDrWK5+4WGLwIizrIY9mdGaFdcSStaVhtM=
-github.com/blink-io/hypersql v0.0.0-20250106155729-4c379e0eeac2 h1:UIsyKc2XOiT4XKrjOh81Fx1H+YETY2nkDirkWjesH/E=
-github.com/blink-io/hypersql v0.0.0-20250106155729-4c379e0eeac2/go.mod h1:6g2E7I0mLmlbZxF/3d3eM/X99PSVJbAd8TGhy4+Ln/Q=
+github.com/blink-io/hyperbun v0.0.0-20250126155751-71d4e4b91323 h1:9ATFsTmtQ3zHbrViD7iOvslHPKiA9rONXBi0g/Q1OtA=
+github.com/blink-io/hyperbun v0.0.0-20250126155751-71d4e4b91323/go.mod h1:72gTVnmpvU8CciXhWpbQw82d6veKFtZEjsO9msOfOUE=
+github.com/blink-io/hypersql v0.0.0-20250126155818-4cdb15a18426 h1:cTHttZq59dY8OcGr4FPKbDlN3tULmIxuxDNoTsk07r8=
+github.com/blink-io/hypersql v0.0.0-20250126155818-4cdb15a18426/go.mod h1:offWrrswpN+LReHauBaeVcB8wUvh406GSSUMISLKX3Q=
 github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737 h1:1+ec/Wf1LjvpiNULHm/yrqFpUdNPdjp1MWj8g9aCuUI=
 github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737/go.mod h1:PyfKilIlH4cbXN19CTmMqzqmqd7u8pb5kUxK+fkKXiI=
 github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1 h1:BCFuaX70CoccN5Ts58G3j/t0AfvRWFP7TOxRyicl+dM=
@@ -808,8 +808,8 @@ github.com/samber/go-singleflightx v0.3.2 h1:jXbUU0fvis8Fdv4HGONboX5WdEZcYLoBEcK
 github.com/samber/go-singleflightx v0.3.2/go.mod h1:X2BR+oheHIYc73PvxRMlcASg6KYYTQyUYpdVU7t/ux4=
 github.com/samber/hot v0.6.1 h1:XE+s2eYim/A+krwSeWw3PlDY4niXF/YHxqHpJX6t/ZE=
 github.com/samber/hot v0.6.1/go.mod h1:KZT4XothwxoQyCilGxRTc8DriHdyIsCbQ6CrsdOmbDs=
-github.com/samber/lo v1.48.0 h1:ELOfcaM7vdYPe0egBS2Nxa8LxkY4lR+9LBzj0l6cHJ0=
-github.com/samber/lo v1.48.0/go.mod h1:dO6KHFzUKXgP8LDhU0oI8d2hekjXnGOu0DB8Jecxd6o=
+github.com/samber/lo v1.49.0 h1:AGnTnQrg1jpFuwECPUSoxZCfVH5W22b605kWSry3YxM=
+github.com/samber/lo v1.49.0/go.mod h1:dO6KHFzUKXgP8LDhU0oI8d2hekjXnGOu0DB8Jecxd6o=
 github.com/samber/oops v1.15.0 h1:/mF33KAqA2TugU6y/tomFpK6G6mJB7g0aqRyHkaSIeg=
 github.com/samber/oops v1.15.0/go.mod h1:9LpLZkpjojEt/of7EpG5o65i/Lp23ddDvGhg2L871Ow=
 github.com/samber/slog-common v0.18.1 h1:c0EipD/nVY9HG5shgm/XAs67mgpWDMF+MmtptdJNCkQ=
