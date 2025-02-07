@@ -55,11 +55,11 @@ require (
 	github.com/fxamacker/cbor/v2 v2.7.0
 	github.com/georgysavva/scany/v2 v2.1.3
 	github.com/getsentry/sentry-go v0.31.1
-	github.com/go-chi/chi/v5 v5.2.0
+	github.com/go-chi/chi/v5 v5.2.1
 	github.com/go-co-op/gocron/v2 v2.15.0
 	github.com/go-crypt/crypt v0.3.2
 	github.com/go-echarts/statsview v0.4.2
-	github.com/go-faker/faker/v4 v4.5.0
+	github.com/go-faker/faker/v4 v4.6.0
 	github.com/go-faster/city v1.0.1
 	github.com/go-kit/log v0.2.1
 	github.com/go-kratos/kratos/v2 v2.8.3
@@ -110,9 +110,9 @@ require (
 	github.com/minio/highwayhash v1.0.3
 	github.com/montanaflynn/stats v0.7.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
-	github.com/nats-io/nats.go v1.38.0
+	github.com/nats-io/nats.go v1.39.0
 	github.com/ncruces/go-strftime v0.1.9
-	github.com/nicksnyder/go-i18n/v2 v2.5.0
+	github.com/nicksnyder/go-i18n/v2 v2.5.1
 	github.com/nyaruka/phonenumbers v1.5.0
 	github.com/oklog/ulid/v2 v2.1.0
 	github.com/onsi/ginkgo/v2 v2.22.2
@@ -130,20 +130,20 @@ require (
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.7.0
 	github.com/redis/go-redis/v9 v9.7.0
-	github.com/redis/rueidis v1.0.53
-	github.com/redis/rueidis/rueidishook v1.0.53
-	github.com/reugn/go-quartz v0.13.0
+	github.com/redis/rueidis v1.0.54
+	github.com/redis/rueidis/rueidishook v1.0.54
+	github.com/reugn/go-quartz v0.14.0
 	github.com/riverqueue/river v0.16.0
 	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.16.0
 	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.16.0
 	github.com/rs/xid v1.6.0
 	github.com/samber/go-singleflightx v0.3.2
 	github.com/samber/hot v0.6.1
-	github.com/samber/oops v1.15.0
+	github.com/samber/oops v1.16.0
 	github.com/samber/slog-common v0.18.1
 	github.com/samber/slog-http v1.5.1
 	github.com/samber/slog-logrus/v2 v2.5.2
-	github.com/samber/slog-multi v1.3.3
+	github.com/samber/slog-multi v1.4.0
 	github.com/samber/slog-sentry/v2 v2.9.3
 	github.com/samber/slog-zap/v2 v2.6.2
 	github.com/samber/slog-zerolog/v2 v2.7.3
@@ -169,8 +169,8 @@ require (
 	github.com/uptrace/bun/dialect/pgdialect v1.2.9
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/uptrace/uptrace-go v1.34.0
-	github.com/valkey-io/valkey-go v1.0.53
-	github.com/valkey-io/valkey-go/valkeyhook v1.0.53
+	github.com/valkey-io/valkey-go v1.0.54
+	github.com/valkey-io/valkey-go/valkeyhook v1.0.54
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
@@ -185,12 +185,12 @@ require (
 	go.uber.org/zap v1.27.0
 	go.uber.org/zap/exp v0.3.0
 	golang.org/x/crypto v0.32.0
-	golang.org/x/exp v0.0.0-20250128182459-e0ece0dbea4c
-	golang.org/x/sys v0.29.0
-	golang.org/x/text v0.21.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20250127172529-29210b9bc287
+	golang.org/x/exp v0.0.0-20250207012021-f9890c6ad9f3
+	golang.org/x/sys v0.30.0
+	golang.org/x/text v0.22.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20250204164813-702378808489
 	google.golang.org/grpc v1.70.0
-	google.golang.org/protobuf v1.36.4
+	google.golang.org/protobuf v1.36.5
 	gopkg.in/yaml.v3 v3.0.1
 	modernc.org/sqlite v1.34.5
 	resenje.org/singleflight v0.4.3
@@ -219,7 +219,7 @@ require (
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bits-and-blooms/bitset v1.20.0 // indirect
-	github.com/cloudflare/circl v1.5.0 // indirect
+	github.com/cloudflare/circl v1.6.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/danieljoos/wincred v1.2.2 // indirect
@@ -256,7 +256,7 @@ require (
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/gofuzz v1.2.0 // indirect
-	github.com/google/pprof v0.0.0-20250128161936-077ca0a936bf // indirect
+	github.com/google/pprof v0.0.0-20250202011525-fc3143867406 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
@@ -304,7 +304,7 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/nats-io/nkeys v0.4.9 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
-	github.com/nexus-rpc/sdk-go v0.1.1 // indirect
+	github.com/nexus-rpc/sdk-go v0.2.0 // indirect
 	github.com/philhofer/fwd v1.1.3-0.20240916144458-20a13a1f6b7c // indirect
 	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
 	github.com/pierrec/lz4/v4 v4.1.22 // indirect
@@ -371,24 +371,24 @@ require (
 	go.opentelemetry.io/otel/sdk/log v0.10.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.34.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.5.0 // indirect
-	go.temporal.io/api v1.43.2 // indirect
+	go.temporal.io/api v1.44.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/mock v0.5.0 // indirect
-	golang.org/x/mod v0.22.0 // indirect
+	golang.org/x/mod v0.23.0 // indirect
 	golang.org/x/net v0.34.0 // indirect
-	golang.org/x/oauth2 v0.25.0 // indirect
-	golang.org/x/sync v0.10.0 // indirect
-	golang.org/x/term v0.28.0 // indirect
-	golang.org/x/time v0.9.0 // indirect
+	golang.org/x/oauth2 v0.26.0 // indirect
+	golang.org/x/sync v0.11.0 // indirect
+	golang.org/x/term v0.29.0 // indirect
+	golang.org/x/time v0.10.0 // indirect
 	golang.org/x/tools v0.29.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250127172529-29210b9bc287 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250204164813-702378808489 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.32.1 // indirect
 	k8s.io/client-go v0.32.1 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20241210054802-24370beab758 // indirect
-	modernc.org/libc v1.61.10 // indirect
+	modernc.org/libc v1.61.12 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.8.2 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
