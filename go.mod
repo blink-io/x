@@ -8,7 +8,7 @@ toolchain go1.23.2
 
 require (
 	github.com/42wim/httpsig v1.2.2
-	github.com/99designs/gqlgen v0.17.64
+	github.com/99designs/gqlgen v0.17.65
 	github.com/Azure/go-amqp v1.3.0
 	github.com/BurntSushi/toml v1.4.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
