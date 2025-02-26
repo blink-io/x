@@ -30,7 +30,7 @@ require (
 	github.com/avast/retry-go/v4 v4.6.1
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20250215034140-ab5a823bcf65
+	github.com/blink-io/hyperbun v0.0.0-20250226042232-a36d1a1bea9f
 	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
@@ -182,7 +182,7 @@ require (
 	go.mongodb.org/mongo-driver/v2 v2.0.1
 	go.opentelemetry.io/otel v1.34.0
 	go.opentelemetry.io/otel/trace v1.34.0
-	go.temporal.io/sdk v1.32.1
+	go.temporal.io/sdk v1.33.0
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.0
 	go.uber.org/zap/exp v0.3.0
@@ -194,6 +194,7 @@ require (
 	google.golang.org/grpc v1.70.0
 	google.golang.org/protobuf v1.36.5
 	gopkg.in/yaml.v3 v3.0.1
+	k8s.io/client-go v0.32.2
 	modernc.org/sqlite v1.35.0
 	resenje.org/singleflight v0.4.3
 )
@@ -220,7 +221,7 @@ require (
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
-	github.com/bits-and-blooms/bitset v1.20.0 // indirect
+	github.com/bits-and-blooms/bitset v1.21.0 // indirect
 	github.com/cloudflare/circl v1.6.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
@@ -386,7 +387,6 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250224174004-546df14abb99 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.32.2 // indirect
-	k8s.io/client-go v0.32.2 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20241210054802-24370beab758 // indirect
 	modernc.org/libc v1.61.13 // indirect

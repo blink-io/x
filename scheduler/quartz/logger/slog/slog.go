@@ -22,43 +22,23 @@ func New(sl *slog.Logger) qlogger.Logger {
 	}
 }
 
-func (l *logger) Trace(msg any) {
-	l.sl.Log(l.ctx, slog.LevelDebug-4, fmt.Sprint(msg))
-}
-
-func (l *logger) Tracef(format string, args ...any) {
+func (l *logger) Trace(format string, args ...any) {
 	l.sl.Log(l.ctx, slog.LevelDebug-4, fmt.Sprintf(format, args...))
 }
 
-func (l *logger) Debug(msg any) {
-	l.sl.Debug(fmt.Sprint(msg))
-}
-
-func (l *logger) Debugf(format string, args ...any) {
+func (l *logger) Debug(format string, args ...any) {
 	l.sl.Debug(fmt.Sprintf(format, args...))
 }
 
-func (l *logger) Info(msg any) {
-	l.sl.Info(fmt.Sprint(msg))
-}
-
-func (l *logger) Infof(format string, args ...any) {
+func (l *logger) Info(format string, args ...any) {
 	l.sl.Info(fmt.Sprintf(format, args...))
 }
 
-func (l *logger) Warn(msg any) {
-	l.sl.Warn(fmt.Sprint(msg))
-}
-
-func (l *logger) Warnf(format string, args ...any) {
+func (l *logger) Warn(format string, args ...any) {
 	l.sl.Warn(fmt.Sprintf(format, args...))
 }
 
-func (l *logger) Error(msg any) {
-	l.sl.Error(fmt.Sprint(msg))
-}
-
-func (l *logger) Errorf(format string, args ...any) {
+func (l *logger) Error(format string, args ...any) {
 	l.sl.Error(fmt.Sprintf(format, args...))
 }
 
