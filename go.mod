@@ -113,6 +113,7 @@ require (
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.39.1
 	github.com/ncruces/go-strftime v0.1.9
+	github.com/negrel/conc v0.4.0
 	github.com/nicksnyder/go-i18n/v2 v2.5.1
 	github.com/nyaruka/phonenumbers v1.5.0
 	github.com/oklog/ulid/v2 v2.1.0
@@ -120,6 +121,7 @@ require (
 	github.com/onsi/gomega v1.36.2
 	github.com/opensearch-project/opensearch-go/v4 v4.4.0
 	github.com/outcaste-io/ristretto v0.2.3
+	github.com/panjf2000/ants/v2 v2.11.1
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.3
 	github.com/phuslu/log v1.0.113
