@@ -32,6 +32,7 @@ require (
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20250226042232-a36d1a1bea9f
 	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
+	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250311033448-9e33eb0a4d12
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bmatcuk/doublestar/v4 v4.8.1
@@ -167,7 +168,6 @@ require (
 	github.com/twmb/franz-go v1.18.1
 	github.com/twmb/franz-go/pkg/kmsg v1.9.0
 	github.com/twmb/murmur3 v1.1.8
-	github.com/tx7do/kratos-transport/transport/http3 v1.2.18
 	github.com/unrolled/render v1.7.0
 	github.com/uptrace/bun v1.2.11
 	github.com/uptrace/bun/dialect/pgdialect v1.2.11
@@ -201,11 +201,7 @@ require (
 	resenje.org/singleflight v0.4.3
 )
 
-replace (
-	github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
-	github.com/tx7do/kratos-transport v1.1.9 => github.com/blink-io/kratos-transport v0.0.0-20241017035058-133eb57e81ad
-	github.com/tx7do/kratos-transport/transport/http3 v1.2.16 => github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20241017035058-133eb57e81ad
-)
+replace github.com/bokwoon95/sq v0.5.1 => github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
@@ -224,6 +220,7 @@ require (
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bits-and-blooms/bitset v1.21.0 // indirect
+	github.com/blink-io/kratos-transport v0.0.0-20250311033448-9e33eb0a4d12 // indirect
 	github.com/cloudflare/circl v1.6.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect

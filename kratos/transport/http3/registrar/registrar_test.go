@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
+	khttp3 "github.com/blink-io/kratos-transport/transport/http3"
 	"github.com/stretchr/testify/require"
-	khttp3 "github.com/tx7do/kratos-transport/transport/http3"
 )
 
 func TestIsServerThen_1(t *testing.T) {

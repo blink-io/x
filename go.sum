@@ -123,6 +123,10 @@ github.com/blink-io/hyperbun v0.0.0-20250226042232-a36d1a1bea9f h1:uNZuqJDgb298Z
 github.com/blink-io/hyperbun v0.0.0-20250226042232-a36d1a1bea9f/go.mod h1:uzzA7nEPHnpCOuOVCDfXtRKJW0UurskYqDKZ+/qxeXQ=
 github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1 h1:IMC0XtxW8rOIlW3WkbE4+Tr0RCHHtBaYe7LWYFAdLQ0=
 github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1/go.mod h1:W+PedZSQayPeVkAIQFflowUtBbK5leBJNPmgeANPhws=
+github.com/blink-io/kratos-transport v0.0.0-20250311033448-9e33eb0a4d12 h1:+NoaIkPUimwBSgvsGHrGXsmH0K2m30WT+jZZpv4+2FQ=
+github.com/blink-io/kratos-transport v0.0.0-20250311033448-9e33eb0a4d12/go.mod h1:zghi5OpHop/+zXE6A2Z/tiFcUfIhUhpjodlYh2lILao=
+github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250311033448-9e33eb0a4d12 h1:U2VvBSZapdJyelphEFoRsG7wIUA8S6mc0PbuNfw3Xk4=
+github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250311033448-9e33eb0a4d12/go.mod h1:gFaJ1hO4ZIYw3snEb7efpWwSsSI4hP6vvfWeUtbiBSk=
 github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737 h1:1+ec/Wf1LjvpiNULHm/yrqFpUdNPdjp1MWj8g9aCuUI=
 github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737/go.mod h1:PyfKilIlH4cbXN19CTmMqzqmqd7u8pb5kUxK+fkKXiI=
 github.com/blink-io/sq v0.0.0-20240912023304-c0785df6eed1 h1:BCFuaX70CoccN5Ts58G3j/t0AfvRWFP7TOxRyicl+dM=
@@ -683,8 +687,6 @@ github.com/opencontainers/image-spec v1.1.0/go.mod h1:W4s4sFTMaBeK1BQLXbG4AdM2sz
 github.com/opensearch-project/opensearch-go/v4 v4.4.0 h1:YzyQ1fbRdeJES+sFBrX19kdPIsLpYrFdK4S55l6HrWg=
 github.com/opensearch-project/opensearch-go/v4 v4.4.0/go.mod h1:EBLeL9YERzDoWmu5uEMLFndBfhgX3PyquFGYxMIvx5c=
 github.com/opentracing/opentracing-go v1.1.0/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFStlNbqXla1AfSYxPUl2o=
-github.com/openzipkin/zipkin-go v0.4.3 h1:9EGwpqkgnwdEIJ+Od7QVSEIH+ocmm5nPat0G7sjsSdg=
-github.com/openzipkin/zipkin-go v0.4.3/go.mod h1:M9wCJZFWCo2RiY+o1eBCEMe0Dp2S5LDHcMZmk3RmK7c=
 github.com/outcaste-io/ristretto v0.2.3 h1:AK4zt/fJ76kjlYObOeNwh4T3asEuaCmp26pOvUOL9w0=
 github.com/outcaste-io/ristretto v0.2.3/go.mod h1:W8HywhmtlopSB1jeMg3JtdIhf+DYkLAr0VN/s4+MHac=
 github.com/panjf2000/ants/v2 v2.11.2 h1:AVGpMSePxUNpcLaBO34xuIgM1ZdKOiGnpxLXixLi5Jo=
@@ -935,10 +937,6 @@ github.com/twmb/franz-go/pkg/kmsg v1.9.0/go.mod h1:CMbfazviCyY6HM0SXuG5t9vOwYDHR
 github.com/twmb/murmur3 v1.1.6/go.mod h1:Qq/R7NUyOfr65zD+6Q5IHKsJLwP7exErjN6lyyq3OSQ=
 github.com/twmb/murmur3 v1.1.8 h1:8Yt9taO/WN3l08xErzjeschgZU2QSrwm1kclYq+0aRg=
 github.com/twmb/murmur3 v1.1.8/go.mod h1:Qq/R7NUyOfr65zD+6Q5IHKsJLwP7exErjN6lyyq3OSQ=
-github.com/tx7do/kratos-transport v1.1.12 h1:fVWdL2kZeBNNSfxLDgaGxMSKyY3g4SnERMGgdi4RCAk=
-github.com/tx7do/kratos-transport v1.1.12/go.mod h1:4Qjq9MtwVyN7ITbDtZ5LUHUSxvEd0BjuxxlVv8R9wXo=
-github.com/tx7do/kratos-transport/transport/http3 v1.2.18 h1:mM1gATZheKdaB9rcU4JJPd3Tz6uOuVC99+wAkZZjPzs=
-github.com/tx7do/kratos-transport/transport/http3 v1.2.18/go.mod h1:IRNcz/74PTeuOMFYtrmjUtC0N5MEcZobXPpZIf117To=
 github.com/unrolled/render v1.7.0 h1:1yke01/tZiZpiXfUG+zqB+6fq3G4I+KDmnh0EhPq7So=
 github.com/unrolled/render v1.7.0/go.mod h1:LwQSeDhjml8NLjIO9GJO1/1qpFJxtfVIpzxXKjfVkoI=
 github.com/uptrace/bun v1.2.11 h1:l9dTymsdZZAoSZ1+Qo3utms0RffgkDbIv+1UGk8N1wQ=
@@ -1030,14 +1028,10 @@ go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.35.0 h1:0NI
 go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.35.0/go.mod h1:ChZSJbbfbl/DcRZNc9Gqh6DYGlfjw4PvO1pEOZH1ZsE=
 go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.35.0 h1:1fTNlAIJZGWLP5FVu0fikVry1IsiUnXjf7QFvoNN3Xw=
 go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.35.0/go.mod h1:zjPK58DtkqQFn+YUMbx0M2XV3QgKU0gS9LeGohREyK4=
-go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.32.0 h1:9kV11HXBHZAvuPUZxmMWrH8hZn/6UnHX4K0mu36vNsU=
-go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.32.0/go.mod h1:JyA0FHXe22E1NeNiHmVp7kFHglnexDQ7uRWDiiJ1hKQ=
 go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.35.0 h1:xJ2qHD0C1BeYVTLLR9sX12+Qb95kfeD/byKj6Ky1pXg=
 go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.35.0/go.mod h1:u5BF1xyjstDowA1R5QAO9JHzqK+ublenEW/dyqTjBVk=
 go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.35.0 h1:T0Ec2E+3YZf5bgTNQVet8iTDW7oIk03tXHq+wkwIDnE=
 go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.35.0/go.mod h1:30v2gqH+vYGJsesLWFov8u47EpYTcIQcBjKpI6pJThg=
-go.opentelemetry.io/otel/exporters/zipkin v1.32.0 h1:6O8HgLHPXtXE9QEKEWkBImL9mEKCGEl+m+OncVO53go=
-go.opentelemetry.io/otel/exporters/zipkin v1.32.0/go.mod h1:+MFvorlowjy0iWnsKaNxC1kzczSxe71mw85h4p8yEvg=
 go.opentelemetry.io/otel/log v0.11.0 h1:c24Hrlk5WJ8JWcwbQxdBqxZdOK7PcP/LFtOtwpDTe3Y=
 go.opentelemetry.io/otel/log v0.11.0/go.mod h1:U/sxQ83FPmT29trrifhQg+Zj2lo1/IPN1PF6RTFqdwc=
 go.opentelemetry.io/otel/metric v1.35.0 h1:0znxYu2SNyuMSQT4Y9WDWej0VpcsxkuklLa4/siN90M=
