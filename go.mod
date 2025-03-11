@@ -32,7 +32,7 @@ require (
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20250226042232-a36d1a1bea9f
 	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
-	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250311033448-9e33eb0a4d12
+	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250311064252-02bc3079463e
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bmatcuk/doublestar/v4 v4.8.1
@@ -58,7 +58,7 @@ require (
 	github.com/getsentry/sentry-go v0.31.1
 	github.com/go-chi/chi/v5 v5.2.1
 	github.com/go-co-op/gocron/v2 v2.16.0
-	github.com/go-crypt/crypt v0.3.3
+	github.com/go-crypt/crypt v0.3.4
 	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.6.0
 	github.com/go-faster/city v1.0.1
@@ -219,8 +219,7 @@ require (
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
-	github.com/bits-and-blooms/bitset v1.21.0 // indirect
-	github.com/blink-io/kratos-transport v0.0.0-20250311033448-9e33eb0a4d12 // indirect
+	github.com/bits-and-blooms/bitset v1.22.0 // indirect
 	github.com/cloudflare/circl v1.6.0 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
@@ -236,7 +235,7 @@ require (
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/fsnotify/fsnotify v1.8.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.8 // indirect
-	github.com/go-crypt/x v0.3.4 // indirect
+	github.com/go-crypt/x v0.3.5 // indirect
 	github.com/go-echarts/go-echarts/v2 v2.5.1 // indirect
 	github.com/go-jose/go-jose/v4 v4.0.5 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
