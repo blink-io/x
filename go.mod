@@ -28,6 +28,7 @@ require (
 	github.com/apple/pkl-go v0.9.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.1
+	github.com/aymerick/raymond v2.0.2+incompatible
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20250226042232-a36d1a1bea9f
@@ -40,6 +41,7 @@ require (
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v11 v11.3.1
 	github.com/carlmjohnson/requests v0.24.3
+	github.com/cbroglie/mustache v1.4.0
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cohesivestack/valgo v0.4.1
@@ -140,6 +142,7 @@ require (
 	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.18.0
 	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.18.0
 	github.com/rs/xid v1.6.0
+	github.com/runZeroInc/mustache/v2 v2.1.0
 	github.com/samber/go-singleflightx v0.3.2
 	github.com/samber/hot v0.6.1
 	github.com/samber/oops v1.17.0
