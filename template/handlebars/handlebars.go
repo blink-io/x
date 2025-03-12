@@ -1,7 +1,7 @@
 package handlebars
 
 import (
-	"github.com/aymerick/raymond"
+	"github.com/mailgun/raymond/v2"
 )
 
 type (

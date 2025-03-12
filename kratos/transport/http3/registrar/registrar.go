@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
+	khttp3 "github.com/blink-io/kratos-transport/transport/http3"
 	khttp "github.com/go-kratos/kratos/v2/transport/http"
-	khttp3 "github.com/tx7do/kratos-transport/transport/http3"
 )
 
 type RegisterFunc func(context.Context, ServiceRegistrar) error
