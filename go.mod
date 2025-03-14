@@ -1,8 +1,8 @@
 module github.com/blink-io/x
 
-go 1.23.0
+go 1.24
 
-toolchain go1.23.2
+toolchain go1.24.1
 
 //godebug default=go1.23
 
@@ -49,6 +49,7 @@ require (
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
+	github.com/dlclark/regexp2 v1.11.5
 	github.com/elastic/elastic-transport-go/v8 v8.6.1
 	github.com/elastic/go-elasticsearch/v8 v8.17.1
 	github.com/elliotchance/pie/v2 v2.9.1
@@ -63,6 +64,7 @@ require (
 	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.6.0
 	github.com/go-faster/city v1.0.1
+	github.com/go-json-experiment/json v0.0.0-20250223041408-d3c622f1b874
 	github.com/go-kit/log v0.2.1
 	github.com/go-kratos/kratos/v2 v2.8.4
 	github.com/go-logr/logr v1.4.2
@@ -198,7 +200,7 @@ require (
 	google.golang.org/grpc v1.71.0
 	google.golang.org/protobuf v1.36.5
 	gopkg.in/yaml.v3 v3.0.1
-	k8s.io/client-go v0.32.2
+	k8s.io/client-go v0.32.3
 	modernc.org/sqlite v1.36.0
 	resenje.org/singleflight v0.4.3
 )
@@ -386,7 +388,7 @@ require (
 	golang.org/x/tools v0.31.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250311190419-81fb87f6b8bf // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/apimachinery v0.32.2 // indirect
+	k8s.io/apimachinery v0.32.3 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20241210054802-24370beab758 // indirect
 	modernc.org/libc v1.61.13 // indirect
