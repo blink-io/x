@@ -28,10 +28,9 @@ require (
 	github.com/apple/pkl-go v0.9.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.1
-	github.com/aymerick/raymond v2.0.2+incompatible
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20250226042232-a36d1a1bea9f
+	github.com/blink-io/hyperbun v0.0.0-20250313040812-504f16b9229c
 	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250311064252-02bc3079463e
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
@@ -46,7 +45,7 @@ require (
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cohesivestack/valgo v0.4.1
-	github.com/coreos/go-oidc/v3 v3.12.0
+	github.com/coreos/go-oidc/v3 v3.13.0
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/disgoorg/snowflake/v2 v2.0.3
@@ -60,7 +59,7 @@ require (
 	github.com/georgysavva/scany/v2 v2.1.3
 	github.com/getsentry/sentry-go v0.31.1
 	github.com/go-chi/chi/v5 v5.2.1
-	github.com/go-co-op/gocron/v2 v2.16.0
+	github.com/go-co-op/gocron/v2 v2.16.1
 	github.com/go-crypt/crypt v0.3.4
 	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.6.0
@@ -151,7 +150,7 @@ require (
 	github.com/samber/hot v0.6.1
 	github.com/samber/oops v1.17.0
 	github.com/samber/slog-common v0.18.1
-	github.com/samber/slog-http v1.5.1
+	github.com/samber/slog-http v1.6.0
 	github.com/samber/slog-logrus/v2 v2.5.2
 	github.com/samber/slog-multi v1.4.0
 	github.com/samber/slog-sentry/v2 v2.9.3
@@ -198,12 +197,12 @@ require (
 	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394
 	golang.org/x/sys v0.31.0
 	golang.org/x/text v0.23.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20250311190419-81fb87f6b8bf
+	google.golang.org/genproto/googleapis/api v0.0.0-20250313205543-e70fdf4c4cb4
 	google.golang.org/grpc v1.71.0
 	google.golang.org/protobuf v1.36.5
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/client-go v0.32.3
-	modernc.org/sqlite v1.36.0
+	modernc.org/sqlite v1.36.1
 	resenje.org/singleflight v0.4.3
 )
 
@@ -319,7 +318,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/prometheus/client_golang v1.21.1 // indirect
 	github.com/prometheus/client_model v0.6.1 // indirect
-	github.com/prometheus/common v0.62.0 // indirect
+	github.com/prometheus/common v0.63.0 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/puzpuzpuz/xsync/v3 v3.5.1 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
@@ -388,7 +387,7 @@ require (
 	golang.org/x/term v0.30.0 // indirect
 	golang.org/x/time v0.11.0 // indirect
 	golang.org/x/tools v0.31.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250311190419-81fb87f6b8bf // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250313205543-e70fdf4c4cb4 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.32.3 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
