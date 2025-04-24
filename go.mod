@@ -1,6 +1,6 @@
 module github.com/blink-io/x
 
-go 1.24
+go 1.24.0
 
 toolchain go1.24.1
 
@@ -23,7 +23,7 @@ require (
 	github.com/alphadose/haxmap v1.4.1
 	github.com/amazon-ion/ion-go v1.5.0
 	github.com/ammario/tlru v0.4.0
-	github.com/apache/pulsar-client-go v0.14.0
+	github.com/apache/pulsar-client-go v0.15.0
 	github.com/apache/thrift v0.21.0
 	github.com/apple/pkl-go v0.10.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
@@ -107,7 +107,7 @@ require (
 	github.com/lmittmann/tint v1.0.7
 	github.com/madflojo/testcerts v1.4.0
 	github.com/mailgun/raymond/v2 v2.0.48
-	github.com/matthewhartstonge/argon2 v1.2.1
+	github.com/matthewhartstonge/argon2 v1.3.0
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/mattn/go-sqlite3 v1.14.28
 	github.com/meilisearch/meilisearch-go v0.31.0
@@ -120,7 +120,7 @@ require (
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/negrel/conc v0.5.0
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
-	github.com/nyaruka/phonenumbers v1.6.0
+	github.com/nyaruka/phonenumbers v1.6.1
 	github.com/oklog/ulid/v2 v2.1.0
 	github.com/onsi/ginkgo/v2 v2.23.4
 	github.com/onsi/gomega v1.37.0
@@ -129,11 +129,11 @@ require (
 	github.com/panjf2000/ants/v2 v2.11.3
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.4
-	github.com/phuslu/log v1.0.115
+	github.com/phuslu/log v1.0.117
 	github.com/phuslu/log-contrib/grpc v0.0.0-20250309100953-cb5b9b62dd61
 	github.com/projectdiscovery/machineid v0.0.0-20240226150047-2e2c51e35983
 	github.com/qiniu/qmgo v1.1.9
-	github.com/quic-go/quic-go v0.50.1
+	github.com/quic-go/quic-go v0.51.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.7.3
@@ -177,7 +177,7 @@ require (
 	github.com/uptrace/bun v1.2.11
 	github.com/uptrace/bun/dialect/pgdialect v1.2.11
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
-	github.com/uptrace/uptrace-go v1.35.0
+	github.com/uptrace/uptrace-go v1.35.1
 	github.com/valkey-io/valkey-go v1.0.57
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.57
 	github.com/vmihailenco/go-tinylfu v0.2.2
@@ -197,11 +197,11 @@ require (
 	golang.org/x/exp v0.0.0-20250408133849-7e4ce0ab07d0
 	golang.org/x/sys v0.32.0
 	golang.org/x/text v0.24.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20250414145226-207652e42e2e
-	google.golang.org/grpc v1.71.1
+	google.golang.org/genproto/googleapis/api v0.0.0-20250422160041-2d3770c4ea7f
+	google.golang.org/grpc v1.72.0
 	google.golang.org/protobuf v1.36.6
 	gopkg.in/yaml.v3 v3.0.1
-	k8s.io/client-go v0.32.3
+	k8s.io/client-go v0.33.0
 	modernc.org/sqlite v1.37.0
 	resenje.org/singleflight v0.4.3
 )
@@ -261,8 +261,7 @@ require (
 	github.com/golang/snappy v1.0.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/gofuzz v1.2.0 // indirect
-	github.com/google/pprof v0.0.0-20250418163039-24c5476c6587 // indirect
+	github.com/google/pprof v0.0.0-20250423184734-337e5dd93bb4 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
@@ -312,7 +311,6 @@ require (
 	github.com/nats-io/nuid v1.0.1 // indirect
 	github.com/nexus-rpc/sdk-go v0.3.0 // indirect
 	github.com/philhofer/fwd v1.1.3-0.20240916144458-20a13a1f6b7c // indirect
-	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
 	github.com/pierrec/lz4/v4 v4.1.22 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
@@ -350,7 +348,7 @@ require (
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.11 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.60.0 // indirect
+	github.com/valyala/fasthttp v1.61.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.25 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
@@ -388,15 +386,16 @@ require (
 	golang.org/x/term v0.31.0 // indirect
 	golang.org/x/time v0.11.0 // indirect
 	golang.org/x/tools v0.32.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250414145226-207652e42e2e // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250422160041-2d3770c4ea7f // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/apimachinery v0.32.3 // indirect
+	k8s.io/apimachinery v0.33.0 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20250321185631-1f6e0b77f77e // indirect
 	modernc.org/libc v1.63.0 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.10.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
+	sigs.k8s.io/randfill v1.0.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.7.0 // indirect
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
