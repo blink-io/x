@@ -136,8 +136,8 @@ require (
 	github.com/quic-go/quic-go v0.51.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/rabbitmq/amqp091-go v1.10.0
-	github.com/redis/go-redis/extra/rediscmd/v9 v9.7.3
-	github.com/redis/go-redis/v9 v9.7.3
+	github.com/redis/go-redis/extra/rediscmd/v9 v9.8.0
+	github.com/redis/go-redis/v9 v9.8.0
 	github.com/redis/rueidis v1.0.59
 	github.com/redis/rueidis/rueidishook v1.0.59
 	github.com/reugn/go-quartz v0.14.0
@@ -391,7 +391,7 @@ require (
 	k8s.io/apimachinery v0.33.0 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20250321185631-1f6e0b77f77e // indirect
-	modernc.org/libc v1.64.0 // indirect
+	modernc.org/libc v1.64.1 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.10.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
