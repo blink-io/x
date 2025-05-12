@@ -141,9 +141,9 @@ require (
 	github.com/redis/rueidis v1.0.59
 	github.com/redis/rueidis/rueidishook v1.0.59
 	github.com/reugn/go-quartz v0.14.0
-	github.com/riverqueue/river v0.21.0
-	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.21.0
-	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.21.0
+	github.com/riverqueue/river v0.22.0
+	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.22.0
+	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.22.0
 	github.com/rs/xid v1.6.0
 	github.com/runZeroInc/mustache/v2 v2.1.0
 	github.com/samber/go-singleflightx v0.3.2
@@ -322,9 +322,9 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.21.0 // indirect
-	github.com/riverqueue/river/rivershared v0.21.0 // indirect
-	github.com/riverqueue/river/rivertype v0.21.0 // indirect
+	github.com/riverqueue/river/riverdriver v0.22.0 // indirect
+	github.com/riverqueue/river/rivershared v0.22.0 // indirect
+	github.com/riverqueue/river/rivertype v0.22.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
@@ -391,7 +391,7 @@ require (
 	k8s.io/apimachinery v0.33.0 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20250502105355-0f33e8f1c979 // indirect
-	modernc.org/libc v1.65.3 // indirect
+	modernc.org/libc v1.65.6 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.10.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
