@@ -16,6 +16,6 @@ func HTTP3(tlsConf *tls.Config) *Builder {
 
 func HTTP3Conf(tlsConf *tls.Config, qconf *quic.Config) *Builder {
 	cc := requests.New().
-		Transport(client.HTTP3TransportConf(tlsConf, qconf))
+		Transport(client.HTTP3TransportWithConf(tlsConf, qconf))
 	return cc
 }

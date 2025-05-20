@@ -1,11 +1,11 @@
-package resty
+package restyv3
 
 import (
 	"crypto/tls"
 
 	"github.com/blink-io/x/http/client"
-	"github.com/go-resty/resty/v2"
 	"github.com/quic-go/quic-go"
+	"resty.dev/v3"
 )
 
 func HTTP3Client(tlsConf *tls.Config) *resty.Client {
