@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 
 	"github.com/blink-io/x/http/client"
+
 	"github.com/carlmjohnson/requests"
 	"github.com/quic-go/quic-go"
 )
