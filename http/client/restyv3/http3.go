@@ -4,6 +4,7 @@ import (
 	"crypto/tls"
 
 	"github.com/blink-io/x/http/client"
+
 	"github.com/quic-go/quic-go"
 	"resty.dev/v3"
 )
