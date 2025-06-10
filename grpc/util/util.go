@@ -1,7 +1,3 @@
 package util
 
-import (
-	"github.com/authzed/grpcutil"
-)
-
-var WithBearToken = grpcutil.WithBearerToken
+//var WithBearToken = grpcutil.WithBearerToken

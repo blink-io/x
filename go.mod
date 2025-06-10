@@ -27,9 +27,9 @@ require (
 	github.com/apache/thrift v0.22.0
 	github.com/apple/pkl-go v0.10.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
-	github.com/authzed/grpcutil v0.0.0-20250221190651-1985b19b35b8
 	github.com/avast/retry-go/v4 v4.6.1
 	github.com/bartventer/httpcache v0.4.0
+	github.com/beevik/etree v1.5.1
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20250313040812-504f16b9229c
@@ -91,6 +91,7 @@ require (
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.6
 	github.com/http-wasm/http-wasm-host-go v0.7.0
+	github.com/imroc/req/v3 v3.52.2
 	github.com/jackc/pgx/v5 v5.7.5
 	github.com/jackc/puddle/v2 v2.2.2
 	github.com/jaevor/go-nanoid v1.4.0
@@ -104,7 +105,7 @@ require (
 	github.com/leporo/sqlf v1.4.0
 	github.com/liamg/memoryfs v1.6.0
 	github.com/libp2p/go-reuseport v0.4.0
-	github.com/linkedin/goavro/v2 v2.13.1
+	github.com/linkedin/goavro/v2 v2.14.0
 	github.com/lithammer/shortuuid/v4 v4.2.0
 	github.com/lmittmann/tint v1.1.2
 	github.com/madflojo/testcerts v1.4.0
@@ -126,7 +127,7 @@ require (
 	github.com/oklog/ulid/v2 v2.1.1
 	github.com/onsi/ginkgo/v2 v2.23.4
 	github.com/onsi/gomega v1.37.0
-	github.com/opensearch-project/opensearch-go/v4 v4.4.0
+	github.com/opensearch-project/opensearch-go/v4 v4.5.0
 	github.com/outcaste-io/ristretto v0.2.3
 	github.com/panjf2000/ants/v2 v2.11.3
 	github.com/pborman/uuid v1.2.1
@@ -160,7 +161,7 @@ require (
 	github.com/samber/slog-zerolog/v2 v2.7.3
 	github.com/sanity-io/litter v1.5.8
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.2
-	github.com/segmentio/encoding v0.4.1
+	github.com/segmentio/encoding v0.5.1
 	github.com/segmentio/kafka-go v0.4.48
 	github.com/segmentio/ksuid v1.0.4
 	github.com/sethvargo/go-limiter v1.0.0
@@ -204,7 +205,7 @@ require (
 	google.golang.org/protobuf v1.36.6
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/client-go v0.33.1
-	modernc.org/sqlite v1.37.1
+	modernc.org/sqlite v1.38.0
 	resenje.org/singleflight v0.4.3
 	resty.dev/v3 v3.0.0-beta.3
 )
@@ -229,7 +230,6 @@ require (
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bits-and-blooms/bitset v1.22.0 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.2 // indirect
-	github.com/certifi/gocertifi v0.0.0-20210507211836-431795d63e8d // indirect
 	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
@@ -284,6 +284,7 @@ require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/golang-lru v1.0.2 // indirect
 	github.com/hashicorp/serf v0.10.2 // indirect
+	github.com/icholy/digest v1.1.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
 	github.com/jcmturner/aescts/v2 v2.0.0 // indirect
@@ -326,6 +327,7 @@ require (
 	github.com/puzpuzpuz/xsync/v3 v3.5.1 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9 // indirect
+	github.com/refraction-networking/utls v1.7.3 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/riverqueue/river/riverdriver v0.23.1 // indirect
 	github.com/riverqueue/river/rivershared v0.23.1 // indirect
@@ -341,7 +343,7 @@ require (
 	github.com/smarty/assertions v1.16.0 // indirect
 	github.com/sosodev/duration v1.3.1 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
-	github.com/stephenafamo/scan v0.6.2 // indirect
+	github.com/stephenafamo/scan v0.7.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/tetratelabs/wazero v1.9.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
