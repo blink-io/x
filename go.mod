@@ -8,7 +8,7 @@ toolchain go1.24.1
 
 require (
 	github.com/42wim/httpsig v1.2.3
-	github.com/99designs/gqlgen v0.17.74
+	github.com/99designs/gqlgen v0.17.75
 	github.com/Azure/go-amqp v1.4.0
 	github.com/BurntSushi/toml v1.5.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
@@ -28,13 +28,13 @@ require (
 	github.com/apple/pkl-go v0.10.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.1
-	github.com/bartventer/httpcache v0.4.0
+	github.com/bartventer/httpcache v0.5.0
 	github.com/beevik/etree v1.5.1
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20250313040812-504f16b9229c
 	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
-	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250311064252-02bc3079463e
+	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365
 	github.com/blink-io/opt v0.0.0-20241010071220-8e1697ac4737
 	github.com/blink-io/sqx v0.0.0-20241015070421-b93bddbcf4ec
 	github.com/bmatcuk/doublestar/v4 v4.8.1
@@ -73,7 +73,7 @@ require (
 	github.com/go-logr/logr v1.4.3
 	github.com/go-logr/stdr v1.2.2
 	github.com/go-resty/resty/v2 v2.16.5
-	github.com/go-sql-driver/mysql v1.9.2
+	github.com/go-sql-driver/mysql v1.9.3
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/go-test/deep v1.1.1
 	github.com/goccy/go-json v0.10.5
@@ -179,8 +179,8 @@ require (
 	github.com/twmb/franz-go/pkg/kmsg v1.11.2
 	github.com/twmb/murmur3 v1.1.8
 	github.com/unrolled/render v1.7.0
-	github.com/uptrace/bun v1.2.12
-	github.com/uptrace/bun/dialect/pgdialect v1.2.12
+	github.com/uptrace/bun v1.2.14
+	github.com/uptrace/bun/dialect/pgdialect v1.2.14
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/uptrace/uptrace-go v1.35.1
 	github.com/valkey-io/valkey-go v1.0.61
@@ -218,7 +218,7 @@ require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.2 // indirect
-	github.com/AthenZ/athenz v1.12.18 // indirect
+	github.com/AthenZ/athenz v1.12.19 // indirect
 	github.com/DataDog/zstd v1.5.7 // indirect
 	github.com/DmitriyVTitov/size v1.5.0 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
@@ -248,7 +248,7 @@ require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.9 // indirect
 	github.com/go-crypt/x v0.4.2 // indirect
-	github.com/go-echarts/go-echarts/v2 v2.5.5 // indirect
+	github.com/go-echarts/go-echarts/v2 v2.6.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.0 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
@@ -256,7 +256,8 @@ require (
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.26.0 // indirect
-	github.com/go-redsync/redsync/v4 v4.10.0 // indirect
+	github.com/go-redsync/redsync/v4 v4.13.0 // indirect
+	github.com/go-viper/mapstructure/v2 v2.3.0 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/gofiber/schema v1.5.0 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.8 // indirect
@@ -276,7 +277,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3 // indirect
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
-	github.com/hamba/avro/v2 v2.28.0 // indirect
+	github.com/hamba/avro/v2 v2.29.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
@@ -341,7 +342,7 @@ require (
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/cors v1.11.1 // indirect
 	github.com/rs/zerolog v1.34.0 // indirect
-	github.com/samber/lo v1.50.0 // indirect
+	github.com/samber/lo v1.51.0 // indirect
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/smarty/assertions v1.16.0 // indirect
@@ -355,13 +356,13 @@ require (
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tinylib/msgp v1.3.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
-	github.com/uptrace/bun/dialect/mysqldialect v1.2.12 // indirect
-	github.com/uptrace/bun/dialect/sqlitedialect v1.2.12 // indirect
+	github.com/uptrace/bun/dialect/mysqldialect v1.2.14 // indirect
+	github.com/uptrace/bun/dialect/sqlitedialect v1.2.14 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.62.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
-	github.com/vektah/gqlparser/v2 v2.5.27 // indirect
+	github.com/vektah/gqlparser/v2 v2.5.28 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
