@@ -83,6 +83,7 @@ require (
 	github.com/gogo/protobuf v1.3.2
 	github.com/gomodule/redigo v1.9.2
 	github.com/google/uuid v1.6.0
+	github.com/gorilla/csrf v1.7.3
 	github.com/graphql-go/graphql v0.8.1
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.2
 	github.com/guregu/null/v5 v5.0.0
@@ -101,6 +102,7 @@ require (
 	github.com/jfcg/sorty/v2 v2.1.1
 	github.com/jmoiron/sqlx v1.4.0
 	github.com/joho/godotenv v1.5.1
+	github.com/justinas/nosurf v1.2.0
 	github.com/karlseguin/ccache/v3 v3.0.6
 	github.com/klauspost/cpuid/v2 v2.2.10
 	github.com/leporo/sqlf v1.4.0
@@ -274,6 +276,7 @@ require (
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
+	github.com/gorilla/securecookie v1.1.2 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.26.3 // indirect
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
