@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/blink-io/opt/null"
+	"github.com/blink-io/sq"
 	"github.com/blink-io/sqx"
-	"github.com/bokwoon95/sq"
 )
 
 func (t TAGS) Mapper() sqx.Mapper[TAGS, Tag, TagSetter] {

@@ -3,7 +3,7 @@ package orm
 import (
 	"time"
 
-	"github.com/bokwoon95/sq"
+	"github.com/blink-io/sq"
 )
 
 type NEW_WORDS struct {

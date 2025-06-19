@@ -1,6 +1,6 @@
 package tables
 
-import "github.com/bokwoon95/sq"
+import "github.com/blink-io/sq"
 
 type ARRAYS struct {
 	sq.TableStruct

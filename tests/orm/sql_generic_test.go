@@ -7,7 +7,7 @@ import (
 
 	"github.com/blink-io/opt/omitnull"
 	_ "github.com/blink-io/opt/omitnull"
-	"github.com/bokwoon95/sq"
+	"github.com/blink-io/sq"
 	"github.com/stretchr/testify/require"
 )
 

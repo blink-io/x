@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/blink-io/sq"
 	"github.com/blink-io/sqx"
-	"github.com/bokwoon95/sq"
 )
 
 type tables struct {

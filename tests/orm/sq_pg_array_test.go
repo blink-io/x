@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/blink-io/sq"
 	"github.com/blink-io/x/log/slog/handlers/color"
 	"github.com/blink-io/x/sql/misc"
-	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	fuuid "github.com/gofrs/uuid/v5"
 	guuid "github.com/google/uuid"

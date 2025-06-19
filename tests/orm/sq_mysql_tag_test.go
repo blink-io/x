@@ -3,8 +3,8 @@ package orm
 import (
 	"testing"
 
+	"github.com/blink-io/sq"
 	"github.com/blink-io/x/ptr"
-	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/stretchr/testify/require"
 )

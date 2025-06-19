@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/blink-io/opt/omit"
-	"github.com/bokwoon95/sq"
+	"github.com/blink-io/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	_ "github.com/jackc/pgx/v5/stdlib"
 	"github.com/stretchr/testify/require"

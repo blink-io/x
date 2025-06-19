@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/blink-io/hypersql"
+	"github.com/blink-io/sq"
 	"github.com/blink-io/sqx"
-	"github.com/bokwoon95/sq"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/qustavo/sqlhooks/v2/hooks/loghooks"
 )

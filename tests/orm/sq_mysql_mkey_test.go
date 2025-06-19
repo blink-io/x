@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bokwoon95/sq"
+	"github.com/blink-io/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/stretchr/testify/require"
 )

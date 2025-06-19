@@ -9,12 +9,12 @@ import (
 
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
+	"github.com/blink-io/sq"
 	"github.com/blink-io/sqx"
 	"github.com/blink-io/x/id"
 	"github.com/blink-io/x/ptr"
 	"github.com/blink-io/x/sql/misc"
 	"github.com/blink-io/x/types/tuplen"
-	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/sanity-io/litter"
 	"github.com/spf13/cast"

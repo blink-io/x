@@ -9,8 +9,8 @@ import (
 
 	"github.com/blink-io/hypersql"
 	pgparams "github.com/blink-io/hypersql/postgres/params"
+	"github.com/blink-io/sq"
 	"github.com/blink-io/sqx"
-	"github.com/bokwoon95/sq"
 	"github.com/jmoiron/sqlx"
 	"github.com/qustavo/sqlhooks/v2/hooks/loghooks"
 )

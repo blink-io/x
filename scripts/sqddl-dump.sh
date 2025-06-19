@@ -5,7 +5,7 @@ export DB="$DATABASE_URL"
 
 mkdir -p ./db
 
-go install -tags=fts5 github.com/bokwoon95/sqddl@latest
+go install -tags=fts5 github.com/blink-io/sqddl@latest
 
 sqddl dump \
     -db "$DB" \

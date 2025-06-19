@@ -12,8 +12,8 @@ import (
 	"github.com/blink-io/opt/null"
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
+	"github.com/blink-io/sq"
 	"github.com/blink-io/x/log/slog/handlers/color"
-	"github.com/bokwoon95/sq"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/sanity-io/litter"
 )
@@ -29,7 +29,7 @@ func init() {
 		HideArgs:      true,
 	})
 	sq.SetDefaultLogQuery(func(ctx context.Context, stats sq.QueryStats) {
-		l.SqLogQuery(ctx, stats)
+		l.LogQuery(ctx, stats)
 	})
 }
 

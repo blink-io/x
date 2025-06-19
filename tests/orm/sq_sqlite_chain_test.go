@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/blink-io/sq"
 	"github.com/blink-io/sqx"
-	"github.com/bokwoon95/sq"
 	"github.com/stretchr/testify/require"
 )
 

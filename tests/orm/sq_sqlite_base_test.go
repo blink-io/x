@@ -5,8 +5,8 @@ import (
 	"log/slog"
 	"sync"
 
+	"github.com/blink-io/sq"
 	"github.com/blink-io/sqx"
-	"github.com/bokwoon95/sq"
 	"github.com/mattn/go-sqlite3"
 	"github.com/qustavo/sqlhooks/v2"
 	"github.com/qustavo/sqlhooks/v2/hooks/loghooks"
