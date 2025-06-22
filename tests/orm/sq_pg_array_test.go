@@ -16,9 +16,9 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var _clog = slog.New(color.New(os.Stderr, color.Options{
-	Level: slog.LevelDebug,
-}))
+var _clog = slog.New(color.New(os.Stderr,
+	color.SetLevel(slog.LevelInfo)),
+)
 
 func TestSq_Pg_Array_Insert_1(t *testing.T) {
 	db := GetPgDB()
