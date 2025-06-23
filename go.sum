@@ -153,8 +153,8 @@ github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116d
 github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365/go.mod h1:B6UPUS4g+bgVQesjBqHp2NbxuyVbTFvE/Nfo8nO1/i4=
 github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211 h1:/LqJaVeTRX0zt0PoflmZdSspM46li2A3Bn6z2kfQdKs=
 github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211/go.mod h1:PyfKilIlH4cbXN19CTmMqzqmqd7u8pb5kUxK+fkKXiI=
-github.com/blink-io/sq v0.0.0-20250617163447-a3ad4c8b3a49 h1:beI38pFdZDifkPr8L1jq9C1INqmXFIXwj/bJSTabIlA=
-github.com/blink-io/sq v0.0.0-20250617163447-a3ad4c8b3a49/go.mod h1:KDtDthxGgb/YJqZP70dljSkEn4qE9GdFdoT35FIxQCI=
+github.com/blink-io/sq v0.0.0-20250622020629-3d98198f9cc7 h1:TluzkAIbcOK/gUHejG06QxjVIvx1pUuPSjzMhDY5L9g=
+github.com/blink-io/sq v0.0.0-20250622020629-3d98198f9cc7/go.mod h1:KDtDthxGgb/YJqZP70dljSkEn4qE9GdFdoT35FIxQCI=
 github.com/blink-io/sqx v0.0.0-20250618051514-749f335ba823 h1:Jwd2diwUBI9Fgi4Qs1CnU9r6vqr/r+EL1gwIjiYgAN0=
 github.com/blink-io/sqx v0.0.0-20250618051514-749f335ba823/go.mod h1:Fl6A57RhV/yFgfWz8y9W6L1p9cPmHQoybEevoKx6Jjg=
 github.com/bmatcuk/doublestar/v4 v4.8.1 h1:54Bopc5c2cAvhLRAzqOGCYHYyhcDHsFF4wWIR5wKP38=
@@ -396,8 +396,8 @@ github.com/gofiber/fiber/v3 v3.0.0-beta.4 h1:KzDSavvhG7m81NIsmnu5l3ZDbVS4feCidl4
 github.com/gofiber/fiber/v3 v3.0.0-beta.4/go.mod h1:/WFUoHRkZEsGHyy2+fYcdqi109IVOFbVwxv1n1RU+kk=
 github.com/gofiber/schema v1.5.0 h1:dcbLol88CXdLFUY3K3TKp3SZ90v8CKIjgJp1/GfzwqU=
 github.com/gofiber/schema v1.5.0/go.mod h1:YYwj01w3hVfaNjhtJzaqetymL56VW642YS3qZPhuE6c=
-github.com/gofiber/utils/v2 v2.0.0-beta.8 h1:ZifwbHZqZO3YJsx1ZhDsWnPjaQ7C0YD20LHt+DQeXOU=
-github.com/gofiber/utils/v2 v2.0.0-beta.8/go.mod h1:1lCBo9vEF4RFEtTgWntipnaScJZQiM8rrsYycLZ4n9c=
+github.com/gofiber/utils/v2 v2.0.0-beta.9 h1:IMb2TpF2bb1spuB63GuiOZJXFfq9VJe98ofFJoy0EAY=
+github.com/gofiber/utils/v2 v2.0.0-beta.9/go.mod h1:XjKLrtxE77EyWzzWGWAepv3NLclRSZkAG+Y+GfPcKeQ=
 github.com/gofrs/flock v0.12.1 h1:MTLVXXHf8ekldpJk3AKicLij9MdwOWkZ+a/jHHZby9E=
 github.com/gofrs/flock v0.12.1/go.mod h1:9zxTsyu5xtJ9DK+1tFZyibEV7y3uwDxPPfbxeeHCoD0=
 github.com/gofrs/uuid/v5 v5.3.2 h1:2jfO8j3XgSwlz/wHqemAEugfnTlikAYHhnqQ8Xh4fE0=
@@ -848,8 +848,8 @@ github.com/prometheus/common v0.4.1/go.mod h1:TNfzLD0ON7rHzMJeJkieUDPYmFC7Snx/y8
 github.com/prometheus/common v0.9.1/go.mod h1:yhUN8i9wzaXS3w1O07YhxHEBxD+W35wd8bs7vj7HSQ4=
 github.com/prometheus/common v0.10.0/go.mod h1:Tlit/dnDKsSWFlCLTWaA1cyBgKHSMdTB80sz/V91rCo=
 github.com/prometheus/common v0.26.0/go.mod h1:M7rCNAaPfAosfx8veZJCuw84e35h3Cfd9VFqTh1DIvc=
-github.com/prometheus/common v0.64.0 h1:pdZeA+g617P7oGv1CzdTzyeShxAGrTBsolKNOLQPGO4=
-github.com/prometheus/common v0.64.0/go.mod h1:0gZns+BLRQ3V6NdaerOhMbwwRbNh9hkGINtQAsP5GS8=
+github.com/prometheus/common v0.65.0 h1:QDwzd+G1twt//Kwj/Ww6E9FQq1iVMmODnILtW1t2VzE=
+github.com/prometheus/common v0.65.0/go.mod h1:0gZns+BLRQ3V6NdaerOhMbwwRbNh9hkGINtQAsP5GS8=
 github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d/go.mod h1:c3At6R/oaqEKCNdg8wHV1ftS6bRYblBhIjjI8uT2IGk=
 github.com/prometheus/procfs v0.0.2/go.mod h1:TjEm7ze935MbeOT/UhFTIMYKhuLP4wbCsTZCD3I8kEA=
 github.com/prometheus/procfs v0.0.8/go.mod h1:7Qr8sr6344vo1JqZ6HhLceV9o3AJ1Ff+GxbHq6oeK9A=
