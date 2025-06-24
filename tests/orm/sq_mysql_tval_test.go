@@ -47,8 +47,8 @@ func TestSq_Mysql_TVAL_FetchOne_ByID(t *testing.T) {
 			ID1:  r.Int("iid"),
 			ID2:  r.String("sid"),
 			Name: r.String("name"),
-			//UserGUID:      r.StringField(tbl.UserGUID),
-			//CreatedAt: r.TimeField(tbl.CREATED_AT),
+			//UserGUID:      r.StringField(t.UserGUID),
+			//CreatedAt: r.TimeField(t.CREATED_AT),
 		}
 	})
 
@@ -61,7 +61,7 @@ func TestSq_Mysql_TVAL_FetchAll_1(t *testing.T) {
 	ldb := sq.VerboseLog(db)
 	tbl := Tables.Tvals
 
-	//idWhere := tbl.PrimaryKeyValues(36, "9ea443a7-ac20-44ad-881a-28578e92250d")
+	//idWhere := t.PrimaryKeyValues(36, "9ea443a7-ac20-44ad-881a-28578e92250d")
 	iidGtZero := tbl.IID.GtInt64(0)
 	query := sq.From(tbl).Where(
 		iidGtZero,

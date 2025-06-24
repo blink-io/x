@@ -46,8 +46,8 @@ func TestSq_Mysql_Mkey_FetchOne_ByID(t *testing.T) {
 			ID1:  r.Int("id1"),
 			ID2:  r.Int("id2"),
 			Name: r.String("name"),
-			//UserGUID:      r.StringField(tbl.UserGUID),
-			//CreatedAt: r.TimeField(tbl.CREATED_AT),
+			//UserGUID:      r.StringField(t.UserGUID),
+			//CreatedAt: r.TimeField(t.CREATED_AT),
 		}
 	})
 

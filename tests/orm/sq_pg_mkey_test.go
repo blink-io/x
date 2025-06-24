@@ -47,7 +47,7 @@ func TestSq_Pg_Mkey_FetchOne_ByID(t *testing.T) {
 			ID2:  r.Int(tbl.ID2.GetName()),
 			Name: r.String(tbl.NAME.GetName()),
 			GUID: r.String(tbl.GUID.GetName()),
-			//CreatedAt: r.TimeField(tbl.CREATED_AT),
+			//CreatedAt: r.TimeField(t.CREATED_AT),
 		}
 	})
 

@@ -11,7 +11,6 @@ import (
 
 	"github.com/blink-io/opt/null"
 	"github.com/blink-io/opt/omit"
-	"github.com/blink-io/opt/omitnull"
 	"github.com/blink-io/sq"
 	"github.com/blink-io/x/log/slog/handlers/color"
 	"github.com/brianvoe/gofakeit/v7"
@@ -188,38 +187,6 @@ func (m Device) String() string {
 	return litter.Sdump(m)
 }
 
-type Tag struct {
-	ID          int64            `db:"id"`
-	GUID        string           `db:"guid"`
-	Code        string           `db:"code"`
-	Name        string           `db:"name"`
-	CreatedAt   time.Time        `db:"created_at"`
-	Description null.Val[string] `db:"description"`
-}
-
-func (m Tag) Setter() TagSetter {
-	ss := TagSetter{
-		GUID:        omit.From(m.GUID),
-		Code:        omit.From(m.Code),
-		Name:        omit.From(m.Name),
-		CreatedAt:   omit.From(m.CreatedAt),
-		Description: omitnull.FromNull(m.Description),
-	}
-	if m.ID > 0 {
-		ss.ID = omit.From(m.ID)
-	}
-	return ss
-}
-
-type TagSetter struct {
-	ID          omit.Val[int64]      `db:"id"`
-	GUID        omit.Val[string]     `db:"guid"`
-	Code        omit.Val[string]     `db:"code"`
-	Name        omit.Val[string]     `db:"name"`
-	CreatedAt   omit.Val[time.Time]  `db:"created_at"`
-	Description omitnull.Val[string] `db:"description"`
-}
-
 type Model struct {
 	Dialect string `db:"dialect"`
 	Name    string `db:"name"`
@@ -243,7 +210,7 @@ func (m Model) String() string {
 
 func userJoinDeviceMapRowMapper() func(*sq.Row) map[string]any {
 	return func(r *sq.Row) map[string]any {
-		//tbl := UserTable
+		//t := UserTable
 		//joinTbl := UserDeviceTable
 		mm := make(map[string]any)
 		mm["id"] = r.Int64("id")
