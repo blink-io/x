@@ -2,9 +2,10 @@ package orm
 
 import (
 	"context"
+	"time"
+
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
-	"time"
 
 	"github.com/blink-io/opt/null"
 	"github.com/blink-io/sq"
@@ -83,6 +84,10 @@ func (t TAGS) RowSetter(r *sq.Row) Tag {
 	desc := r.NullStringField(t.DESCRIPTION)
 	v.Description = null.FromCond(desc.String, desc.Valid)
 	return v
+}
+
+func NewTagMapper() sqx.Mapper[TAGS, Tag, TagSetter] {
+	return TagMapper{t: Tables.Tags}
 }
 
 type TagMapper struct {

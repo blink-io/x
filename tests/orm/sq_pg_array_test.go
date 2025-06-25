@@ -1,6 +1,7 @@
 package orm
 
 import (
+	"context"
 	"fmt"
 	"log/slog"
 	"os"
@@ -31,7 +32,7 @@ func TestSq_Pg_Array_Insert_1(t *testing.T) {
 	}
 
 	_, err := sq.Exec(sq.Log(db), sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
+		InsertInto(tbl).ColumnValues(func(ctx context.Context, col *sq.Column) {
 		for _, r := range nrs {
 			arrayInsertMapper(col, r)
 		}
@@ -189,7 +190,7 @@ func randomArray() Array {
 	return v
 }
 
-func arrayQueryMapper(r *sq.Row) Array {
+func arrayQueryMapper(ctx context.Context, r *sq.Row) Array {
 	tbl := Tables.Arrays
 	var strArrPtr []string
 	var int4ArrPtr []int32

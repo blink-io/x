@@ -253,7 +253,7 @@ func userJoinDeviceRowMapper() func(*sq.Row) *UserWithDevice {
 
 func userModelRowMapper() func(*sq.Row) *User {
 	return func(r *sq.Row) *User {
-		tbl := Tables.Users
+		tbl := Tables.USERS
 
 		u := &User{
 			ID:        r.IntField(tbl.ID),

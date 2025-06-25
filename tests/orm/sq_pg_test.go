@@ -74,7 +74,7 @@ func TestSq_Pg_Insert_User_1(t *testing.T) {
 
 func TestSq_Pg_User_Insert_1(t *testing.T) {
 	db := GetPgDB()
-	tbl := Tables.Users
+	tbl := Tables.USERS
 
 	records := []User{
 		randomUser(),
@@ -91,7 +91,7 @@ func TestSq_Pg_User_Insert_1(t *testing.T) {
 
 func TestSq_Pg_User_FetchAll_WithTenantID_1(t *testing.T) {
 	db := GetPgDB()
-	tbl := Tables.Users
+	tbl := Tables.USERS
 	vctx := context.WithValue(ctx, tbl.TENANT_ID.GetName(), 3)
 
 	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
@@ -103,7 +103,7 @@ func TestSq_Pg_User_FetchAll_WithTenantID_1(t *testing.T) {
 
 func TestSq_Pg_User_FetchAll_2(t *testing.T) {
 	db := GetPgDB()
-	tbl := Tables.Users
+	tbl := Tables.USERS
 
 	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
 	records, err := sq.FetchAllContext(ctx, sq.Log(db), query, tbl.QueryMapper())
@@ -288,7 +288,7 @@ func TestSq_Pg_Enum_Insert_Tx_Fail_1(t *testing.T) {
 
 func TestSq_Pg_UserWithDevice_Exists_1(t *testing.T) {
 	db := GetPgDB()
-	tbl := Tables.Users
+	tbl := Tables.USERS
 	joinTbl := Tables.UserDevices
 	sb := sq.Postgres
 
@@ -306,7 +306,7 @@ func TestSq_Pg_UserWithDevice_Exists_1(t *testing.T) {
 
 func TestSq_Pg_UserWithDevice_CTE_1(t *testing.T) {
 	db := GetPgDB()
-	tbl := Tables.Users
+	tbl := Tables.USERS
 	joinTbl := Tables.UserDevices
 	sb := sq.Postgres
 
