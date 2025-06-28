@@ -45,8 +45,8 @@ var (
 type UserStatus string
 
 const (
-	UserStatusActive  UserStatus = "active"
-	UserStatusBlocked UserStatus = "blocked"
+	UserStatusActive  EnumEnumsStatus = "active"
+	UserStatusBlocked EnumEnumsStatus = "blocked"
 )
 
 func (v UserStatus) String() string {
@@ -143,7 +143,7 @@ func (m UserSetter) setColumns(c *sq.Column, withID bool) {
 	}
 }
 
-func (m UserSetter) SetColumns(c *sq.Column) {
+func (m UserSetter) SetColumns(ctx context.Context, c *sq.Column) {
 	m.setColumns(c, true)
 }
 
@@ -173,7 +173,7 @@ type Device struct {
 
 func (m Device) Insert(db sq.DB) error {
 	tbl := DeviceTable
-	_, err := sq.Exec(db, sq.InsertInto(tbl).ColumnValues(func(c *sq.Column) {
+	_, err := sq.Exec(db, sq.InsertInto(tbl).ColumnValues(func(ctx context.Context, c *sq.Column) {
 		c.SetString(tbl.GUID, m.GUID)
 		c.SetString(tbl.NAME, m.Name)
 		c.SetString(tbl.MODEL, m.Model)
@@ -253,7 +253,7 @@ func userJoinDeviceRowMapper() func(*sq.Row) *UserWithDevice {
 
 func userModelRowMapper() func(*sq.Row) *User {
 	return func(r *sq.Row) *User {
-		tbl := Tables.USERS
+		tbl := Tables.Users
 
 		u := &User{
 			ID:        r.IntField(tbl.ID),
@@ -290,22 +290,22 @@ func userInsertColumnMapper(col *sq.Column, r User) {
 	tbl := UserTable
 
 	if r.ID > 0 {
-		col.SetInt(tbl.ID, r.ID)
+		col.SetInt64(tbl.ID, r.ID)
 	}
-	col.Set(tbl.GUID, r.GUID)
-	col.Set(tbl.USERNAME, r.Username)
-	col.Set(tbl.SCORE, r.Score)
-	col.Set(tbl.CREATED_AT, r.CreatedAt)
-	col.Set(tbl.UPDATED_AT, r.UpdatedAt)
+	col.SetAny(tbl.GUID, r.GUID)
+	col.SetAny(tbl.USERNAME, r.Username)
+	col.SetAny(tbl.SCORE, r.Score)
+	col.SetAny(tbl.CREATED_AT, r.CreatedAt)
+	col.SetAny(tbl.UPDATED_AT, r.UpdatedAt)
 }
 
 func userDeviceInsertColumnMapper(col *sq.Column, r *UserDevice) {
 	tbl := UserDeviceTable
 
-	col.Set(tbl.USER_ID, r.UserID)
-	col.Set(tbl.GUID, r.GUID)
-	col.Set(tbl.NAME, r.Name)
-	col.Set(tbl.MODEL, r.Model)
+	col.SetAny(tbl.USER_ID, r.UserID)
+	col.SetAny(tbl.GUID, r.GUID)
+	col.SetAny(tbl.NAME, r.Name)
+	col.SetAny(tbl.MODEL, r.Model)
 	col.SetTime(tbl.CREATED_AT, r.CreatedAt)
 	col.SetTime(tbl.UPDATED_AT, r.UpdatedAt)
 }

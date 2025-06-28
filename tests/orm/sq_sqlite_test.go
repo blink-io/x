@@ -1,6 +1,7 @@
 package orm
 
 import (
+	"context"
 	"testing"
 
 	"github.com/blink-io/sq"
@@ -19,7 +20,7 @@ func TestSq_Sqlite_User_Insert_ColumnMapper_1(t *testing.T) {
 	}
 
 	_, err := sq.Exec(db, sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
+		InsertInto(tbl).ColumnValues(func(ctx context.Context, col *sq.Column) {
 		for _, r := range records {
 			userInsertColumnMapper(col, r)
 		}
@@ -38,7 +39,7 @@ func TestSq_Sqlite_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 	}
 
 	rt, err := sq.Exec(sq.Log(db), sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
+		InsertInto(tbl).ColumnValues(func(ctx context.Context, col *sq.Column) {
 		for _, r := range records {
 			userDeviceInsertColumnMapper(col, r)
 		}

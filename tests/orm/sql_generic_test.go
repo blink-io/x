@@ -1,6 +1,7 @@
 package orm
 
 import (
+	"context"
 	"fmt"
 	"testing"
 	"time"
@@ -32,7 +33,7 @@ func TestSq_Generic_DB_Select(t *testing.T) {
 	sel := selectDBNameAndVersion()
 
 	db1 := GetSqliteDB()
-	m1, err1 := sq.FetchOne[Model](sq.Log(db1), sel.SetDialect(sq.DialectSQLite), func(r *sq.Row) Model {
+	m1, err1 := sq.FetchOne[Model](sq.Log(db1), sel.SetDialect(sq.DialectSQLite), func(ctx context.Context, r *sq.Row) Model {
 		m := Model{
 			Dialect: sq.DialectSQLite,
 			Name:    r.String("name"),
@@ -51,7 +52,7 @@ func TestSq_Generic_DB_Select(t *testing.T) {
 	fmt.Println("-------------------------------------------------------------------------------")
 
 	db2 := GetPgDB()
-	m2, err2 := sq.FetchOne[*Model](sq.Log(db2), sel.SetDialect(sq.DialectPostgres), func(r *sq.Row) *Model {
+	m2, err2 := sq.FetchOne[*Model](sq.Log(db2), sel.SetDialect(sq.DialectPostgres), func(ctx context.Context, r *sq.Row) *Model {
 		m := &Model{
 			Dialect: sq.DialectPostgres,
 			Name:    r.String("name"),

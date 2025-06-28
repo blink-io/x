@@ -230,7 +230,7 @@ func arrayInsertMapper(c *sq.Column, r Array) {
 	c.SetArray(tbl.JSON_ARRAYS, r.JsonArrays)
 	c.SetArray(tbl.JSONB_ARRAYS, r.JsonbArrays)
 
-	c.SetArray(tbl.UUID_ARRAYS, r.UUIDArrays)
+	c.SetArray(tbl.UUID_ARRAYS, r.UuidArrays)
 
 	c.SetUUID(tbl.V_UUID, r.VUUID)
 }

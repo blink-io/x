@@ -211,6 +211,10 @@ func TestSq_Pg_Enum_Insert_Tx_Success_1(t *testing.T) {
 
 	defer handleTxPanic(tx)
 
+	rowMapper := func(ctx context.Context, c *sq.Column) {
+		c.SetEnum(tbl.STATUS, UserStatusActive)
+	}
+
 	_, err = sq.Exec(sq.Log(tx), sq.
 		InsertInto(tbl).
 		Columns(tbl.STATUS).

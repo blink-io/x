@@ -1,6 +1,7 @@
 package orm
 
 import (
+	"context"
 	"fmt"
 	"testing"
 
@@ -13,10 +14,11 @@ func TestSq_Sqlite_Datetime_1(t *testing.T) {
 
 	defer db.Close()
 
-	ss, err := sq.FetchOne(db, sq.Select(sq.Expr("{} || ' ::: ' || {} as now", sq.Expr("datetime()"), sq.Expr("unixepoch()"))), func(r *sq.Row) string {
-		ss := r.String("now")
-		return ss
-	})
+	ss, err := sq.FetchOne(db, sq.Select(sq.Expr("{} || ' ::: ' || {} as now", sq.Expr("datetime()"), sq.Expr("unixepoch()"))),
+		func(ctx context.Context, r *sq.Row) string {
+			ss := r.String("now")
+			return ss
+		})
 	require.NoError(t, err)
 
 	fmt.Println(ss)

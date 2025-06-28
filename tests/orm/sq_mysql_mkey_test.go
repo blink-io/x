@@ -1,6 +1,7 @@
 package orm
 
 import (
+	"context"
 	"testing"
 	"time"
 
@@ -41,7 +42,7 @@ func TestSq_Mysql_Mkey_FetchOne_ByID(t *testing.T) {
 		ID2  int
 		Name string
 	}
-	records, err := sq.FetchAll(idb, query, func(r *sq.Row) result {
+	records, err := sq.FetchAll(idb, query, func(ctx context.Context, r *sq.Row) result {
 		return result{
 			ID1:  r.Int("id1"),
 			ID2:  r.Int("id2"),
@@ -64,10 +65,10 @@ func TestSq_Mysql_Mkey_FetchAll_1(t *testing.T) {
 	query := sq.From(tbl).Where(where).
 		Limit(100)
 
-	records, err := sq.FetchAll(ldb, query, func(r *sq.Row) Mkey {
+	records, err := sq.FetchAll(ldb, query, func(ctx context.Context, r *sq.Row) Mkey {
 		return Mkey{
-			ID1:       r.IntField(tbl.ID1),
-			ID2:       r.IntField(tbl.ID2),
+			Id1:       r.Int32Field(tbl.ID1),
+			Id2:       r.Int32Field(tbl.ID2),
 			Name:      r.StringField(tbl.NAME),
 			GUID:      r.StringField(tbl.GUID),
 			CreatedAt: r.TimeField(tbl.CREATED_AT),
