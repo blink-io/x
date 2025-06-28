@@ -72,6 +72,7 @@ require (
 	github.com/go-kratos/kratos/v2 v2.8.4
 	github.com/go-logr/logr v1.4.3
 	github.com/go-logr/stdr v1.2.2
+	github.com/go-openapi/inflect v0.21.2
 	github.com/go-resty/resty/v2 v2.16.5
 	github.com/go-sql-driver/mysql v1.9.3
 	github.com/go-task/slim-sprig/v3 v3.0.0
