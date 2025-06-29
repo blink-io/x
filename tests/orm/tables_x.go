@@ -13,7 +13,11 @@ func init() {
 }
 
 var Executors = struct {
-	Tag sqx.Executor[Tag, TagSetter]
+	Tag   sqx.Executor[Tag, TagSetter]
+	Log   sqx.Executor[Log, LogSetter]
+	Array sqx.Executor[Array, ArraySetter]
 }{
-	Tag: sqx.NewExecutor[TAGS, Tag, TagSetter](Tables.Tags),
+	Tag:   sqx.NewExecutor[TAGS, Tag, TagSetter](Tables.Tags),
+	Log:   sqx.NewExecutor[LOGS, Log, LogSetter](Tables.Logs),
+	Array: sqx.NewExecutor[ARRAYS, Array, ArraySetter](Tables.Arrays),
 }

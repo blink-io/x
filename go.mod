@@ -39,6 +39,7 @@ require (
 	github.com/blink-io/sq v0.0.0-20250628015655-ecc780930565
 	github.com/blink-io/sqx v0.0.0-20250629115249-57f394c78e9e
 	github.com/bmatcuk/doublestar/v4 v4.8.1
+	github.com/bokwoon95/sq v0.5.1
 	github.com/brianvoe/gofakeit/v7 v7.3.0
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v11 v11.3.1
@@ -247,7 +248,6 @@ require (
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/danieljoos/wincred v1.2.2 // indirect
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
-	github.com/denisenkom/go-mssqldb v0.12.3 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/dsnet/compress v0.0.2-0.20230904184137-39efe44ab707 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
