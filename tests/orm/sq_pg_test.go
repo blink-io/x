@@ -20,7 +20,7 @@ func TestSq_1(t *testing.T) {
 	db := GetPgDB()
 
 	qr := sq.Postgres.Queryf("select 'heison' as name, version() as version")
-	m, err := sq.FetchOne[*Model](db, qr, func(row *sq.Row) *Model {
+	m, err := sq.FetchOne[*Model](db, qr, func(ctx context.Context, row *sq.Row) *Model {
 		return &Model{
 			Name:    row.String("name"),
 			Version: row.String("version"),
@@ -74,42 +74,19 @@ func TestSq_Pg_Insert_User_1(t *testing.T) {
 
 func TestSq_Pg_User_Insert_1(t *testing.T) {
 	db := GetPgDB()
-	tbl := Tables.USERS
+	tbl := Tables.Users
 
-	records := []User{
-		randomUser(),
-		randomUser(),
-		randomUser(),
+	records := []UserSetter{
+		randomUserSetter(),
+		randomUserSetter(),
+		randomUserSetter(),
 	}
 
 	_, err := sq.Exec(db,
 		sq.InsertInto(tbl).
-			ColumnValues(tbl.InsertMapper(records...)),
+			ColumnValues(tbl.ColumnMapper(records...)),
 	)
 	require.NoError(t, err)
-}
-
-func TestSq_Pg_User_FetchAll_WithTenantID_1(t *testing.T) {
-	db := GetPgDB()
-	tbl := Tables.USERS
-	vctx := context.WithValue(ctx, tbl.TENANT_ID.GetName(), 3)
-
-	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
-	records, err := sq.FetchAllContext(vctx, db, query, tbl.QueryMapper())
-
-	require.NoError(t, err)
-	require.NotNil(t, records)
-}
-
-func TestSq_Pg_User_FetchAll_2(t *testing.T) {
-	db := GetPgDB()
-	tbl := Tables.USERS
-
-	query := sq.Postgres.From(tbl).Where(tbl.ID.GtInt(0)).Limit(100)
-	records, err := sq.FetchAllContext(ctx, sq.Log(db), query, tbl.QueryMapper())
-
-	require.NoError(t, err)
-	require.NotNil(t, records)
 }
 
 func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
@@ -123,7 +100,7 @@ func TestSq_Pg_UserDevice_Insert_ColumnMapper_1(t *testing.T) {
 	}
 
 	_, err := sq.Exec(db, sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
+		InsertInto(tbl).ColumnValues(func(ctx context.Context, col *sq.Column) {
 		for _, r := range records {
 			userDeviceInsertColumnMapper(col, r)
 		}
@@ -159,7 +136,7 @@ func TestSq_Pg_User_Update_1(t *testing.T) {
 
 	_, err := sq.Exec(db, sq.
 		Update(tbl).
-		SetFunc(func(col *sq.Column) {
+		SetFunc(func(ctx context.Context, col *sq.Column) {
 			col.SetString(tbl.USERNAME, "DAN")
 			col.SetFloat64(tbl.SCORE, gofakeit.Float64Range(50, 80))
 		}).
@@ -172,7 +149,7 @@ func TestSq_Pg_User_Update_2(t *testing.T) {
 	db := GetPgDB()
 
 	var us UserSetter
-	us.ID = omit.From[int](10)
+	us.ID = omit.From[int64](10)
 	us.Score = omit.From(gofakeit.Float64Range(55, 90))
 	us.Username = omit.From[string](gofakeit.Username() + "-Modified")
 
@@ -211,9 +188,9 @@ func TestSq_Pg_Enum_Insert_Tx_Success_1(t *testing.T) {
 
 	defer handleTxPanic(tx)
 
-	rowMapper := func(ctx context.Context, c *sq.Column) {
-		c.SetEnum(tbl.STATUS, UserStatusActive)
-	}
+	//rowMapper := func(ctx context.Context, c *sq.Column) {
+	//	c.SetEnum(tbl.STATUS, UserStatusActive)
+	//}
 
 	_, err = sq.Exec(sq.Log(tx), sq.
 		InsertInto(tbl).
@@ -235,7 +212,7 @@ func TestSq_ShowAll(t *testing.T) {
 
 	sql := "show all"
 	qr := sq.Postgres.Queryf(sql)
-	m, err := sq.FetchAll(db, qr, func(row *sq.Row) map[string]string {
+	m, err := sq.FetchAll(db, qr, func(ctx context.Context, row *sq.Row) map[string]string {
 		return map[string]string{
 			"name":        row.String("name"),
 			"setting":     row.String("setting"),
@@ -292,7 +269,7 @@ func TestSq_Pg_Enum_Insert_Tx_Fail_1(t *testing.T) {
 
 func TestSq_Pg_UserWithDevice_Exists_1(t *testing.T) {
 	db := GetPgDB()
-	tbl := Tables.USERS
+	tbl := Tables.Users
 	joinTbl := Tables.UserDevices
 	sb := sq.Postgres
 
@@ -310,7 +287,7 @@ func TestSq_Pg_UserWithDevice_Exists_1(t *testing.T) {
 
 func TestSq_Pg_UserWithDevice_CTE_1(t *testing.T) {
 	db := GetPgDB()
-	tbl := Tables.USERS
+	tbl := Tables.Users
 	joinTbl := Tables.UserDevices
 	sb := sq.Postgres
 

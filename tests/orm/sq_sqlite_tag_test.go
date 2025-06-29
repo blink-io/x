@@ -14,15 +14,15 @@ func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
 	tbl := Tables.Tags
 
 	ss := []TagSetter{
-		randomTag(nil).Setter(),
-		randomTag(Ptr(gofakeit.City())).Setter(),
-		randomTag(nil).Setter(),
+		randomTagSetter(nil),
+		randomTagSetter(Ptr(gofakeit.City())),
+		randomTagSetter(nil),
 	}
 
 	rt, err := sq.Exec(
 		sq.Log(db),
 		sb.InsertInto(tbl).
-			ColumnValues(tbl.InsertQ(ctx, ss...)),
+			ColumnValues(tbl.ColumnMapper(ss...)),
 	)
 
 	require.NoError(t, err)
@@ -31,13 +31,13 @@ func TestSq_Sqlite_Tag_Insert_1(t *testing.T) {
 
 func TestSq_Sqlite_Tag_Insert_2(t *testing.T) {
 	db := GetSqliteDB()
-	//sb := sq.SQLite
-	tbl := Tables.Tags
 
-	s1 := randomTag(nil).Setter()
-	s2 := randomTag(Ptr(gofakeit.School())).Setter()
+	ss := []TagSetter{
+		randomTagSetter(nil),
+		randomTagSetter(Ptr(gofakeit.City())),
+	}
 
-	rt, err := tbl.Insert(ctx, sq.Log(db), s1, s2)
+	rt, err := Executors.Tag.Insert(ctx, sq.Log(db), ss...)
 	require.NoError(t, err)
 	require.NotNil(t, rt)
 }
@@ -62,14 +62,13 @@ func TestSq_Sqlite_Tag_Insert_Select_1(t *testing.T) {
 
 func TestSq_Sqlite_Tag_Mapper_FetchAll_1(t *testing.T) {
 	db := GetSqliteDB()
-	mm := Mappers.TAGS
-	tbl := mm.Table()
+	tbl := Tables.Tags
 
 	q := sq.
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, q, mm.SelectT(ctx))
+	records, err := sq.FetchAll(db, q, tbl.RowMapper)
 
 	require.NoError(t, err)
 	require.NotNil(t, records)
@@ -77,14 +76,13 @@ func TestSq_Sqlite_Tag_Mapper_FetchAll_1(t *testing.T) {
 
 func TestSq_Sqlite_Tag_Mapper_FetchAll_2(t *testing.T) {
 	db := GetSqliteDB()
-	mm := Mappers.TAGS
-	tbl := mm.Table()
+	tbl := Tables.Tags
 
 	q := sq.
 		From(tbl).
 		Where(tbl.ID.GtInt(0)).
 		Limit(100)
-	records, err := sq.FetchAll(db, q, mm.SelectT(ctx))
+	records, err := sq.FetchAll(db, q, tbl.RowMapperFunc())
 
 	require.NoError(t, err)
 	require.NotNil(t, records)

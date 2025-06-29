@@ -4,13 +4,14 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/blink-io/opt/omit"
+	"github.com/blink-io/opt/omitnull"
 	"log"
 	"log/slog"
 	"os"
 	"time"
 
 	"github.com/blink-io/opt/null"
-	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/sq"
 	"github.com/blink-io/x/log/slog/handlers/color"
 	"github.com/brianvoe/gofakeit/v7"
@@ -49,6 +50,10 @@ const (
 	UserStatusBlocked EnumEnumsStatus = "blocked"
 )
 
+func (v UserDevice) String() string {
+	return litter.Sdump(v)
+}
+
 func (v UserStatus) String() string {
 	return string(v)
 }
@@ -68,15 +73,6 @@ type UserWithDevice struct {
 
 func (m UserWithDevice) String() string {
 	return litter.Sdump(m)
-}
-
-type UserSetter struct {
-	ID        omit.Val[int]       `db:"id"`
-	GUID      omit.Val[string]    `db:"guid"`
-	Username  omit.Val[string]    `db:"username"`
-	Score     omit.Val[float64]   `db:"score"`
-	CreatedAt omit.Val[time.Time] `db:"created_at"`
-	UpdatedAt omit.Val[time.Time] `db:"updated_at"`
 }
 
 func (m UserSetter) Overwrite(r *User) {
@@ -107,7 +103,7 @@ func (m UserSetter) Update(db sq.DB) error {
 			db,
 			sq.Update(tbl).
 				SetFunc(m.SetColumns).
-				Where(tbl.ID.EqInt(id)),
+				Where(tbl.ID.EqInt64(id)),
 		)
 		return err
 	} else {
@@ -119,7 +115,7 @@ func (m UserSetter) setColumns(c *sq.Column, withID bool) {
 	tbl := UserTable
 	if withID && !m.ID.IsUnset() {
 		v, _ := m.ID.Get()
-		c.SetInt(tbl.ID, v)
+		c.SetInt64(tbl.ID, v)
 	}
 	if !m.GUID.IsUnset() {
 		v, _ := m.GUID.Get()
@@ -145,30 +141,6 @@ func (m UserSetter) setColumns(c *sq.Column, withID bool) {
 
 func (m UserSetter) SetColumns(ctx context.Context, c *sq.Column) {
 	m.setColumns(c, true)
-}
-
-type UserDevice struct {
-	ID          int              `db:"id"`
-	GUID        string           `db:"guid"`
-	UserID      int              `db:"user_id"`
-	Name        string           `db:"name"`
-	Model       string           `db:"score"`
-	Description null.Val[string] `db:"description"`
-	CreatedAt   time.Time        `db:"created_at"`
-	UpdatedAt   time.Time        `db:"updated_at"`
-}
-
-func (m UserDevice) String() string {
-	return litter.Sdump(m)
-}
-
-type Device struct {
-	ID        int       `db:"id"`
-	GUID      string    `db:"guid"`
-	Name      string    `db:"name"`
-	Model     string    `db:"model"`
-	CreatedAt time.Time `db:"created_at"`
-	UpdatedAt time.Time `db:"updated_at"`
 }
 
 func (m Device) Insert(db sq.DB) error {
@@ -223,7 +195,7 @@ func userJoinDeviceMapRowMapper() func(*sq.Row) map[string]any {
 	}
 }
 
-func userWithDeviceSelect() (sq.Fields, func(*sq.Row) *UserWithDevice) {
+func userWithDeviceSelect() (sq.Fields, func(context.Context, *sq.Row) *UserWithDevice) {
 	tbl := UserTable
 	joinTbl := UserDeviceTable
 	fields := sq.Fields{
@@ -237,8 +209,8 @@ func userWithDeviceSelect() (sq.Fields, func(*sq.Row) *UserWithDevice) {
 	return fields, userJoinDeviceRowMapper()
 }
 
-func userJoinDeviceRowMapper() func(*sq.Row) *UserWithDevice {
-	return func(r *sq.Row) *UserWithDevice {
+func userJoinDeviceRowMapper() func(context.Context, *sq.Row) *UserWithDevice {
+	return func(ctx context.Context, r *sq.Row) *UserWithDevice {
 		v := &UserWithDevice{
 			UserID:      r.Int64("user_id"),
 			UserGUID:    r.String("user_guid"),
@@ -251,19 +223,19 @@ func userJoinDeviceRowMapper() func(*sq.Row) *UserWithDevice {
 	}
 }
 
-func userModelRowMapper() func(*sq.Row) *User {
-	return func(r *sq.Row) *User {
+func userModelRowMapper() func(context.Context, *sq.Row) *User {
+	return func(ctx context.Context, r *sq.Row) *User {
 		tbl := Tables.Users
 
 		u := &User{
-			ID:        r.IntField(tbl.ID),
+			ID:        r.Int64Field(tbl.ID),
 			GUID:      r.StringField(tbl.GUID),
 			Username:  r.StringField(tbl.USERNAME),
 			FirstName: r.StringField(tbl.FIRST_NAME),
 			LastName:  r.StringField(tbl.LAST_NAME),
 			Score:     r.Float64Field(tbl.SCORE),
-			Level:     r.IntField(tbl.LEVEL),
-			TenantID:  r.IntField(tbl.TENANT_ID),
+			Level:     r.Int16Field(tbl.LEVEL),
+			TenantID:  r.Int64Field(tbl.TENANT_ID),
 		}
 
 		dd := sq.DefaultDialect.Load()
@@ -292,20 +264,20 @@ func userInsertColumnMapper(col *sq.Column, r User) {
 	if r.ID > 0 {
 		col.SetInt64(tbl.ID, r.ID)
 	}
-	col.SetAny(tbl.GUID, r.GUID)
-	col.SetAny(tbl.USERNAME, r.Username)
-	col.SetAny(tbl.SCORE, r.Score)
-	col.SetAny(tbl.CREATED_AT, r.CreatedAt)
-	col.SetAny(tbl.UPDATED_AT, r.UpdatedAt)
+	col.Set(tbl.GUID, r.GUID)
+	col.Set(tbl.USERNAME, r.Username)
+	col.Set(tbl.SCORE, r.Score)
+	col.Set(tbl.CREATED_AT, r.CreatedAt)
+	col.Set(tbl.UPDATED_AT, r.UpdatedAt)
 }
 
 func userDeviceInsertColumnMapper(col *sq.Column, r *UserDevice) {
 	tbl := UserDeviceTable
 
-	col.SetAny(tbl.USER_ID, r.UserID)
-	col.SetAny(tbl.GUID, r.GUID)
-	col.SetAny(tbl.NAME, r.Name)
-	col.SetAny(tbl.MODEL, r.Model)
+	col.Set(tbl.USER_ID, r.UserID)
+	col.Set(tbl.GUID, r.GUID)
+	col.Set(tbl.NAME, r.Name)
+	col.Set(tbl.MODEL, r.Model)
 	col.SetTime(tbl.CREATED_AT, r.CreatedAt)
 	col.SetTime(tbl.UPDATED_AT, r.UpdatedAt)
 }
@@ -319,12 +291,12 @@ func deviceInsertColumnMapper(col *sq.Column, r *Device) {
 	col.SetTime(tbl.UPDATED_AT, r.UpdatedAt)
 }
 
-func deviceRowMapper() func(*sq.Row) *Device {
-	return func(r *sq.Row) *Device {
+func deviceRowMapper() func(context.Context, *sq.Row) *Device {
+	return func(ctx context.Context, r *sq.Row) *Device {
 		tbl := DeviceTable
 
 		u := &Device{
-			ID:        r.IntField(tbl.ID),
+			ID:        r.Int64Field(tbl.ID),
 			GUID:      r.StringField(tbl.GUID),
 			CreatedAt: r.TimeField(tbl.CREATED_AT),
 			UpdatedAt: r.TimeField(tbl.UPDATED_AT),
@@ -342,10 +314,26 @@ func randomUser() User {
 		FirstName: gofakeit.FirstName(),
 		LastName:  gofakeit.LastName(),
 		Score:     gofakeit.Float64(),
-		Level:     gofakeit.IntRange(1, 99),
+		Level:     int16(gofakeit.IntRange(1, 99)),
 		CreatedAt: ln,
 		UpdatedAt: ln,
-		TenantID:  gofakeit.IntRange(1, 5),
+		TenantID:  int64(gofakeit.IntRange(1, 5)),
+	}
+	return u
+}
+
+func randomUserSetter() UserSetter {
+	ln := time.Now().Local()
+	u := UserSetter{
+		GUID:      omit.From(gofakeit.UUID()),
+		Username:  omit.From(gofakeit.Username()),
+		FirstName: omit.From(gofakeit.FirstName()),
+		LastName:  omit.From(gofakeit.LastName()),
+		Score:     omit.From(gofakeit.Float64()),
+		Level:     omit.From(int16(gofakeit.IntRange(1, 99))),
+		CreatedAt: omit.From(ln),
+		UpdatedAt: omit.From(ln),
+		TenantID:  omit.From(int64(gofakeit.IntRange(1, 5))),
 	}
 	return u
 }
@@ -353,7 +341,7 @@ func randomUser() User {
 func randomUserDevice() *UserDevice {
 	ln := time.Now().Local()
 	u := &UserDevice{
-		UserID:    gofakeit.IntRange(1, 30),
+		UserID:    int64(gofakeit.IntRange(1, 30)),
 		GUID:      gofakeit.UUID(),
 		Name:      gofakeit.AppName(),
 		Model:     gofakeit.CarModel(),
@@ -381,6 +369,17 @@ func randomTag(desc *string) Tag {
 		Name:        gofakeit.DomainName(),
 		Description: null.FromPtr(desc),
 		CreatedAt:   time.Now().Local(),
+	}
+	return u
+}
+
+func randomTagSetter(desc *string) TagSetter {
+	u := TagSetter{
+		GUID:        omit.From(gofakeit.UUID()),
+		Code:        omit.From(gofakeit.City()),
+		Name:        omit.From(gofakeit.DomainName()),
+		Description: omitnull.FromPtr(desc),
+		CreatedAt:   omit.From(time.Now().Local()),
 	}
 	return u
 }

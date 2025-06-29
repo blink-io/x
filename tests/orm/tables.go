@@ -43,14 +43,15 @@ type ARRAYS struct {
 	JSONB_ARRAYS sq.ArrayField  `ddl:"type=jsonb[]"`
 	JSON_ARRAYS  sq.ArrayField  `ddl:"type=json[]"`
 	UUID_ARRAYS  sq.ArrayField  `ddl:"type=uuid[]"`
+	INT_AAA      sq.ArrayField  `ddl:"type=int[]"`
 }
 
 func (t ARRAYS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t ARRAYS) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t ARRAYS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type DEVICES struct {
@@ -67,8 +68,8 @@ func (t DEVICES) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t DEVICES) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t DEVICES) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type ENUMS struct {
@@ -83,22 +84,32 @@ func (t ENUMS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t ENUMS) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t ENUMS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type EnumEnumsStatus string
 
+const EnumEnumsStatusUnknown EnumEnumsStatus = "unknown"
+
+var EnumEnumsStatusValues = []string{
+	string(EnumEnumsStatusUnknown),
+}
+
 func (e EnumEnumsStatus) Enumerate() []string {
-	//TODO Add more
-	return []string{}
+	return EnumEnumsStatusValues
 }
 
 type EnumEnumsMoodx string
 
+const EnumEnumsMoodxUnknown EnumEnumsMoodx = "unknown"
+
+var EnumEnumsMoodxValues = []string{
+	string(EnumEnumsMoodxUnknown),
+}
+
 func (e EnumEnumsMoodx) Enumerate() []string {
-	//TODO Add more
-	return []string{}
+	return EnumEnumsMoodxValues
 }
 
 type HELLO_WORLD struct {
@@ -110,8 +121,8 @@ func (t HELLO_WORLD) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t HELLO_WORLD) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t HELLO_WORLD) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type LOGS struct {
@@ -126,8 +137,8 @@ func (t LOGS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t LOGS) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t LOGS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type MKEYS struct {
@@ -143,8 +154,8 @@ func (t MKEYS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID1, t.ID2}
 }
 
-func (t MKEYS) PrimaryKeyValues(id1 int32, id2 int32) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id1, id2}})
+func (t MKEYS) PrimaryKeyValues(Id1 int32, Id2 int32) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{Id1, Id2}})
 }
 
 type NEW_WORDS struct {
@@ -160,8 +171,8 @@ func (t NEW_WORDS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t NEW_WORDS) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t NEW_WORDS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type TAGS struct {
@@ -178,8 +189,8 @@ func (t TAGS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t TAGS) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t TAGS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type TAGS_BAK struct {
@@ -196,8 +207,8 @@ func (t TAGS_BAK) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t TAGS_BAK) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t TAGS_BAK) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type USER_DEVICES struct {
@@ -216,8 +227,8 @@ func (t USER_DEVICES) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t USER_DEVICES) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t USER_DEVICES) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type USERS struct {
@@ -229,7 +240,7 @@ type USERS struct {
 	LEVEL      sq.NumberField `ddl:"type=smallint notnull default=0"`
 	SCORE      sq.NumberField `ddl:"type={double precision} notnull default=0.88"`
 	CREATED_AT sq.TimeField   `ddl:"type=timestamptz notnull"`
-	GUID       sq.StringField `ddl:"type=varchar(60) unique"`
+	GUID       sq.StringField `ddl:"type=varchar(60) notnull unique"`
 	TENANT_ID  sq.NumberField `ddl:"type=bigint notnull default=1"`
 	UPDATED_AT sq.TimeField   `ddl:"type=timestamptz notnull default=now()"`
 }
@@ -238,6 +249,6 @@ func (t USERS) PrimaryKeys() sq.RowValue {
 	return sq.RowValue{t.ID}
 }
 
-func (t USERS) PrimaryKeyValues(id int64) sq.Predicate {
-	return t.PrimaryKeys().In(sq.RowValues{{id}})
+func (t USERS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }

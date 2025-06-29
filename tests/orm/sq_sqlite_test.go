@@ -81,7 +81,7 @@ func TestSq_Sqlite_Device_Insert_ColumnMapper_1(t *testing.T) {
 	}
 
 	_, err := sq.Exec(db, sq.
-		InsertInto(tbl).ColumnValues(func(col *sq.Column) {
+		InsertInto(tbl).ColumnValues(func(ctx context.Context, col *sq.Column) {
 		for _, r := range records {
 			deviceInsertColumnMapper(col, r)
 		}

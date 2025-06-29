@@ -3,6 +3,7 @@ package orm
 import (
 	"context"
 	"fmt"
+	"github.com/blink-io/opt/null"
 	"log/slog"
 	"os"
 	"testing"
@@ -123,32 +124,33 @@ func randomArray() Array {
 			gofakeit.Bool(),
 		},
 
-		VJsonb: map[string]any{
+		VJsonb: null.From(map[string]any{
 			"country": gofakeit.Country(),
 			"state":   gofakeit.State(),
 			"city":    gofakeit.City(),
-		},
+		}),
 
-		VJson: map[string]any{
+		VJson: null.From(map[string]any{
 			"dog":   gofakeit.Dog(),
 			"cat":   gofakeit.Cat(),
 			"fruit": gofakeit.Fruit(),
-		},
+		}),
 
-		JsonArrays: []string{
-			`{"name":"GZ"}`,
-			`{"Loc":"GZ"}`,
-		},
+		JsonArrays: null.From([]map[string]any{
+			{
+				"country": gofakeit.Country(),
+				"state":   gofakeit.State(),
+			},
+		}),
 
-		JsonbArrays: []string{
-			`{"name":"AA"}`,
-			`{"Loc":"BVB"}`,
-		},
+		JsonbArrays: null.From([]map[string]any{
+			{
+				"country": gofakeit.Country(),
+				"state":   gofakeit.State(),
+			},
+		}),
 
-		UUIDArrays: []string{
-			guuid.New().String(),
-			guuid.New().String(),
-		},
+		UuidArrays: null.From([][16]byte{}),
 
 		//JsonArrays: []map[string]any{
 		//	{
@@ -179,10 +181,11 @@ func randomArray() Array {
 	//_clog.Info("Random value: ", "flag", f)
 	if f == 0 {
 		vuuid, _ := fuuid.NewV4()
-		v.VUUID = vuuid
+		v.VUUID = null.From([16]byte(vuuid))
 	} else {
 		vuuid := guuid.New()
-		v.VUUID = vuuid
+		vuuid.ID()
+		v.VUUID = null.From([16]byte(vuuid))
 
 		_clog.Info("Use google uuid")
 	}
@@ -209,8 +212,8 @@ func arrayQueryMapper(ctx context.Context, r *sq.Row) Array {
 		Int4Arrays: int4ArrPtr,
 		BoolArrays: boolArrPtr,
 
-		VJsonb: vjsonb,
-		VJson:  vjson,
+		VJsonb: null.From(vjsonb),
+		VJson:  null.From(vjson),
 
 		CreatedAt: r.TimeField(tbl.CREATED_AT),
 	}
