@@ -18,27 +18,24 @@ func TestPg_Arrays_Insert_1(t *testing.T) {
 		"bar": "baz",
 	}
 
-	ua := [][16]byte{
-		uuid.New(),
-		uuid.New(),
-		uuid.New(),
-	}
-
-	_ = ua
-	_ = j1
-
 	d1 := ArraySetter{
 		//ID:         omit.From(int64(gofakeit.Int32())),
 		StrArrays:  omit.From([]string{"A", "B", "C"}),
 		Int4Arrays: omit.From([]int32{1, 2, 3, 4, 5}),
+		Int2Arrays: omitnull.From([]int16{111, 222, 333, 444, 555}),
 		BoolArrays: omit.From([]bool{true, false, true}),
 		CreatedAt:  omit.From(time.Now()),
 		VJson:      omitnull.From(j1),
 		VUUID:      omitnull.From([16]byte(uuid.New())),
-		JsonArrays: omitnull.From([]map[string]any{
-			j1,
+		JsonArrays: omitnull.From([]string{
+			`{"foo": "bar1111"}`,
+			`{"foo": "bar2222"}`,
 		}),
-		//UuidArrays: omitnull.From(ua),
+		UuidArrays: omitnull.From([]string{
+			uuid.New().String(),
+			uuid.New().String(),
+			uuid.New().String(),
+		}),
 	}
 
 	var exec = Executors.Array

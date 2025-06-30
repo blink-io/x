@@ -35,6 +35,7 @@ type ARRAYS struct {
 	ID           sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('arrays_id_seq'::regclass)"`
 	STR_ARRAYS   sq.ArrayField  `ddl:"type=varchar[] notnull"`
 	INT4_ARRAYS  sq.ArrayField  `ddl:"type=int[] notnull"`
+	INT2_ARRAYS  sq.ArrayField  `ddl:"type=int[] notnull"`
 	BOOL_ARRAYS  sq.ArrayField  `ddl:"type=boolean[] notnull"`
 	CREATED_AT   sq.TimeField   `ddl:"type=timestamptz notnull"`
 	V_JSONB      sq.JSONField   `ddl:"type=jsonb"`
@@ -44,6 +45,7 @@ type ARRAYS struct {
 	JSON_ARRAYS  sq.ArrayField  `ddl:"type=json[]"`
 	UUID_ARRAYS  sq.ArrayField  `ddl:"type=uuid[]"`
 	INT_AAA      sq.ArrayField  `ddl:"type=int[]"`
+	TS_ARRAYS    sq.ArrayField  `ddl:"type=timestamptz[]"`
 }
 
 func (t ARRAYS) PrimaryKeys() sq.RowValue {

@@ -37,9 +37,10 @@ func getPgDB() *sql.DB {
 	//sql.Register(pgDriverName, sqlhooks.Wrap(stdlib.GetDefaultDriver(), loghooks.New()))
 
 	c := &hypersql.Config{
-		Dialect:  hypersql.DialectPostgres,
-		Host:     "192.168.50.88",
-		Port:     5432,
+		Dialect: hypersql.DialectPostgres,
+		//Host:     "192.168.50.88",
+		Host:     "localhost",
+		Port:     15432,
 		User:     "test",
 		Password: "test",
 		Name:     "test",

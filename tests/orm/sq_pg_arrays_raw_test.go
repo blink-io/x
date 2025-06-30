@@ -2,15 +2,14 @@ package orm
 
 import (
 	"context"
-	"encoding/json"
+	"testing"
+	"time"
+
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
 	rawsq "github.com/bokwoon95/sq"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
-	"strings"
-	"testing"
-	"time"
 )
 
 type RawARRAYS struct {
@@ -61,38 +60,14 @@ func (t RawARRAYS) ColumnSetter(ctx context.Context, c *rawsq.Column, ss ...Arra
 		s.VUUID.IfSet(func(v [16]byte) {
 			c.SetUUID(t.V_UUID, v)
 		})
-		s.JsonbArrays.IfSet(func(v []map[string]any) {
-			var jonsStrArrays []string
-			for _, iv := range v {
-				var b strings.Builder
-				if err := json.NewEncoder(&b).Encode(iv); err != nil {
-					panic(err)
-				}
-				jonsStrArrays = append(jonsStrArrays, b.String())
-			}
-			c.SetArray(t.JSONB_ARRAYS, jonsStrArrays)
+		s.JsonbArrays.IfSet(func(v []string) {
+			c.SetArray(t.JSONB_ARRAYS, v)
 		})
-		s.JsonArrays.IfSet(func(v []map[string]any) {
-			var jonsStrArrays []string
-			for _, iv := range v {
-				var b strings.Builder
-				if err := json.NewEncoder(&b).Encode(iv); err != nil {
-					panic(err)
-				}
-				jonsStrArrays = append(jonsStrArrays, b.String())
-			}
-			c.SetArray(t.JSON_ARRAYS, jonsStrArrays)
+		s.JsonArrays.IfSet(func(v []string) {
+			c.SetArray(t.JSON_ARRAYS, v)
 		})
-		s.UuidArrays.IfSet(func(v [][16]byte) {
-			var jonsStrArrays []string
-			for _, iv := range v {
-				uv, err := uuid.FromBytes(iv[:])
-				if err != nil {
-					panic(err)
-				}
-				jonsStrArrays = append(jonsStrArrays, uv.String())
-			}
-			c.SetArray(t.UUID_ARRAYS, jonsStrArrays)
+		s.UuidArrays.IfSet(func(v []string) {
+			c.SetArray(t.UUID_ARRAYS, v)
 		})
 		s.IntAaa.IfSet(func(v []int32) {
 			c.SetArray(t.INT_AAA, v)
@@ -126,15 +101,16 @@ func TestPg_Arrays_RawInsert_1(t *testing.T) {
 		//ID:         omit.From(int64(gofakeit.Int32())),
 		StrArrays:  omit.From([]string{"A", "B", "C"}),
 		Int4Arrays: omit.From([]int32{1, 2, 3, 4, 5}),
+		Int2Arrays: omitnull.From([]int16{111, 2222, 3333, 4444, 5555}),
 		BoolArrays: omit.From([]bool{true, false, true}),
 		CreatedAt:  omit.From(time.Now()),
 		VJson:      omitnull.From(j1),
 		VUUID:      omitnull.From([16]byte(uuid.New())),
-		JsonArrays: omitnull.From([]map[string]any{
-			j1,
+		JsonArrays: omitnull.From([]string{
+			`{"foo": "bar"}`,
 		}),
-		UuidArrays: omitnull.From([][16]byte{
-			uuid.New(),
+		UuidArrays: omitnull.From([]string{
+			uuid.NewString(),
 		}),
 	}
 	var q = rawsq.InsertInto(Tables.Arrays).

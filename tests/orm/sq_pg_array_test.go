@@ -3,11 +3,12 @@ package orm
 import (
 	"context"
 	"fmt"
-	"github.com/blink-io/opt/null"
 	"log/slog"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/blink-io/opt/null"
 
 	"github.com/blink-io/sq"
 	"github.com/blink-io/x/log/slog/handlers/color"
@@ -136,45 +137,20 @@ func randomArray() Array {
 			"fruit": gofakeit.Fruit(),
 		}),
 
-		JsonArrays: null.From([]map[string]any{
-			{
-				"country": gofakeit.Country(),
-				"state":   gofakeit.State(),
-			},
+		JsonArrays: null.From([]string{
+			`{"foo": "bar"}`,
+			`{"foo": "bar2222"}`,
 		}),
 
-		JsonbArrays: null.From([]map[string]any{
-			{
-				"country": gofakeit.Country(),
-				"state":   gofakeit.State(),
-			},
+		JsonbArrays: null.From([]string{
+			`{"foo": "bar"}`,
+			`{"foo": "bar2222"}`,
 		}),
 
-		UuidArrays: null.From([][16]byte{}),
-
-		//JsonArrays: []map[string]any{
-		//	{
-		//		"country": gofakeit.Country(),
-		//		"state":   gofakeit.State(),
-		//		"city":    gofakeit.City(),
-		//	},
-		//	{
-		//		"dog":   gofakeit.Dog(),
-		//		"cat":   gofakeit.Cat(),
-		//		"fruit": gofakeit.Fruit(),
-		//	},
-		//},
-
-		//JsonbArrays: []map[string]any{
-		//	{
-		//		"country": gofakeit.Country(),
-		//		"state":   gofakeit.State(),
-		//	},
-		//	{
-		//		"dog": gofakeit.Dog(),
-		//		"cat": gofakeit.Cat(),
-		//	},
-		//},
+		UuidArrays: null.From([]string{
+			guuid.NewString(),
+			guuid.NewString(),
+		}),
 	}
 
 	f := gofakeit.IntRange(1, 100) % 2

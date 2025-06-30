@@ -1,41 +1,47 @@
 package orm
 
-import "context"
-import "time"
+import (
+	"context"
+	"time"
 
-import "github.com/blink-io/opt/null"
-import "github.com/blink-io/opt/omitnull"
-import "github.com/blink-io/sq"
-import "github.com/blink-io/opt/omit"
+	"github.com/blink-io/opt/null"
+	"github.com/blink-io/opt/omit"
+	"github.com/blink-io/opt/omitnull"
+	"github.com/blink-io/sq"
+)
 
 type Array struct {
-	ID          int64                      ` db:"-" json:"-"`
-	StrArrays   []string                   ` db:"str_arrays" json:"str_arrays"`
-	Int4Arrays  []int32                    ` db:"int4_arrays" json:"int4_arrays"`
-	BoolArrays  []bool                     ` db:"bool_arrays" json:"bool_arrays"`
-	CreatedAt   time.Time                  ` db:"created_at" json:"created_at"`
-	VJsonb      null.Val[map[string]any]   ` db:"v_jsonb" json:"v_jsonb"`
-	VJson       null.Val[map[string]any]   ` db:"v_json" json:"v_json"`
-	VUUID       null.Val[[16]byte]         ` db:"v_uuid" json:"v_uuid"`
-	JsonbArrays null.Val[[]map[string]any] ` db:"jsonb_arrays" json:"jsonb_arrays"`
-	JsonArrays  null.Val[[]map[string]any] ` db:"json_arrays" json:"json_arrays"`
-	UuidArrays  null.Val[[][16]byte]       ` db:"uuid_arrays" json:"uuid_arrays"`
-	IntAaa      null.Val[[]int32]          ` db:"int_aaa" json:"int_aaa"`
+	ID          int64                    ` db:"-" json:"-"`
+	StrArrays   []string                 ` db:"str_arrays" json:"str_arrays"`
+	Int4Arrays  []int32                  ` db:"int4_arrays" json:"int4_arrays"`
+	Int2Arrays  []int16                  ` db:"int2_arrays" json:"int2_arrays"`
+	BoolArrays  []bool                   ` db:"bool_arrays" json:"bool_arrays"`
+	CreatedAt   time.Time                ` db:"created_at" json:"created_at"`
+	VJsonb      null.Val[map[string]any] ` db:"v_jsonb" json:"v_jsonb"`
+	VJson       null.Val[map[string]any] ` db:"v_json" json:"v_json"`
+	VUUID       null.Val[[16]byte]       ` db:"v_uuid" json:"v_uuid"`
+	JsonbArrays null.Val[[]string]       ` db:"jsonb_arrays" json:"jsonb_arrays"`
+	JsonArrays  null.Val[[]string]       ` db:"json_arrays" json:"json_arrays"`
+	UuidArrays  null.Val[[]string]       ` db:"uuid_arrays" json:"uuid_arrays"`
+	IntAaa      null.Val[[]int32]        ` db:"int_aaa" json:"int_aaa"`
+	TsArrays    null.Val[[]time.Time]    ` db:"ts_arrays" json:"ts_arrays"`
 }
 
 type ArraySetter struct {
-	ID          omit.Val[int64]                ` db:"-" json:"-"`
-	StrArrays   omit.Val[[]string]             ` db:"str_arrays" json:"str_arrays"`
-	Int4Arrays  omit.Val[[]int32]              ` db:"int4_arrays" json:"int4_arrays"`
-	BoolArrays  omit.Val[[]bool]               ` db:"bool_arrays" json:"bool_arrays"`
-	CreatedAt   omit.Val[time.Time]            ` db:"created_at" json:"created_at"`
-	VJsonb      omitnull.Val[map[string]any]   ` db:"v_jsonb" json:"v_jsonb"`
-	VJson       omitnull.Val[map[string]any]   ` db:"v_json" json:"v_json"`
-	VUUID       omitnull.Val[[16]byte]         ` db:"v_uuid" json:"v_uuid"`
-	JsonbArrays omitnull.Val[[]map[string]any] ` db:"jsonb_arrays" json:"jsonb_arrays"`
-	JsonArrays  omitnull.Val[[]map[string]any] ` db:"json_arrays" json:"json_arrays"`
-	UuidArrays  omitnull.Val[[][16]byte]       ` db:"uuid_arrays" json:"uuid_arrays"`
-	IntAaa      omitnull.Val[[]int32]          ` db:"int_aaa" json:"int_aaa"`
+	ID          omit.Val[int64]              ` db:"-" json:"-"`
+	StrArrays   omit.Val[[]string]           ` db:"str_arrays" json:"str_arrays"`
+	Int4Arrays  omit.Val[[]int32]            ` db:"int4_arrays" json:"int4_arrays"`
+	Int2Arrays  omitnull.Val[[]int16]        ` db:"int4_arrays" json:"int2_arrays"`
+	BoolArrays  omit.Val[[]bool]             ` db:"bool_arrays" json:"bool_arrays"`
+	CreatedAt   omit.Val[time.Time]          ` db:"created_at" json:"created_at"`
+	VJsonb      omitnull.Val[map[string]any] ` db:"v_jsonb" json:"v_jsonb"`
+	VJson       omitnull.Val[map[string]any] ` db:"v_json" json:"v_json"`
+	VUUID       omitnull.Val[[16]byte]       ` db:"v_uuid" json:"v_uuid"`
+	JsonbArrays omitnull.Val[[]string]       ` db:"jsonb_arrays" json:"jsonb_arrays"`
+	JsonArrays  omitnull.Val[[]string]       ` db:"json_arrays" json:"json_arrays"`
+	UuidArrays  omitnull.Val[[]string]       ` db:"uuid_arrays" json:"uuid_arrays"`
+	IntAaa      omitnull.Val[[]int32]        ` db:"int_aaa" json:"int_aaa"`
+	TsArrays    omitnull.Val[[]time.Time]    ` db:"ts_arrays" json:"ts_arrays"`
 }
 
 func (t ARRAYS) ColumnSetter(ctx context.Context, c *sq.Column, ss ...ArraySetter) {
@@ -49,6 +55,9 @@ func (t ARRAYS) ColumnSetter(ctx context.Context, c *sq.Column, ss ...ArraySette
 		})
 		s.Int4Arrays.IfSet(func(v []int32) {
 			c.SetArray(t.INT4_ARRAYS, v)
+		})
+		s.Int2Arrays.IfSet(func(v []int16) {
+			c.SetArray(t.INT2_ARRAYS, v)
 		})
 		s.BoolArrays.IfSet(func(v []bool) {
 			c.SetArray(t.BOOL_ARRAYS, v)
@@ -65,17 +74,20 @@ func (t ARRAYS) ColumnSetter(ctx context.Context, c *sq.Column, ss ...ArraySette
 		s.VUUID.IfSet(func(v [16]byte) {
 			c.SetUUID(t.V_UUID, v)
 		})
-		s.JsonbArrays.IfSet(func(v []map[string]any) {
+		s.JsonbArrays.IfSet(func(v []string) {
 			c.SetArray(t.JSONB_ARRAYS, v)
 		})
-		s.JsonArrays.IfSet(func(v []map[string]any) {
+		s.JsonArrays.IfSet(func(v []string) {
 			c.SetArray(t.JSON_ARRAYS, v)
 		})
-		s.UuidArrays.IfSet(func(v [][16]byte) {
+		s.UuidArrays.IfSet(func(v []string) {
 			c.SetArray(t.UUID_ARRAYS, v)
 		})
 		s.IntAaa.IfSet(func(v []int32) {
 			c.SetArray(t.INT_AAA, v)
+		})
+		s.TsArrays.IfSet(func(v []time.Time) {
+			c.SetArray(t.TS_ARRAYS, v)
 		})
 	}
 }
@@ -112,18 +124,21 @@ func (t ARRAYS) RowMapper(ctx context.Context, r *sq.Row) Array {
 	var vUUID = new([16]byte)
 	r.UUIDField(vUUID, t.V_UUID)
 	v.VUUID = null.FromPtr(vUUID)
-	var jsonbArrays = new([]map[string]any)
+	var jsonbArrays = new([]string)
 	r.ArrayField(jsonbArrays, t.JSONB_ARRAYS)
 	v.JsonbArrays = null.FromPtr(jsonbArrays)
-	var jsonArrays = new([]map[string]any)
+	var jsonArrays = new([]string)
 	r.ArrayField(jsonArrays, t.JSON_ARRAYS)
 	v.JsonArrays = null.FromPtr(jsonArrays)
-	var uuidArrays = new([][16]byte)
+	var uuidArrays = new([]string)
 	r.ArrayField(uuidArrays, t.UUID_ARRAYS)
 	v.UuidArrays = null.FromPtr(uuidArrays)
 	var intAaa = new([]int32)
 	r.ArrayField(intAaa, t.INT_AAA)
 	v.IntAaa = null.FromPtr(intAaa)
+	var tsArrays = new([]time.Time)
+	r.ArrayField(tsArrays, t.TS_ARRAYS)
+	v.TsArrays = null.FromPtr(tsArrays)
 	return v
 }
 
