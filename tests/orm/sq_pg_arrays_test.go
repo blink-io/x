@@ -1,6 +1,7 @@
 package orm
 
 import (
+	"math"
 	"testing"
 	"time"
 
@@ -21,8 +22,8 @@ func TestPg_Arrays_Insert_1(t *testing.T) {
 	d1 := ArraySetter{
 		//ID:         omit.From(int64(gofakeit.Int32())),
 		StrArrays:  omit.From([]string{"A", "B", "C"}),
-		Int4Arrays: omit.From([]int32{1, 2, 3, 4, 5}),
-		Int2Arrays: omitnull.From([]int16{111, 222, 333, 444, 555}),
+		Int4Arrays: omit.From([]int32{1, 2, 3, 4, 5, math.MaxInt32}),
+		Int2Arrays: omitnull.From([]int16{math.MaxInt16}),
 		BoolArrays: omit.From([]bool{true, false, true}),
 		CreatedAt:  omit.From(time.Now()),
 		VJson:      omitnull.From(j1),
@@ -36,9 +37,22 @@ func TestPg_Arrays_Insert_1(t *testing.T) {
 			uuid.New().String(),
 			uuid.New().String(),
 		}),
+		TsArrays: omitnull.From([]string{
+			time.Now().Format(time.RFC3339),
+			time.Now().Format(time.RFC3339),
+		}),
 	}
 
 	var exec = Executors.Array
 	_, err := exec.Insert(ctx, db, []ArraySetter{d1}...)
 	require.NoError(t, err)
+}
+
+func TestSelectAll_1(t *testing.T) {
+	db := GetPgDB()
+	var exec = Executors.Array
+	where := Tables.Arrays.ID.GtInt(0)
+	results, err := exec.All(ctx, db, where)
+	require.NoError(t, err)
+	require.True(t, len(results) > 0)
 }

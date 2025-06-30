@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"log"
 	"log/slog"
+	"runtime"
+	"strings"
 	"sync"
 	"time"
 
@@ -34,13 +36,18 @@ func getPgDB() *sql.DB {
 		setupPgDialect()
 	})
 
+	host := "192.168.50.88"
+	port := 5432
 	//sql.Register(pgDriverName, sqlhooks.Wrap(stdlib.GetDefaultDriver(), loghooks.New()))
+	if strings.EqualFold(runtime.GOOS, "darwin") {
+		host = "localhost"
+		port = 15432
+	}
 
 	c := &hypersql.Config{
-		Dialect: hypersql.DialectPostgres,
-		//Host:     "192.168.50.88",
-		Host:     "localhost",
-		Port:     15432,
+		Dialect:  hypersql.DialectPostgres,
+		Host:     host,
+		Port:     port,
 		User:     "test",
 		Password: "test",
 		Name:     "test",

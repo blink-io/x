@@ -1,20 +1,17 @@
 package orm
 
-import (
-	"context"
-	"time"
+import "context"
+import "time"
 
-	"github.com/blink-io/opt/null"
-	"github.com/blink-io/opt/omit"
-	"github.com/blink-io/opt/omitnull"
-	"github.com/blink-io/sq"
-)
+import "github.com/blink-io/opt/null"
+import "github.com/blink-io/opt/omitnull"
+import "github.com/blink-io/sq"
+import "github.com/blink-io/opt/omit"
 
 type Array struct {
 	ID          int64                    ` db:"-" json:"-"`
 	StrArrays   []string                 ` db:"str_arrays" json:"str_arrays"`
 	Int4Arrays  []int32                  ` db:"int4_arrays" json:"int4_arrays"`
-	Int2Arrays  []int16                  ` db:"int2_arrays" json:"int2_arrays"`
 	BoolArrays  []bool                   ` db:"bool_arrays" json:"bool_arrays"`
 	CreatedAt   time.Time                ` db:"created_at" json:"created_at"`
 	VJsonb      null.Val[map[string]any] ` db:"v_jsonb" json:"v_jsonb"`
@@ -24,14 +21,14 @@ type Array struct {
 	JsonArrays  null.Val[[]string]       ` db:"json_arrays" json:"json_arrays"`
 	UuidArrays  null.Val[[]string]       ` db:"uuid_arrays" json:"uuid_arrays"`
 	IntAaa      null.Val[[]int32]        ` db:"int_aaa" json:"int_aaa"`
-	TsArrays    null.Val[[]time.Time]    ` db:"ts_arrays" json:"ts_arrays"`
+	TsArrays    null.Val[[]string]       ` db:"ts_arrays" json:"ts_arrays"`
+	Int2Arrays  null.Val[[]int16]        ` db:"int2_arrays" json:"int2_arrays"`
 }
 
 type ArraySetter struct {
 	ID          omit.Val[int64]              ` db:"-" json:"-"`
 	StrArrays   omit.Val[[]string]           ` db:"str_arrays" json:"str_arrays"`
 	Int4Arrays  omit.Val[[]int32]            ` db:"int4_arrays" json:"int4_arrays"`
-	Int2Arrays  omitnull.Val[[]int16]        ` db:"int4_arrays" json:"int2_arrays"`
 	BoolArrays  omit.Val[[]bool]             ` db:"bool_arrays" json:"bool_arrays"`
 	CreatedAt   omit.Val[time.Time]          ` db:"created_at" json:"created_at"`
 	VJsonb      omitnull.Val[map[string]any] ` db:"v_jsonb" json:"v_jsonb"`
@@ -41,7 +38,8 @@ type ArraySetter struct {
 	JsonArrays  omitnull.Val[[]string]       ` db:"json_arrays" json:"json_arrays"`
 	UuidArrays  omitnull.Val[[]string]       ` db:"uuid_arrays" json:"uuid_arrays"`
 	IntAaa      omitnull.Val[[]int32]        ` db:"int_aaa" json:"int_aaa"`
-	TsArrays    omitnull.Val[[]time.Time]    ` db:"ts_arrays" json:"ts_arrays"`
+	TsArrays    omitnull.Val[[]string]       ` db:"ts_arrays" json:"ts_arrays"`
+	Int2Arrays  omitnull.Val[[]int16]        ` db:"int2_arrays" json:"int2_arrays"`
 }
 
 func (t ARRAYS) ColumnSetter(ctx context.Context, c *sq.Column, ss ...ArraySetter) {
@@ -55,9 +53,6 @@ func (t ARRAYS) ColumnSetter(ctx context.Context, c *sq.Column, ss ...ArraySette
 		})
 		s.Int4Arrays.IfSet(func(v []int32) {
 			c.SetArray(t.INT4_ARRAYS, v)
-		})
-		s.Int2Arrays.IfSet(func(v []int16) {
-			c.SetArray(t.INT2_ARRAYS, v)
 		})
 		s.BoolArrays.IfSet(func(v []bool) {
 			c.SetArray(t.BOOL_ARRAYS, v)
@@ -86,8 +81,11 @@ func (t ARRAYS) ColumnSetter(ctx context.Context, c *sq.Column, ss ...ArraySette
 		s.IntAaa.IfSet(func(v []int32) {
 			c.SetArray(t.INT_AAA, v)
 		})
-		s.TsArrays.IfSet(func(v []time.Time) {
+		s.TsArrays.IfSet(func(v []string) {
 			c.SetArray(t.TS_ARRAYS, v)
+		})
+		s.Int2Arrays.IfSet(func(v []int16) {
+			c.SetArray(t.INT2_ARRAYS, v)
 		})
 	}
 }
@@ -106,13 +104,13 @@ func (t ARRAYS) RowMapper(ctx context.Context, r *sq.Row) Array {
 	v := Array{}
 	v.ID = r.Int64Field(t.ID)
 	var strArrays []string
-	r.ArrayField(strArrays, t.STR_ARRAYS)
+	r.ArrayField(&strArrays, t.STR_ARRAYS)
 	v.StrArrays = strArrays
 	var int4Arrays []int32
-	r.ArrayField(int4Arrays, t.INT4_ARRAYS)
+	r.ArrayField(&int4Arrays, t.INT4_ARRAYS)
 	v.Int4Arrays = int4Arrays
 	var boolArrays []bool
-	r.ArrayField(boolArrays, t.BOOL_ARRAYS)
+	r.ArrayField(&boolArrays, t.BOOL_ARRAYS)
 	v.BoolArrays = boolArrays
 	v.CreatedAt = r.TimeField(t.CREATED_AT)
 	var vJsonb = new(map[string]any)
@@ -136,9 +134,12 @@ func (t ARRAYS) RowMapper(ctx context.Context, r *sq.Row) Array {
 	var intAaa = new([]int32)
 	r.ArrayField(intAaa, t.INT_AAA)
 	v.IntAaa = null.FromPtr(intAaa)
-	var tsArrays = new([]time.Time)
+	var tsArrays = new([]string)
 	r.ArrayField(tsArrays, t.TS_ARRAYS)
 	v.TsArrays = null.FromPtr(tsArrays)
+	var int2Arrays = new([]int16)
+	r.ArrayField(int2Arrays, t.INT2_ARRAYS)
+	v.Int2Arrays = null.FromPtr(int2Arrays)
 	return v
 }
 
@@ -251,7 +252,7 @@ func (t ENUMS) RowMapper(ctx context.Context, r *sq.Row) Enum {
 	v := Enum{}
 	v.ID = r.Int64Field(t.ID)
 	var status EnumEnumsStatus
-	r.EnumField(status, t.STATUS)
+	r.EnumField(&status, t.STATUS)
 	v.Status = status
 	v.CreatedAt = r.TimeField(t.CREATED_AT)
 	var moodx = new(EnumEnumsMoodx)

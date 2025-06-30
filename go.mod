@@ -36,7 +36,7 @@ require (
 	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365
 	github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211
-	github.com/blink-io/sq v0.0.0-20250629165554-8c7cc4493f21
+	github.com/blink-io/sq v0.0.0-20250630093414-b0714e65c617
 	github.com/blink-io/sqx v0.0.0-20250629132106-a528d9038071
 	github.com/bmatcuk/doublestar/v4 v4.8.1
 	github.com/bokwoon95/sq v0.5.1
