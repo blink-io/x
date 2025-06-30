@@ -15,11 +15,11 @@ func init() {
 }
 
 var Executors = struct {
-	Tag   sqx.Executor[Tag, TagSetter]
-	Log   sqx.Executor[Log, LogSetter]
-	Array sqx.Executor[Array, ArraySetter]
-	Enum  sqx.Executor[Enum, EnumSetter]
-	MKey  sqx.Executor[Mkey, MkeySetter]
+	Tag   sqx.Executor[TAGS, Tag, TagSetter]
+	Log   sqx.Executor[LOGS, Log, LogSetter]
+	Array sqx.Executor[ARRAYS, Array, ArraySetter]
+	Enum  sqx.Executor[ENUMS, Enum, EnumSetter]
+	MKey  sqx.Executor[MKEYS, Mkey, MkeySetter]
 }{
 	Tag:   sqx.NewExecutor[TAGS, Tag, TagSetter](Tables.Tags),
 	Log:   sqx.NewExecutor[LOGS, Log, LogSetter](Tables.Logs),

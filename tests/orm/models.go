@@ -17,11 +17,11 @@ type Array struct {
 	VJsonb      null.Val[map[string]any] ` db:"v_jsonb" json:"v_jsonb"`
 	VJson       null.Val[map[string]any] ` db:"v_json" json:"v_json"`
 	VUUID       null.Val[[16]byte]       ` db:"v_uuid" json:"v_uuid"`
-	JsonbArrays null.Val[[]string]       ` db:"jsonb_arrays" json:"jsonb_arrays"`
-	JsonArrays  null.Val[[]string]       ` db:"json_arrays" json:"json_arrays"`
-	UuidArrays  null.Val[[]string]       ` db:"uuid_arrays" json:"uuid_arrays"`
+	JsonbArrays null.Val[[]string]       ` db:"jsonb_arrays" json:"jsonb_arrays"` // []map[string]any
+	JsonArrays  null.Val[[]string]       ` db:"json_arrays" json:"json_arrays"`   // []map[string]any
+	UuidArrays  null.Val[[]string]       ` db:"uuid_arrays" json:"uuid_arrays"`   // [][16]byte
 	IntAaa      null.Val[[]int32]        ` db:"int_aaa" json:"int_aaa"`
-	TsArrays    null.Val[[]string]       ` db:"ts_arrays" json:"ts_arrays"`
+	TsArrays    null.Val[[]string]       ` db:"ts_arrays" json:"ts_arrays"` // []time.Time
 	Int2Arrays  null.Val[[]int16]        ` db:"int2_arrays" json:"int2_arrays"`
 }
 
@@ -34,11 +34,11 @@ type ArraySetter struct {
 	VJsonb      omitnull.Val[map[string]any] ` db:"v_jsonb" json:"v_jsonb"`
 	VJson       omitnull.Val[map[string]any] ` db:"v_json" json:"v_json"`
 	VUUID       omitnull.Val[[16]byte]       ` db:"v_uuid" json:"v_uuid"`
-	JsonbArrays omitnull.Val[[]string]       ` db:"jsonb_arrays" json:"jsonb_arrays"`
-	JsonArrays  omitnull.Val[[]string]       ` db:"json_arrays" json:"json_arrays"`
-	UuidArrays  omitnull.Val[[]string]       ` db:"uuid_arrays" json:"uuid_arrays"`
+	JsonbArrays omitnull.Val[[]string]       ` db:"jsonb_arrays" json:"jsonb_arrays"` // []map[string]any
+	JsonArrays  omitnull.Val[[]string]       ` db:"json_arrays" json:"json_arrays"`   // []map[string]any
+	UuidArrays  omitnull.Val[[]string]       ` db:"uuid_arrays" json:"uuid_arrays"`   // [][16]byte
 	IntAaa      omitnull.Val[[]int32]        ` db:"int_aaa" json:"int_aaa"`
-	TsArrays    omitnull.Val[[]string]       ` db:"ts_arrays" json:"ts_arrays"`
+	TsArrays    omitnull.Val[[]string]       ` db:"ts_arrays" json:"ts_arrays"` // []time.Time
 	Int2Arrays  omitnull.Val[[]int16]        ` db:"int2_arrays" json:"int2_arrays"`
 }
 

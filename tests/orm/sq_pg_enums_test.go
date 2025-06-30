@@ -28,7 +28,7 @@ func TestPg_Enums_Insert_1(t *testing.T) {
 func Test_Enums_SelectAll_1(t *testing.T) {
 	db := GetPgDB()
 	var exec = Executors.Enum
-	where := Tables.Enums.ID.GtInt(0)
+	where := exec.Table().ID.GtInt(0)
 	results, err := exec.All(ctx, db, where)
 	require.NoError(t, err)
 	require.True(t, len(results) > 0)

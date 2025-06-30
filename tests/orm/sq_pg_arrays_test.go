@@ -51,7 +51,7 @@ func TestPg_Arrays_Insert_1(t *testing.T) {
 func TestSelectAll_1(t *testing.T) {
 	db := GetPgDB()
 	var exec = Executors.Array
-	where := Tables.Arrays.ID.GtInt(0)
+	where := exec.Table().ID.GtInt(0)
 	results, err := exec.All(ctx, db, where)
 	require.NoError(t, err)
 	require.True(t, len(results) > 0)

@@ -152,8 +152,8 @@ github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211 h1:/LqJaVeTRX0zt0Pofl
 github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211/go.mod h1:PyfKilIlH4cbXN19CTmMqzqmqd7u8pb5kUxK+fkKXiI=
 github.com/blink-io/sq v0.0.0-20250630093414-b0714e65c617 h1:s0xs4umGP9rsLpf8VQdYZbSSUsZeqIvy0LmWKI+g/fE=
 github.com/blink-io/sq v0.0.0-20250630093414-b0714e65c617/go.mod h1:Ei6/+6FKcxiRpj1C0vBILqcDNovxPFCqKqj7pQGq+lU=
-github.com/blink-io/sqx v0.0.0-20250629132106-a528d9038071 h1:Jxu1C79X/rwBa6uP8cwKCoeVEkFuq6wvwKDf8Lj8Xj4=
-github.com/blink-io/sqx v0.0.0-20250629132106-a528d9038071/go.mod h1:fMaBKJO92Wg7vfxhM5Bse3TvfH08kFywegox6RbC2RQ=
+github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed h1:yrHM/eKynIvoBWqIMOMfksqtQ76VAF0jkAdWG+HTd+g=
+github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed/go.mod h1:fMaBKJO92Wg7vfxhM5Bse3TvfH08kFywegox6RbC2RQ=
 github.com/bmatcuk/doublestar/v4 v4.8.1 h1:54Bopc5c2cAvhLRAzqOGCYHYyhcDHsFF4wWIR5wKP38=
 github.com/bmatcuk/doublestar/v4 v4.8.1/go.mod h1:xBQ8jztBU6kakFMg+8WGxn0c6z1fTSPVIjEY1Wr7jzc=
 github.com/bodgit/plumbing v1.3.0 h1:pf9Itz1JOQgn7vEOE7v7nlEfBykYqvUYioC61TwWCFU=
