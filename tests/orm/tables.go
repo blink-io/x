@@ -46,6 +46,7 @@ type ARRAYS struct {
 	UUID_ARRAYS  sq.ArrayField  `ddl:"type=uuid[]"`
 	INT_AAA      sq.ArrayField  `ddl:"type=int[]"`
 	TS_ARRAYS    sq.ArrayField  `ddl:"type=timestamptz[]"`
+	REMARK       sq.StringField `ddl:"type=varchar"`
 }
 
 func (t ARRAYS) PrimaryKeys() sq.RowValue {
