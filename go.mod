@@ -36,7 +36,7 @@ require (
 	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365
 	github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211
-	github.com/blink-io/sq v0.0.0-20250702033021-fb63be5352a8
+	github.com/blink-io/sq v0.0.0-20250702105444-5042a1b2bde7
 	github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed
 	github.com/bmatcuk/doublestar/v4 v4.8.1
 	github.com/bokwoon95/sq v0.5.1
@@ -431,7 +431,5 @@ require (
 	sigs.k8s.io/yaml v1.5.0 // indirect
 )
 
-
-replace (
-	"github.com/blink-io/sq" => /Users/heisonyee/Projects/Go/sq
-)
+//"github.com/blink-io/sq" => /Users/heisonyee/Projects/Go/sq
+replace github.com/blink-io/sq => /home/heisonyee/Data/projects/go/sq

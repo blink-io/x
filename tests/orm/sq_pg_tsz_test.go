@@ -30,3 +30,10 @@ func TestPg_TSZ_Insert_1(t *testing.T) {
 	require.NoError(t, err)
 	fmt.Println(rr)
 }
+
+func TestMapLen(t *testing.T) {
+	var kk map[string]interface{}
+	if len(kk) == 0 {
+		fmt.Printf("Empty Map")
+	}
+}

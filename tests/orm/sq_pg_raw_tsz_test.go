@@ -18,10 +18,11 @@ type RAW_TS_ARRAYS struct {
 func TestPg_RawTSZ_Insert_1(t *testing.T) {
 	db := GetPgDB()
 
-	q := rawsq.Queryf("select {} from ts_arrays limit 1", sq.Fields{sq.Expr("tsa")}).SetDialect(rawsq.DialectPostgres)
+	q := rawsq.Queryf("select {} from ts_arrays limit 1", sq.Fields{sq.Expr("id"), sq.Expr("tsa")}).SetDialect(rawsq.DialectPostgres)
 	rr, err := rawsq.FetchOne[[]time.Time](rawsq.VerboseLog(db), q, func(row *rawsq.Row) []time.Time {
 		var tt []time.Time
-		row.Array(&tt, "tsa")
+		//row.Array(&tt, "tsa")
+		fmt.Printf("%#v\n", row.Int("id"))
 		return tt
 	})
 	require.NoError(t, err)

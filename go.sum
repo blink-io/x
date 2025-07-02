@@ -150,8 +150,6 @@ github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116d
 github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365/go.mod h1:B6UPUS4g+bgVQesjBqHp2NbxuyVbTFvE/Nfo8nO1/i4=
 github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211 h1:/LqJaVeTRX0zt0PoflmZdSspM46li2A3Bn6z2kfQdKs=
 github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211/go.mod h1:PyfKilIlH4cbXN19CTmMqzqmqd7u8pb5kUxK+fkKXiI=
-github.com/blink-io/sq v0.0.0-20250702033021-fb63be5352a8 h1:lUB6FF6IODRDIe9SbUwYsu8qK6LSs0wfKoOww6wtrKM=
-github.com/blink-io/sq v0.0.0-20250702033021-fb63be5352a8/go.mod h1:+OU9H9fBaOkhLUlbPV/iVYexOxVOMh7PfxZQHq+x9dM=
 github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed h1:yrHM/eKynIvoBWqIMOMfksqtQ76VAF0jkAdWG+HTd+g=
 github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed/go.mod h1:fMaBKJO92Wg7vfxhM5Bse3TvfH08kFywegox6RbC2RQ=
 github.com/bmatcuk/doublestar/v4 v4.8.1 h1:54Bopc5c2cAvhLRAzqOGCYHYyhcDHsFF4wWIR5wKP38=

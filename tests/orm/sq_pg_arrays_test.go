@@ -66,11 +66,13 @@ func TestSelectCustom_JSON_1(t *testing.T) {
 	var exec = Executors.Array
 	tbl := exec.Table()
 
-	where := tbl.V_JSON.IsNotNull()
-	q := sq.Select(tbl.ID, tbl.V_JSON).From(tbl).Where(where)
+	q := sq.Select(tbl.ID, tbl.V_JSON, tbl.V_UUID).From(tbl)
 	rr, err := sq.FetchAll[map[string]any](db, q, func(ctx context.Context, row *sq.Row) map[string]any {
 		var mm map[string]any
 		row.JSON(&mm, tbl.V_JSON.GetName())
+
+		var jj *[16]byte = new([16]byte)
+		row.UUID(jj, tbl.V_UUID.GetName())
 		return mm
 	})
 	require.NoError(t, err)
@@ -105,7 +107,7 @@ func TestSelectCustom_Int4Array_1(t *testing.T) {
 	tbl := exec.Table()
 
 	where := tbl.INT4_ARRAYS.IsNotNull()
-	q := sq.Select(tbl.ID, tbl.REMARK,
+	q := sq.Select(tbl.ID, tbl.REMARK, tbl.STATUS_ARRAYS,
 		tbl.STR_ARRAYS, tbl.BOOL_ARRAYS,
 		tbl.JSON_ARRAYS, tbl.INT4_ARRAYS).From(tbl).Where(where)
 	rr, err := sq.FetchAll[Array](sq.VerboseLog(db), q, func(ctx context.Context, row *sq.Row) Array {
@@ -134,6 +136,12 @@ func TestSelectCustom_Int4Array_1(t *testing.T) {
 		var nullRemark sq.NullString
 		row.Scan(&nullRemark, tbl.REMARK.GetName())
 		r.ID = *id
+
+		var js string
+		row.Scan(&js, tbl.JSON_ARRAYS.GetName())
+
+		var statusArrays []string
+		row.Array(&statusArrays, tbl.STATUS_ARRAYS.GetName())
 		return r
 	})
 	require.NoError(t, err)
