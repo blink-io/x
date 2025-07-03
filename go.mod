@@ -431,5 +431,7 @@ require (
 	sigs.k8s.io/yaml v1.5.0 // indirect
 )
 
-//"github.com/blink-io/sq" => /Users/heisonyee/Projects/Go/sq
-replace github.com/blink-io/sq => /home/heisonyee/Data/projects/go/sq
+//replace github.com/blink-io/sq => /home/heisonyee/Data/projects/go/sq
+replace (
+	"github.com/blink-io/sq" => /Users/heisonyee/Projects/Go/sq
+)

@@ -3,31 +3,68 @@ package orm
 import "github.com/blink-io/sq"
 
 type tables struct {
-	Arrays      ARRAYS
-	Devices     DEVICES
-	Enums       ENUMS
-	HelloWorld  HELLO_WORLD
-	Logs        LOGS
-	Mkeys       MKEYS
-	NewWords    NEW_WORDS
-	Tags        TAGS
-	TagsBak     TAGS_BAK
-	UserDevices USER_DEVICES
-	Users       USERS
+	UserCredentials USER_CREDENTIALS
+	Arrays          ARRAYS
+	Devices         DEVICES
+	Enums           ENUMS
+	HelloWorld      HELLO_WORLD
+	Jsons           JSONS
+	Logs            LOGS
+	Mkeys           MKEYS
+	NewWords        NEW_WORDS
+	TJsons          T_JSONS
+	Tags            TAGS
+	TagsBak         TAGS_BAK
+	TsArrays        TS_ARRAYS
+	UserDevices     USER_DEVICES
+	Users           USERS
 }
 
 var Tables = tables{
-	Arrays:      sq.New[ARRAYS](""),
-	Devices:     sq.New[DEVICES](""),
-	Enums:       sq.New[ENUMS](""),
-	HelloWorld:  sq.New[HELLO_WORLD](""),
-	Logs:        sq.New[LOGS](""),
-	Mkeys:       sq.New[MKEYS](""),
-	NewWords:    sq.New[NEW_WORDS](""),
-	Tags:        sq.New[TAGS](""),
-	TagsBak:     sq.New[TAGS_BAK](""),
-	UserDevices: sq.New[USER_DEVICES](""),
-	Users:       sq.New[USERS](""),
+	UserCredentials: sq.New[USER_CREDENTIALS](""),
+	Arrays:          sq.New[ARRAYS](""),
+	Devices:         sq.New[DEVICES](""),
+	Enums:           sq.New[ENUMS](""),
+	HelloWorld:      sq.New[HELLO_WORLD](""),
+	Jsons:           sq.New[JSONS](""),
+	Logs:            sq.New[LOGS](""),
+	Mkeys:           sq.New[MKEYS](""),
+	NewWords:        sq.New[NEW_WORDS](""),
+	TJsons:          sq.New[T_JSONS](""),
+	Tags:            sq.New[TAGS](""),
+	TagsBak:         sq.New[TAGS_BAK](""),
+	TsArrays:        sq.New[TS_ARRAYS](""),
+	UserDevices:     sq.New[USER_DEVICES](""),
+	Users:           sq.New[USERS](""),
+}
+
+type USER_CREDENTIALS struct {
+	sq.TableStruct `sq:"iam.user_credentials"`
+	ID             sq.NumberField  `ddl:"type=bigint notnull primarykey default=nextval('iam.user_credentials_id_seq'::regclass)"`
+	GUID           sq.StringField  `ddl:"type=varchar(60)"`
+	CREATED_AT     sq.TimeField    `ddl:"type=timestamptz(6) notnull"`
+	UPDATED_AT     sq.TimeField    `ddl:"type=timestamptz(6) notnull"`
+	CREATED_BY     sq.StringField  `ddl:"type=varchar(60)"`
+	UPDATED_BY     sq.StringField  `ddl:"type=varchar(60)"`
+	DELETED_AT     sq.TimeField    `ddl:"type=timestamptz(6)"`
+	DELETED_BY     sq.StringField  `ddl:"type=varchar(60)"`
+	IS_DELETED     sq.BooleanField `ddl:"type=boolean"`
+	USER_ID        sq.StringField  `ddl:"type=varchar notnull"`
+	STATUS         sq.StringField  `ddl:"type=varchar notnull"`
+	TYPE           sq.StringField  `ddl:"type=varchar notnull"`
+	PAYLOAD        sq.StringField  `ddl:"type=varchar notnull"`
+	SCHEME         sq.StringField  `ddl:"type=varchar notnull"`
+	FACTOR         sq.StringField  `ddl:"type=varchar notnull"`
+	EXPIRY         sq.NumberField  `ddl:"type=bigint notnull default='-1'::integer"`
+	DESCRIPTION    sq.StringField  `ddl:"type=text"`
+}
+
+func (t USER_CREDENTIALS) PrimaryKeys() sq.RowValue {
+	return sq.RowValue{t.ID}
+}
+
+func (t USER_CREDENTIALS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
 type ARRAYS struct {
@@ -35,7 +72,6 @@ type ARRAYS struct {
 	ID            sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('arrays_id_seq'::regclass)"`
 	STR_ARRAYS    sq.ArrayField  `ddl:"type=varchar[] notnull"`
 	INT4_ARRAYS   sq.ArrayField  `ddl:"type=int[] notnull"`
-	INT2_ARRAYS   sq.ArrayField  `ddl:"type=int[] notnull"`
 	BOOL_ARRAYS   sq.ArrayField  `ddl:"type=boolean[] notnull"`
 	CREATED_AT    sq.TimeField   `ddl:"type=timestamptz notnull"`
 	V_JSONB       sq.JSONField   `ddl:"type=jsonb"`
@@ -46,6 +82,7 @@ type ARRAYS struct {
 	UUID_ARRAYS   sq.ArrayField  `ddl:"type=uuid[]"`
 	INT_AAA       sq.ArrayField  `ddl:"type=int[]"`
 	TS_ARRAYS     sq.ArrayField  `ddl:"type=timestamptz[]"`
+	INT2_ARRAYS   sq.ArrayField  `ddl:"type=smallint[]"`
 	REMARK        sq.StringField `ddl:"type=varchar"`
 	STATUS_ARRAYS sq.ArrayField  `ddl:"type=user_status[]"`
 }
@@ -129,6 +166,21 @@ func (t HELLO_WORLD) PrimaryKeyValues(ID int64) sq.Predicate {
 	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
+type JSONS struct {
+	sq.TableStruct
+	ID     sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('jsons_id_seq'::regclass)"`
+	V_JSON sq.StringField `ddl:"type=varchar"`
+	V_UUID sq.UUIDField   `ddl:"type=uuid"`
+}
+
+func (t JSONS) PrimaryKeys() sq.RowValue {
+	return sq.RowValue{t.ID}
+}
+
+func (t JSONS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
+}
+
 type LOGS struct {
 	sq.TableStruct
 	ID         sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('logs_id_seq'::regclass)"`
@@ -179,6 +231,22 @@ func (t NEW_WORDS) PrimaryKeyValues(ID int64) sq.Predicate {
 	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
+type T_JSONS struct {
+	sq.TableStruct
+	ID      sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('t_jsons_id_seq'::regclass)"`
+	V_JSON  sq.JSONField   `ddl:"type=json"`
+	V_JSONB sq.JSONField   `ddl:"type=jsonb"`
+	A_JSON  sq.ArrayField  `ddl:"type=json[]"`
+}
+
+func (t T_JSONS) PrimaryKeys() sq.RowValue {
+	return sq.RowValue{t.ID}
+}
+
+func (t T_JSONS) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
+}
+
 type TAGS struct {
 	sq.TableStruct
 	ID          sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('tags_id_seq'::regclass)"`
@@ -212,6 +280,20 @@ func (t TAGS_BAK) PrimaryKeys() sq.RowValue {
 }
 
 func (t TAGS_BAK) PrimaryKeyValues(ID int64) sq.Predicate {
+	return t.PrimaryKeys().In(sq.RowValues{{ID}})
+}
+
+type TS_ARRAYS struct {
+	sq.TableStruct
+	ID  sq.NumberField `ddl:"type=bigint notnull primarykey default=nextval('ts_arrays_id_seq'::regclass)"`
+	TSA sq.ArrayField  `ddl:"type=timestamptz[]"`
+}
+
+func (t TS_ARRAYS) PrimaryKeys() sq.RowValue {
+	return sq.RowValue{t.ID}
+}
+
+func (t TS_ARRAYS) PrimaryKeyValues(ID int64) sq.Predicate {
 	return t.PrimaryKeys().In(sq.RowValues{{ID}})
 }
 
