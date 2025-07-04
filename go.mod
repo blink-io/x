@@ -28,18 +28,16 @@ require (
 	github.com/apple/pkl-go v0.10.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.1
-	github.com/bartventer/httpcache v0.10.1
+	github.com/bartventer/httpcache v0.10.2
 	github.com/beevik/etree v1.5.1
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/blink-io/hyperbun v0.0.0-20250313040812-504f16b9229c
 	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365
-	github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211
-	github.com/blink-io/sq v0.0.0-20250702105444-5042a1b2bde7
+	github.com/blink-io/sq v0.0.0-20250704034929-fc04e805db4a
 	github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed
 	github.com/bmatcuk/doublestar/v4 v4.8.1
-	github.com/bokwoon95/sq v0.5.1
 	github.com/brianvoe/gofakeit/v7 v7.3.0
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v11 v11.3.1
@@ -75,7 +73,6 @@ require (
 	github.com/go-logr/stdr v1.2.2
 	github.com/go-openapi/inflect v0.21.2
 	github.com/go-resty/resty/v2 v2.16.5
-	github.com/go-sql-driver/mysql v1.9.3
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/go-test/deep v1.1.1
 	github.com/go-viper/mapstructure/v2 v2.3.0
@@ -110,7 +107,6 @@ require (
 	github.com/karlseguin/ccache/v3 v3.0.6
 	github.com/klauspost/compress v1.18.0
 	github.com/klauspost/cpuid/v2 v2.2.11
-	github.com/leporo/sqlf v1.4.0
 	github.com/liamg/memoryfs v1.6.0
 	github.com/libp2p/go-reuseport v0.4.0
 	github.com/linkedin/goavro/v2 v2.14.0
@@ -120,7 +116,6 @@ require (
 	github.com/mailgun/raymond/v2 v2.0.48
 	github.com/matthewhartstonge/argon2 v1.3.2
 	github.com/mattn/go-runewidth v0.0.16
-	github.com/mattn/go-sqlite3 v1.14.28
 	github.com/meilisearch/meilisearch-go v0.32.0
 	github.com/mholt/archives v0.1.3
 	github.com/miekg/dns v1.1.66
@@ -216,7 +211,6 @@ require (
 	google.golang.org/protobuf v1.36.6
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/client-go v0.33.2
-	modernc.org/sqlite v1.38.0
 	resenje.org/singleflight v0.4.3
 	resty.dev/v3 v3.0.0-beta.3
 )
@@ -225,14 +219,13 @@ require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.2 // indirect
-	github.com/AthenZ/athenz v1.12.19 // indirect
+	github.com/AthenZ/athenz v1.12.20 // indirect
 	github.com/DataDog/zstd v1.5.7 // indirect
 	github.com/DmitriyVTitov/size v1.5.0 // indirect
 	github.com/Masterminds/squirrel v1.5.4 // indirect
 	github.com/ProtonMail/go-crypto v1.3.0 // indirect
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/STARRY-S/zip v0.2.3 // indirect
-	github.com/aarondl/json v0.0.0-20221020222930-8b0db17ef1bf // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/ardielle/ardielle-go v1.5.2 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
@@ -242,6 +235,7 @@ require (
 	github.com/bodgit/plumbing v1.3.0 // indirect
 	github.com/bodgit/sevenzip v1.6.1 // indirect
 	github.com/bodgit/windows v1.0.1 // indirect
+	github.com/bokwoon95/sq v0.5.1 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.2 // indirect
 	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
@@ -269,6 +263,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.27.0 // indirect
 	github.com/go-redsync/redsync/v4 v4.13.0 // indirect
+	github.com/go-sql-driver/mysql v1.9.3 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/gofiber/schema v1.5.0 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.9 // indirect
@@ -322,6 +317,7 @@ require (
 	github.com/mailru/easyjson v0.9.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/mattn/go-sqlite3 v1.14.28 // indirect
 	github.com/microsoft/go-mssqldb v1.9.2 // indirect
 	github.com/mikelolasagasti/xz v1.0.1 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
@@ -341,7 +337,7 @@ require (
 	github.com/prometheus/client_golang v1.22.0 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.65.0 // indirect
-	github.com/prometheus/procfs v0.16.1 // indirect
+	github.com/prometheus/procfs v0.17.0 // indirect
 	github.com/puzpuzpuz/xsync/v3 v3.5.1 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9 // indirect
@@ -425,6 +421,7 @@ require (
 	modernc.org/libc v1.66.2 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
+	modernc.org/sqlite v1.38.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 	sigs.k8s.io/randfill v1.0.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.7.0 // indirect
@@ -432,6 +429,5 @@ require (
 )
 
 //replace github.com/blink-io/sq => /home/heisonyee/Data/projects/go/sq
-replace (
-	"github.com/blink-io/sq" => /Users/heisonyee/Projects/Go/sq
-)
+//replace github.com/blink-io/sq => /Users/heisonyee/Projects/Go/sq
+replace github.com/blink-io/sq => /home/heisonyee/Data/projects/go/sq
