@@ -28,12 +28,12 @@ require (
 	github.com/apple/pkl-go v0.10.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.1
-	github.com/bartventer/httpcache v0.10.1
+	github.com/bartventer/httpcache v0.10.2
 	github.com/beevik/etree v1.5.1
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20250313040812-504f16b9229c
-	github.com/blink-io/hypersql v0.0.0-20250215034254-fc8ce67faaa1
+	github.com/blink-io/hyperbun v0.0.0-20250704163240-4a312839b4ac
+	github.com/blink-io/hypersql v0.0.0-20250704155146-5b3c438357d4
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365
 	github.com/blink-io/sq v0.0.0-20250704034929-fc04e805db4a
 	github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed
@@ -62,7 +62,7 @@ require (
 	github.com/go-chi/chi/v5 v5.2.2
 	github.com/go-co-op/gocron-redis-lock/v2 v2.1.0
 	github.com/go-co-op/gocron/v2 v2.16.2
-	github.com/go-crypt/crypt v0.4.1
+	github.com/go-crypt/crypt v0.4.2
 	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.6.1
 	github.com/go-faster/city v1.0.1
@@ -140,7 +140,7 @@ require (
 	github.com/phuslu/log v1.0.118
 	github.com/phuslu/log-contrib/grpc v0.0.0-20250309100953-cb5b9b62dd61
 	github.com/projectdiscovery/machineid v0.0.0-20240226150047-2e2c51e35983
-	github.com/qiniu/qmgo v1.1.9
+	github.com/qiniu/qmgo v1.1.10
 	github.com/quic-go/quic-go v0.53.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/rabbitmq/amqp091-go v1.10.0
@@ -176,6 +176,7 @@ require (
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cast v1.9.2
 	github.com/spyzhov/ajson v0.9.6
+	github.com/stephenafamo/scan v0.7.0
 	github.com/stretchr/testify v1.10.0
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
 	github.com/tidwall/gjson v1.18.0
@@ -222,10 +223,10 @@ require (
 	github.com/AthenZ/athenz v1.12.20 // indirect
 	github.com/DataDog/zstd v1.5.7 // indirect
 	github.com/DmitriyVTitov/size v1.5.0 // indirect
-	github.com/Masterminds/squirrel v1.5.4 // indirect
 	github.com/ProtonMail/go-crypto v1.3.0 // indirect
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/STARRY-S/zip v0.2.3 // indirect
+	github.com/aarondl/opt v0.0.0-20250607033636-982744e1bd65 // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/ardielle/ardielle-go v1.5.2 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
@@ -253,7 +254,7 @@ require (
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.9 // indirect
-	github.com/go-crypt/x v0.4.2 // indirect
+	github.com/go-crypt/x v0.4.4 // indirect
 	github.com/go-echarts/go-echarts/v2 v2.6.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.1 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
@@ -310,8 +311,6 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/klauspost/pgzip v1.2.6 // indirect
-	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
-	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/mailru/easyjson v0.9.0 // indirect
@@ -360,7 +359,6 @@ require (
 	github.com/sosodev/duration v1.3.1 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/spf13/afero v1.14.0 // indirect
-	github.com/stephenafamo/scan v0.7.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/tetratelabs/wazero v1.9.0 // indirect
 	github.com/tidwall/match v1.1.1 // indirect
@@ -369,6 +367,7 @@ require (
 	github.com/tinylib/msgp v1.3.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/ulikunitz/xz v0.5.12 // indirect
+	github.com/uptrace/bun/dialect/mssqldialect v1.2.14 // indirect
 	github.com/uptrace/bun/dialect/mysqldialect v1.2.14 // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.2.14 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
@@ -429,4 +428,4 @@ require (
 )
 
 //replace github.com/blink-io/sq => /home/heisonyee/Data/projects/go/sq
-replace github.com/blink-io/sq => /Users/heisonyee/Projects/Go/sq
+//replace github.com/blink-io/sq => /Users/heisonyee/Projects/Go/sq
