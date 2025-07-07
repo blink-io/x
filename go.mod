@@ -32,7 +32,7 @@ require (
 	github.com/beevik/etree v1.5.1
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20250704163240-4a312839b4ac
+	github.com/blink-io/hyperbun v0.0.0-20250707150938-2f51aa1e9772
 	github.com/blink-io/hypersql v0.0.0-20250704155146-5b3c438357d4
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365
 	github.com/blink-io/sq v0.0.0-20250704034929-fc04e805db4a
@@ -156,7 +156,7 @@ require (
 	github.com/rs/xid v1.6.0
 	github.com/runZeroInc/mustache/v2 v2.1.0
 	github.com/samber/go-singleflightx v0.3.2
-	github.com/samber/hot v0.8.0
+	github.com/samber/hot v0.9.0
 	github.com/samber/oops v1.19.0
 	github.com/samber/slog-common v0.19.0
 	github.com/samber/slog-http v1.7.0

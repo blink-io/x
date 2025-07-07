@@ -4,6 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"testing"
+	"time"
+
 	"github.com/blink-io/x/misc/closer"
 	"github.com/blink-io/x/ptr"
 	"github.com/brianvoe/gofakeit/v7"
@@ -13,8 +16,6 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
-	"testing"
-	"time"
 )
 
 func TestBun_TblSimple_Tests(t *testing.T) {
@@ -34,7 +35,7 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	var randomTblSimpleSetter = func() *TblSimpleSetter {
 		r := &TblSimpleSetter{
 			//ID:        ptr.Of(int64(11)),
-			Name:      ptr.Of("test"),
+			Name:      ptr.Of(gofakeit.Name()),
 			GUID:      ptr.Of(gofakeit.UUID()),
 			CreatedAt: ptr.Of(time.Now()),
 		}

@@ -138,6 +138,10 @@ github.com/bits-and-blooms/bloom/v3 v3.7.0 h1:VfknkqV4xI+PsaDIsoHueyxVDZrfvMn56j
 github.com/bits-and-blooms/bloom/v3 v3.7.0/go.mod h1:VKlUSvp0lFIYqxJjzdnSsZEw4iHb1kOL2tfHTgyJBHg=
 github.com/blink-io/hyperbun v0.0.0-20250704163240-4a312839b4ac h1:m/De1+5fg3payTiHHjmXjNnI286WSjxiAxmWcqS8/iY=
 github.com/blink-io/hyperbun v0.0.0-20250704163240-4a312839b4ac/go.mod h1:lhZqAVEaLaC4iD2G9u90BVqWlZ3b7exygr0C8FM/LMY=
+github.com/blink-io/hyperbun v0.0.0-20250707144328-06eeb0551877 h1:Sr3FTWMwozIKYdgy6rgheuqM89lI1C0IDx9Ahms+QZk=
+github.com/blink-io/hyperbun v0.0.0-20250707144328-06eeb0551877/go.mod h1:lhZqAVEaLaC4iD2G9u90BVqWlZ3b7exygr0C8FM/LMY=
+github.com/blink-io/hyperbun v0.0.0-20250707150938-2f51aa1e9772 h1:HkN1FN1Ne3RsxAAD6OoSVXnrTFDetRPZgnk08dlFysk=
+github.com/blink-io/hyperbun v0.0.0-20250707150938-2f51aa1e9772/go.mod h1:lhZqAVEaLaC4iD2G9u90BVqWlZ3b7exygr0C8FM/LMY=
 github.com/blink-io/hypersql v0.0.0-20250704155146-5b3c438357d4 h1:U78y08TJeo/i008CDxIkApxjfgmTlPAAytkNzbge/a0=
 github.com/blink-io/hypersql v0.0.0-20250704155146-5b3c438357d4/go.mod h1:/TPv1lqmdqikX5mNcSIL2P7Ln2UIqlVuXLd+XKPTmv0=
 github.com/blink-io/kratos-transport v0.0.0-20250612063448-9d75c0c37c8e h1:HpNdomtGbOjbqhwSCvhfIz7hjl7ggFdKLWSgZ4AvpHg=
@@ -919,8 +923,8 @@ github.com/runZeroInc/mustache/v2 v2.1.0/go.mod h1:hOSsaiL5mHhHkTKz3XFnBjasghVQV
 github.com/rwcarlsen/goexif v0.0.0-20190401172101-9e8deecbddbd/go.mod h1:hPqNNc0+uJM6H+SuU8sEs5K5IQeKccPqeSjfgcKGgPk=
 github.com/samber/go-singleflightx v0.3.2 h1:jXbUU0fvis8Fdv4HGONboX5WdEZcYLoBEcKiE+ITCyQ=
 github.com/samber/go-singleflightx v0.3.2/go.mod h1:X2BR+oheHIYc73PvxRMlcASg6KYYTQyUYpdVU7t/ux4=
-github.com/samber/hot v0.8.0 h1:8sHOxTk1vaVaeZyTrvPrP5ooHeZQ3aCzjXwFz8B3J3Q=
-github.com/samber/hot v0.8.0/go.mod h1:qnypB9JfFhiUSz5wepkEJrhd1rdigLsld+9enaw1ikw=
+github.com/samber/hot v0.9.0 h1:icnWx4dc0aVsaAAP2tbQea5BYytiI5JHw30Q/3zuljs=
+github.com/samber/hot v0.9.0/go.mod h1:qnypB9JfFhiUSz5wepkEJrhd1rdigLsld+9enaw1ikw=
 github.com/samber/lo v1.51.0 h1:kysRYLbHy/MB7kQZf5DSN50JHmMsNEdeY24VzJFu7wI=
 github.com/samber/lo v1.51.0/go.mod h1:4+MXEGsJzbKGaUEQFKBq2xtfuznW9oz/WrgyzMzRoM0=
 github.com/samber/oops v1.19.0 h1:sfZAwC8MmTXBRRyNc4Z1utuTPBx+hFKF5fJ9DEQRZfw=

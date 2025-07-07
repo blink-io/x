@@ -4,9 +4,8 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/blink-io/hyperbun/model"
+	"github.com/blink-io/hyperbun/schema"
 	"github.com/uptrace/bun"
-	"github.com/uptrace/bun/schema"
 )
 
 type TblSimple struct {
@@ -27,47 +26,43 @@ type TblSimpleSetter struct {
 }
 
 type TblSimpleColumns struct {
-	ID        model.Column
-	Name      model.Column
-	CreatedAt model.Column
-	GUID      model.Column
-	DeletedAt model.Column
+	ID        string
+	Name      string
+	CreatedAt string
+	GUID      string
+	DeletedAt string
 }
 
 var tblSimpleColumns = TblSimpleColumns{
-	ID:        model.Column("id"),
-	Name:      model.Column("name"),
-	CreatedAt: model.Column("created_at"),
-	GUID:      model.Column("guid"),
-	DeletedAt: model.Column("deleted_at"),
+	ID:        "id",
+	Name:      "name",
+	CreatedAt: "created_at",
+	GUID:      "guid",
+	DeletedAt: "deleted_at",
 }
 
-var TblSimpleTable = struct {
-	Name    schema.Name
-	Alias   schema.Name
-	Model   *TblSimple
-	Columns TblSimpleColumns
-}{
-	Name:    schema.Name("tbl_simple"),
-	Alias:   schema.Name("ts1"),
-	Model:   (*TblSimple)(nil),
-	Columns: tblSimpleColumns,
+var TblSimpleTable = schema.Table[TblSimple, TblSimpleColumns]{
+	PrimaryKeys: []string{"id"},
+	Model:       (*TblSimple)(nil),
+	Name:        "tbl_simple",
+	Alias:       "u",
+	Columns:     tblSimpleColumns,
 }
 
 func (s TblSimpleSetter) ColumnMapper(q *bun.InsertQuery) {
 	if s.ID != nil {
-		q.ColumnExpr(TblSimpleTable.Columns.ID.String(), *s.ID)
+		q.ColumnExpr(TblSimpleTable.Columns.ID, *s.ID)
 	}
 	if s.Name != nil {
-		q.ColumnExpr(TblSimpleTable.Columns.Name.String(), *s.Name)
+		q.ColumnExpr(TblSimpleTable.Columns.Name, *s.Name)
 	}
 	if s.CreatedAt != nil {
-		q.ColumnExpr(TblSimpleTable.Columns.CreatedAt.String(), *s.Name)
+		q.ColumnExpr(TblSimpleTable.Columns.CreatedAt, *s.Name)
 	}
 	if s.GUID != nil {
-		q.ColumnExpr(TblSimpleTable.Columns.GUID.String(), *s.Name)
+		q.ColumnExpr(TblSimpleTable.Columns.GUID, *s.Name)
 	}
 	if s.DeletedAt != nil && s.DeletedAt.Valid {
-		q.ColumnExpr(TblSimpleTable.Columns.DeletedAt.String(), *s.Name)
+		q.ColumnExpr(TblSimpleTable.Columns.DeletedAt, *s.Name)
 	}
 }
