@@ -14,6 +14,7 @@ require (
 	github.com/Code-Hex/go-generics-cache v1.5.1
 	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/IBM/sarama v1.45.2
+	github.com/Masterminds/squirrel v1.5.4
 	github.com/Netflix/go-env v0.1.2
 	github.com/ProtonMail/gopenpgp/v2 v2.9.0
 	github.com/VictoriaMetrics/easyproto v0.1.4
@@ -176,6 +177,7 @@ require (
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cast v1.9.2
 	github.com/spyzhov/ajson v0.9.6
+	github.com/sqids/sqids-go v0.4.1
 	github.com/stephenafamo/scan v0.7.0
 	github.com/stretchr/testify v1.10.0
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
@@ -226,7 +228,6 @@ require (
 	github.com/ProtonMail/go-crypto v1.3.0 // indirect
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/STARRY-S/zip v0.2.3 // indirect
-	github.com/aarondl/opt v0.0.0-20250607033636-982744e1bd65 // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/ardielle/ardielle-go v1.5.2 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
@@ -296,6 +297,7 @@ require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/golang-lru v1.0.2 // indirect
 	github.com/hashicorp/serf v0.10.2 // indirect
+	github.com/hypersequent/hyperbun v0.0.0-20240806103627-07ce2637e607 // indirect
 	github.com/icholy/digest v1.1.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
@@ -311,6 +313,8 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/klauspost/pgzip v1.2.6 // indirect
+	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
+	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/mailru/easyjson v0.9.0 // indirect
@@ -367,9 +371,6 @@ require (
 	github.com/tinylib/msgp v1.3.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/ulikunitz/xz v0.5.12 // indirect
-	github.com/uptrace/bun/dialect/mssqldialect v1.2.14 // indirect
-	github.com/uptrace/bun/dialect/mysqldialect v1.2.14 // indirect
-	github.com/uptrace/bun/dialect/sqlitedialect v1.2.14 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.63.0 // indirect

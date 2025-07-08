@@ -33,20 +33,18 @@ type TblSimpleColumns struct {
 	DeletedAt string
 }
 
-var tblSimpleColumns = TblSimpleColumns{
-	ID:        "id",
-	Name:      "name",
-	CreatedAt: "created_at",
-	GUID:      "guid",
-	DeletedAt: "deleted_at",
-}
-
 var TblSimpleTable = schema.Table[TblSimple, TblSimpleColumns]{
 	PrimaryKeys: []string{"id"},
 	Model:       (*TblSimple)(nil),
 	Name:        "tbl_simple",
 	Alias:       "u",
-	Columns:     tblSimpleColumns,
+	Columns: TblSimpleColumns{
+		ID:        "id",
+		Name:      "name",
+		CreatedAt: "created_at",
+		GUID:      "guid",
+		DeletedAt: "deleted_at",
+	},
 }
 
 func (s TblSimpleSetter) ColumnMapper(q *bun.InsertQuery) {
