@@ -1,11 +1,12 @@
 package buntest
 
 import (
+	"testing"
+	"time"
+
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
 	"golang.org/x/net/context"
-	"testing"
-	"time"
 
 	sq "github.com/Masterminds/squirrel"
 	"github.com/brianvoe/gofakeit/v7"
@@ -49,7 +50,7 @@ func TestPg_Users_SelectJoin_1(t *testing.T) {
 
 	t.Run("users join user_devices", func(t *testing.T) {
 		var records []UserWithDevices
-		err := bundb.NewSelect().
+		q := bundb.NewSelect().
 			ColumnExpr("u.id as user_id").
 			ColumnExpr("u.first_name as user_first_name").
 			ColumnExpr("u.last_name as user_last_name").
@@ -57,7 +58,9 @@ func TestPg_Users_SelectJoin_1(t *testing.T) {
 			ColumnExpr("d.model as device_model").
 			ColumnExpr("d.name as device_name").
 			TableExpr("users u").
-			Join("join user_devices d on u.id = d.user_id").Scan(ctx, &records)
+			Join("join user_devices d on u.id = d.user_id").
+			Order("u.id asc")
+		err := q.Scan(ctx, &records)
 		require.NoError(t, err)
 	})
 
