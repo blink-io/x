@@ -4,11 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"testing"
-	"time"
-
+	"github.com/blink-io/opt/omit"
+	"github.com/blink-io/opt/omitnull"
 	"github.com/blink-io/x/misc/closer"
-	"github.com/blink-io/x/ptr"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/sanity-io/litter"
 	"github.com/stephenafamo/scan"
@@ -16,6 +14,11 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
+	"github.com/uptrace/bun/extra/bundebug"
+	"github.com/uptrace/bun/extra/bunslog"
+	"log/slog"
+	"testing"
+	"time"
 )
 
 func TestBun_TblSimple_Tests(t *testing.T) {
@@ -24,7 +27,22 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	bundb := bun.NewDB(db, pgdialect.New(),
 		bun.WithDiscardUnknownColumns(),
 	)
+
 	defer closer.CloseQuietly(bundb.Close)
+
+	bundb.RegisterModel(TblSimpleTable.Model)
+	h1 := bundebug.NewQueryHook(bundebug.WithVerbose(true))
+	h2 := bunslog.NewQueryHook(
+		bunslog.WithQueryLogLevel(slog.LevelInfo),
+		bunslog.WithSlowQueryLogLevel(slog.LevelWarn),
+		bunslog.WithLogFormat(func(event *bun.QueryEvent) []slog.Attr {
+			return []slog.Attr{
+				slog.String("operation", event.Operation()),
+			}
+		}),
+	)
+	bundb.AddQueryHook(h1)
+	bundb.AddQueryHook(h2)
 
 	type DBInfo struct {
 		Version string `bun:"version"`
@@ -32,20 +50,31 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 
 	bundb.RegisterModel(TblSimpleTable.Model)
 
-	var randomTblSimpleSetter = func() *TblSimpleSetter {
-		r := &TblSimpleSetter{
-			//ID:        ptr.Of(int64(11)),
-			Name:      ptr.Of(gofakeit.Name()),
-			GUID:      ptr.Of(gofakeit.UUID()),
-			CreatedAt: ptr.Of(time.Now()),
-		}
-		return r
-	}
-
 	t.Run("insert", func(t *testing.T) {
+		now := time.Now()
 		ss := []*TblSimpleSetter{
-			randomTblSimpleSetter(),
-			randomTblSimpleSetter(),
+			randomTblSimpleSetter(nil),
+			randomTblSimpleSetter(nil),
+			randomTblSimpleSetter(nil),
+			randomTblSimpleSetter(&now),
+			randomTblSimpleSetter(&now),
+		}
+		q := bundb.NewInsert().Model(&ss)
+		tb := q.GetTableName()
+		mm := q.GetModel()
+		fmt.Println(tb)
+		fmt.Println(mm)
+		_, err := q.Exec(ctx)
+		require.NoError(t, err)
+	})
+
+	t.Run("insert 2", func(t *testing.T) {
+		now := time.Now()
+		ss := []*TblSimpleSetter2{
+			randomTblSimpleSetter2(nil),
+			randomTblSimpleSetter2(nil),
+			randomTblSimpleSetter2(nil),
+			randomTblSimpleSetter2(&now),
 		}
 		q := bundb.NewInsert().Model(&ss)
 		tb := q.GetTableName()
@@ -57,21 +86,14 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	})
 
 	t.Run("update selective", func(t *testing.T) {
-		s := &TblSimpleSetter{
-			ID:   ptr.Of(int64(11)),
-			Name: ptr.Of(gofakeit.Name()),
-		}
+		s := randomTblSimpleSetter(nil)
 		q := bundb.NewUpdate().Model(s).Column("name").WherePK()
 		_, err := q.Exec(ctx)
 		require.NoError(t, err)
 	})
 
 	t.Run("update omit zero", func(t *testing.T) {
-		s := &TblSimpleSetter{
-			ID:        ptr.Of(int64(11)),
-			Name:      ptr.Of(gofakeit.Name()),
-			DeletedAt: ptr.Of(sql.Null[time.Time]{V: time.Now(), Valid: true}),
-		}
+		s := randomTblSimpleSetter(nil)
 		q := bundb.NewUpdate().Model(s).Column("name").WherePK()
 		_, err := q.OmitZero().Exec(ctx)
 		require.NoError(t, err)
@@ -111,8 +133,16 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 		require.NoError(t, err)
 	})
 
+	t.Run("select all", func(t *testing.T) {
+		var rr []*TblSimple
+		err := bundb.NewSelect().Model(TblSimpleTable.Model).Order("id desc").Scan(ctx, &rr)
+		require.NoError(t, err)
+
+		fmt.Println(rr)
+	})
+
 	t.Run("select rows", func(t *testing.T) {
-		count, err := bundb.NewSelect().Model((*TblSimple)(nil)).Count(ctx)
+		count, err := bundb.NewSelect().Model(TblSimpleTable.Model).Count(ctx)
 		require.NoError(t, err)
 
 		fmt.Println(count)
@@ -134,7 +164,7 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	})
 
 	t.Run("delete by id", func(t *testing.T) {
-		q := bundb.NewDelete().Model((*TblSimple)(nil)).Where("id = ?", 11)
+		q := bundb.NewDelete().Model(TblSimpleTable.Model).Where("id = ?", 11)
 		rr, err := q.Exec(ctx)
 		require.NoError(t, err)
 		fmt.Println(litter.Sdump(rr))
@@ -152,5 +182,28 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 		require.NoError(t, err)
 
 		fmt.Println(ver)
+	})
+
+	t.Run("update array 1", func(t *testing.T) {
+		vals := []string{gofakeit.Animal(), gofakeit.City()}
+		q := bundb.NewUpdate().
+			Set("str_arrays = ?", pgdialect.Array(vals)).
+			Table(TblSimpleTable.Name).
+			Where("id = ?", 59)
+		_, err := q.Exec(ctx)
+		require.NoError(t, err)
+	})
+
+	t.Run("update array 1", func(t *testing.T) {
+		r := TblSimpleSetter{
+			ID:    omit.From[int64](60),
+			NJSON: omitnull.From(map[string]any{"animal": gofakeit.Animal()}),
+		}
+		q := bundb.NewUpdate().
+			Model(&r).
+			OmitZero().
+			WherePK()
+		_, err := q.Exec(ctx)
+		require.NoError(t, err)
 	})
 }
