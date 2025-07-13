@@ -4,6 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"testing"
+	"time"
+
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
 	"github.com/blink-io/x/misc/closer"
@@ -14,11 +17,6 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
-	"github.com/uptrace/bun/extra/bundebug"
-	"github.com/uptrace/bun/extra/bunslog"
-	"log/slog"
-	"testing"
-	"time"
 )
 
 func TestBun_TblSimple_Tests(t *testing.T) {
@@ -31,18 +29,7 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	defer closer.CloseQuietly(bundb.Close)
 
 	bundb.RegisterModel(TblSimpleTable.Model)
-	h1 := bundebug.NewQueryHook(bundebug.WithVerbose(true))
-	h2 := bunslog.NewQueryHook(
-		bunslog.WithQueryLogLevel(slog.LevelInfo),
-		bunslog.WithSlowQueryLogLevel(slog.LevelWarn),
-		bunslog.WithLogFormat(func(event *bun.QueryEvent) []slog.Attr {
-			return []slog.Attr{
-				slog.String("operation", event.Operation()),
-			}
-		}),
-	)
-	bundb.AddQueryHook(h1)
-	bundb.AddQueryHook(h2)
+	setupBunHooks(bundb)
 
 	type DBInfo struct {
 		Version string `bun:"version"`
@@ -120,14 +107,16 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	})
 
 	type CustomResult struct {
-		ID        int `bun:"id"`
-		Name      string
+		ID        int                 `bun:"id"`
+		Name      string              `bun:"name"`
 		CreatedAt time.Time           `bun:"created_at"`
 		DeletedAt sql.Null[time.Time] `bun:"deleted_at"`
 	}
 
 	t.Run("select custom columns", func(t *testing.T) {
-		q := bundb.NewSelect().Column("id", "name", "created_at", "deleted_at").Table(string(TblSimpleTable.Name))
+		q := bundb.NewSelect().
+			Column("id", "name", "created_at", "deleted_at").
+			Table(TblSimpleTable.Name)
 		var mm []CustomResult
 		err := q.Scan(ctx, &mm)
 		require.NoError(t, err)
@@ -135,7 +124,10 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 
 	t.Run("select all", func(t *testing.T) {
 		var rr []*TblSimple
-		err := bundb.NewSelect().Model(TblSimpleTable.Model).Order("id desc").Scan(ctx, &rr)
+		err := bundb.NewSelect().
+			Model(TblSimpleTable.Model).
+			Order("id desc").
+			Scan(ctx, &rr)
 		require.NoError(t, err)
 
 		fmt.Println(rr)
@@ -149,7 +141,8 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	})
 
 	t.Run("select count", func(t *testing.T) {
-		rows, err := bundb.NewSelect().Column("id", "name", "deleted_at").
+		rows, err := bundb.NewSelect().
+			Column("id", "name", "deleted_at").
 			Where("deleted_at is not null").
 			Model((*TblSimple)(nil)).Rows(ctx)
 		require.NoError(t, err)
@@ -164,14 +157,18 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	})
 
 	t.Run("delete by id", func(t *testing.T) {
-		q := bundb.NewDelete().Model(TblSimpleTable.Model).Where("id = ?", 11)
+		q := bundb.NewDelete().
+			Model(TblSimpleTable.Model).
+			Where("id = ?", 11)
 		rr, err := q.Exec(ctx)
 		require.NoError(t, err)
 		fmt.Println(litter.Sdump(rr))
 	})
 
 	t.Run("delete by id 2", func(t *testing.T) {
-		q := bundb.NewDelete().Table(string(TblSimpleTable.Name)).Where("id = ?", 11)
+		q := bundb.NewDelete().
+			Table(TblSimpleTable.Name).
+			Where("id = ?", 11)
 		rr, err := q.Exec(ctx)
 		require.NoError(t, err)
 		fmt.Println(litter.Sdump(rr))

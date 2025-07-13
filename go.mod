@@ -20,6 +20,7 @@ require (
 	github.com/VictoriaMetrics/easyproto v0.1.4
 	github.com/VictoriaMetrics/fastcache v1.12.5
 	github.com/alexedwards/argon2id v1.0.0
+	github.com/alexlast/bunzap v0.1.0
 	github.com/allegro/bigcache/v3 v3.1.0
 	github.com/alphadose/haxmap v1.4.1
 	github.com/amazon-ion/ion-go v1.5.0
@@ -39,7 +40,7 @@ require (
 	github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211
 	github.com/blink-io/sq v0.0.0-20250704034929-fc04e805db4a
 	github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed
-	github.com/bmatcuk/doublestar/v4 v4.8.1
+	github.com/bmatcuk/doublestar/v4 v4.9.0
 	github.com/brianvoe/gofakeit/v7 v7.3.0
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v11 v11.3.1
@@ -273,8 +274,8 @@ require (
 	github.com/go-redsync/redsync/v4 v4.13.0 // indirect
 	github.com/go-sql-driver/mysql v1.9.3 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
-	github.com/gofiber/schema v1.5.0 // indirect
-	github.com/gofiber/utils/v2 v2.0.0-beta.10 // indirect
+	github.com/gofiber/schema v1.6.0 // indirect
+	github.com/gofiber/utils/v2 v2.0.0-beta.12 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.2 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect

@@ -2,6 +2,11 @@ package buntest
 
 import (
 	"database/sql"
+	"github.com/alexlast/bunzap"
+	"github.com/uptrace/bun"
+	"github.com/uptrace/bun/extra/bundebug"
+	"github.com/uptrace/bun/extra/bunslog"
+	"go.uber.org/zap"
 	"log"
 	"log/slog"
 	"runtime"
@@ -78,4 +83,24 @@ func setupPgDialect() {
 	dialect := sq.DialectPostgres
 	sqx.SetDefaultDialect(dialect)
 	slog.Info("Setup database dialect", "dialect", dialect)
+}
+
+func setupBunHooks(bundb *bun.DB) {
+	h1 := bundebug.NewQueryHook(bundebug.WithVerbose(true))
+	h2 := bunslog.NewQueryHook(
+		bunslog.WithQueryLogLevel(slog.LevelInfo),
+		bunslog.WithSlowQueryLogLevel(slog.LevelWarn),
+		bunslog.WithLogFormat(func(event *bun.QueryEvent) []slog.Attr {
+			return []slog.Attr{
+				slog.String("operation", event.Operation()),
+			}
+		}),
+	)
+	h3 := bunzap.NewQueryHook(bunzap.QueryHookOptions{
+		SlowDuration: 5 * time.Second,
+		Logger:       zap.L(),
+	})
+	bundb.AddQueryHook(h1)
+	bundb.AddQueryHook(h2)
+	bundb.AddQueryHook(h3)
 }
