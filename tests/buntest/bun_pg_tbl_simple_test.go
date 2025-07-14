@@ -203,4 +203,17 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 		_, err := q.Exec(ctx)
 		require.NoError(t, err)
 	})
+
+	t.Run("update by map", func(t *testing.T) {
+		um := map[string]any{
+			//"id":     61,
+			"n_json": map[string]any{"name": gofakeit.Name(), "animal": gofakeit.Animal()},
+		}
+		q := bundb.NewUpdate().
+			Model(&um).
+			Table(TblSimpleTable.Name).
+			Where("id = ?", 61)
+		_, err := q.Exec(ctx)
+		require.NoError(t, err)
+	})
 }
