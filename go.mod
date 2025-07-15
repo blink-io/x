@@ -69,7 +69,7 @@ require (
 	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.6.1
 	github.com/go-faster/city v1.0.1
-	github.com/go-json-experiment/json v0.0.0-20250709061156-d2cd4771eb1b
+	github.com/go-json-experiment/json v0.0.0-20250714165856-be8212f5270d
 	github.com/go-kit/log v0.2.1
 	github.com/go-kratos/kratos/v2 v2.8.4
 	github.com/go-logr/logr v1.4.3
@@ -78,7 +78,7 @@ require (
 	github.com/go-resty/resty/v2 v2.16.5
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/go-test/deep v1.1.1
-	github.com/go-viper/mapstructure/v2 v2.3.0
+	github.com/go-viper/mapstructure/v2 v2.4.0
 	github.com/goccy/go-json v0.10.5
 	github.com/gocraft/dbr/v2 v2.7.7
 	github.com/gofiber/fiber/v3 v3.0.0-beta.4
@@ -143,7 +143,7 @@ require (
 	github.com/pelletier/go-toml/v2 v2.2.4
 	github.com/phuslu/log v1.0.118
 	github.com/phuslu/log-contrib/grpc v0.0.0-20250309100953-cb5b9b62dd61
-	github.com/projectdiscovery/machineid v0.0.0-20240226150047-2e2c51e35983
+	github.com/projectdiscovery/machineid v0.0.0-20250715113114-c77eb3567582
 	github.com/qiniu/qmgo v1.1.10
 	github.com/quic-go/quic-go v0.53.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
@@ -263,7 +263,7 @@ require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.9 // indirect
 	github.com/go-crypt/x v0.4.5 // indirect
-	github.com/go-echarts/go-echarts/v2 v2.6.0 // indirect
+	github.com/go-echarts/go-echarts/v2 v2.6.1 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.1 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
@@ -277,7 +277,7 @@ require (
 	github.com/gofiber/schema v1.6.0 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-beta.13 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
-	github.com/golang-jwt/jwt/v5 v5.2.2 // indirect
+	github.com/golang-jwt/jwt/v5 v5.2.3 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect
 	github.com/golang/mock v1.6.0 // indirect
@@ -379,7 +379,7 @@ require (
 	github.com/ulikunitz/xz v0.5.12 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.63.0 // indirect
+	github.com/valyala/fasthttp v1.64.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.30 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
