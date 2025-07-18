@@ -118,7 +118,7 @@ require (
 	github.com/lmittmann/tint v1.1.2
 	github.com/madflojo/testcerts v1.4.0
 	github.com/mailgun/raymond/v2 v2.0.48
-	github.com/matthewhartstonge/argon2 v1.3.2
+	github.com/matthewhartstonge/argon2 v1.3.3
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/meilisearch/meilisearch-go v0.32.0
 	github.com/mholt/archives v0.1.3
@@ -150,8 +150,8 @@ require (
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.11.0
 	github.com/redis/go-redis/v9 v9.11.0
-	github.com/redis/rueidis v1.0.62
-	github.com/redis/rueidis/rueidishook v1.0.62
+	github.com/redis/rueidis v1.0.63
+	github.com/redis/rueidis/rueidishook v1.0.63
 	github.com/reugn/async v0.9.0
 	github.com/reugn/go-quartz v0.14.0
 	github.com/riverqueue/river v0.23.1
@@ -195,8 +195,8 @@ require (
 	github.com/uptrace/bun/extra/bunslog v1.2.14
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/uptrace/uptrace-go v1.35.1
-	github.com/valkey-io/valkey-go v1.0.62
-	github.com/valkey-io/valkey-go/valkeyhook v1.0.62
+	github.com/valkey-io/valkey-go v1.0.63
+	github.com/valkey-io/valkey-go/valkeyhook v1.0.63
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/zeebo/xxh3 v1.0.2
@@ -211,15 +211,15 @@ require (
 	go.uber.org/zap v1.27.0
 	go.uber.org/zap/exp v0.3.0
 	golang.org/x/crypto v0.40.0
-	golang.org/x/exp v0.0.0-20250711185948-6ae5c78190dc
+	golang.org/x/exp v0.0.0-20250717185816-542afb5b7346
 	golang.org/x/net v0.42.0
 	golang.org/x/sys v0.34.0
 	golang.org/x/text v0.27.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20250707201910-8d1bb00bc6a7
+	google.golang.org/genproto/googleapis/api v0.0.0-20250715232539-7130f93afb79
 	google.golang.org/grpc v1.73.0
 	google.golang.org/protobuf v1.36.6
 	gopkg.in/yaml.v3 v3.0.1
-	k8s.io/client-go v0.33.2
+	k8s.io/client-go v0.33.3
 	resenje.org/singleflight v0.4.3
 	resty.dev/v3 v3.0.0-beta.3
 )
@@ -418,9 +418,9 @@ require (
 	golang.org/x/term v0.33.0 // indirect
 	golang.org/x/time v0.12.0 // indirect
 	golang.org/x/tools v0.35.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250707201910-8d1bb00bc6a7 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250715232539-7130f93afb79 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/apimachinery v0.33.2 // indirect
+	k8s.io/apimachinery v0.33.3 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397 // indirect
 	modernc.org/libc v1.66.2 // indirect
