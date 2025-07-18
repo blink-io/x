@@ -52,6 +52,7 @@ require (
 	github.com/coreos/go-oidc/v3 v3.14.1
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
+	github.com/dgraph-io/ristretto/v2 v2.2.0
 	github.com/disgoorg/snowflake/v2 v2.0.3
 	github.com/dlclark/regexp2 v1.11.5
 	github.com/elastic/elastic-transport-go/v8 v8.7.0
@@ -137,7 +138,6 @@ require (
 	github.com/onsi/ginkgo/v2 v2.23.4
 	github.com/onsi/gomega v1.37.0
 	github.com/opensearch-project/opensearch-go/v4 v4.5.0
-	github.com/outcaste-io/ristretto v0.2.3
 	github.com/panjf2000/ants/v2 v2.11.3
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.4

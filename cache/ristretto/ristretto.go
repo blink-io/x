@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/blink-io/x/cache"
-	"github.com/outcaste-io/ristretto"
+	"github.com/dgraph-io/ristretto/v2"
 )
 
 const Name = "ristretto"
@@ -17,12 +17,12 @@ func init() {
 }
 
 type Cache[V any] struct {
-	cc  *ristretto.Cache
+	cc  *ristretto.Cache[string, V]
 	ttl time.Duration
 }
 
 func New[V any](ttl time.Duration) (*Cache[V], error) {
-	c, err := ristretto.NewCache(&ristretto.Config{
+	c, err := ristretto.NewCache[string, V](&ristretto.Config[string, V]{
 		NumCounters: 1e7,     // number of keys to track frequency of (10M).
 		MaxCost:     1 << 30, // maximum cost of cache (1GB).
 		BufferItems: 64,      // number of keys per Get buffer.
@@ -42,12 +42,7 @@ func (c *Cache[V]) SetWithTTL(key string, value V, ttl time.Duration) {
 }
 
 func (c *Cache[V]) Get(key string) (V, bool) {
-	var v V
-	i, ok := c.cc.Get(key)
-	if ok {
-		v = i.(V)
-	}
-	return v, ok
+	return c.cc.Get(key)
 }
 
 func (c *Cache[V]) Del(key string) {

@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/blink-io/x/session/store"
-	"github.com/outcaste-io/ristretto"
+	"github.com/dgraph-io/ristretto/v2"
 )
 
 const Name = "ristretto"
@@ -17,7 +17,7 @@ var _ store.Store = (*Store)(nil)
 // New returns a new store.Store instance.
 // The client parameter should be a pointer to an etcd client instance.
 func New() *Store {
-	cc, _ := ristretto.NewCache(&ristretto.Config{
+	cc, _ := ristretto.NewCache[string, any](&ristretto.Config[string, any]{
 		NumCounters: 100_000,
 		MaxCost:     100_000,
 		BufferItems: 100_000,
@@ -30,7 +30,7 @@ var _ store.Store = (*Store)(nil)
 
 type Store struct {
 	tm store.TokenMap
-	cc *ristretto.Cache
+	cc *ristretto.Cache[string, any]
 }
 
 func (s *Store) Name() string {
