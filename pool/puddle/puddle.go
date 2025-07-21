@@ -6,6 +6,8 @@ var (
 	ErrClosedPool = puddle.ErrClosedPool
 
 	ErrNotAvailable = puddle.ErrNotAvailable
+
+	NewPool = puddle.NewPool
 )
 
 type (
