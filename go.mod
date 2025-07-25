@@ -34,10 +34,10 @@ require (
 	github.com/beevik/etree v1.5.1
 	github.com/beevik/guid v1.0.0
 	github.com/bits-and-blooms/bloom/v3 v3.7.0
-	github.com/blink-io/hyperbun v0.0.0-20250707150938-2f51aa1e9772
-	github.com/blink-io/hypersql v0.0.0-20250704155146-5b3c438357d4
+	github.com/blink-io/hyperbun v0.0.0-20250715103006-c56bb08cf92b
+	github.com/blink-io/hypersql v0.0.0-20250715100453-239dcf60539c
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20250612091908-4116de4f5365
-	github.com/blink-io/opt v0.0.0-20250618154133-31ccb96a0211
+	github.com/blink-io/opt v0.0.0-20250715104835-f166b7401c45
 	github.com/blink-io/sq v0.0.0-20250704034929-fc04e805db4a
 	github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed
 	github.com/bmatcuk/doublestar/v4 v4.9.0
@@ -48,7 +48,7 @@ require (
 	github.com/cbroglie/mustache v1.4.0
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/cespare/xxhash/v2 v2.3.0
-	github.com/cohesivestack/valgo v0.4.2
+	github.com/cohesivestack/valgo v0.5.0
 	github.com/coreos/go-oidc/v3 v3.14.1
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
@@ -133,16 +133,16 @@ require (
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/negrel/conc v0.5.0
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
-	github.com/nyaruka/phonenumbers v1.6.3
+	github.com/nyaruka/phonenumbers v1.6.4
 	github.com/oklog/ulid/v2 v2.1.1
 	github.com/onatm/clockwerk v1.1.0
 	github.com/onsi/ginkgo/v2 v2.23.4
-	github.com/onsi/gomega v1.37.0
+	github.com/onsi/gomega v1.38.0
 	github.com/opensearch-project/opensearch-go/v4 v4.5.0
 	github.com/panjf2000/ants/v2 v2.11.3
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.4
-	github.com/phuslu/log v1.0.118
+	github.com/phuslu/log v1.0.119
 	github.com/phuslu/log-contrib/grpc v0.0.0-20250309100953-cb5b9b62dd61
 	github.com/projectdiscovery/machineid v0.0.0-20250715113114-c77eb3567582
 	github.com/qiniu/qmgo v1.1.10
@@ -154,7 +154,7 @@ require (
 	github.com/redis/rueidis v1.0.63
 	github.com/redis/rueidis/rueidishook v1.0.63
 	github.com/reugn/async v0.9.0
-	github.com/reugn/go-quartz v0.14.0
+	github.com/reugn/go-quartz v0.15.0
 	github.com/riverqueue/river v0.23.1
 	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.23.1
 	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.23.1
@@ -191,11 +191,11 @@ require (
 	github.com/twmb/murmur3 v1.1.8
 	github.com/unrolled/render v1.7.0
 	github.com/uptrace/bun v1.2.15
-	github.com/uptrace/bun/dialect/pgdialect v1.2.14
-	github.com/uptrace/bun/extra/bundebug v1.2.14
-	github.com/uptrace/bun/extra/bunslog v1.2.14
+	github.com/uptrace/bun/dialect/pgdialect v1.2.15
+	github.com/uptrace/bun/extra/bundebug v1.2.15
+	github.com/uptrace/bun/extra/bunslog v1.2.15
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
-	github.com/uptrace/uptrace-go v1.35.1
+	github.com/uptrace/uptrace-go v1.37.0
 	github.com/valkey-io/valkey-go v1.0.63
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.63
 	github.com/vmihailenco/go-tinylfu v0.2.2
@@ -203,7 +203,7 @@ require (
 	github.com/zeebo/xxh3 v1.0.2
 	github.com/zitadel/passwap v0.9.0
 	gitlab.com/greyxor/slogor v1.6.2
-	go.etcd.io/etcd/client/v3 v3.6.2
+	go.etcd.io/etcd/client/v3 v3.6.3
 	go.mongodb.org/mongo-driver/v2 v2.2.2
 	go.opentelemetry.io/otel v1.37.0
 	go.opentelemetry.io/otel/trace v1.37.0
@@ -216,8 +216,8 @@ require (
 	golang.org/x/net v0.42.0
 	golang.org/x/sys v0.34.0
 	golang.org/x/text v0.27.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20250715232539-7130f93afb79
-	google.golang.org/grpc v1.74.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20250721164621-a45f3dfb1074
+	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.6
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/client-go v0.33.3
@@ -235,7 +235,6 @@ require (
 	github.com/ProtonMail/go-crypto v1.3.0 // indirect
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/STARRY-S/zip v0.2.3 // indirect
-	github.com/aarondl/json v0.0.0-20221020222930-8b0db17ef1bf // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/ardielle/ardielle-go v1.5.2 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
@@ -246,7 +245,7 @@ require (
 	github.com/bodgit/sevenzip v1.6.1 // indirect
 	github.com/bodgit/windows v1.0.1 // indirect
 	github.com/bokwoon95/sq v0.5.1 // indirect
-	github.com/cenkalti/backoff/v5 v5.0.2 // indirect
+	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
 	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/coreos/go-semver v0.3.1 // indirect
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
@@ -305,7 +304,6 @@ require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/golang-lru v1.0.2 // indirect
 	github.com/hashicorp/serf v0.10.2 // indirect
-	github.com/hypersequent/hyperbun v0.0.0-20240806103627-07ce2637e607 // indirect
 	github.com/icholy/digest v1.1.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
@@ -327,7 +325,7 @@ require (
 	github.com/mailru/easyjson v0.9.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/mattn/go-sqlite3 v1.14.28 // indirect
+	github.com/mattn/go-sqlite3 v1.14.29 // indirect
 	github.com/microsoft/go-mssqldb v1.9.2 // indirect
 	github.com/mikelolasagasti/xz v1.0.1 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
@@ -352,7 +350,7 @@ require (
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9 // indirect
 	github.com/redis/rueidis/rueidiscompat v1.0.61 // indirect
-	github.com/refraction-networking/utls v1.7.3 // indirect
+	github.com/refraction-networking/utls v1.8.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
 	github.com/riverqueue/river/riverdriver v0.23.1 // indirect
 	github.com/riverqueue/river/rivershared v0.23.1 // indirect
@@ -391,8 +389,8 @@ require (
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/xo/dburl v0.23.8 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
-	go.etcd.io/etcd/api/v3 v3.6.2 // indirect
-	go.etcd.io/etcd/client/pkg/v3 v3.6.2 // indirect
+	go.etcd.io/etcd/api/v3 v3.6.3 // indirect
+	go.etcd.io/etcd/client/pkg/v3 v3.6.3 // indirect
 	go.mongodb.org/mongo-driver v1.17.4 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.62.0 // indirect
@@ -408,7 +406,7 @@ require (
 	go.opentelemetry.io/otel/sdk/log v0.13.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.37.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.7.0 // indirect
-	go.temporal.io/api v1.50.0 // indirect
+	go.temporal.io/api v1.51.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/automaxprocs v1.6.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
@@ -421,19 +419,19 @@ require (
 	golang.org/x/term v0.33.0 // indirect
 	golang.org/x/time v0.12.0 // indirect
 	golang.org/x/tools v0.35.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250715232539-7130f93afb79 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250721164621-a45f3dfb1074 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.33.3 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397 // indirect
-	modernc.org/libc v1.66.2 // indirect
+	modernc.org/libc v1.66.3 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 	modernc.org/sqlite v1.38.0 // indirect
 	sigs.k8s.io/json v0.0.0-20241014173422-cfa47c3a1cc8 // indirect
 	sigs.k8s.io/randfill v1.0.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.7.0 // indirect
-	sigs.k8s.io/yaml v1.5.0 // indirect
+	sigs.k8s.io/yaml v1.6.0 // indirect
 )
 
 //replace github.com/blink-io/sq => /home/heisonyee/Data/projects/go/sq
