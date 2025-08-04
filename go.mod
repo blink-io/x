@@ -56,14 +56,14 @@ require (
 	github.com/disgoorg/snowflake/v2 v2.0.3
 	github.com/dlclark/regexp2 v1.11.5
 	github.com/elastic/elastic-transport-go/v8 v8.7.0
-	github.com/elastic/go-elasticsearch/v8 v8.18.1
+	github.com/elastic/go-elasticsearch/v8 v8.19.0
 	github.com/elliotchance/pie/v2 v2.9.1
 	github.com/ergochat/readline v0.1.3
 	github.com/failsafe-go/failsafe-go v0.6.9
 	github.com/fatih/color v1.18.0
 	github.com/fxamacker/cbor/v2 v2.9.0
 	github.com/georgysavva/scany/v2 v2.1.4
-	github.com/getsentry/sentry-go v0.34.1
+	github.com/getsentry/sentry-go v0.35.0
 	github.com/go-chi/chi/v5 v5.2.2
 	github.com/go-co-op/gocron-redis-lock/v2 v2.1.0
 	github.com/go-co-op/gocron/v2 v2.16.3
@@ -124,7 +124,7 @@ require (
 	github.com/mattn/go-runewidth v0.0.16
 	github.com/meilisearch/meilisearch-go v0.32.0
 	github.com/mholt/archives v0.1.3
-	github.com/miekg/dns v1.1.67
+	github.com/miekg/dns v1.1.68
 	github.com/minio/highwayhash v1.0.3
 	github.com/minio/minlz v1.0.1
 	github.com/montanaflynn/stats v0.7.1
@@ -229,7 +229,7 @@ require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.2 // indirect
-	github.com/AthenZ/athenz v1.12.21 // indirect
+	github.com/AthenZ/athenz v1.12.22 // indirect
 	github.com/DataDog/zstd v1.5.7 // indirect
 	github.com/DmitriyVTitov/size v1.5.0 // indirect
 	github.com/ProtonMail/go-crypto v1.3.0 // indirect
@@ -264,7 +264,7 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.9 // indirect
 	github.com/go-crypt/x v0.4.5 // indirect
 	github.com/go-echarts/go-echarts/v2 v2.6.1 // indirect
-	github.com/go-jose/go-jose/v4 v4.1.1 // indirect
+	github.com/go-jose/go-jose/v4 v4.1.2 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/go-playground/form/v4 v4.2.1 // indirect
@@ -342,7 +342,7 @@ require (
 	github.com/pierrec/lz4/v4 v4.1.22 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
-	github.com/prometheus/client_golang v1.22.0 // indirect
+	github.com/prometheus/client_golang v1.23.0 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.65.0 // indirect
 	github.com/prometheus/procfs v0.17.0 // indirect
@@ -405,7 +405,7 @@ require (
 	go.opentelemetry.io/otel/sdk v1.37.0 // indirect
 	go.opentelemetry.io/otel/sdk/log v0.13.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.37.0 // indirect
-	go.opentelemetry.io/proto/otlp v1.7.0 // indirect
+	go.opentelemetry.io/proto/otlp v1.7.1 // indirect
 	go.temporal.io/api v1.51.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/automaxprocs v1.6.0 // indirect
