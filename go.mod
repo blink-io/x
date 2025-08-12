@@ -27,7 +27,7 @@ require (
 	github.com/ammario/tlru v0.4.0
 	github.com/apache/pulsar-client-go v0.16.0
 	github.com/apache/thrift v0.22.0
-	github.com/apple/pkl-go v0.11.0
+	github.com/apple/pkl-go v0.11.1
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/avast/retry-go/v4 v4.6.1
 	github.com/bartventer/httpcache v0.10.2
@@ -73,7 +73,7 @@ require (
 	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.6.1
 	github.com/go-faster/city v1.0.1
-	github.com/go-json-experiment/json v0.0.0-20250725192818-e39067aee2d2
+	github.com/go-json-experiment/json v0.0.0-20250811204210-4789234c3ea1
 	github.com/go-kit/log v0.2.1
 	github.com/go-kratos/kratos/v2 v2.8.4
 	github.com/go-logr/logr v1.4.3
@@ -137,7 +137,7 @@ require (
 	github.com/ncruces/go-strftime v0.1.9
 	github.com/negrel/conc v0.5.0
 	github.com/nicksnyder/go-i18n/v2 v2.6.0
-	github.com/nyaruka/phonenumbers v1.6.4
+	github.com/nyaruka/phonenumbers v1.6.5
 	github.com/oklog/ulid/v2 v2.1.1
 	github.com/onatm/clockwerk v1.1.0
 	github.com/onsi/ginkgo/v2 v2.23.4
@@ -153,8 +153,8 @@ require (
 	github.com/quic-go/quic-go v0.54.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/rabbitmq/amqp091-go v1.10.0
-	github.com/redis/go-redis/extra/rediscmd/v9 v9.12.0
-	github.com/redis/go-redis/v9 v9.12.0
+	github.com/redis/go-redis/extra/rediscmd/v9 v9.12.1
+	github.com/redis/go-redis/v9 v9.12.1
 	github.com/redis/rueidis v1.0.64
 	github.com/redis/rueidis/rueidishook v1.0.64
 	github.com/reugn/async v0.9.0
@@ -216,11 +216,11 @@ require (
 	go.uber.org/zap v1.27.0
 	go.uber.org/zap/exp v0.3.0
 	golang.org/x/crypto v0.41.0
-	golang.org/x/exp v0.0.0-20250808145144-a408d31f581a
+	golang.org/x/exp v0.0.0-20250811191247-51f88131bc50
 	golang.org/x/net v0.43.0
 	golang.org/x/sys v0.35.0
 	golang.org/x/text v0.28.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20250804133106-a7a43d27e69b
+	google.golang.org/genproto/googleapis/api v0.0.0-20250811230008-5f3141c8851a
 	google.golang.org/grpc v1.74.2
 	google.golang.org/protobuf v1.36.7
 	gopkg.in/yaml.v3 v3.0.1
@@ -327,7 +327,7 @@ require (
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
-	github.com/mattn/go-sqlite3 v1.14.30 // indirect
+	github.com/mattn/go-sqlite3 v1.14.31 // indirect
 	github.com/microsoft/go-mssqldb v1.9.2 // indirect
 	github.com/mikelolasagasti/xz v1.0.1 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
@@ -421,12 +421,12 @@ require (
 	golang.org/x/term v0.34.0 // indirect
 	golang.org/x/time v0.12.0 // indirect
 	golang.org/x/tools v0.36.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20250804133106-a7a43d27e69b // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250811230008-5f3141c8851a // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.33.3 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
 	k8s.io/utils v0.0.0-20250604170112-4c0f3b243397 // indirect
-	modernc.org/libc v1.66.6 // indirect
+	modernc.org/libc v1.66.7 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
 	modernc.org/sqlite v1.38.2 // indirect
