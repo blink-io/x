@@ -14,7 +14,7 @@ func TestID_1(t *testing.T) {
 	uuidv4v := UUIDV4()
 	ksuidv := KSUID()
 	shortiuuidv := ShortUUID()
-	nanoidv := NanoID(20)
+	nanoidv := NanoID(16)
 	sfv := Snowflake()
 	xidv := XID()
 	shortidv := ShortID()
