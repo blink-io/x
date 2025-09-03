@@ -47,6 +47,7 @@ require (
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cloudwego/fastpb v0.0.5
+	github.com/coder/websocket v1.8.13
 	github.com/cohesivestack/valgo v0.5.0
 	github.com/coreos/go-oidc/v3 v3.15.0
 	github.com/dchest/siphash v1.2.3
@@ -66,7 +67,7 @@ require (
 	github.com/getsentry/sentry-go v0.35.1
 	github.com/go-chi/chi/v5 v5.2.3
 	github.com/go-co-op/gocron-redis-lock/v2 v2.1.0
-	github.com/go-co-op/gocron/v2 v2.16.4
+	github.com/go-co-op/gocron/v2 v2.16.5
 	github.com/go-crypt/crypt v0.4.5
 	github.com/go-echarts/statsview v0.4.2
 	github.com/go-faker/faker/v4 v4.6.1
@@ -81,6 +82,7 @@ require (
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/go-test/deep v1.1.1
 	github.com/go-viper/mapstructure/v2 v2.4.0
+	github.com/gobwas/ws v1.4.0
 	github.com/goccy/go-json v0.10.5
 	github.com/gocraft/dbr/v2 v2.7.7
 	github.com/gofiber/fiber/v3 v3.0.0-rc.1
@@ -89,6 +91,7 @@ require (
 	github.com/gomodule/redigo v1.9.2
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/csrf v1.7.3
+	github.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674
 	github.com/graphql-go/graphql v0.8.1
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.2
 	github.com/guregu/null/v5 v5.0.0
@@ -267,7 +270,7 @@ require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.10 // indirect
 	github.com/go-crypt/x v0.4.7 // indirect
-	github.com/go-echarts/go-echarts/v2 v2.6.1 // indirect
+	github.com/go-echarts/go-echarts/v2 v2.6.2 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.2 // indirect
 	github.com/go-kratos/aegis v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
@@ -277,6 +280,8 @@ require (
 	github.com/go-playground/validator/v10 v10.27.0 // indirect
 	github.com/go-redsync/redsync/v4 v4.13.0 // indirect
 	github.com/go-sql-driver/mysql v1.9.3 // indirect
+	github.com/gobwas/httphead v0.1.0 // indirect
+	github.com/gobwas/pool v0.2.1 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/gofiber/schema v1.6.0 // indirect
 	github.com/gofiber/utils/v2 v2.0.0-rc.1 // indirect
@@ -289,7 +294,7 @@ require (
 	github.com/golang/snappy v1.0.0 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
-	github.com/google/pprof v0.0.0-20250830080959-101d87ff5bc3 // indirect
+	github.com/google/pprof v0.0.0-20250902232947-5eec23c92c42 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
 	github.com/gopherjs/gopherjs v1.17.2 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect
