@@ -39,7 +39,7 @@ func TestFiber_1(t *testing.T) {
 		return nil
 	})
 
-	app.Get(healthcheck.DefaultLivenessEndpoint, healthcheck.NewHealthChecker())
+	app.Get(healthcheck.LivenessEndpoint, healthcheck.New())
 
 	app.Get("/", func(c fiber.Ctx) error {
 		req := c.Request()
