@@ -17,6 +17,6 @@ upgrade:
 .PHONY: upgrade2
 # Upgrade packages by using go-mod-upgrade
 upgrade2:
-	goup -v && go-mod-upgrade -v
+	goup -v || go-mod-upgrade -v
 
 up-build: upgrade build

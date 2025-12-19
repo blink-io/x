@@ -2,11 +2,12 @@ package buntest
 
 import (
 	"database/sql"
-	"github.com/blink-io/opt/omit"
-	"github.com/blink-io/opt/omitnull"
 	"time"
 
 	"github.com/blink-io/hyperbun/schema"
+	"github.com/blink-io/opt/omit"
+	"github.com/blink-io/opt/omitnull"
+
 	"github.com/blink-io/sq"
 	"github.com/blink-io/x/ptr"
 	"github.com/brianvoe/gofakeit/v7"
@@ -130,6 +131,8 @@ type TblSimple struct {
 	NJSON         *map[string]any `bun:"n_json" bun:"n_json"`
 }
 
+func (TblSimple) IsModel() {}
+
 type TblSimpleSetter struct {
 	bun.BaseModel `bun:"table:tbl_simple,alias:u"`
 	ID            omit.Val[int64]              `bun:"id,pk,nullzero"`
@@ -159,11 +162,13 @@ type TblSimpleColumns struct {
 	DeletedAt string
 }
 
-var TblSimpleTable = schema.Table[TblSimple, TblSimpleColumns]{
-	PrimaryKeys: []string{"id"},
-	Model:       (*TblSimple)(nil),
-	Name:        "tbl_simple",
-	Alias:       "u",
+func (TblSimpleColumns) IsColumns() {}
+
+var TblSimpleTable = schema.Schema[TblSimple, TblSimpleColumns]{
+	PK:    []string{"id"},
+	Model: (*TblSimple)(nil),
+	Label: "tbl_simple",
+	Alias: "u",
 	Columns: TblSimpleColumns{
 		ID:        "id",
 		Name:      "name",

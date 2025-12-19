@@ -2,17 +2,18 @@ package buntest
 
 import (
 	"database/sql"
-	"github.com/alexlast/bunzap"
-	"github.com/uptrace/bun"
-	"github.com/uptrace/bun/extra/bundebug"
-	"github.com/uptrace/bun/extra/bunslog"
-	"go.uber.org/zap"
 	"log"
 	"log/slog"
 	"runtime"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/alexlast/bunzap"
+	"github.com/uptrace/bun"
+	"github.com/uptrace/bun/extra/bundebug"
+	"github.com/uptrace/bun/extra/bunslog"
+	"go.uber.org/zap"
 
 	"github.com/blink-io/hypersql"
 	pgparams "github.com/blink-io/hypersql/postgres/params"

@@ -1,6 +1,6 @@
 package null
 
-import "github.com/guregu/null/v5"
+import "github.com/guregu/null/v6"
 
 var (
 	BoolFrom    = null.BoolFrom
