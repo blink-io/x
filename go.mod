@@ -127,9 +127,9 @@ require (
 	github.com/madflojo/testcerts v1.5.0
 	github.com/mailgun/raymond/v2 v2.0.48
 	github.com/matoous/go-nanoid v1.5.1
-	github.com/matthewhartstonge/argon2 v1.4.3
+	github.com/matthewhartstonge/argon2 v1.4.4
 	github.com/mattn/go-runewidth v0.0.19
-	github.com/meilisearch/meilisearch-go v0.34.2
+	github.com/meilisearch/meilisearch-go v0.35.0
 	github.com/mholt/archives v0.1.5
 	github.com/miekg/dns v1.1.69
 	github.com/minio/highwayhash v1.0.3
@@ -145,7 +145,7 @@ require (
 	github.com/onatm/clockwerk v1.1.0
 	github.com/onsi/ginkgo/v2 v2.27.3
 	github.com/onsi/gomega v1.38.3
-	github.com/opensearch-project/opensearch-go/v4 v4.5.0
+	github.com/opensearch-project/opensearch-go/v4 v4.6.0
 	github.com/panjf2000/ants/v2 v2.11.3
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.4
@@ -153,7 +153,7 @@ require (
 	github.com/phuslu/log-contrib/grpc v0.0.0-20250309100953-cb5b9b62dd61
 	github.com/projectdiscovery/machineid v0.0.0-20250715113114-c77eb3567582
 	github.com/qiniu/qmgo v1.1.10
-	github.com/quic-go/quic-go v0.57.1
+	github.com/quic-go/quic-go v0.58.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.17.2
@@ -162,9 +162,9 @@ require (
 	github.com/redis/rueidis/rueidishook v1.0.69
 	github.com/reugn/async v0.9.0
 	github.com/reugn/go-quartz v0.15.2
-	github.com/riverqueue/river v0.28.0
-	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.28.0
-	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.28.0
+	github.com/riverqueue/river v0.29.0
+	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.29.0
+	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.29.0
 	github.com/rs/xid v1.6.0
 	github.com/runZeroInc/mustache/v2 v2.1.0
 	github.com/samber/go-singleflightx v0.3.2
@@ -193,7 +193,7 @@ require (
 	github.com/stretchr/testify v1.11.1
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
 	github.com/tidwall/gjson v1.18.0
-	github.com/twmb/franz-go v1.20.5
+	github.com/twmb/franz-go v1.20.6
 	github.com/twmb/franz-go/pkg/kmsg v1.12.0
 	github.com/twmb/murmur3 v1.1.8
 	github.com/unrolled/render v1.7.0
@@ -207,8 +207,9 @@ require (
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.69
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
+	github.com/xtaci/kcp-go/v5 v5.6.59
 	github.com/zeebo/xxh3 v1.0.2
-	github.com/zitadel/passwap v0.11.0
+	github.com/zitadel/passwap v0.12.0
 	gitlab.com/greyxor/slogor v1.6.4
 	go.etcd.io/etcd/client/v3 v3.6.7
 	go.mongodb.org/mongo-driver/v2 v2.4.1
@@ -219,13 +220,13 @@ require (
 	go.uber.org/zap v1.27.1
 	go.uber.org/zap/exp v0.3.0
 	golang.org/x/crypto v0.46.0
-	golang.org/x/exp v0.0.0-20251209150349-8475f28825e9
+	golang.org/x/exp v0.0.0-20251219203646-944ab1f22d93
 	golang.org/x/net v0.48.0
 	golang.org/x/oauth2 v0.34.0
 	golang.org/x/sys v0.39.0
 	golang.org/x/text v0.32.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20251213004720-97cd9d5aeac2
-	google.golang.org/grpc v1.77.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20251222181119-0a764e51fe1b
+	google.golang.org/grpc v1.78.0
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/client-go v0.35.0
@@ -326,6 +327,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/jtolds/gls v4.20.0+incompatible // indirect
 	github.com/klauspost/pgzip v1.2.6 // indirect
+	github.com/klauspost/reedsolomon v1.12.0 // indirect
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
@@ -356,9 +358,9 @@ require (
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9 // indirect
 	github.com/refraction-networking/utls v1.8.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.28.0 // indirect
-	github.com/riverqueue/river/rivershared v0.28.0 // indirect
-	github.com/riverqueue/river/rivertype v0.28.0 // indirect
+	github.com/riverqueue/river/riverdriver v0.29.0 // indirect
+	github.com/riverqueue/river/rivershared v0.29.0 // indirect
+	github.com/riverqueue/river/rivertype v0.29.0 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/cors v1.11.1 // indirect
@@ -378,6 +380,7 @@ require (
 	github.com/tidwall/pretty v1.2.1 // indirect
 	github.com/tidwall/sjson v1.2.5 // indirect
 	github.com/tinylib/msgp v1.5.0 // indirect
+	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/ulikunitz/xz v0.5.15 // indirect
 	github.com/uptrace/opentelemetry-go-extra/otelutil v0.3.2 // indirect
@@ -420,7 +423,7 @@ require (
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/time v0.14.0 // indirect
 	golang.org/x/tools v0.40.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251213004720-97cd9d5aeac2 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.35.0 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
