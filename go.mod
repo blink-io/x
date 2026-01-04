@@ -39,7 +39,7 @@ require (
 	github.com/blink-io/sq v0.0.0-20250704034929-fc04e805db4a
 	github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed
 	github.com/bmatcuk/doublestar/v4 v4.9.1
-	github.com/brianvoe/gofakeit/v7 v7.12.1
+	github.com/brianvoe/gofakeit/v7 v7.14.0
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v11 v11.3.1
 	github.com/carlmjohnson/requests v0.25.1
@@ -103,9 +103,9 @@ require (
 	github.com/hashicorp/mdns v1.0.6
 	github.com/http-wasm/http-wasm-host-go v0.7.0
 	github.com/huandu/xstrings v1.5.0
-	github.com/huml-lang/go-huml v0.1.0
+	github.com/huml-lang/go-huml v0.2.0
 	github.com/imroc/req/v3 v3.57.0
-	github.com/jackc/pgx/v5 v5.7.6
+	github.com/jackc/pgx/v5 v5.8.0
 	github.com/jackc/puddle/v2 v2.2.2
 	github.com/jaevor/go-nanoid v1.4.0
 	github.com/jaswdr/faker/v2 v2.9.1
@@ -129,7 +129,7 @@ require (
 	github.com/matoous/go-nanoid v1.5.1
 	github.com/matthewhartstonge/argon2 v1.4.4
 	github.com/mattn/go-runewidth v0.0.19
-	github.com/meilisearch/meilisearch-go v0.35.0
+	github.com/meilisearch/meilisearch-go v0.35.1
 	github.com/mholt/archives v0.1.5
 	github.com/miekg/dns v1.1.69
 	github.com/minio/highwayhash v1.0.3
@@ -139,14 +139,14 @@ require (
 	github.com/nats-io/nats.go v1.48.0
 	github.com/ncruces/go-strftime v1.0.0
 	github.com/negrel/conc v0.5.0
-	github.com/nicksnyder/go-i18n/v2 v2.6.0
+	github.com/nicksnyder/go-i18n/v2 v2.6.1
 	github.com/nyaruka/phonenumbers v1.6.7
 	github.com/oklog/ulid/v2 v2.1.1
 	github.com/onatm/clockwerk v1.1.0
 	github.com/onsi/ginkgo/v2 v2.27.3
 	github.com/onsi/gomega v1.38.3
 	github.com/opensearch-project/opensearch-go/v4 v4.6.0
-	github.com/panjf2000/ants/v2 v2.11.3
+	github.com/panjf2000/ants/v2 v2.11.4
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.2.4
 	github.com/phuslu/log v1.0.121
@@ -158,8 +158,8 @@ require (
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.17.2
 	github.com/redis/go-redis/v9 v9.17.2
-	github.com/redis/rueidis v1.0.69
-	github.com/redis/rueidis/rueidishook v1.0.69
+	github.com/redis/rueidis v1.0.70
+	github.com/redis/rueidis/rueidishook v1.0.70
 	github.com/reugn/async v0.9.0
 	github.com/reugn/go-quartz v0.15.2
 	github.com/riverqueue/river v0.29.0
@@ -169,7 +169,7 @@ require (
 	github.com/runZeroInc/mustache/v2 v2.1.0
 	github.com/samber/go-singleflightx v0.3.2
 	github.com/samber/hot v0.10.0
-	github.com/samber/oops v1.19.4
+	github.com/samber/oops v1.20.0
 	github.com/samber/slog-common v0.19.0
 	github.com/samber/slog-http v1.9.0
 	github.com/samber/slog-logrus/v2 v2.5.2
@@ -203,11 +203,11 @@ require (
 	github.com/uptrace/bun/extra/bunslog v1.2.16
 	github.com/uptrace/opentelemetry-go-extra/otelzap v0.3.2
 	github.com/uptrace/uptrace-go v1.39.0
-	github.com/valkey-io/valkey-go v1.0.69
-	github.com/valkey-io/valkey-go/valkeyhook v1.0.69
+	github.com/valkey-io/valkey-go v1.0.70
+	github.com/valkey-io/valkey-go/valkeyhook v1.0.70
 	github.com/vmihailenco/go-tinylfu v0.2.2
 	github.com/vmihailenco/msgpack/v5 v5.4.1
-	github.com/xtaci/kcp-go/v5 v5.6.59
+	github.com/xtaci/kcp-go/v5 v5.6.61
 	github.com/zeebo/xxh3 v1.0.2
 	github.com/zitadel/passwap v0.12.0
 	gitlab.com/greyxor/slogor v1.6.4
@@ -231,7 +231,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/client-go v0.35.0
 	resenje.org/singleflight v0.4.3
-	resty.dev/v3 v3.0.0-beta.5
+	resty.dev/v3 v3.0.0-beta.6
 )
 
 require (

@@ -66,3 +66,39 @@ func getOrCreateAEADFromCache(key [KeySize]byte) (cipher.AEAD, error) {
 	_ = cc.Add(skey, aead)
 	return aead, nil
 }
+
+// ChaCha20Poly1305Encrypt
+func ChaCha20Poly1305Encrypt(key, nonce, plaintext, additionalData []byte) ([]byte, error) {
+	aes, err := chacha20poly1305.New(key)
+	if err != nil {
+		return nil, err
+	}
+	return aes.Seal(nil, nonce, plaintext, additionalData), nil
+}
+
+// ChaCha20Poly1305Decrypt
+func ChaCha20Poly1305Decrypt(key, nonce, ciphertext, additionalData []byte) ([]byte, error) {
+	aes, err := chacha20poly1305.New(key)
+	if err != nil {
+		return nil, err
+	}
+	return aes.Open(nil, nonce, ciphertext, additionalData)
+}
+
+// XChaCha20Poly1305Encrypt
+func XChaCha20Poly1305Encrypt(key, nonce, plaintext, additionalData []byte) ([]byte, error) {
+	aes, err := chacha20poly1305.NewX(key)
+	if err != nil {
+		return nil, err
+	}
+	return aes.Seal(nil, nonce, plaintext, additionalData), nil
+}
+
+// XChaCha20Poly1305Decrypt
+func XChaCha20Poly1305Decrypt(key, nonce, ciphertext, additionalData []byte) ([]byte, error) {
+	aes, err := chacha20poly1305.NewX(key)
+	if err != nil {
+		return nil, err
+	}
+	return aes.Open(nil, nonce, ciphertext, additionalData)
+}
