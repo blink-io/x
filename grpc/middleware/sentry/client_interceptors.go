@@ -12,7 +12,7 @@ func UnaryClientInterceptor(opts ...Option) grpc.UnaryClientInterceptor {
 	o := newConfig(opts)
 	return func(ctx context.Context,
 		method string,
-		req, reply interface{},
+		req, reply any,
 		cc *grpc.ClientConn,
 		invoker grpc.UnaryInvoker,
 		callOpts ...grpc.CallOption) error {

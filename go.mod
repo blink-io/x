@@ -89,6 +89,7 @@ require (
 	github.com/gofrs/uuid/v5 v5.4.0
 	github.com/gogo/protobuf v1.3.2
 	github.com/gomodule/redigo v1.9.3
+	github.com/google/flatbuffers v25.12.19+incompatible
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/csrf v1.7.3
 	github.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674
@@ -171,9 +172,9 @@ require (
 	github.com/samber/hot v0.10.0
 	github.com/samber/oops v1.20.0
 	github.com/samber/slog-common v0.19.0
-	github.com/samber/slog-http v1.9.0
+	github.com/samber/slog-http v1.10.0
 	github.com/samber/slog-logrus/v2 v2.5.2
-	github.com/samber/slog-multi v1.6.0
+	github.com/samber/slog-multi v1.7.0
 	github.com/samber/slog-sentry/v2 v2.10.1
 	github.com/samber/slog-zap/v2 v2.6.2
 	github.com/samber/slog-zerolog/v2 v2.9.0

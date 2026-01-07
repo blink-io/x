@@ -77,7 +77,7 @@ func RegisterI18NServer(s grpc.ServiceRegistrar, srv I18NServer) {
 	s.RegisterService(&I18N_ServiceDesc, srv)
 }
 
-func _I18N_ListLanguages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _I18N_ListLanguages_Handler(srv any, ctx context.Context, dec func(any) error, interceptor grpc.UnaryServerInterceptor) (any, error) {
 	in := new(ListLanguagesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
@@ -89,7 +89,7 @@ func _I18N_ListLanguages_Handler(srv interface{}, ctx context.Context, dec func(
 		Server:     srv,
 		FullMethod: I18N_ListLanguages_FullMethodName,
 	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+	handler := func(ctx context.Context, req any) (any, error) {
 		return srv.(I18NServer).ListLanguages(ctx, req.(*ListLanguagesRequest))
 	}
 	return interceptor(ctx, in, info, handler)

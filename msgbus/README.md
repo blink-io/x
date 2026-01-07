@@ -107,7 +107,7 @@ ctx = context.WithValue(ctx, bus.CtxKeySource, "source-of-the-event")
 // event topic name (must be registered before)
 topic := "order.received"
 
-// interface{} data for event
+// any data for event
 order := make(map[string]string)
 order["orderID"]     = "123456"
 order["orderAmount"] = "112.20"
@@ -145,7 +145,7 @@ type Event struct {
     Topic      string      // topic name
     Source     string      // source of the event
     OccurredAt time.Time   // creation time in nanoseconds
-    Data       interface{} // actual event data
+    Data       any // actual event data
 }
 ```
 

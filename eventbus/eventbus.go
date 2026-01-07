@@ -8,16 +8,16 @@ import (
 
 // Subscriber defines subscription-related bus behavior
 type Subscriber interface {
-	Subscribe(topic string, fn interface{}) error
-	SubscribeAsync(topic string, fn interface{}, transactional bool) error
-	SubscribeOnce(topic string, fn interface{}) error
-	SubscribeOnceAsync(topic string, fn interface{}) error
-	Unsubscribe(topic string, handler interface{}) error
+	Subscribe(topic string, fn any) error
+	SubscribeAsync(topic string, fn any, transactional bool) error
+	SubscribeOnce(topic string, fn any) error
+	SubscribeOnceAsync(topic string, fn any) error
+	Unsubscribe(topic string, handler any) error
 }
 
 // Publisher defines publishing-related bus behavior
 type Publisher interface {
-	Publish(topic string, args ...interface{})
+	Publish(topic string, args ...any)
 }
 
 // Controller defines bus control behavior (checking handler's presence, synchronization)
@@ -59,7 +59,7 @@ func New() Bus {
 }
 
 // doSubscribe handles the subscription logic and is utilized by the public Subscribe functions
-func (bus *bus) doSubscribe(topic string, fn interface{}, handler *handler) error {
+func (bus *bus) doSubscribe(topic string, fn any, handler *handler) error {
 	bus.lock.Lock()
 	defer bus.lock.Unlock()
 	if !(reflect.TypeOf(fn).Kind() == reflect.Func) {
@@ -71,7 +71,7 @@ func (bus *bus) doSubscribe(topic string, fn interface{}, handler *handler) erro
 
 // Subscribe subscribes to a topic.
 // Returns error if `fn` is not a function.
-func (bus *bus) Subscribe(topic string, fn interface{}) error {
+func (bus *bus) Subscribe(topic string, fn any) error {
 	return bus.doSubscribe(topic, fn, &handler{
 		reflect.ValueOf(fn), false, false, false, sync.Mutex{},
 	})
@@ -81,7 +81,7 @@ func (bus *bus) Subscribe(topic string, fn interface{}) error {
 // Transactional determines whether subsequent callbacks for a topic are
 // run serially (true) or concurrently (false)
 // Returns error if `fn` is not a function.
-func (bus *bus) SubscribeAsync(topic string, fn interface{}, transactional bool) error {
+func (bus *bus) SubscribeAsync(topic string, fn any, transactional bool) error {
 	return bus.doSubscribe(topic, fn, &handler{
 		reflect.ValueOf(fn), false, true, transactional, sync.Mutex{},
 	})
@@ -89,7 +89,7 @@ func (bus *bus) SubscribeAsync(topic string, fn interface{}, transactional bool)
 
 // SubscribeOnce subscribes to a topic once. Handler will be removed after executing.
 // Returns error if `fn` is not a function.
-func (bus *bus) SubscribeOnce(topic string, fn interface{}) error {
+func (bus *bus) SubscribeOnce(topic string, fn any) error {
 	return bus.doSubscribe(topic, fn, &handler{
 		reflect.ValueOf(fn), true, false, false, sync.Mutex{},
 	})
@@ -98,7 +98,7 @@ func (bus *bus) SubscribeOnce(topic string, fn interface{}) error {
 // SubscribeOnceAsync subscribes to a topic once with an asynchronous callback
 // Handler will be removed after executing.
 // Returns error if `fn` is not a function.
-func (bus *bus) SubscribeOnceAsync(topic string, fn interface{}) error {
+func (bus *bus) SubscribeOnceAsync(topic string, fn any) error {
 	return bus.doSubscribe(topic, fn, &handler{
 		reflect.ValueOf(fn), true, true, false, sync.Mutex{},
 	})
@@ -117,7 +117,7 @@ func (bus *bus) HasCallback(topic string) bool {
 
 // Unsubscribe removes callback defined for a topic.
 // Returns error if there are no callbacks subscribed to the topic.
-func (bus *bus) Unsubscribe(topic string, handler interface{}) error {
+func (bus *bus) Unsubscribe(topic string, handler any) error {
 	bus.lock.Lock()
 	defer bus.lock.Unlock()
 	if _, ok := bus.handlers[topic]; ok && len(bus.handlers[topic]) > 0 {
@@ -128,7 +128,7 @@ func (bus *bus) Unsubscribe(topic string, handler interface{}) error {
 }
 
 // Publish executes callback defined for a topic. Any additional argument will be transferred to the callback.
-func (bus *bus) Publish(topic string, args ...interface{}) {
+func (bus *bus) Publish(topic string, args ...any) {
 	bus.lock.Lock() // will unlock if handler is not found or always after setUpPublish
 	defer bus.lock.Unlock()
 	if handlers, ok := bus.handlers[topic]; ok && 0 < len(handlers) {
@@ -155,12 +155,12 @@ func (bus *bus) Publish(topic string, args ...interface{}) {
 	}
 }
 
-func (bus *bus) doPublish(handler *handler, topic string, args ...interface{}) {
+func (bus *bus) doPublish(handler *handler, topic string, args ...any) {
 	passedArguments := bus.setUpPublish(handler, args...)
 	handler.callback.Call(passedArguments)
 }
 
-func (bus *bus) doPublishAsync(handler *handler, topic string, args ...interface{}) {
+func (bus *bus) doPublishAsync(handler *handler, topic string, args ...any) {
 	defer bus.wg.Done()
 	if handler.transactional {
 		defer handler.Unlock()
@@ -195,7 +195,7 @@ func (bus *bus) findHandlerIdx(topic string, callback reflect.Value) int {
 	return -1
 }
 
-func (bus *bus) setUpPublish(callback *handler, args ...interface{}) []reflect.Value {
+func (bus *bus) setUpPublish(callback *handler, args ...any) []reflect.Value {
 	funcType := callback.callback.Type()
 	passedArguments := make([]reflect.Value, len(args))
 	for i, v := range args {

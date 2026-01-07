@@ -13,7 +13,7 @@ import (
 
 func UnaryServerInterceptor(ops ...Option) grpc.UnaryServerInterceptor {
 	opts := applyOptions(ops...)
-	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp interface{}, err error) {
+	return func(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp any, err error) {
 		reqID := mdutil.SingleValueFromContext(ctx, opts.header)
 		if len(reqID) == 0 {
 			reqID = opts.generator()
@@ -28,7 +28,7 @@ func UnaryServerInterceptor(ops ...Option) grpc.UnaryServerInterceptor {
 
 func StreamServerInterceptor(ops ...Option) grpc.StreamServerInterceptor {
 	o := applyOptions(ops...)
-	return func(srv interface{}, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) error {
+	return func(srv any, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) error {
 		reqID := mdutil.SingleValueFromContext(ss.Context(), o.header)
 		if len(reqID) == 0 {
 			reqID = o.generator()

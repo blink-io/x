@@ -198,7 +198,7 @@ func (r *Store) Watch(ctx context.Context, key string, _ *kvstore.ReadOptions) (
 	watchCh := make(chan *kvstore.KVPair)
 	nKey := normalize(key)
 
-	get := getter(func() (interface{}, error) {
+	get := getter(func() (any, error) {
 		pair, err := r.get(ctx, nKey)
 		if err != nil {
 			return nil, err
@@ -206,7 +206,7 @@ func (r *Store) Watch(ctx context.Context, key string, _ *kvstore.ReadOptions) (
 		return pair, nil
 	})
 
-	push := pusher(func(v interface{}) {
+	push := pusher(func(v any) {
 		if val, ok := v.(*kvstore.KVPair); ok {
 			watchCh <- val
 		}
@@ -234,7 +234,7 @@ func (r *Store) WatchTree(ctx context.Context, directory string, _ *kvstore.Read
 	watchCh := make(chan []*kvstore.KVPair)
 	nKey := normalize(directory)
 
-	get := getter(func() (interface{}, error) {
+	get := getter(func() (any, error) {
 		pair, err := r.list(ctx, nKey)
 		if err != nil {
 			return nil, err
@@ -242,7 +242,7 @@ func (r *Store) WatchTree(ctx context.Context, directory string, _ *kvstore.Read
 		return pair, nil
 	})
 
-	push := pusher(func(v interface{}) {
+	push := pusher(func(v any) {
 		if p, ok := v.([]*kvstore.KVPair); ok {
 			watchCh <- p
 		}
@@ -467,7 +467,7 @@ func (r *Store) Close() error {
 	return r.client.Close()
 }
 
-func (r *Store) runScript(ctx context.Context, args ...interface{}) error {
+func (r *Store) runScript(ctx context.Context, args ...any) error {
 	err := r.script.Run(ctx, r.client, nil, args...).Err()
 	if err != nil && strings.Contains(err.Error(), "redis: key is not found") {
 		return kvstore.ErrKeyNotFound
@@ -488,10 +488,10 @@ func regexWatch(key string, withChildren bool) string {
 }
 
 // getter defines a func type which retrieves data from remote storage.
-type getter func() (interface{}, error)
+type getter func() (any, error)
 
 // pusher defines a func type which pushes data blob into watch channel.
-type pusher func(interface{})
+type pusher func(any)
 
 func watchLoop(ctx context.Context, msgCh chan *redis.Message, get getter, push pusher) error {
 	// deliver the original data before we set up any events.

@@ -243,7 +243,7 @@ func file_i18n_proto_rawDescGZIP() []byte {
 }
 
 var file_i18n_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_i18n_proto_goTypes = []interface{}{
+var file_i18n_proto_goTypes = []any{
 	(*LanguageEntry)(nil),         // 0: LanguageEntry
 	(*ListLanguagesRequest)(nil),  // 1: ListLanguagesRequest
 	(*ListLanguagesResponse)(nil), // 2: ListLanguagesResponse
@@ -267,7 +267,7 @@ func file_i18n_proto_init() {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_i18n_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_i18n_proto_msgTypes[0].Exporter = func(v any, i int) any {
 			switch v := v.(*LanguageEntry); i {
 			case 0:
 				return &v.state
@@ -279,7 +279,7 @@ func file_i18n_proto_init() {
 				return nil
 			}
 		}
-		file_i18n_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_i18n_proto_msgTypes[1].Exporter = func(v any, i int) any {
 			switch v := v.(*ListLanguagesRequest); i {
 			case 0:
 				return &v.state
@@ -291,7 +291,7 @@ func file_i18n_proto_init() {
 				return nil
 			}
 		}
-		file_i18n_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_i18n_proto_msgTypes[2].Exporter = func(v any, i int) any {
 			switch v := v.(*ListLanguagesResponse); i {
 			case 0:
 				return &v.state

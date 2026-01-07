@@ -17,11 +17,11 @@ func New() encoding.Codec {
 	return &codec{}
 }
 
-func (c *codec) Marshal(v interface{}) ([]byte, error) {
+func (c *codec) Marshal(v any) ([]byte, error) {
 	return msgpack.Marshal(v)
 }
 
-func (c *codec) Unmarshal(data []byte, v interface{}) error {
+func (c *codec) Unmarshal(data []byte, v any) error {
 	return msgpack.Unmarshal(data, v)
 }
 

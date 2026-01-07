@@ -33,7 +33,7 @@ type sessionData struct {
 	deadline time.Time
 	status   Status
 	token    string
-	values   map[string]interface{}
+	values   map[string]any
 	mu       sync.Mutex
 }
 
@@ -41,7 +41,7 @@ func newSessionData(lifetime time.Duration) *sessionData {
 	return &sessionData{
 		deadline: time.Now().Add(lifetime).UTC(),
 		status:   Unmodified,
-		values:   make(map[string]interface{}),
+		values:   make(map[string]any),
 	}
 }
 
@@ -152,7 +152,7 @@ func (m *manager) Destroy(ctx context.Context) error {
 // Put adds a key and corresponding value to the session data. Any existing
 // value for the key will be replaced. The session data status will be set to
 // Modified.
-func (m *manager) Put(ctx context.Context, key string, val interface{}) {
+func (m *manager) Put(ctx context.Context, key string, val any) {
 	sd := m.getSessionDataFromContext(ctx)
 
 	sd.mu.Lock()
@@ -162,7 +162,7 @@ func (m *manager) Put(ctx context.Context, key string, val interface{}) {
 }
 
 // Get returns the value for a given key from the session data. The return
-// value has the type interface{} so will usually need to be type asserted
+// value has the type any so will usually need to be type asserted
 // before you can use it. For example:
 //
 //	foo, ok := session.Get(r, "foo").(string)
@@ -172,7 +172,7 @@ func (m *manager) Put(ctx context.Context, key string, val interface{}) {
 //
 // Also see the GetString(), GetInt(), GetBytes() and other helper methods which
 // wrap the type conversion for common types.
-func (m *manager) Get(ctx context.Context, key string) interface{} {
+func (m *manager) Get(ctx context.Context, key string) any {
 	sd := m.getSessionDataFromContext(ctx)
 
 	sd.mu.Lock()
@@ -184,8 +184,8 @@ func (m *manager) Get(ctx context.Context, key string) interface{} {
 // Pop acts like a one-time Get. It returns the value for a given key from the
 // session data and deletes the key and value from the session data. The
 // session data status will be set to Modified. The return value has the type
-// interface{} so will usually need to be type asserted before you can use it.
-func (m *manager) Pop(ctx context.Context, key string) interface{} {
+// any so will usually need to be type asserted before you can use it.
+func (m *manager) Pop(ctx context.Context, key string) any {
 	sd := m.getSessionDataFromContext(ctx)
 
 	sd.mu.Lock()

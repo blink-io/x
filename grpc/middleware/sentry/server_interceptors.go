@@ -30,9 +30,9 @@ func recoverWithSentry(hub *sentry.Hub, ctx context.Context, o *options) {
 func UnaryServerInterceptor(opts ...Option) grpc.UnaryServerInterceptor {
 	o := newConfig(opts)
 	return func(ctx context.Context,
-		req interface{},
+		req any,
 		info *grpc.UnaryServerInfo,
-		handler grpc.UnaryHandler) (interface{}, error) {
+		handler grpc.UnaryHandler) (any, error) {
 
 		hub := sentry.GetHubFromContext(ctx)
 		if hub == nil {
@@ -61,7 +61,7 @@ func UnaryServerInterceptor(opts ...Option) grpc.UnaryServerInterceptor {
 
 func StreamServerInterceptor(opts ...Option) grpc.StreamServerInterceptor {
 	o := newConfig(opts)
-	return func(srv interface{},
+	return func(srv any,
 		ss grpc.ServerStream,
 		info *grpc.StreamServerInfo,
 		handler grpc.StreamHandler) error {

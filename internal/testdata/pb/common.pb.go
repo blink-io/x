@@ -524,7 +524,7 @@ func file_internal_api_common_proto_rawDescGZIP() []byte {
 }
 
 var file_internal_api_common_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
-var file_internal_api_common_proto_goTypes = []interface{}{
+var file_internal_api_common_proto_goTypes = []any{
 	(*HealthRequest)(nil),        // 0: HealthRequest
 	(*HealthResponse)(nil),       // 1: HealthResponse
 	(*VersionRequest)(nil),       // 2: VersionRequest
@@ -556,7 +556,7 @@ func file_internal_api_common_proto_init() {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_internal_api_common_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_internal_api_common_proto_msgTypes[0].Exporter = func(v any, i int) any {
 			switch v := v.(*HealthRequest); i {
 			case 0:
 				return &v.state
@@ -568,7 +568,7 @@ func file_internal_api_common_proto_init() {
 				return nil
 			}
 		}
-		file_internal_api_common_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_internal_api_common_proto_msgTypes[1].Exporter = func(v any, i int) any {
 			switch v := v.(*HealthResponse); i {
 			case 0:
 				return &v.state
@@ -580,7 +580,7 @@ func file_internal_api_common_proto_init() {
 				return nil
 			}
 		}
-		file_internal_api_common_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_internal_api_common_proto_msgTypes[2].Exporter = func(v any, i int) any {
 			switch v := v.(*VersionRequest); i {
 			case 0:
 				return &v.state
@@ -592,7 +592,7 @@ func file_internal_api_common_proto_init() {
 				return nil
 			}
 		}
-		file_internal_api_common_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_internal_api_common_proto_msgTypes[3].Exporter = func(v any, i int) any {
 			switch v := v.(*VersionResponse); i {
 			case 0:
 				return &v.state
@@ -604,7 +604,7 @@ func file_internal_api_common_proto_init() {
 				return nil
 			}
 		}
-		file_internal_api_common_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_internal_api_common_proto_msgTypes[4].Exporter = func(v any, i int) any {
 			switch v := v.(*TestingRequest); i {
 			case 0:
 				return &v.state
@@ -616,7 +616,7 @@ func file_internal_api_common_proto_init() {
 				return nil
 			}
 		}
-		file_internal_api_common_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_internal_api_common_proto_msgTypes[5].Exporter = func(v any, i int) any {
 			switch v := v.(*TestingResponse); i {
 			case 0:
 				return &v.state
@@ -628,7 +628,7 @@ func file_internal_api_common_proto_init() {
 				return nil
 			}
 		}
-		file_internal_api_common_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_internal_api_common_proto_msgTypes[6].Exporter = func(v any, i int) any {
 			switch v := v.(*VersionResponse_Data); i {
 			case 0:
 				return &v.state
@@ -640,7 +640,7 @@ func file_internal_api_common_proto_init() {
 				return nil
 			}
 		}
-		file_internal_api_common_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_internal_api_common_proto_msgTypes[7].Exporter = func(v any, i int) any {
 			switch v := v.(*TestingResponse_Data); i {
 			case 0:
 				return &v.state

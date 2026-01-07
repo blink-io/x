@@ -6,7 +6,7 @@ import (
 
 // Logging is copied from github.com/redis/go-redis/internal/log
 type Logging interface {
-	Printf(ctx context.Context, format string, v ...interface{})
+	Printf(ctx context.Context, format string, v ...any)
 }
 
 var _ Logging = (Func)(nil)

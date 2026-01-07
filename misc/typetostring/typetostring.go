@@ -88,7 +88,7 @@ func getType(typeOfT reflect.Type) string {
 			return fmt.Sprintf("func(%s) (%s)", in, strings.Join(out, ", "))
 		}
 	default:
-		// any + interface{} + anonymous type
+		// any + any + anonymous type
 		return typeOfT.String()
 	}
 }

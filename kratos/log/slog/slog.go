@@ -24,7 +24,7 @@ func newLogger(log *slog.Logger) *logger {
 	}
 }
 
-func (l *logger) Log(level klog.Level, keyvals ...interface{}) error {
+func (l *logger) Log(level klog.Level, keyvals ...any) error {
 	keylen := len(keyvals)
 	if keylen == 0 || keylen%2 != 0 {
 		l.log.Warn(fmt.Sprint("keyvals must appear in pairs: ", keyvals))

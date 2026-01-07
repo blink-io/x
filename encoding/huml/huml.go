@@ -16,11 +16,11 @@ func New() encoding.Codec {
 	return &codec{}
 }
 
-func (c *codec) Marshal(v interface{}) ([]byte, error) {
+func (c *codec) Marshal(v any) ([]byte, error) {
 	return huml.Marshal(v)
 }
 
-func (c *codec) Unmarshal(data []byte, v interface{}) error {
+func (c *codec) Unmarshal(data []byte, v any) error {
 	return huml.Unmarshal(data, v)
 }
 

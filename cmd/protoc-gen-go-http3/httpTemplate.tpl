@@ -39,7 +39,7 @@ func _{{$svrType}}_{{.Name}}{{.Num}}_HTTP3_Handler(srv {{$svrType}}HTTP3Server) 
 		}
 		{{- end}}
 		http3.SetOperation(ctx, HTTP3Operation{{$svrType}}{{.OriginalName}})
-		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
+		h := ctx.Middleware(func(ctx context.Context, req any) (any, error) {
 			return srv.{{.Name}}(ctx, req.(*{{.Request}}))
 		})
 		out, err := h(ctx, &in)

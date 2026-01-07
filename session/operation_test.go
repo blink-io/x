@@ -36,7 +36,7 @@ func TestSessionManager_Load(T *testing.T) {
 		expected := "example"
 		exampleDeadline := time.Now().Add(time.Hour)
 
-		encodedValue, err := s.codec.Encode(exampleDeadline, map[string]interface{}{
+		encodedValue, err := s.codec.Encode(exampleDeadline, map[string]any{
 			"things": "stuff",
 		})
 		if err != nil {
@@ -94,7 +94,7 @@ func TestSessionManager_Load(T *testing.T) {
 		expected := ""
 		exampleDeadline := time.Now().Add(time.Hour)
 
-		encodedValue, err := s.codec.Encode(exampleDeadline, map[string]interface{}{
+		encodedValue, err := s.codec.Encode(exampleDeadline, map[string]any{
 			"things": "stuff",
 		})
 		if err != nil {
@@ -210,7 +210,7 @@ func TestSessionManager_Load(T *testing.T) {
 		initialCtx := context.WithValue(context.Background(), s.contextKey, &sessionData{
 			deadline: expectedExpiry,
 			token:    expectedToken,
-			values: map[string]interface{}{
+			values: map[string]any{
 				"blah": "blah",
 			},
 			mu: sync.Mutex{},
@@ -257,7 +257,7 @@ func TestSessionManager_Commit(T *testing.T) {
 		ctx := context.WithValue(context.Background(), s.contextKey, &sessionData{
 			deadline: expectedExpiry,
 			token:    expectedToken,
-			values: map[string]interface{}{
+			values: map[string]any{
 				"blah": "blah",
 			},
 			mu: sync.Mutex{},
@@ -285,7 +285,7 @@ func TestSessionManager_Commit(T *testing.T) {
 		ctx := context.WithValue(context.Background(), s.contextKey, &sessionData{
 			deadline: expectedExpiry,
 			token:    expectedToken,
-			values: map[string]interface{}{
+			values: map[string]any{
 				"blah": "blah",
 			},
 			mu: sync.Mutex{},
@@ -313,7 +313,7 @@ func TestSessionManager_Commit(T *testing.T) {
 		ctx := context.WithValue(context.Background(), s.contextKey, &sessionData{
 			deadline: time.Now().Add(time.Hour * 24),
 			token:    expectedToken,
-			values: map[string]interface{}{
+			values: map[string]any{
 				"blah": "blah",
 			},
 			mu: sync.Mutex{},
@@ -341,7 +341,7 @@ func TestSessionManager_Commit(T *testing.T) {
 		sd := &sessionData{
 			deadline: time.Now().Add(time.Hour),
 			token:    "example",
-			values: map[string]interface{}{
+			values: map[string]any{
 				"blah": "blah",
 			},
 			mu: sync.Mutex{},
@@ -376,7 +376,7 @@ func TestSessionManager_Commit(T *testing.T) {
 		ctx := context.WithValue(context.Background(), s.contextKey, &sessionData{
 			deadline: expectedExpiry,
 			token:    expectedToken,
-			values: map[string]interface{}{
+			values: map[string]any{
 				"blah": "blah",
 			},
 			mu: sync.Mutex{},
