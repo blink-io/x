@@ -6,8 +6,8 @@ go 1.25.3
 
 require (
 	github.com/42wim/httpsig v1.2.3
-	github.com/99designs/gqlgen v0.17.85
-	github.com/Azure/go-amqp v1.5.0
+	github.com/99designs/gqlgen v0.17.86
+	github.com/Azure/go-amqp v1.5.1
 	github.com/BurntSushi/toml v1.6.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
 	github.com/DATA-DOG/go-sqlmock v1.5.2
@@ -38,7 +38,7 @@ require (
 	github.com/blink-io/opt v0.0.0-20250826090112-aa8ab860d240
 	github.com/blink-io/sq v0.0.0-20250704034929-fc04e805db4a
 	github.com/blink-io/sqx v0.0.0-20250630144706-16ce62bfdaed
-	github.com/bmatcuk/doublestar/v4 v4.9.1
+	github.com/bmatcuk/doublestar/v4 v4.9.2
 	github.com/brianvoe/gofakeit/v7 v7.14.0
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/caarlos0/env/v11 v11.3.1
@@ -60,7 +60,7 @@ require (
 	github.com/elastic/go-elasticsearch/v8 v8.19.1
 	github.com/elliotchance/pie/v2 v2.9.1
 	github.com/ergochat/readline v0.1.3
-	github.com/failsafe-go/failsafe-go v0.9.4
+	github.com/failsafe-go/failsafe-go v0.9.5
 	github.com/fatih/color v1.18.0
 	github.com/fxamacker/cbor/v2 v2.9.0
 	github.com/georgysavva/scany/v2 v2.1.4
@@ -81,7 +81,7 @@ require (
 	github.com/go-resty/resty/v2 v2.17.1
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/go-test/deep v1.1.1
-	github.com/go-viper/mapstructure/v2 v2.4.0
+	github.com/go-viper/mapstructure/v2 v2.5.0
 	github.com/gobwas/ws v1.4.0
 	github.com/goccy/go-json v0.10.5
 	github.com/gocraft/dbr/v2 v2.7.7
@@ -104,7 +104,7 @@ require (
 	github.com/hashicorp/mdns v1.0.6
 	github.com/http-wasm/http-wasm-host-go v0.7.0
 	github.com/huandu/xstrings v1.5.0
-	github.com/huml-lang/go-huml v0.2.0
+	github.com/huml-lang/go-huml v0.3.0
 	github.com/imroc/req/v3 v3.57.0
 	github.com/jackc/pgx/v5 v5.8.0
 	github.com/jackc/puddle/v2 v2.2.2
@@ -115,7 +115,7 @@ require (
 	github.com/jmoiron/sqlx v1.4.0
 	github.com/joho/godotenv v1.5.1
 	github.com/justinas/nosurf v1.2.0
-	github.com/karlseguin/ccache/v3 v3.0.7
+	github.com/karlseguin/ccache/v3 v3.0.8
 	github.com/kelindar/event v1.5.2
 	github.com/klauspost/compress v1.18.2
 	github.com/klauspost/cpuid/v2 v2.3.0
@@ -132,7 +132,7 @@ require (
 	github.com/mattn/go-runewidth v0.0.19
 	github.com/meilisearch/meilisearch-go v0.35.1
 	github.com/mholt/archives v0.1.5
-	github.com/miekg/dns v1.1.69
+	github.com/miekg/dns v1.1.70
 	github.com/minio/highwayhash v1.0.3
 	github.com/minio/minlz v1.0.1
 	github.com/montanaflynn/stats v0.7.1
@@ -141,11 +141,11 @@ require (
 	github.com/ncruces/go-strftime v1.0.0
 	github.com/negrel/conc v0.5.0
 	github.com/nicksnyder/go-i18n/v2 v2.6.1
-	github.com/nyaruka/phonenumbers v1.6.7
+	github.com/nyaruka/phonenumbers v1.6.8
 	github.com/oklog/ulid/v2 v2.1.1
 	github.com/onatm/clockwerk v1.1.0
-	github.com/onsi/ginkgo/v2 v2.27.3
-	github.com/onsi/gomega v1.38.3
+	github.com/onsi/ginkgo/v2 v2.27.5
+	github.com/onsi/gomega v1.39.0
 	github.com/opensearch-project/opensearch-go/v4 v4.6.0
 	github.com/panjf2000/ants/v2 v2.11.4
 	github.com/pborman/uuid v1.2.1
@@ -154,7 +154,7 @@ require (
 	github.com/phuslu/log-contrib/grpc v0.0.0-20250309100953-cb5b9b62dd61
 	github.com/projectdiscovery/machineid v0.0.0-20250715113114-c77eb3567582
 	github.com/qiniu/qmgo v1.1.10
-	github.com/quic-go/quic-go v0.58.0
+	github.com/quic-go/quic-go v0.59.0
 	github.com/qustavo/sqlhooks/v2 v2.1.0
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.17.2
@@ -163,13 +163,14 @@ require (
 	github.com/redis/rueidis/rueidishook v1.0.70
 	github.com/reugn/async v0.9.0
 	github.com/reugn/go-quartz v0.15.2
-	github.com/riverqueue/river v0.29.0
-	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.29.0
-	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.29.0
+	github.com/riverqueue/river v0.30.0
+	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.30.0
+	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.30.0
 	github.com/rs/xid v1.6.0
 	github.com/runZeroInc/mustache/v2 v2.1.0
+	github.com/samber/do/v2 v2.0.0
 	github.com/samber/go-singleflightx v0.3.2
-	github.com/samber/hot v0.10.0
+	github.com/samber/hot v0.11.0
 	github.com/samber/oops v1.20.0
 	github.com/samber/slog-common v0.19.0
 	github.com/samber/slog-http v1.10.0
@@ -216,17 +217,17 @@ require (
 	go.mongodb.org/mongo-driver/v2 v2.4.1
 	go.opentelemetry.io/otel v1.39.0
 	go.opentelemetry.io/otel/trace v1.39.0
-	go.temporal.io/sdk v1.38.0
+	go.temporal.io/sdk v1.39.0
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.27.1
 	go.uber.org/zap/exp v0.3.0
-	golang.org/x/crypto v0.46.0
-	golang.org/x/exp v0.0.0-20251219203646-944ab1f22d93
-	golang.org/x/net v0.48.0
+	golang.org/x/crypto v0.47.0
+	golang.org/x/exp v0.0.0-20260112195511-716be5621a96
+	golang.org/x/net v0.49.0
 	golang.org/x/oauth2 v0.34.0
-	golang.org/x/sys v0.39.0
-	golang.org/x/text v0.32.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20251222181119-0a764e51fe1b
+	golang.org/x/sys v0.40.0
+	golang.org/x/text v0.33.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20260112192933-99fd39fd28a9
 	google.golang.org/grpc v1.78.0
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/yaml.v3 v3.0.1
@@ -359,13 +360,14 @@ require (
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9 // indirect
 	github.com/refraction-networking/utls v1.8.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.29.0 // indirect
-	github.com/riverqueue/river/rivershared v0.29.0 // indirect
-	github.com/riverqueue/river/rivertype v0.29.0 // indirect
+	github.com/riverqueue/river/riverdriver v0.30.0 // indirect
+	github.com/riverqueue/river/rivershared v0.30.0 // indirect
+	github.com/riverqueue/river/rivertype v0.30.0 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/cors v1.11.1 // indirect
 	github.com/rs/zerolog v1.34.0 // indirect
+	github.com/samber/go-type-to-string v1.8.0 // indirect
 	github.com/samber/lo v1.52.0 // indirect
 	github.com/segmentio/asm v1.2.1 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
@@ -414,17 +416,17 @@ require (
 	go.opentelemetry.io/otel/sdk/log v0.15.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.39.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.9.0 // indirect
-	go.temporal.io/api v1.58.0 // indirect
+	go.temporal.io/api v1.59.0 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/goleak v1.3.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	go4.org v0.0.0-20230225012048-214862532bf5 // indirect
-	golang.org/x/mod v0.31.0 // indirect
+	golang.org/x/mod v0.32.0 // indirect
 	golang.org/x/sync v0.19.0 // indirect
 	golang.org/x/time v0.14.0 // indirect
-	golang.org/x/tools v0.40.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251213004720-97cd9d5aeac2 // indirect
+	golang.org/x/tools v0.41.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20251222181119-0a764e51fe1b // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	k8s.io/apimachinery v0.35.0 // indirect
 	k8s.io/klog/v2 v2.130.1 // indirect
