@@ -1,6 +1,6 @@
 module github.com/blink-io/x
 
-go 1.25.3
+go 1.25.5
 
 //godebug default=go1.23
 
@@ -64,8 +64,8 @@ require (
 	github.com/fatih/color v1.18.0
 	github.com/fxamacker/cbor/v2 v2.9.0
 	github.com/georgysavva/scany/v2 v2.1.4
-	github.com/getsentry/sentry-go v0.40.0
-	github.com/go-chi/chi/v5 v5.2.3
+	github.com/getsentry/sentry-go v0.41.0
+	github.com/go-chi/chi/v5 v5.2.4
 	github.com/go-co-op/gocron-redis-lock/v2 v2.2.1
 	github.com/go-co-op/gocron/v2 v2.19.0
 	github.com/go-crypt/crypt v0.4.7
@@ -98,7 +98,7 @@ require (
 	github.com/guregu/null/v5 v5.0.0
 	github.com/guregu/null/v6 v6.0.0
 	github.com/h2non/filetype v1.1.3
-	github.com/hashicorp/consul/api v1.33.0
+	github.com/hashicorp/consul/api v1.33.2
 	github.com/hashicorp/go-retryablehttp v0.7.8
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.6
@@ -182,7 +182,7 @@ require (
 	github.com/sanity-io/litter v1.5.8
 	github.com/santhosh-tekuri/jsonschema/v6 v6.0.2
 	github.com/segmentio/encoding v0.5.3
-	github.com/segmentio/kafka-go v0.4.49
+	github.com/segmentio/kafka-go v0.4.50
 	github.com/segmentio/ksuid v1.0.4
 	github.com/sethvargo/go-limiter v1.1.0
 	github.com/sethvargo/go-password v0.3.1
@@ -212,7 +212,7 @@ require (
 	github.com/xtaci/kcp-go/v5 v5.6.61
 	github.com/zeebo/xxh3 v1.0.2
 	github.com/zitadel/passwap v0.12.0
-	gitlab.com/greyxor/slogor v1.6.4
+	gitlab.com/greyxor/slogor v1.6.6
 	go.etcd.io/etcd/client/v3 v3.6.7
 	go.mongodb.org/mongo-driver/v2 v2.4.1
 	go.opentelemetry.io/otel v1.39.0
@@ -227,7 +227,7 @@ require (
 	golang.org/x/oauth2 v0.34.0
 	golang.org/x/sys v0.40.0
 	golang.org/x/text v0.33.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20260112192933-99fd39fd28a9
+	google.golang.org/genproto/googleapis/api v0.0.0-20260114163908-3f89685c29c3
 	google.golang.org/grpc v1.78.0
 	google.golang.org/protobuf v1.36.11
 	gopkg.in/yaml.v3 v3.0.1
