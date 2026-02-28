@@ -3,7 +3,7 @@ package registrar
 import (
 	"context"
 
-	"github.com/elastic/go-elasticsearch/v8"
+	"github.com/elastic/go-elasticsearch/v9"
 )
 
 type RegisterFunc func(context.Context, ServiceRegistrar) error
