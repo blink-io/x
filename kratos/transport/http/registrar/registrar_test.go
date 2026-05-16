@@ -14,7 +14,7 @@ func TestIsServerThen_1(t *testing.T) {
 
 	rr := NewServiceRegistrar(ss)
 
-	r := New[string]("test", func(r ServiceRegistrar, s string) {
+	r := New[string]("test", func(r RouterRegistrar, s string) {
 		fmt.Println(r)
 	})
 

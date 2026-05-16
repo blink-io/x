@@ -38,3 +38,4 @@ builds/*.svg
 # Go workspace file
 go.work
 dist/
+.idea/

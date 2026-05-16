@@ -7,5 +7,5 @@ import (
 
 func TestLogger_1(t *testing.T) {
 	ll := New(slog.Default())
-	ll.Infof("string: %s", "heison")
+	ll.Info("string: %s", "heison")
 }

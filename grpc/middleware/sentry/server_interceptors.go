@@ -3,6 +3,7 @@ package sentry
 import (
 	"context"
 	"encoding/hex"
+	"fmt"
 	"regexp"
 
 	"github.com/blink-io/x/grpc/util"
@@ -45,8 +46,10 @@ func UnaryServerInterceptor(opts ...Option) grpc.UnaryServerInterceptor {
 		ctx = span.Context()
 		defer span.Finish()
 
-		// TODO: Perhaps makes sense to use SetRequestBody instead?
-		hub.Scope().SetExtra("requestBody", req)
+		hub.Scope().SetContext("grpc_request", map[string]any{
+			"method": info.FullMethod,
+		})
+		span.SetData("rpc.request_body", fmt.Sprintf("%T", req))
 		defer recoverWithSentry(hub, ctx, o)
 
 		resp, err := handler(ctx, req)

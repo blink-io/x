@@ -8,39 +8,43 @@ import (
 	khttp "github.com/go-kratos/kratos/v2/transport/http"
 )
 
-type RegisterFunc func(context.Context, ServiceRegistrar) error
+type (
+	FilterFunc = khttp.FilterFunc
+)
+
+type RegisterFunc func(context.Context, RouterRegistrar) error
 
 type WithRegistrar interface {
 	HTTP3Registrar(context.Context) RegisterFunc
 }
 
-type ServiceRegistrar interface {
+type RouterRegistrar interface {
 	Handle(path string, h http.Handler)
 	HandleFunc(path string, h http.HandlerFunc)
 	HandleHeader(key, val string, h http.HandlerFunc)
 	HandlePrefix(prefix string, h http.Handler)
 }
 
-type serviceRegistrar struct {
+type routerRegistrar struct {
 	*khttp3.Server
 }
 
-var _ ServiceRegistrar = (*khttp3.Server)(nil)
+var _ RouterRegistrar = (*khttp3.Server)(nil)
 
-func NewServiceRegistrar(s *khttp3.Server) ServiceRegistrar {
-	return serviceRegistrar{s}
+func NewServiceRegistrar(s *khttp3.Server) RouterRegistrar {
+	return routerRegistrar{s}
 }
 
-type Func[S any] func(ServiceRegistrar, S)
+type Func[S any] func(RouterRegistrar, S)
 
-type FuncWithErr[S any] func(ServiceRegistrar, S) error
+type FuncWithErr[S any] func(RouterRegistrar, S) error
 
-type CtxFunc[S any] func(context.Context, ServiceRegistrar, S)
+type CtxFunc[S any] func(context.Context, RouterRegistrar, S)
 
-type CtxFuncWithErr[S any] func(context.Context, ServiceRegistrar, S) error
+type CtxFuncWithErr[S any] func(context.Context, RouterRegistrar, S) error
 
 type Registrar interface {
-	RegisterToHTTP3(context.Context, ServiceRegistrar) error
+	RegisterToHTTP3(context.Context, RouterRegistrar) error
 }
 
 type registrar[S any] struct {
@@ -51,7 +55,7 @@ type registrar[S any] struct {
 var _ Registrar = (*registrar[any])(nil)
 
 func New[S any](s S, f Func[S]) Registrar {
-	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
+	cf := func(ctx context.Context, r RouterRegistrar, s S) error {
 		f(r, s)
 		return nil
 	}
@@ -59,7 +63,7 @@ func New[S any](s S, f Func[S]) Registrar {
 }
 
 func NewCtx[S any](s S, f CtxFunc[S]) Registrar {
-	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
+	cf := func(ctx context.Context, r RouterRegistrar, s S) error {
 		f(ctx, r, s)
 		return nil
 	}
@@ -68,7 +72,7 @@ func NewCtx[S any](s S, f CtxFunc[S]) Registrar {
 
 // NewWithErr creates a registrar with returning error.
 func NewWithErr[S any](s S, f FuncWithErr[S]) Registrar {
-	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
+	cf := func(ctx context.Context, r RouterRegistrar, s S) error {
 		return f(r, s)
 	}
 	return NewCtxWithErr(s, cf)
@@ -83,12 +87,12 @@ func NewCtxWithErr[S any](s S, f CtxFuncWithErr[S]) Registrar {
 	return h
 }
 
-func (h registrar[S]) RegisterToHTTP3(ctx context.Context, rr ServiceRegistrar) error {
+func (h registrar[S]) RegisterToHTTP3(ctx context.Context, rr RouterRegistrar) error {
 	return h.f(ctx, rr, h.s)
 }
 
 type RouteSupport interface {
-	Route(prefix string, filters ...khttp.FilterFunc) *khttp3.Router
+	Route(prefix string, filters ...FilterFunc) *khttp3.Router
 }
 
 func SupportsRouteThen(s any, f func(RouteSupport)) {

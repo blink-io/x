@@ -59,7 +59,7 @@ func TestSnowflake_1(t *testing.T) {
 	id.Sequence()
 
 	// returns the string representation of the snowflake UserID
-	id.String()
+	_ = id.String()
 
 	// returns a new snowflake UserID with worker UserID, process UserID, and sequence set to 0
 	// this can be used for various pagination requests to the discord api

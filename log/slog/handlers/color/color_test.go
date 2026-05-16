@@ -26,7 +26,7 @@ func TestColor_2(t *testing.T) {
 	var ok = false
 	slog.Info("debug info", "hhhh", "kkkkk")
 	if ok {
-		slog.Info("debug info", "hhhh")
+		slog.Info("debug info", "hhhh", "used")
 	}
 	slog.Info("debug info", "aaa", "bbb")
 }

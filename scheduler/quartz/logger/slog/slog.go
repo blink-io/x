@@ -26,7 +26,15 @@ func (l *logger) Trace(format string, args ...any) {
 	l.sl.Log(l.ctx, slog.LevelDebug-4, fmt.Sprintf(format, args...))
 }
 
+func (l *logger) Tracef(format string, args ...any) {
+	l.sl.Log(l.ctx, slog.LevelDebug-4, fmt.Sprintf(format, args...))
+}
+
 func (l *logger) Debug(format string, args ...any) {
+	l.sl.Debug(fmt.Sprintf(format, args...))
+}
+
+func (l *logger) Debugf(format string, args ...any) {
 	l.sl.Debug(fmt.Sprintf(format, args...))
 }
 
@@ -34,7 +42,15 @@ func (l *logger) Info(format string, args ...any) {
 	l.sl.Info(fmt.Sprintf(format, args...))
 }
 
+func (l *logger) Infof(format string, args ...any) {
+	l.sl.Info(fmt.Sprintf(format, args...))
+}
+
 func (l *logger) Warn(format string, args ...any) {
+	l.sl.Warn(fmt.Sprintf(format, args...))
+}
+
+func (l *logger) Warnf(format string, args ...any) {
 	l.sl.Warn(fmt.Sprintf(format, args...))
 }
 
