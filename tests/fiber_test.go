@@ -9,9 +9,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/goccy/go-json"
+	"github.com/gofiber/contrib/v3/monitor"
+	fiberotel "github.com/gofiber/contrib/v3/otel"
 	"github.com/gofiber/fiber/v3"
-	"github.com/gofiber/fiber/v3/log"
+	fiberlog "github.com/gofiber/fiber/v3/log"
 	"github.com/gofiber/fiber/v3/middleware/adaptor"
 	"github.com/gofiber/fiber/v3/middleware/compress"
 	"github.com/gofiber/fiber/v3/middleware/envvar"
@@ -27,6 +28,7 @@ import (
 	"github.com/gofiber/fiber/v3/middleware/session"
 	"github.com/google/uuid"
 	"github.com/oklog/ulid/v2"
+	slogfiber "github.com/samber/slog-fiber"
 	"github.com/segmentio/ksuid"
 	"github.com/stretchr/testify/require"
 )
@@ -56,7 +58,7 @@ func setupRouters(r fiber.Router) {
 		sess.Set("authenticated", true)
 		fmt.Println(sess)
 		req := c.Request()
-		log.Info("req: " + req.String())
+		fiberlog.Info("req: " + req.String())
 		return nil
 	})
 
@@ -96,7 +98,7 @@ func setupRouters(r fiber.Router) {
 
 		action := c.Params("action")
 		req := c.Request()
-		log.Info("req: " + req.String())
+		fiberlog.Info("req: " + req.String())
 		fmt.Println(action)
 		c.JSON(fiber.Map{
 			"hello": "world",
@@ -111,11 +113,19 @@ func setupApp(app *fiber.App) {
 }
 
 func TestFiber_1(t *testing.T) {
+	accessLog, err := os.OpenFile("./access.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		fiberlog.Fatalf("error opening access.log file: %v", err)
+	}
+	defer accessLog.Close()
+	fiberlog.SetLevel(fiberlog.LevelInfo)
+	fiberlog.SetOutput(accessLog)
+
 	cfg := &fiber.Config{
 		ServerHeader: "my-fiber-server",
 		AppName:      "Test Fiber Server",
-		JSONEncoder:  json.Marshal,
-		JSONDecoder:  json.Unmarshal,
+		//JSONEncoder:  json.Marshal,
+		//JSONDecoder:  json.Unmarshal,
 		ServicesStartupContextProvider: func() context.Context {
 			return context.Background()
 		},
@@ -127,25 +137,30 @@ func TestFiber_1(t *testing.T) {
 	// Initialize service.
 	cfg.Services = append(cfg.Services, &myService{})
 
-	logz := slog.New(slog.NewJSONHandler(os.Stdout, nil))
+	logz := slog.New(slog.NewMultiHandler(
+		slog.NewJSONHandler(os.Stdout, nil)),
+	)
 
 	app := fiber.New(*cfg)
-	app.Use(expvarmw.New())
+	app.Use(fiberotel.Middleware())
+	app.Use(slogfiber.NewWithConfig(logz, slogfiber.Config{
+		WithRequestID:    true,
+		WithClientIP:     true,
+		WithSpanID:       true,
+		WithTraceID:      true,
+		DefaultLevel:     slog.LevelInfo,
+		ClientErrorLevel: slog.LevelWarn,
+		ServerErrorLevel: slog.LevelError,
+	}))
 	app.Use(logger.New(logger.Config{
+		Stream:     accessLog,
 		Format:     "${pid} ${status} - ${method} ${path}\n",
 		TimeFormat: "02-Jan-2006",
 		TimeZone:   "America/New_York",
 	}))
 	app.Use("/expose/envvars", envvar.New())
 	// Custom File Writer
-	accessLog, err := os.OpenFile("./access.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	if err != nil {
-		log.Fatalf("error opening access.log file: %v", err)
-	}
-	defer accessLog.Close()
-	app.Use(logger.New(logger.Config{
-		Stream: accessLog,
-	}))
+	app.Use(expvarmw.New())
 	app.Use(helmet.New())
 	app.Use(pprof.New(pprof.Config{Prefix: "/endpoint-prefix"}))
 	app.Use(recover.New())
@@ -172,7 +187,13 @@ func TestFiber_1(t *testing.T) {
 		LimitKey:     "perPage",
 		//AllowedSorts: []string{"id", "name", "created_at"},
 	}))
+	app.Get("/metrics", monitor.New())
+	app.Get("/metrics", monitor.New(monitor.Config{Title: "MyService Metrics Page"}))
 
+	app.Hooks().OnPreShutdown(func() error {
+		logz.Info("pre-shutdown")
+		return nil
+	})
 	app.Hooks().OnListen(func(listenData fiber.ListenData) error {
 		if fiber.IsChild() {
 			return nil
@@ -190,6 +211,23 @@ func TestFiber_1(t *testing.T) {
 			slog.String("method", r.Method),
 			slog.String("path", r.Path),
 		)
+		return nil
+	})
+	app.Hooks().OnPostStartupMessage(func(md *fiber.PostStartupMessageData) error {
+		appName := md.AppName
+		pid := md.PID
+		host := md.Host
+		port := md.Port
+		logz.Info("server is started",
+			slog.String("name", appName),
+			slog.String("host", host),
+			slog.String("port", port),
+			slog.Int("pid", pid),
+		)
+		return nil
+	})
+	app.Hooks().OnGroup(func(g fiber.Group) error {
+		logz.Info("group is started", "prefix", g.Prefix)
 		return nil
 	})
 

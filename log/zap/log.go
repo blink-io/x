@@ -152,8 +152,8 @@ func (s *lockWithTimeoutWrapper) unlock() {
 }
 
 func (s *lockWithTimeoutWrapper) Write(bs []byte) (int, error) {
-	succ := s.getLockOrBlock()
-	if !succ {
+	ok := s.getLockOrBlock()
+	if !ok {
 		panic(fmt.Sprintf("Timeout of %ds when trying to write log", s.timeout))
 	}
 	defer s.unlock()
@@ -162,8 +162,8 @@ func (s *lockWithTimeoutWrapper) Write(bs []byte) (int, error) {
 }
 
 func (s *lockWithTimeoutWrapper) Sync() error {
-	succ := s.getLockOrBlock()
-	if !succ {
+	ok := s.getLockOrBlock()
+	if !ok {
 		panic(fmt.Sprintf("Timeout of %ds when trying to sync log", s.timeout))
 	}
 	defer s.unlock()

@@ -5,5 +5,8 @@ import (
 )
 
 type (
-	Router = echo.Router
+	Router          = echo.Router
+	Binder          = echo.Binder
+	HTTPStatusCoder = echo.HTTPStatusCoder
+	Renderer        = echo.Renderer
 )

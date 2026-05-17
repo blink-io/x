@@ -4,5 +4,8 @@ import (
 	"github.com/gorilla/csrf"
 )
 
-type Option = csrf.Option
-type SameSiteMode = csrf.SameSiteMode
+type (
+	Option = csrf.Option
+
+	SameSiteMode = csrf.SameSiteMode
+)

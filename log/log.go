@@ -1,6 +1,8 @@
 package log
 
-import "github.com/phuslu/log"
+import (
+	"github.com/phuslu/log"
+)
 
 type (
 	Level = log.Level
@@ -83,4 +85,6 @@ var (
 	ErrAsyncWriterFull = log.ErrAsyncWriterFull
 
 	ParseLevel = log.ParseLevel
+
+	NewXID = log.NewXID
 )
