@@ -20,12 +20,14 @@ type RouterRegistrar interface {
 	HandlePrefix(prefix string, h http.Handler)
 }
 
+var _ RouterRegistrar = (*khttp.Server)(nil)
+
 type routerRegistrar struct {
 	*khttp.Server
 }
 
 func NewServiceRegistrar(s *khttp.Server) RouterRegistrar {
-	return routerRegistrar{s}
+	return routerRegistrar{Server: s}
 }
 
 type Func[S any] func(RouterRegistrar, S)

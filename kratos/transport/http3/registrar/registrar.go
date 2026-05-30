@@ -25,6 +25,8 @@ type RouterRegistrar interface {
 	HandlePrefix(prefix string, h http.Handler)
 }
 
+var _ RouterRegistrar = (*khttp3.Server)(nil)
+
 type routerRegistrar struct {
 	*khttp3.Server
 }

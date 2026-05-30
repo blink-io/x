@@ -30,6 +30,7 @@ import (
 	"github.com/oklog/ulid/v2"
 	slogfiber "github.com/samber/slog-fiber"
 	"github.com/segmentio/ksuid"
+	"github.com/shamaton/msgpack/v3"
 	"github.com/stretchr/testify/require"
 )
 
@@ -90,21 +91,37 @@ func setupRouters(r fiber.Router) {
 		return c.JSON(pageInfo)
 	})
 
-	rg.Get("/json", func(c fiber.Ctx) error {
+	type jsonReq struct {
+		Name  string `json:"name" msgpack:"name"`
+		Level int    `json:"level" msgpack:"level"`
+	}
+
+	rg.Post("/msgpack", func(c fiber.Ctx) error {
 		sess := session.FromContext(c)
 		v1 := sess.Get("user_id")
 		v2 := sess.Get("authenticated")
 		fmt.Println(v1, v2)
 
-		action := c.Params("action")
-		req := c.Request()
-		fiberlog.Info("req: " + req.String())
-		fmt.Println(action)
-		c.JSON(fiber.Map{
-			"hello": "world",
-			"type":  "info",
-		})
-		return nil
+		p := new(jsonReq)
+
+		if err := c.Bind().MsgPack(p); err != nil {
+			return err
+		}
+		return c.JSON(p)
+	})
+
+	rg.Post("/json", func(c fiber.Ctx) error {
+		sess := session.FromContext(c)
+		v1 := sess.Get("user_id")
+		v2 := sess.Get("authenticated")
+		fmt.Println(v1, v2)
+
+		p := new(jsonReq)
+
+		if err := c.Bind().JSON(p); err != nil {
+			return err
+		}
+		return c.JSON(p)
 	})
 }
 
@@ -126,6 +143,8 @@ func TestFiber_1(t *testing.T) {
 		AppName:      "Test Fiber Server",
 		//JSONEncoder:  json.Marshal,
 		//JSONDecoder:  json.Unmarshal,
+		MsgPackEncoder: msgpack.Marshal,
+		MsgPackDecoder: msgpack.Unmarshal,
 		ServicesStartupContextProvider: func() context.Context {
 			return context.Background()
 		},
