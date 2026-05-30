@@ -62,7 +62,7 @@ var DefaultSessionCookie = SessionCookie{
 	HttpOnly: true,
 	Path:     "/",
 	Persist:  true,
-	Secure:   false,
+	Secure:   true,
 	SameSite: http.SameSiteLaxMode,
 }
 

@@ -62,8 +62,12 @@ func New() Bus {
 func (bus *bus) doSubscribe(topic string, fn any, handler *handler) error {
 	bus.lock.Lock()
 	defer bus.lock.Unlock()
-	if !(reflect.TypeOf(fn).Kind() == reflect.Func) {
-		return fmt.Errorf("%s is not of type reflect.Func", reflect.TypeOf(fn).Kind())
+	if fn == nil {
+		return fmt.Errorf("handler is nil")
+	}
+	fnType := reflect.TypeOf(fn)
+	if fnType.Kind() != reflect.Func {
+		return fmt.Errorf("%s is not of type reflect.Func", fnType.Kind())
 	}
 	bus.handlers[topic] = append(bus.handlers[topic], handler)
 	return nil
@@ -195,18 +199,45 @@ func (bus *bus) findHandlerIdx(topic string, callback reflect.Value) int {
 	return -1
 }
 
-func (bus *bus) setUpPublish(callback *handler, args ...any) []reflect.Value {
+func (bus *bus) setUpPublish(callback *handler, args ...any) ([]reflect.Value, bool) {
 	funcType := callback.callback.Type()
-	passedArguments := make([]reflect.Value, len(args))
-	for i, v := range args {
-		if v == nil {
-			passedArguments[i] = reflect.New(funcType.In(i)).Elem()
-		} else {
-			passedArguments[i] = reflect.ValueOf(v)
-		}
+	if len(args) != funcType.NumIn() {
+		return nil, false
 	}
 
-	return passedArguments
+	passedArguments := make([]reflect.Value, len(args))
+	for i, v := range args {
+		argType := funcType.In(i)
+		if v == nil {
+			if !canBeNil(argType) {
+				return nil, false
+			}
+			passedArguments[i] = reflect.Zero(argType)
+			continue
+		}
+
+		arg := reflect.ValueOf(v)
+		if arg.Type().AssignableTo(argType) {
+			passedArguments[i] = arg
+			continue
+		}
+		if arg.Type().ConvertibleTo(argType) {
+			passedArguments[i] = arg.Convert(argType)
+			continue
+		}
+		return nil, false
+	}
+
+	return passedArguments, true
+}
+
+func canBeNil(t reflect.Type) bool {
+	switch t.Kind() {
+	case reflect.Chan, reflect.Func, reflect.Interface, reflect.Map, reflect.Pointer, reflect.Slice:
+		return true
+	default:
+		return false
+	}
 }
 
 // WaitAsync waits for all async callbacks to complete

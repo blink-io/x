@@ -8,6 +8,10 @@ import (
 	"github.com/teris-io/shortid"
 )
 
+func SecureTokenGen() (string, error) {
+	return defaultTokenGen()
+}
+
 func UUIDTokenGen() (string, error) {
 	return uuid.NewString(), nil
 }

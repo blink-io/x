@@ -2,6 +2,7 @@ package http
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	khttp "github.com/go-kratos/kratos/v2/transport/http"
@@ -137,7 +138,11 @@ func Do[Request Req, Response Res](
 
 		khttp.SetOperation(kctx, operation)
 		mwh := kctx.Middleware(func(ctx context.Context, req any) (any, error) {
-			return handle(kctx, req.(*Request))
+			reqValue, ok := req.(*Request)
+			if !ok {
+				return nil, fmt.Errorf("unexpected request type %T", req)
+			}
+			return handle(kctx, reqValue)
 		})
 		out, err := mwh(kctx, &in)
 		if err != nil {
@@ -154,7 +159,10 @@ func Do[Request Req, Response Res](
 		if opts.skipResBody {
 			return kctx.Result(opts.statusCode, nil)
 		} else {
-			reply := out.(*Response)
+			reply, ok := out.(*Response)
+			if !ok {
+				return fmt.Errorf("unexpected response type %T", out)
+			}
 			return kctx.Result(opts.statusCode, reply)
 		}
 	}

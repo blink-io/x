@@ -121,7 +121,6 @@ func LockWithTimeout(ws zapcore.WriteSyncer, timeout int) zapcore.WriteSyncer {
 	r := &lockWithTimeoutWrapper{
 		ws:      ws,
 		lock:    make(chan struct{}, 1),
-		t:       time.NewTicker(time.Second),
 		timeout: timeout,
 	}
 	return r
@@ -130,21 +129,20 @@ func LockWithTimeout(ws zapcore.WriteSyncer, timeout int) zapcore.WriteSyncer {
 type lockWithTimeoutWrapper struct {
 	ws      zapcore.WriteSyncer
 	lock    chan struct{}
-	t       *time.Ticker
 	timeout int
 }
 
 // getLockOrBlock returns true when get lock success, and false otherwise.
 func (s *lockWithTimeoutWrapper) getLockOrBlock() bool {
-	for i := 0; i < s.timeout; {
-		select {
-		case s.lock <- struct{}{}:
-			return true
-		case <-s.t.C:
-			i++
-		}
+	timer := time.NewTimer(time.Duration(s.timeout) * time.Second)
+	defer timer.Stop()
+
+	select {
+	case s.lock <- struct{}{}:
+		return true
+	case <-timer.C:
+		return false
 	}
-	return false
 }
 
 func (s *lockWithTimeoutWrapper) unlock() {
@@ -154,7 +152,7 @@ func (s *lockWithTimeoutWrapper) unlock() {
 func (s *lockWithTimeoutWrapper) Write(bs []byte) (int, error) {
 	ok := s.getLockOrBlock()
 	if !ok {
-		panic(fmt.Sprintf("Timeout of %ds when trying to write log", s.timeout))
+		return 0, fmt.Errorf("timeout of %ds when trying to write log", s.timeout)
 	}
 	defer s.unlock()
 
@@ -164,7 +162,7 @@ func (s *lockWithTimeoutWrapper) Write(bs []byte) (int, error) {
 func (s *lockWithTimeoutWrapper) Sync() error {
 	ok := s.getLockOrBlock()
 	if !ok {
-		panic(fmt.Sprintf("Timeout of %ds when trying to sync log", s.timeout))
+		return fmt.Errorf("timeout of %ds when trying to sync log", s.timeout)
 	}
 	defer s.unlock()
 

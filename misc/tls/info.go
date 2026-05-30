@@ -33,13 +33,30 @@ type CertInfo struct {
 	IssuingCertificateURL []string  `json:"issuing_certificate_url,omitempty"`
 }
 
-func GetCertInfo(url string) (*CertInfo, error) {
+type CertInfoOption func(*certInfoOptions)
+
+type certInfoOptions struct {
+	insecureSkipVerify bool
+}
+
+func WithInsecureSkipVerify() CertInfoOption {
+	return func(o *certInfoOptions) {
+		o.insecureSkipVerify = true
+	}
+}
+
+func GetCertInfo(url string, ops ...CertInfoOption) (*CertInfo, error) {
 	if !strings.HasPrefix(url, "https://") {
 		return nil, errors.New("url should start with https://")
 	}
 
+	opt := &certInfoOptions{}
+	for _, o := range ops {
+		o(opt)
+	}
+
 	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: opt.insecureSkipVerify},
 	}
 	client := &http.Client{
 		Transport: tr,
@@ -51,6 +68,10 @@ func GetCertInfo(url string) (*CertInfo, error) {
 		return nil, err
 	}
 	defer resp.Body.Close()
+
+	if resp.TLS == nil || len(resp.TLS.PeerCertificates) == 0 {
+		return nil, errors.New("server did not provide peer certificates")
+	}
 
 	rci := resp.TLS.PeerCertificates[0]
 

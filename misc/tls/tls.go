@@ -44,17 +44,17 @@ func CreateBaseTLSConfig(caFile string, caOptional bool, certFile, keyFile strin
 		return nil, fmt.Errorf("TLS Certificate or Key file must be set when TLS configuration is created")
 	}
 
-	cert := tls.Certificate{}
+	certificates := make([]tls.Certificate, 0, 1)
 	if len(certFileBytes) > 0 && len(keyFileBytes) > 0 {
-		var err error
-		cert, err = tls.X509KeyPair(certFileBytes, keyFileBytes)
+		cert, err := tls.X509KeyPair(certFileBytes, keyFileBytes)
 		if err != nil {
 			return nil, fmt.Errorf("failed to load TLS keypair: %v", err)
 		}
+		certificates = append(certificates, cert)
 	}
 
 	return &tls.Config{
-		Certificates:       []tls.Certificate{cert},
+		Certificates:       certificates,
 		RootCAs:            certPool,
 		InsecureSkipVerify: insecureSkipVerify,
 		ClientAuth:         clientAuth,
