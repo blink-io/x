@@ -12,7 +12,7 @@ import (
 func TestIsServerThen_1(t *testing.T) {
 	ss := khttp.NewServer()
 
-	rr := NewServiceRegistrar(ss)
+	rr := NewRouterRegistrar(ss)
 
 	r := New[string]("test", func(r RouterRegistrar, s string) {
 		fmt.Println(r)

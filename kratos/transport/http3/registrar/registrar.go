@@ -33,7 +33,7 @@ type routerRegistrar struct {
 
 var _ RouterRegistrar = (*khttp3.Server)(nil)
 
-func NewServiceRegistrar(s *khttp3.Server) RouterRegistrar {
+func NewRouterRegistrar(s *khttp3.Server) RouterRegistrar {
 	return routerRegistrar{s}
 }
 

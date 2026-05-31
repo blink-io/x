@@ -26,7 +26,7 @@ type routerRegistrar struct {
 	*khttp.Server
 }
 
-func NewServiceRegistrar(s *khttp.Server) RouterRegistrar {
+func NewRouterRegistrar(s *khttp.Server) RouterRegistrar {
 	return routerRegistrar{Server: s}
 }
 
