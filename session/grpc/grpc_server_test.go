@@ -5,15 +5,17 @@ import (
 	"log/slog"
 	"net"
 	"testing"
+	"time"
 
 	"github.com/blink-io/x/internal/testutil"
 	"github.com/blink-io/x/session"
-
 	"github.com/stretchr/testify/require"
+	"google.golang.org/grpc"
 	"google.golang.org/grpc/channelz/service"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/stats"
 	"google.golang.org/grpc/status"
+	"google.golang.org/grpc/tap"
 )
 
 type commonService struct {
@@ -105,7 +107,13 @@ func (s *statsHandler) HandleConn(ctx context.Context, connStats stats.ConnStats
 func TestGRPC_Server_1(t *testing.T) {
 	svc := &commonService{}
 
-	gsrv := testutil.CreateGRPCServer(true)
+	gsrv := testutil.CreateGRPCServer(true,
+		grpc.ConnectionTimeout(time.Second*10),
+		grpc.InTapHandle(func(ctx context.Context, info *tap.Info) (context.Context, error) {
+			slog.Info("Invoke [InTapHandle]", "info", info)
+			return ctx, nil
+		}),
+	)
 
 	RegisterCommonServer(gsrv, svc)
 	service.RegisterChannelzServiceToServer(gsrv)

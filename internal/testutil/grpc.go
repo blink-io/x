@@ -19,12 +19,12 @@ func CreateGRPCClient(target string, secure bool, ops ...grpc.DialOption) *grpc.
 	} else {
 		creds = insecure.NewCredentials()
 	}
-	var newops = make([]grpc.DialOption, 0)
-	newops = append(newops, grpc.WithTransportCredentials(creds))
+	var newOps = make([]grpc.DialOption, 0)
+	newOps = append(newOps, grpc.WithTransportCredentials(creds))
 	if len(ops) > 0 {
-		newops = append(newops, ops...)
+		newOps = append(newOps, ops...)
 	}
-	c, err := grpc.Dial(target, newops...)
+	c, err := grpc.Dial(target, newOps...)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -39,12 +39,12 @@ func CreateGRPCServer(secure bool, ops ...grpc.ServerOption) *grpc.Server {
 		creds = insecure.NewCredentials()
 	}
 
-	var newops = make([]grpc.ServerOption, 0)
-	newops = append(newops, grpc.Creds(creds), grpc.StatsHandler(&statsHandler{}))
+	var newOps = make([]grpc.ServerOption, 0)
+	newOps = append(newOps, grpc.Creds(creds), grpc.StatsHandler(&statsHandler{}))
 	if len(ops) > 0 {
-		newops = append(newops, ops...)
+		newOps = append(newOps, ops...)
 	}
-	gsrv := grpc.NewServer(newops...)
+	gsrv := grpc.NewServer(newOps...)
 
 	return gsrv
 }
