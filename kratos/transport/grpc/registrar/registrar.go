@@ -3,7 +3,7 @@ package registrar
 import (
 	"context"
 
-	kgrpc "github.com/go-kratos/kratos/v2/transport/grpc"
+	kgrpc "github.com/go-kratos/kratos/v3/transport/grpc"
 	"google.golang.org/grpc"
 )
 

@@ -70,7 +70,7 @@ func New{{.ServiceType}}HTTP3Client (client *http.Client) {{.ServiceType}}HTTP3C
 func (c *{{$svrType}}HTTP3ClientImpl) {{.Name}}(ctx context.Context, in *{{.Request}}, opts ...http.CallOption) (*{{.Reply}}, error) {
 	var out {{.Reply}}
 	pattern := "{{.Path}}"
-	path := binding.EncodeURL(pattern, in, {{not .HasBody}})
+	path := http.BuildPath(pattern, in, {{not .HasBody}})
 	opts = append(opts, http.Operation(HTTP3Operation{{$svrType}}{{.OriginalName}}))
 	opts = append(opts, http.PathTemplate(pattern))
 	{{if .HasBody -}}

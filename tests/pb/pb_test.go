@@ -3,8 +3,8 @@ package pb
 import (
 	"testing"
 
-	"github.com/go-kratos/kratos/v2/encoding"
-	_ "github.com/go-kratos/kratos/v2/encoding/proto"
+	"github.com/go-kratos/kratos/v3/encoding"
+	_ "github.com/go-kratos/kratos/v3/encoding/proto"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc/reflection/grpc_reflection_v1"
 )

@@ -3,7 +3,7 @@ package http
 import (
 	"net/http"
 
-	khttp "github.com/go-kratos/kratos/v2/transport/http"
+	khttp "github.com/go-kratos/kratos/v3/transport/http"
 )
 
 func StdHandlerFunc(h http.HandlerFunc) khttp.HandlerFunc {

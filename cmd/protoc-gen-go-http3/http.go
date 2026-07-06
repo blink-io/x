@@ -16,12 +16,11 @@ import (
 )
 
 const (
-	httpPackage           = "github.com/go-kratos/kratos/v2/transport/http"
+	httpPackage           = "github.com/go-kratos/kratos/v3/transport/http"
 	http3Package          = "github.com/blink-io/kratos-transport/transport/http3"
 	contextPackage        = protogen.GoImportPath("context")
 	transportHTTPPackage  = protogen.GoImportPath(httpPackage)
 	transportHTTP3Package = protogen.GoImportPath(http3Package)
-	bindingPackage        = protogen.GoImportPath("github.com/go-kratos/kratos/v2/transport/http/binding")
 )
 
 var methodSets = make(map[string]int)
@@ -57,7 +56,7 @@ func generateFileContent(gen *protogen.Plugin, file *protogen.File, g *protogen.
 	g.P("// This is a compile-time assertion to ensure that this generated file")
 	g.P("// is compatible with the kratos package it is being compiled against.")
 	g.P("var _ = new(", contextPackage.Ident("Context"), ")")
-	g.P("var _ = ", bindingPackage.Ident("EncodeURL"))
+	g.P("var _ = ", transportHTTPPackage.Ident("BuildPath"))
 	g.P("var _ = new(", transportHTTP3Package.Ident("Context"), ")")
 
 	g.P("const _ = ", transportHTTPPackage.Ident("SupportPackageIsVersion1"))

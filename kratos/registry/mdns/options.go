@@ -2,9 +2,8 @@ package mdns
 
 import (
 	"context"
+	"log/slog"
 	"time"
-
-	klog "github.com/go-kratos/kratos/v2/log"
 )
 
 // Option is etcd registry option.
@@ -15,7 +14,7 @@ type options struct {
 	namespace string
 	ttl       time.Duration
 	maxRetry  int
-	logger    klog.Logger
+	logger    *slog.Logger
 }
 
 // Namespace with registry namespace.

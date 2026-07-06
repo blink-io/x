@@ -160,8 +160,10 @@ func (bus *bus) Publish(topic string, args ...any) {
 }
 
 func (bus *bus) doPublish(handler *handler, topic string, args ...any) {
-	passedArguments := bus.setUpPublish(handler, args...)
-	handler.callback.Call(passedArguments)
+	passedArguments, ok := bus.setUpPublish(handler, args...)
+	if ok {
+		handler.callback.Call(passedArguments)
+	}
 }
 
 func (bus *bus) doPublishAsync(handler *handler, topic string, args ...any) {

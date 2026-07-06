@@ -5,7 +5,7 @@ import (
 	"net"
 	"time"
 
-	kregistry "github.com/go-kratos/kratos/v2/registry"
+	kregistry "github.com/go-kratos/kratos/v3/registry"
 	"github.com/hashicorp/mdns"
 )
 

@@ -5,16 +5,16 @@ import (
 	"fmt"
 	"testing"
 
-	khttp "github.com/go-kratos/kratos/v2/transport/http"
+	khttp "github.com/go-kratos/kratos/v3/transport/http"
 	"github.com/stretchr/testify/require"
 )
 
 func TestIsServerThen_1(t *testing.T) {
 	ss := khttp.NewServer()
 
-	rr := NewRouterRegistrar(ss)
+	rr := NewServerHandler(ss)
 
-	r := New[string]("test", func(r RouterRegistrar, s string) {
+	r := New[string]("test", func(r ServerHandler, s string) {
 		fmt.Println(r)
 	})
 
