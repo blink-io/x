@@ -12,9 +12,9 @@
 
 ## Motivations
 
-For the [samber/do](https://github.com/samber/do) project, I needed to convert a Go type into a string. I used to convert it with `fmt.Sprintf("%T", t)` -> `mypkg.MyStruct`, but it does not insert package path into type representation, leading to collision when types from different pacakges match.
+For the [samber/do](https://github.com/samber/do) project, I needed to convert a Go type into a string. I used to convert it with `fmt.Sprintf("%T", t)` -> `mypkg.MyStruct`, but it does not insert package path into type representation, leading to collision when types from different packages match.
 
-This package export type using the following representation:
+This package exports types using the following representation:
 
 ```go
   *[]**<-chan   github.com/samber/example    .Example

@@ -35,7 +35,7 @@ supports both singleton and dependency injection to init a `bus` instance.
 Check the [demo project](https://github.com/mustafaturan/bus-sample-project) for
 the singleton configuration.
 
-Here is a sample initilization using `monoton` id generator:
+Here is a sample initialization using `monoton` id generator:
 
 ```go
 import (
@@ -80,15 +80,15 @@ b.RegisterTopics("order.received", "order.fulfilled")
 
 ### Register Event Handlers
 
-To receive topic events you need to register handlers; A handler basically
-requires two vals which are a `Handle` function and topic `Matcher` regex
+To receive topic events, you need to register handlers. A handler basically
+requires two values which are a `Handle` function and topic `Matcher` regex
 pattern.
 
 ```go
 handler := bus.Handler{
     Handle: func(ctx context.Context, e bus.Event) {
         // do something
-        // NOTE: Highly recommended to process the event in an async way
+        // NOTE: It is highly recommended to process the event in an async way
     },
     Matcher: ".*", // matches all topics
 }
@@ -133,9 +133,9 @@ if err != nil {
 ### Processing Events
 
 When an event is emitted, the topic handlers receive the event synchronously.
-It is highly recommended to process events asynchronous. Package leave the
+It is highly recommended to process events asynchronously. Packages leave the
 decision to the packages/projects to use concurrency abstractions depending on
-use-cases. Each handlers receive the same event as ref of `bus.Event` struct:
+use-cases. Each handler receives the same event as ref of `bus.Event` struct:
 
 ```go
 // Event data structure

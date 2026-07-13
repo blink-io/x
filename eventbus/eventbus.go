@@ -26,7 +26,7 @@ type Controller interface {
 	WaitAsync()
 }
 
-// Bus englobes global (subscribe, publish, control) bus behavior
+// Bus encompasses global (subscribe, publish, control) bus behavior
 type Bus interface {
 	Controller
 	Subscriber

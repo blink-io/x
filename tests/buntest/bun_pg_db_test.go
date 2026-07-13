@@ -101,7 +101,7 @@ func setupBunHooks(bundb *bun.DB) {
 		SlowDuration: 5 * time.Second,
 		Logger:       zap.L(),
 	})
-	bundb.AddQueryHook(h1)
-	bundb.AddQueryHook(h2)
-	bundb.AddQueryHook(h3)
+	bundb.WithQueryHook(h1)
+	bundb.WithQueryHook(h2)
+	bundb.WithQueryHook(h3)
 }

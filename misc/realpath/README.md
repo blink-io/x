@@ -3,7 +3,7 @@ realpath
 
 [![Travis last test result on master][travis-shield]][travis-link]
 
-This is a implementation of realpath() function in Go (golang).
+This is an implementation of realpath() function in Go (golang).
 
 If you provide it with a valid relative path / alias path, it will return you
 with a string of its real absolute path in the system.

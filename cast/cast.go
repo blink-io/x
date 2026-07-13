@@ -70,7 +70,7 @@ func ToStringF(value any, fallback string) string {
 	return ToValueF(ToStringE, value, fallback)
 }
 
-func ToStringSlcieF(value any, fallback []string) []string {
+func ToStringSliceF(value any, fallback []string) []string {
 	return ToValueF(ToStringSliceE, value, fallback)
 }
 

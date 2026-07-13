@@ -79,7 +79,7 @@ func testData1() []byte {
 }
 
 func testData2() []byte {
-	md := proto.AppendVarlen(nil, 1, []byte("testing为是一个测试瓦兹"))
+	md := proto.AppendVarlen(nil, 1, []byte("testing这是一个测试"))
 
 	var m proto.RawMessage
 	m = proto.AppendVarint(m, 100, 200)

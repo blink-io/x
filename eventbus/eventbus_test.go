@@ -113,7 +113,7 @@ func TestPublish(t *testing.T) {
 	bus.Publish("topic", 10, nil)
 }
 
-func TestSubcribeOnceAsync(t *testing.T) {
+func TestSubscribeOnceAsync(t *testing.T) {
 	results := make([]int, 0)
 
 	bus := New()
