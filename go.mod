@@ -12,7 +12,7 @@ require (
 	github.com/BurntSushi/toml v1.6.0
 	github.com/Code-Hex/go-generics-cache v1.5.1
 	github.com/DATA-DOG/go-sqlmock v1.5.2
-	github.com/IBM/sarama v1.50.3
+	github.com/IBM/sarama v1.60.0
 	github.com/Masterminds/squirrel v1.5.4
 	github.com/Netflix/go-env v0.1.2
 	github.com/ProtonMail/gopenpgp/v2 v2.10.0
@@ -49,9 +49,9 @@ require (
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cloudwego/fastpb v0.0.6
 	github.com/coder/websocket v1.8.15
-	github.com/cohesivestack/valgo v0.7.1
+	github.com/cohesivestack/valgo v0.8.0
 	github.com/coreos/go-oidc/v3 v3.20.0
-	github.com/danielgtaylor/huma/v2 v2.38.0
+	github.com/danielgtaylor/huma/v2 v2.39.0
 	github.com/dchest/siphash v1.2.3
 	github.com/dghubble/sling v1.4.2
 	github.com/dgraph-io/ristretto/v2 v2.4.2
@@ -66,7 +66,7 @@ require (
 	github.com/fatih/color v1.19.0
 	github.com/fxamacker/cbor/v2 v2.9.2
 	github.com/georgysavva/scany/v2 v2.1.4
-	github.com/getsentry/sentry-go v0.47.0
+	github.com/getsentry/sentry-go v0.48.0
 	github.com/go-chi/chi/v5 v5.3.1
 	github.com/go-co-op/gocron-redis-lock/v2 v2.2.1
 	github.com/go-co-op/gocron/v2 v2.22.0
@@ -88,7 +88,7 @@ require (
 	github.com/goccy/go-json v0.10.6
 	github.com/gocraft/dbr/v2 v2.7.7
 	github.com/gofiber/contrib/v3/monitor v1.1.1
-	github.com/gofiber/contrib/v3/otel v1.2.1
+	github.com/gofiber/contrib/v3/otel v1.2.2
 	github.com/gofiber/fiber/v3 v3.4.0
 	github.com/gofrs/uuid/v5 v5.4.0
 	github.com/gogo/protobuf v1.3.2
@@ -139,19 +139,19 @@ require (
 	github.com/mholt/archives v0.1.5
 	github.com/miekg/dns v1.1.72
 	github.com/minio/highwayhash v1.0.4
-	github.com/minio/minlz v1.1.1
-	github.com/montanaflynn/stats v0.10.0
+	github.com/minio/minlz v1.2.0
+	github.com/montanaflynn/stats v0.12.1
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.52.0
 	github.com/ncruces/go-strftime v1.0.0
 	github.com/negrel/conc v0.5.0
 	github.com/nicksnyder/go-i18n/v2 v2.6.1
-	github.com/nyaruka/phonenumbers v1.8.0
+	github.com/nyaruka/phonenumbers v1.8.1
 	github.com/oklog/ulid/v2 v2.1.1
 	github.com/onatm/clockwerk v1.1.0
 	github.com/onsi/ginkgo/v2 v2.32.0
 	github.com/onsi/gomega v1.42.1
-	github.com/opensearch-project/opensearch-go/v4 v4.6.0
+	github.com/opensearch-project/opensearch-go/v4 v4.7.1
 	github.com/panjf2000/ants/v2 v2.12.1
 	github.com/pborman/uuid v1.2.1
 	github.com/pelletier/go-toml/v2 v2.4.3
@@ -192,7 +192,7 @@ require (
 	github.com/segmentio/ksuid v1.0.4
 	github.com/sethvargo/go-limiter v1.1.0
 	github.com/sethvargo/go-password v0.3.1
-	github.com/shamaton/msgpack/v3 v3.1.2
+	github.com/shamaton/msgpack/v3 v3.2.0
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cast v1.10.0
@@ -234,8 +234,8 @@ require (
 	golang.org/x/oauth2 v0.36.0
 	golang.org/x/sys v0.47.0
 	golang.org/x/text v0.40.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20260706201446-f0a921348800
-	google.golang.org/grpc v1.82.0
+	google.golang.org/genproto/googleapis/api v0.0.0-20260715232425-e75dac1f907d
+	google.golang.org/grpc v1.82.1
 	google.golang.org/protobuf v1.36.12-0.20260120151049-f2248ac996af
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/client-go v0.36.2
@@ -291,8 +291,8 @@ require (
 	github.com/go-sql-driver/mysql v1.10.0 // indirect
 	github.com/gobwas/httphead v0.1.0 // indirect
 	github.com/gobwas/pool v0.2.1 // indirect
-	github.com/gofiber/schema v1.8.1 // indirect
-	github.com/gofiber/utils/v2 v2.1.1 // indirect
+	github.com/gofiber/schema v1.8.2 // indirect
+	github.com/gofiber/utils/v2 v2.2.0 // indirect
 	github.com/golang-jwt/jwt/v5 v5.3.1 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect
