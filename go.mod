@@ -140,7 +140,7 @@ require (
 	github.com/miekg/dns v1.1.72
 	github.com/minio/highwayhash v1.0.4
 	github.com/minio/minlz v1.2.0
-	github.com/montanaflynn/stats v0.12.1
+	github.com/montanaflynn/stats v0.12.2
 	github.com/natefinch/lumberjack/v3 v3.0.0-alpha
 	github.com/nats-io/nats.go v1.52.0
 	github.com/ncruces/go-strftime v1.0.0
@@ -190,8 +190,8 @@ require (
 	github.com/segmentio/encoding v0.5.4
 	github.com/segmentio/kafka-go v0.4.51
 	github.com/segmentio/ksuid v1.0.4
-	github.com/sethvargo/go-limiter v1.1.0
-	github.com/sethvargo/go-password v0.3.1
+	github.com/sethvargo/go-limiter v1.2.0
+	github.com/sethvargo/go-password v0.4.0
 	github.com/shamaton/msgpack/v3 v3.2.0
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/sourcegraph/conc v0.3.0
