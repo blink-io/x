@@ -3,44 +3,44 @@ package huma
 import (
 	"net/http"
 
-	khttp3 "github.com/blink-io/kratos-transport/transport/http3"
 	"github.com/danielgtaylor/huma/v2"
 	"github.com/danielgtaylor/huma/v2/adapters/humamux"
+	khttp "github.com/go-kratos/kratos/v3/transport/http"
 )
 
 // NewContext creates a new Huma context from an HTTP request and response.
-func NewContext(op *huma.Operation, ctx khttp3.Context) huma.Context {
+func NewContext(op *huma.Operation, ctx khttp.Context) huma.Context {
 	return humamux.NewContext(op, ctx.Request(), ctx.Response())
 }
 
-var _ huma.Adapter = (*kratosAdapter)(nil)
+var _ huma.Adapter = (*adapter)(nil)
 
-type kratosAdapter struct {
-	*khttp3.Server
+type adapter struct {
+	*khttp.Server
 	prefix string
 }
 
-func (a *kratosAdapter) Handle(op *huma.Operation, h func(ctx huma.Context)) {
+func (a *adapter) Handle(op *huma.Operation, h func(huma.Context)) {
 	rr := a.Route(a.prefix)
-	rr.Handle(op.Method, op.Path, func(ctx khttp3.Context) error {
-		h(humamux.NewContext(op, ctx.Request(), ctx.Response()))
+	rr.Handle(op.Method, op.Path, func(ctx khttp.Context) error {
+		h(NewContext(op, ctx))
 		return nil
 	})
 }
 
-func (a *kratosAdapter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (a *adapter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	a.Server.ServeHTTP(w, r)
 }
 
-func NewAdapter(srv *khttp3.Server, prefix string) huma.Adapter {
-	return &kratosAdapter{Server: srv, prefix: prefix}
+func NewAdapter(srv *khttp.Server, prefix string) huma.Adapter {
+	return &adapter{Server: srv, prefix: prefix}
 }
 
-func New(srv *khttp3.Server, config huma.Config) huma.API {
-	return huma.NewAPI(config, NewAdapter(srv, ""))
+func New(srv *khttp.Server, config huma.Config) huma.API {
+	return NewWithPrefix(srv, "", config)
 }
 
-func NewWithPrefix(srv *khttp3.Server, prefix string, config huma.Config) huma.API {
+func NewWithPrefix(srv *khttp.Server, prefix string, config huma.Config) huma.API {
 	if len(config.Servers) == 0 {
 		config.Servers = append(config.Servers, &huma.Server{
 			URL: prefix,
