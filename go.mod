@@ -49,7 +49,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/cloudwego/fastpb v0.0.6
 	github.com/coder/websocket v1.8.15
-	github.com/cohesivestack/valgo v0.8.0
+	github.com/cohesivestack/valgo v0.8.1
 	github.com/coreos/go-oidc/v3 v3.20.0
 	github.com/danielgtaylor/huma/v2 v2.39.0
 	github.com/dchest/siphash v1.2.3
@@ -72,7 +72,7 @@ require (
 	github.com/go-co-op/gocron/v2 v2.22.0
 	github.com/go-crypt/crypt v0.14.15
 	github.com/go-echarts/statsview v0.4.2
-	github.com/go-faker/faker/v4 v4.9.0
+	github.com/go-faker/faker/v4 v4.10.0
 	github.com/go-faster/city v1.0.1
 	github.com/go-json-experiment/json v0.0.0-20260623181947-01eb4420fa68
 	github.com/go-kit/log v0.2.1
@@ -198,7 +198,7 @@ require (
 	github.com/spf13/cast v1.10.0
 	github.com/spyzhov/ajson v0.9.6
 	github.com/sqids/sqids-go v0.4.1
-	github.com/stephenafamo/scan v0.7.0
+	github.com/stephenafamo/scan v0.8.0
 	github.com/stretchr/testify v1.11.1
 	github.com/teris-io/shortid v0.0.0-20220617161101-71ec9f2aa569
 	github.com/tidwall/gjson v1.19.0
@@ -229,7 +229,7 @@ require (
 	go.uber.org/zap v1.28.0
 	go.uber.org/zap/exp v0.3.0
 	golang.org/x/crypto v0.54.0
-	golang.org/x/exp v0.0.0-20260709172345-9ea1abe57597
+	golang.org/x/exp v0.0.0-20260718201538-764159d718ef
 	golang.org/x/net v0.57.0
 	golang.org/x/oauth2 v0.36.0
 	golang.org/x/sys v0.47.0
