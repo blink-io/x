@@ -5,5 +5,6 @@ import (
 )
 
 type (
-	App = fiber.App
+	App    = fiber.App
+	Config = fiber.Config
 )

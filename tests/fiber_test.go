@@ -9,6 +9,8 @@ import (
 	"os"
 	"testing"
 
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"github.com/gofiber/contrib/v3/monitor"
 	fiberotel "github.com/gofiber/contrib/v3/otel"
 	"github.com/gofiber/fiber/v3"
@@ -78,8 +80,12 @@ func setupRouters(r fiber.Router) {
 	helloHandler := func(w http.ResponseWriter, r *http.Request) {
 		_, _ = fmt.Fprint(w, "Hello from net/http!")
 	}
-	rg.Get("/hello/:name", adaptor.HTTPHandlerWithContext(http.HandlerFunc(helloHandler)))
+	rg.All("/hello/:name", adaptor.HTTPHandlerWithContext(http.HandlerFunc(helloHandler)))
 
+	chr := chi.NewRouter()
+	chr.Use(middleware.Logger)
+	chr.Handle("/api/hi/hi/{name}", http.HandlerFunc(helloHandler))
+	rg.Get("/chi/+", adaptor.HTTPHandler(chr))
 	rg.Get("/users", func(c fiber.Ctx) error {
 		pageInfo, ok := paginate.FromContext(c)
 		if !ok {
