@@ -20,7 +20,7 @@ func TestEnable_Header(t *testing.T) {
 
 	rv := hdrv.Default()
 	sm := session.NewManager(
-		session.TokenGenerator(session.ShortIDTokenGen),
+		session.TokenGenerator(session.UUIDTokenGen),
 	)
 	sessionHandler := NewSessionHandler(
 		WithResolver(rv),

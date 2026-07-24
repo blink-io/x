@@ -8,8 +8,7 @@ import (
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
 
-	"github.com/blink-io/sq"
-	"github.com/blink-io/x/ptr"
+	"github.com/blink-io/x/misc/ptr"
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/google/uuid"
 	"github.com/lib/pq"
@@ -27,11 +26,11 @@ func randomTblDemoSetter() *TblDemoSetter {
 	vjson := map[string]any{"v": gofakeit.City()}
 
 	var s = &TblDemoSetter{
-		NUUID:  ptr.Of(sq.ValidFrom(uuid.NewString())),
+		NUUID:  ptr.Of(sql.Null[string]{V: uuid.NewString(), Valid: true}),
 		NEnum:  ptr.Of(sql.Null[EnumTblBasicNEnum]{V: nenum, Valid: true}),
-		NStr:   ptr.Of(sq.NullString{}),
-		NTime:  ptr.Of(sq.NullTime{}),
-		NInt32: ptr.Of(sq.ValidFrom(gofakeit.Int32())),
+		NStr:   ptr.Of(sql.Null[string]{}),
+		NTime:  ptr.Of(sql.Null[time.Time]{}),
+		NInt32: ptr.Of(sql.Null[int32]{V: gofakeit.Int32(), Valid: true}),
 
 		VUUID:      ptr.Of(vuuid),
 		VStr:       &vstr,

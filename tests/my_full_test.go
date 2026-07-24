@@ -5,7 +5,7 @@ import (
 	"testing"
 	"unique"
 
-	"github.com/blink-io/x/ptr"
+	"github.com/blink-io/x/misc/ptr"
 	"github.com/sanity-io/litter"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

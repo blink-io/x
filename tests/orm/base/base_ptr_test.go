@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/blink-io/x/ptr"
+	"github.com/blink-io/x/misc/ptr"
 )
 
 type model struct {

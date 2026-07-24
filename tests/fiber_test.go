@@ -31,7 +31,6 @@ import (
 	"github.com/google/uuid"
 	"github.com/oklog/ulid/v2"
 	slogfiber "github.com/samber/slog-fiber"
-	"github.com/segmentio/ksuid"
 	"github.com/shamaton/msgpack/v3"
 	"github.com/stretchr/testify/require"
 )
@@ -191,11 +190,9 @@ func TestFiber_1(t *testing.T) {
 	app.Use(recover.New())
 	app.Use(requestid.New(requestid.Config{
 		Generator: func() string {
-			switch rand.Intn(3) {
+			switch rand.Intn(2) {
 			case 0:
 				return ulid.Make().String()
-			case 1:
-				return ksuid.New().String()
 			default:
 				return uuid.New().String()
 			}

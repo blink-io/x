@@ -7,7 +7,6 @@ import (
 	"testing"
 	"time"
 
-	qslog "github.com/blink-io/x/scheduler/quartz/logger/slog"
 	"github.com/reugn/go-quartz/job"
 	"github.com/reugn/go-quartz/logger"
 	"github.com/reugn/go-quartz/quartz"
@@ -37,17 +36,19 @@ func (s *svc) doRegister(rr ServiceRegistrar) error {
 var _ WithRegistrar = (*svc)(nil)
 
 func TestIface(t *testing.T) {
-	logger.SetDefault(qslog.New(slog.Default()))
-
 	ctx := context.Background()
-	sched := quartz.NewStdScheduler()
+
+	sched, err := quartz.NewStdScheduler(
+		quartz.WithLogger(logger.NewSlogLogger(ctx, slog.Default())),
+	)
+	require.NoError(t, err)
 
 	rr := NewServiceRegistrar(sched)
 	require.NotNil(t, rr)
 
 	var s = &svc{}
 
-	err := s.QuartzRegistrar(ctx)(ctx, rr)
+	err = s.QuartzRegistrar(ctx)(ctx, rr)
 	require.NoError(t, err)
 
 	sched.Start(ctx)

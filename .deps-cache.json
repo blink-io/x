@@ -1,0 +1,1773 @@
+{
+  "cel.dev/expr": {
+    "module": "cel.dev/expr",
+    "origin": "https://github.com/google/cel-spec",
+    "stars": 3902,
+    "stars_error": null,
+    "stars_owner_repo": "google/cel-spec",
+    "time": "2026-03-12T16:46:44Z",
+    "version": "v0.25.2"
+  },
+  "filippo.io/csrf": {
+    "module": "filippo.io/csrf",
+    "origin": "https://github.com/FiloSottile/csrf",
+    "stars": 48,
+    "stars_error": null,
+    "stars_owner_repo": "FiloSottile/csrf",
+    "time": "2025-08-10T21:49:08Z",
+    "version": "v0.2.1"
+  },
+  "github.com/42wim/httpsig": {
+    "module": "github.com/42wim/httpsig",
+    "origin": "https://github.com/42wim/httpsig",
+    "stars": 3,
+    "stars_error": null,
+    "stars_owner_repo": "42wim/httpsig",
+    "time": "2026-03-17T19:49:33Z",
+    "version": "v1.2.4"
+  },
+  "github.com/99designs/gqlgen": {
+    "module": "github.com/99designs/gqlgen",
+    "origin": "https://github.com/99designs/gqlgen",
+    "stars": 10738,
+    "stars_error": null,
+    "stars_owner_repo": "99designs/gqlgen",
+    "time": "2026-07-09T14:45:56Z",
+    "version": "v0.17.94"
+  },
+  "github.com/Azure/go-amqp": {
+    "module": "github.com/Azure/go-amqp",
+    "origin": "https://github.com/Azure/go-amqp",
+    "stars": 140,
+    "stars_error": null,
+    "stars_owner_repo": "Azure/go-amqp",
+    "time": "2026-06-08T21:41:10Z",
+    "version": "v1.7.0"
+  },
+  "github.com/BurntSushi/toml": {
+    "module": "github.com/BurntSushi/toml",
+    "origin": "https://github.com/BurntSushi/toml",
+    "stars": 4985,
+    "stars_error": null,
+    "stars_owner_repo": "BurntSushi/toml",
+    "time": "2025-12-18T12:15:22Z",
+    "version": "v1.6.0"
+  },
+  "github.com/IBM/sarama": {
+    "module": "github.com/IBM/sarama",
+    "origin": "https://github.com/IBM/sarama",
+    "stars": 12501,
+    "stars_error": null,
+    "stars_owner_repo": "IBM/sarama",
+    "time": "2026-07-13T19:29:29Z",
+    "version": "v1.60.0"
+  },
+  "github.com/Netflix/go-env": {
+    "module": "github.com/Netflix/go-env",
+    "origin": "https://github.com/Netflix/go-env",
+    "stars": 675,
+    "stars_error": null,
+    "stars_owner_repo": "Netflix/go-env",
+    "time": "2024-10-28T21:38:50Z",
+    "version": "v0.1.2"
+  },
+  "github.com/ProtonMail/gopenpgp/v2": {
+    "module": "github.com/ProtonMail/gopenpgp/v2",
+    "origin": "https://github.com/ProtonMail/gopenpgp",
+    "stars": 1234,
+    "stars_error": null,
+    "stars_owner_repo": "ProtonMail/gopenpgp",
+    "time": "2026-03-18T16:22:21Z",
+    "version": "v2.10.0"
+  },
+  "github.com/VictoriaMetrics/easyproto": {
+    "module": "github.com/VictoriaMetrics/easyproto",
+    "origin": "https://github.com/VictoriaMetrics/easyproto",
+    "stars": 291,
+    "stars_error": null,
+    "stars_owner_repo": "VictoriaMetrics/easyproto",
+    "time": "2026-02-17T13:47:05Z",
+    "version": "v1.2.0"
+  },
+  "github.com/alexedwards/argon2id": {
+    "module": "github.com/alexedwards/argon2id",
+    "origin": "https://github.com/alexedwards/argon2id",
+    "stars": 675,
+    "stars_error": null,
+    "stars_owner_repo": "alexedwards/argon2id",
+    "time": "2023-10-21T16:59:11Z",
+    "version": "v1.0.0"
+  },
+  "github.com/alexlast/bunzap": {
+    "module": "github.com/alexlast/bunzap",
+    "origin": "https://github.com/alexlast/bunzap",
+    "stars": 6,
+    "stars_error": null,
+    "stars_owner_repo": "alexlast/bunzap",
+    "time": "2023-05-12T11:49:24Z",
+    "version": "v0.1.0"
+  },
+  "github.com/amazon-ion/ion-go": {
+    "module": "github.com/amazon-ion/ion-go",
+    "origin": "https://github.com/amazon-ion/ion-go",
+    "stars": 181,
+    "stars_error": null,
+    "stars_owner_repo": "amazon-ion/ion-go",
+    "time": "2024-06-06T21:33:27Z",
+    "version": "v1.5.0"
+  },
+  "github.com/apache/pulsar-client-go": {
+    "module": "github.com/apache/pulsar-client-go",
+    "origin": "https://github.com/apache/pulsar-client-go",
+    "stars": 744,
+    "stars_error": null,
+    "stars_owner_repo": "apache/pulsar-client-go",
+    "time": "2026-07-14T03:07:20Z",
+    "version": "v0.21.0"
+  },
+  "github.com/apache/thrift": {
+    "module": "github.com/apache/thrift",
+    "origin": "https://github.com/apache/thrift",
+    "stars": 10940,
+    "stars_error": null,
+    "stars_owner_repo": "apache/thrift",
+    "time": "2026-07-05T20:04:17Z",
+    "version": "v0.24.0"
+  },
+  "github.com/apple/pkl-go": {
+    "module": "github.com/apple/pkl-go",
+    "origin": "https://github.com/apple/pkl-go",
+    "stars": 334,
+    "stars_error": null,
+    "stars_owner_repo": "apple/pkl-go",
+    "time": "2026-07-09T18:56:09Z",
+    "version": "v0.14.0"
+  },
+  "github.com/asaskevich/govalidator/v12": {
+    "module": "github.com/asaskevich/govalidator/v12",
+    "origin": "https://github.com/asaskevich/govalidator",
+    "stars": 6211,
+    "stars_error": null,
+    "stars_owner_repo": "asaskevich/govalidator",
+    "time": "2026-04-14T11:21:18Z",
+    "version": "v12.0.0"
+  },
+  "github.com/avast/retry-go/v4": {
+    "module": "github.com/avast/retry-go/v4",
+    "origin": "https://github.com/avast/retry-go",
+    "stars": 2940,
+    "stars_error": null,
+    "stars_owner_repo": "avast/retry-go",
+    "time": "2025-10-14T18:38:31Z",
+    "version": "v4.7.0"
+  },
+  "github.com/avast/retry-go/v5": {
+    "module": "github.com/avast/retry-go/v5",
+    "origin": "https://github.com/avast/retry-go",
+    "stars": 2940,
+    "stars_error": null,
+    "stars_owner_repo": "avast/retry-go",
+    "time": "2025-11-24T14:07:52Z",
+    "version": "v5.0.0"
+  },
+  "github.com/bartventer/httpcache": {
+    "module": "github.com/bartventer/httpcache",
+    "origin": "https://github.com/bartventer/httpcache",
+    "stars": 46,
+    "stars_error": null,
+    "stars_owner_repo": "bartventer/httpcache",
+    "time": "2026-03-13T13:49:07Z",
+    "version": "v0.13.0"
+  },
+  "github.com/beevik/etree": {
+    "module": "github.com/beevik/etree",
+    "origin": "https://github.com/beevik/etree",
+    "stars": 1666,
+    "stars_error": null,
+    "stars_owner_repo": "beevik/etree",
+    "time": "2026-07-12T22:38:52Z",
+    "version": "v1.7.0"
+  },
+  "github.com/bits-and-blooms/bloom/v3": {
+    "module": "github.com/bits-and-blooms/bloom/v3",
+    "origin": "https://github.com/bits-and-blooms/bloom",
+    "stars": 2800,
+    "stars_error": null,
+    "stars_owner_repo": "bits-and-blooms/bloom",
+    "time": "2025-10-26T15:44:59Z",
+    "version": "v3.7.1"
+  },
+  "github.com/blink-io/hyperbun": {
+    "module": "github.com/blink-io/hyperbun",
+    "origin": "https://github.com/blink-io/hyperbun",
+    "stars": 0,
+    "stars_error": null,
+    "stars_owner_repo": "blink-io/hyperbun",
+    "time": "2025-08-26T09:26:51Z",
+    "version": "v0.0.0-20250826092651-ce41bbffc41b"
+  },
+  "github.com/blink-io/hypersql": {
+    "module": "github.com/blink-io/hypersql",
+    "origin": "https://github.com/blink-io/hypersql",
+    "stars": 0,
+    "stars_error": null,
+    "stars_owner_repo": "blink-io/hypersql",
+    "time": "2025-07-15T10:04:53Z",
+    "version": "v0.0.0-20250715100453-239dcf60539c"
+  },
+  "github.com/blink-io/kratos-transport/transport/http3": {
+    "module": "github.com/blink-io/kratos-transport/transport/http3",
+    "origin": "https://github.com/blink-io/kratos-transport",
+    "stars": 0,
+    "stars_error": null,
+    "stars_owner_repo": "blink-io/kratos-transport",
+    "time": "2026-07-11T04:45:23Z",
+    "version": "v0.0.0-20260711044523-1d14c1b2d443"
+  },
+  "github.com/blink-io/opt": {
+    "module": "github.com/blink-io/opt",
+    "origin": "https://github.com/blink-io/opt",
+    "stars": 0,
+    "stars_error": null,
+    "stars_owner_repo": "blink-io/opt",
+    "time": "2025-08-26T09:01:12Z",
+    "version": "v0.0.0-20250826090112-aa8ab860d240"
+  },
+  "github.com/bmatcuk/doublestar/v4": {
+    "module": "github.com/bmatcuk/doublestar/v4",
+    "origin": "https://github.com/bmatcuk/doublestar",
+    "stars": 712,
+    "stars_error": null,
+    "stars_owner_repo": "bmatcuk/doublestar",
+    "time": "2026-01-25T20:09:12Z",
+    "version": "v4.10.0"
+  },
+  "github.com/brianvoe/gofakeit/v7": {
+    "module": "github.com/brianvoe/gofakeit/v7",
+    "origin": "https://github.com/brianvoe/gofakeit",
+    "stars": 5372,
+    "stars_error": null,
+    "stars_owner_repo": "brianvoe/gofakeit",
+    "time": "2026-05-15T16:18:33Z",
+    "version": "v7.15.0"
+  },
+  "github.com/caarlos0/env/v11": {
+    "module": "github.com/caarlos0/env/v11",
+    "origin": "https://github.com/caarlos0/env",
+    "stars": 6271,
+    "stars_error": null,
+    "stars_owner_repo": "caarlos0/env",
+    "time": "2026-05-01T17:01:22Z",
+    "version": "v11.4.1"
+  },
+  "github.com/carlmjohnson/requests": {
+    "module": "github.com/carlmjohnson/requests",
+    "origin": "https://github.com/carlmjohnson/requests",
+    "stars": 1671,
+    "stars_error": null,
+    "stars_owner_repo": "carlmjohnson/requests",
+    "time": "2025-09-10T17:03:59Z",
+    "version": "v0.25.1"
+  },
+  "github.com/cenkalti/backoff/v4": {
+    "module": "github.com/cenkalti/backoff/v4",
+    "origin": "https://github.com/cenkalti/backoff",
+    "stars": 4040,
+    "stars_error": null,
+    "stars_owner_repo": "cenkalti/backoff",
+    "time": "2024-01-02T22:56:19Z",
+    "version": "v4.3.0"
+  },
+  "github.com/cespare/xxhash/v2": {
+    "module": "github.com/cespare/xxhash/v2",
+    "origin": "https://github.com/cespare/xxhash",
+    "stars": 2138,
+    "stars_error": null,
+    "stars_owner_repo": "cespare/xxhash",
+    "time": "2024-04-04T20:00:10Z",
+    "version": "v2.3.0"
+  },
+  "github.com/coder/websocket": {
+    "module": "github.com/coder/websocket",
+    "origin": "https://github.com/coder/websocket",
+    "stars": 5351,
+    "stars_error": null,
+    "stars_owner_repo": "coder/websocket",
+    "time": "2026-06-15T03:25:28Z",
+    "version": "v1.8.15"
+  },
+  "github.com/cohesivestack/valgo": {
+    "module": "github.com/cohesivestack/valgo",
+    "origin": "https://github.com/cohesivestack/valgo",
+    "stars": 508,
+    "stars_error": null,
+    "stars_owner_repo": "cohesivestack/valgo",
+    "time": "2026-07-19T02:19:24Z",
+    "version": "v0.8.1"
+  },
+  "github.com/coreos/go-oidc/v3": {
+    "module": "github.com/coreos/go-oidc/v3",
+    "origin": "https://github.com/coreos/go-oidc",
+    "stars": 2443,
+    "stars_error": null,
+    "stars_owner_repo": "coreos/go-oidc",
+    "time": "2026-07-08T18:21:19Z",
+    "version": "v3.20.0"
+  },
+  "github.com/danielgtaylor/huma/v2": {
+    "module": "github.com/danielgtaylor/huma/v2",
+    "origin": "https://github.com/danielgtaylor/huma",
+    "stars": 4261,
+    "stars_error": null,
+    "stars_owner_repo": "danielgtaylor/huma",
+    "time": "2026-07-15T15:09:28Z",
+    "version": "v2.39.0"
+  },
+  "github.com/dgraph-io/ristretto/v2": {
+    "module": "github.com/dgraph-io/ristretto/v2",
+    "origin": "https://github.com/dgraph-io/ristretto",
+    "stars": 6969,
+    "stars_error": null,
+    "stars_owner_repo": "dgraph-io/ristretto",
+    "time": "2026-07-07T21:37:59Z",
+    "version": "v2.4.2"
+  },
+  "github.com/dlclark/regexp2": {
+    "module": "github.com/dlclark/regexp2",
+    "origin": "https://github.com/dlclark/regexp2",
+    "stars": 1181,
+    "stars_error": null,
+    "stars_owner_repo": "dlclark/regexp2",
+    "time": "2026-04-18T22:12:01Z",
+    "version": "v1.12.0"
+  },
+  "github.com/dustin/go-humanize": {
+    "module": "github.com/dustin/go-humanize",
+    "origin": "https://github.com/dustin/go-humanize",
+    "stars": 4808,
+    "stars_error": null,
+    "stars_owner_repo": "dustin/go-humanize",
+    "time": "2023-01-10T06:44:38Z",
+    "version": "v1.0.1"
+  },
+  "github.com/elastic/elastic-transport-go/v8": {
+    "module": "github.com/elastic/elastic-transport-go/v8",
+    "origin": "https://github.com/elastic/elastic-transport-go",
+    "stars": 14,
+    "stars_error": null,
+    "stars_owner_repo": "elastic/elastic-transport-go",
+    "time": "2026-04-16T11:45:47Z",
+    "version": "v8.11.0"
+  },
+  "github.com/elastic/go-elasticsearch/v9": {
+    "module": "github.com/elastic/go-elasticsearch/v9",
+    "origin": "https://github.com/elastic/go-elasticsearch",
+    "stars": 6059,
+    "stars_error": null,
+    "stars_owner_repo": "elastic/go-elasticsearch",
+    "time": "2026-06-22T11:29:26Z",
+    "version": "v9.4.2"
+  },
+  "github.com/elliotchance/pie/v2": {
+    "module": "github.com/elliotchance/pie/v2",
+    "origin": "https://github.com/elliotchance/pie",
+    "stars": 2036,
+    "stars_error": null,
+    "stars_owner_repo": "elliotchance/pie",
+    "time": "2024-11-26T03:06:44Z",
+    "version": "v2.9.1"
+  },
+  "github.com/ergochat/readline": {
+    "module": "github.com/ergochat/readline",
+    "origin": "https://github.com/ergochat/readline",
+    "stars": 54,
+    "stars_error": null,
+    "stars_owner_repo": "ergochat/readline",
+    "time": "2024-09-09T05:06:27Z",
+    "version": "v0.1.3"
+  },
+  "github.com/failsafe-go/failsafe-go": {
+    "module": "github.com/failsafe-go/failsafe-go",
+    "origin": "https://github.com/failsafe-go/failsafe-go",
+    "stars": 2232,
+    "stars_error": null,
+    "stars_owner_repo": "failsafe-go/failsafe-go",
+    "time": "2026-02-09T03:21:46Z",
+    "version": "v0.9.6"
+  },
+  "github.com/fatih/color": {
+    "module": "github.com/fatih/color",
+    "origin": "https://github.com/fatih/color",
+    "stars": 7980,
+    "stars_error": null,
+    "stars_owner_repo": "fatih/color",
+    "time": "2026-03-20T08:53:23Z",
+    "version": "v1.19.0"
+  },
+  "github.com/fxamacker/cbor/v2": {
+    "module": "github.com/fxamacker/cbor/v2",
+    "origin": "https://github.com/fxamacker/cbor",
+    "stars": 1071,
+    "stars_error": null,
+    "stars_owner_repo": "fxamacker/cbor",
+    "time": "2026-05-04T01:03:34Z",
+    "version": "v2.9.2"
+  },
+  "github.com/georgysavva/scany/v2": {
+    "module": "github.com/georgysavva/scany/v2",
+    "origin": "https://github.com/georgysavva/scany",
+    "stars": 1521,
+    "stars_error": null,
+    "stars_owner_repo": "georgysavva/scany",
+    "time": "2025-03-19T19:57:54Z",
+    "version": "v2.1.4"
+  },
+  "github.com/getsentry/sentry-go": {
+    "module": "github.com/getsentry/sentry-go",
+    "origin": "https://github.com/getsentry/sentry-go",
+    "stars": 1098,
+    "stars_error": null,
+    "stars_owner_repo": "getsentry/sentry-go",
+    "time": "2026-07-14T11:23:22Z",
+    "version": "v0.48.0"
+  },
+  "github.com/go-chi/chi/v5": {
+    "module": "github.com/go-chi/chi/v5",
+    "origin": "https://github.com/go-chi/chi",
+    "stars": 22573,
+    "stars_error": null,
+    "stars_owner_repo": "go-chi/chi",
+    "time": "2026-07-05T18:51:45Z",
+    "version": "v5.3.1"
+  },
+  "github.com/go-co-op/gocron-redis-lock/v2": {
+    "module": "github.com/go-co-op/gocron-redis-lock/v2",
+    "origin": "https://github.com/go-co-op/gocron-redis-lock",
+    "stars": 71,
+    "stars_error": null,
+    "stars_owner_repo": "go-co-op/gocron-redis-lock",
+    "time": "2025-10-06T20:38:27Z",
+    "version": "v2.2.1"
+  },
+  "github.com/go-co-op/gocron/v2": {
+    "module": "github.com/go-co-op/gocron/v2",
+    "origin": "https://github.com/go-co-op/gocron",
+    "stars": 7109,
+    "stars_error": null,
+    "stars_owner_repo": "go-co-op/gocron",
+    "time": "2026-07-09T18:36:41Z",
+    "version": "v2.22.0"
+  },
+  "github.com/go-crypt/crypt": {
+    "module": "github.com/go-crypt/crypt",
+    "origin": "https://github.com/go-crypt/crypt",
+    "stars": 27,
+    "stars_error": null,
+    "stars_owner_repo": "go-crypt/crypt",
+    "time": "2026-05-22T06:34:00Z",
+    "version": "v0.14.15"
+  },
+  "github.com/go-faker/faker/v4": {
+    "module": "github.com/go-faker/faker/v4",
+    "origin": "https://github.com/go-faker/faker",
+    "stars": 857,
+    "stars_error": null,
+    "stars_owner_repo": "go-faker/faker",
+    "time": "2026-07-19T11:50:43Z",
+    "version": "v4.10.0"
+  },
+  "github.com/go-json-experiment/json": {
+    "module": "github.com/go-json-experiment/json",
+    "origin": "https://github.com/go-json-experiment/json",
+    "stars": 545,
+    "stars_error": null,
+    "stars_owner_repo": "go-json-experiment/json",
+    "time": "2026-06-23T18:19:47Z",
+    "version": "v0.0.0-20260623181947-01eb4420fa68"
+  },
+  "github.com/go-kratos/kratos/v3": {
+    "module": "github.com/go-kratos/kratos/v3",
+    "origin": "https://github.com/go-kratos/kratos",
+    "stars": 25803,
+    "stars_error": null,
+    "stars_owner_repo": "go-kratos/kratos",
+    "time": "2026-06-26T12:57:23Z",
+    "version": "v3.0.0"
+  },
+  "github.com/go-openapi/inflect": {
+    "module": "github.com/go-openapi/inflect",
+    "origin": "https://github.com/go-openapi/inflect",
+    "stars": 26,
+    "stars_error": null,
+    "stars_owner_repo": "go-openapi/inflect",
+    "time": "2026-07-01T08:22:13Z",
+    "version": "v1.0.0"
+  },
+  "github.com/go-resty/resty/v2": {
+    "module": "github.com/go-resty/resty/v2",
+    "origin": "https://github.com/go-resty/resty",
+    "stars": 11729,
+    "stars_error": null,
+    "stars_owner_repo": "go-resty/resty",
+    "time": "2026-02-14T22:33:41Z",
+    "version": "v2.17.2"
+  },
+  "github.com/go-task/slim-sprig/v3": {
+    "module": "github.com/go-task/slim-sprig/v3",
+    "origin": "https://github.com/go-task/slim-sprig",
+    "stars": 81,
+    "stars_error": null,
+    "stars_owner_repo": "go-task/slim-sprig",
+    "time": "2023-09-14T01:46:41Z",
+    "version": "v3.0.0"
+  },
+  "github.com/go-test/deep": {
+    "module": "github.com/go-test/deep",
+    "origin": "https://github.com/go-test/deep",
+    "stars": 789,
+    "stars_error": null,
+    "stars_owner_repo": "go-test/deep",
+    "time": "2024-06-23T16:27:23Z",
+    "version": "v1.1.1"
+  },
+  "github.com/go-viper/mapstructure/v2": {
+    "module": "github.com/go-viper/mapstructure/v2",
+    "origin": "https://github.com/go-viper/mapstructure",
+    "stars": 476,
+    "stars_error": null,
+    "stars_owner_repo": "go-viper/mapstructure",
+    "time": "2026-01-12T17:24:26Z",
+    "version": "v2.5.0"
+  },
+  "github.com/goccy/go-json": {
+    "module": "github.com/goccy/go-json",
+    "origin": "https://github.com/goccy/go-json",
+    "stars": 3696,
+    "stars_error": null,
+    "stars_owner_repo": "goccy/go-json",
+    "time": "2025-10-28T00:14:29Z",
+    "version": "v0.10.6"
+  },
+  "github.com/gocraft/dbr/v2": {
+    "module": "github.com/gocraft/dbr/v2",
+    "origin": "https://github.com/gocraft/dbr",
+    "stars": 1850,
+    "stars_error": null,
+    "stars_owner_repo": "gocraft/dbr",
+    "time": "2024-10-04T21:24:02Z",
+    "version": "v2.7.7"
+  },
+  "github.com/gofiber/contrib/v3/monitor": {
+    "module": "github.com/gofiber/contrib/v3/monitor",
+    "origin": "https://github.com/gofiber/contrib",
+    "stars": 301,
+    "stars_error": null,
+    "stars_owner_repo": "gofiber/contrib",
+    "time": "2026-07-08T21:08:07Z",
+    "version": "v1.1.1"
+  },
+  "github.com/gofiber/contrib/v3/otel": {
+    "module": "github.com/gofiber/contrib/v3/otel",
+    "origin": "https://github.com/gofiber/contrib",
+    "stars": 301,
+    "stars_error": null,
+    "stars_owner_repo": "gofiber/contrib",
+    "time": "2026-07-15T21:07:48Z",
+    "version": "v1.2.2"
+  },
+  "github.com/gofiber/fiber/v3": {
+    "module": "github.com/gofiber/fiber/v3",
+    "origin": "https://github.com/gofiber/fiber",
+    "stars": 40008,
+    "stars_error": null,
+    "stars_owner_repo": "gofiber/fiber",
+    "time": "2026-07-02T07:10:30Z",
+    "version": "v3.4.0"
+  },
+  "github.com/gofrs/uuid/v5": {
+    "module": "github.com/gofrs/uuid/v5",
+    "origin": "https://github.com/gofrs/uuid",
+    "stars": 1814,
+    "stars_error": null,
+    "stars_owner_repo": "gofrs/uuid",
+    "time": "2025-10-30T03:30:36Z",
+    "version": "v5.4.0"
+  },
+  "github.com/gogo/protobuf": {
+    "module": "github.com/gogo/protobuf",
+    "origin": "",
+    "stars": 5665,
+    "stars_error": null,
+    "stars_owner_repo": "gogo/protobuf",
+    "time": "2021-01-10T08:01:47Z",
+    "version": "v1.3.2"
+  },
+  "github.com/gomodule/redigo": {
+    "module": "github.com/gomodule/redigo",
+    "origin": "https://github.com/gomodule/redigo",
+    "stars": 9855,
+    "stars_error": null,
+    "stars_owner_repo": "gomodule/redigo",
+    "time": "2025-10-08T17:28:03Z",
+    "version": "v1.9.3"
+  },
+  "github.com/google/flatbuffers": {
+    "module": "github.com/google/flatbuffers",
+    "origin": "https://github.com/google/flatbuffers",
+    "stars": 26253,
+    "stars_error": null,
+    "stars_owner_repo": "google/flatbuffers",
+    "time": "2025-12-19T23:06:07Z",
+    "version": "v25.12.19+incompatible"
+  },
+  "github.com/google/uuid": {
+    "module": "github.com/google/uuid",
+    "origin": "https://github.com/google/uuid",
+    "stars": 6118,
+    "stars_error": null,
+    "stars_owner_repo": "google/uuid",
+    "time": "2024-01-23T18:54:04Z",
+    "version": "v1.6.0"
+  },
+  "github.com/gorilla/csrf": {
+    "module": "github.com/gorilla/csrf",
+    "origin": "https://github.com/gorilla/csrf",
+    "stars": 1200,
+    "stars_error": null,
+    "stars_owner_repo": "gorilla/csrf",
+    "time": "2025-01-23T20:14:50Z",
+    "version": "v1.7.3"
+  },
+  "github.com/grpc-ecosystem/go-grpc-middleware/v2": {
+    "module": "github.com/grpc-ecosystem/go-grpc-middleware/v2",
+    "origin": "https://github.com/grpc-ecosystem/go-grpc-middleware",
+    "stars": 6760,
+    "stars_error": null,
+    "stars_owner_repo": "grpc-ecosystem/go-grpc-middleware",
+    "time": "2025-11-01T02:08:10Z",
+    "version": "v2.3.3"
+  },
+  "github.com/guregu/null/v6": {
+    "module": "github.com/guregu/null/v6",
+    "origin": "https://github.com/guregu/null",
+    "stars": 2069,
+    "stars_error": null,
+    "stars_owner_repo": "guregu/null",
+    "time": "2025-03-05T18:42:54Z",
+    "version": "v6.0.0"
+  },
+  "github.com/h2non/filetype": {
+    "module": "github.com/h2non/filetype",
+    "origin": "",
+    "stars": 2299,
+    "stars_error": null,
+    "stars_owner_repo": "h2non/filetype",
+    "time": "2021-11-21T11:21:08Z",
+    "version": "v1.1.3"
+  },
+  "github.com/hashicorp/consul/api": {
+    "module": "github.com/hashicorp/consul/api",
+    "origin": "https://github.com/hashicorp/consul",
+    "stars": 30009,
+    "stars_error": null,
+    "stars_owner_repo": "hashicorp/consul",
+    "time": "2026-07-07T14:45:50Z",
+    "version": "v1.34.4"
+  },
+  "github.com/hashicorp/go-retryablehttp": {
+    "module": "github.com/hashicorp/go-retryablehttp",
+    "origin": "https://github.com/hashicorp/go-retryablehttp",
+    "stars": 2340,
+    "stars_error": null,
+    "stars_owner_repo": "hashicorp/go-retryablehttp",
+    "time": "2025-06-18T14:25:10Z",
+    "version": "v0.7.8"
+  },
+  "github.com/hashicorp/golang-lru/v2": {
+    "module": "github.com/hashicorp/golang-lru/v2",
+    "origin": "https://github.com/hashicorp/golang-lru",
+    "stars": 5104,
+    "stars_error": null,
+    "stars_owner_repo": "hashicorp/golang-lru",
+    "time": "2023-09-21T18:26:40Z",
+    "version": "v2.0.7"
+  },
+  "github.com/hashicorp/mdns": {
+    "module": "github.com/hashicorp/mdns",
+    "origin": "https://github.com/hashicorp/mdns",
+    "stars": 1369,
+    "stars_error": null,
+    "stars_owner_repo": "hashicorp/mdns",
+    "time": "2026-06-11T18:46:46Z",
+    "version": "v1.0.7"
+  },
+  "github.com/http-wasm/http-wasm-host-go": {
+    "module": "github.com/http-wasm/http-wasm-host-go",
+    "origin": "https://github.com/http-wasm/http-wasm-host-go",
+    "stars": 37,
+    "stars_error": null,
+    "stars_owner_repo": "http-wasm/http-wasm-host-go",
+    "time": "2024-10-03T15:58:07Z",
+    "version": "v0.7.0"
+  },
+  "github.com/huml-lang/go-huml": {
+    "module": "github.com/huml-lang/go-huml",
+    "origin": "https://github.com/huml-lang/go-huml",
+    "stars": 46,
+    "stars_error": null,
+    "stars_owner_repo": "huml-lang/go-huml",
+    "time": "2026-01-10T17:16:54Z",
+    "version": "v0.3.0"
+  },
+  "github.com/imroc/req/v3": {
+    "module": "github.com/imroc/req/v3",
+    "origin": "https://github.com/imroc/req",
+    "stars": 4824,
+    "stars_error": null,
+    "stars_owner_repo": "imroc/req",
+    "time": "2026-07-02T05:57:34Z",
+    "version": "v3.59.0"
+  },
+  "github.com/jackc/pgx/v5": {
+    "module": "github.com/jackc/pgx/v5",
+    "origin": "https://github.com/jackc/pgx",
+    "stars": 14060,
+    "stars_error": null,
+    "stars_owner_repo": "jackc/pgx",
+    "time": "2026-06-03T00:41:58Z",
+    "version": "v5.10.0"
+  },
+  "github.com/jackc/puddle/v2": {
+    "module": "github.com/jackc/puddle/v2",
+    "origin": "https://github.com/jackc/puddle",
+    "stars": 419,
+    "stars_error": null,
+    "stars_owner_repo": "jackc/puddle",
+    "time": "2024-09-10T11:12:31Z",
+    "version": "v2.2.2"
+  },
+  "github.com/jaevor/go-nanoid": {
+    "module": "github.com/jaevor/go-nanoid",
+    "origin": "https://github.com/jaevor/go-nanoid",
+    "stars": 440,
+    "stars_error": null,
+    "stars_owner_repo": "jaevor/go-nanoid",
+    "time": "2024-04-10T00:44:25Z",
+    "version": "v1.4.0"
+  },
+  "github.com/jaswdr/faker/v2": {
+    "module": "github.com/jaswdr/faker/v2",
+    "origin": "https://github.com/jaswdr/faker",
+    "stars": 644,
+    "stars_error": null,
+    "stars_owner_repo": "jaswdr/faker",
+    "time": "2025-12-05T14:56:33Z",
+    "version": "v2.9.1"
+  },
+  "github.com/jellydator/ttlcache/v3": {
+    "module": "github.com/jellydator/ttlcache/v3",
+    "origin": "https://github.com/jellydator/ttlcache",
+    "stars": 1267,
+    "stars_error": null,
+    "stars_owner_repo": "jellydator/ttlcache",
+    "time": "2026-06-22T13:40:24Z",
+    "version": "v3.4.1"
+  },
+  "github.com/jfcg/sorty/v2": {
+    "module": "github.com/jfcg/sorty/v2",
+    "origin": "https://github.com/jfcg/sorty",
+    "stars": 145,
+    "stars_error": null,
+    "stars_owner_repo": "jfcg/sorty",
+    "time": "2026-05-21T14:26:33Z",
+    "version": "v2.1.3"
+  },
+  "github.com/joho/godotenv": {
+    "module": "github.com/joho/godotenv",
+    "origin": "https://github.com/joho/godotenv",
+    "stars": 10548,
+    "stars_error": null,
+    "stars_owner_repo": "joho/godotenv",
+    "time": "2023-02-05T21:47:38Z",
+    "version": "v1.5.1"
+  },
+  "github.com/justinas/nosurf": {
+    "module": "github.com/justinas/nosurf",
+    "origin": "https://github.com/justinas/nosurf",
+    "stars": 1745,
+    "stars_error": null,
+    "stars_owner_repo": "justinas/nosurf",
+    "time": "2025-05-13T12:21:47Z",
+    "version": "v1.2.0"
+  },
+  "github.com/karlseguin/ccache/v3": {
+    "module": "github.com/karlseguin/ccache/v3",
+    "origin": "https://github.com/karlseguin/ccache",
+    "stars": 1395,
+    "stars_error": null,
+    "stars_owner_repo": "karlseguin/ccache",
+    "time": "2026-01-08T23:27:17Z",
+    "version": "v3.0.8"
+  },
+  "github.com/klauspost/compress": {
+    "module": "github.com/klauspost/compress",
+    "origin": "https://github.com/klauspost/compress",
+    "stars": 5583,
+    "stars_error": null,
+    "stars_owner_repo": "klauspost/compress",
+    "time": "2026-07-20T09:36:27Z",
+    "version": "v1.19.1"
+  },
+  "github.com/klauspost/cpuid/v2": {
+    "module": "github.com/klauspost/cpuid/v2",
+    "origin": "https://github.com/klauspost/cpuid",
+    "stars": 1211,
+    "stars_error": null,
+    "stars_owner_repo": "klauspost/cpuid",
+    "time": "2026-06-17T09:04:27Z",
+    "version": "v2.4.0"
+  },
+  "github.com/labstack/echo/v5": {
+    "module": "github.com/labstack/echo/v5",
+    "origin": "https://github.com/labstack/echo",
+    "stars": 32550,
+    "stars_error": null,
+    "stars_owner_repo": "labstack/echo",
+    "time": "2026-07-21T16:09:02Z",
+    "version": "v5.3.1"
+  },
+  "github.com/lib/pq": {
+    "module": "github.com/lib/pq",
+    "origin": "https://github.com/lib/pq",
+    "stars": 9913,
+    "stars_error": null,
+    "stars_owner_repo": "lib/pq",
+    "time": "2026-04-03T15:45:16Z",
+    "version": "v1.12.3"
+  },
+  "github.com/linkedin/goavro/v2": {
+    "module": "github.com/linkedin/goavro/v2",
+    "origin": "https://github.com/linkedin/goavro",
+    "stars": 1065,
+    "stars_error": null,
+    "stars_owner_repo": "linkedin/goavro",
+    "time": "2026-01-14T04:55:49Z",
+    "version": "v2.15.0"
+  },
+  "github.com/lithammer/shortuuid/v4": {
+    "module": "github.com/lithammer/shortuuid/v4",
+    "origin": "https://github.com/lithammer/shortuuid",
+    "stars": 1395,
+    "stars_error": null,
+    "stars_owner_repo": "lithammer/shortuuid",
+    "time": "2024-12-02T07:40:50Z",
+    "version": "v4.2.0"
+  },
+  "github.com/lmittmann/tint": {
+    "module": "github.com/lmittmann/tint",
+    "origin": "https://github.com/lmittmann/tint",
+    "stars": 1325,
+    "stars_error": null,
+    "stars_owner_repo": "lmittmann/tint",
+    "time": "2026-07-12T13:35:28Z",
+    "version": "v1.2.0"
+  },
+  "github.com/madflojo/testcerts": {
+    "module": "github.com/madflojo/testcerts",
+    "origin": "https://github.com/madflojo/testcerts",
+    "stars": 85,
+    "stars_error": null,
+    "stars_owner_repo": "madflojo/testcerts",
+    "time": "2025-11-08T15:54:36Z",
+    "version": "v1.5.0"
+  },
+  "github.com/matoous/go-nanoid/v2": {
+    "module": "github.com/matoous/go-nanoid/v2",
+    "origin": "https://github.com/matoous/go-nanoid",
+    "stars": 1594,
+    "stars_error": null,
+    "stars_owner_repo": "matoous/go-nanoid",
+    "time": "2024-05-16T13:54:20Z",
+    "version": "v2.1.0"
+  },
+  "github.com/matthewhartstonge/argon2": {
+    "module": "github.com/matthewhartstonge/argon2",
+    "origin": "https://github.com/matthewhartstonge/argon2",
+    "stars": 149,
+    "stars_error": null,
+    "stars_owner_repo": "matthewhartstonge/argon2",
+    "time": "2026-07-12T23:22:44Z",
+    "version": "v1.5.6"
+  },
+  "github.com/mattn/go-runewidth": {
+    "module": "github.com/mattn/go-runewidth",
+    "origin": "https://github.com/mattn/go-runewidth",
+    "stars": 714,
+    "stars_error": null,
+    "stars_owner_repo": "mattn/go-runewidth",
+    "time": "2026-07-24T01:06:52Z",
+    "version": "v0.0.27"
+  },
+  "github.com/meilisearch/meilisearch-go": {
+    "module": "github.com/meilisearch/meilisearch-go",
+    "origin": "https://github.com/meilisearch/meilisearch-go",
+    "stars": 674,
+    "stars_error": null,
+    "stars_owner_repo": "meilisearch/meilisearch-go",
+    "time": "2026-06-01T18:09:49Z",
+    "version": "v0.36.3"
+  },
+  "github.com/mholt/archives": {
+    "module": "github.com/mholt/archives",
+    "origin": "https://github.com/mholt/archives",
+    "stars": 432,
+    "stars_error": null,
+    "stars_owner_repo": "mholt/archives",
+    "time": "2025-10-09T20:58:13Z",
+    "version": "v0.1.5"
+  },
+  "github.com/miekg/dns": {
+    "module": "github.com/miekg/dns",
+    "origin": "https://github.com/miekg/dns",
+    "stars": 8734,
+    "stars_error": null,
+    "stars_owner_repo": "miekg/dns",
+    "time": "2026-01-22T08:23:52Z",
+    "version": "v1.1.72"
+  },
+  "github.com/minio/highwayhash": {
+    "module": "github.com/minio/highwayhash",
+    "origin": "https://github.com/minio/highwayhash",
+    "stars": 957,
+    "stars_error": null,
+    "stars_owner_repo": "minio/highwayhash",
+    "time": "2025-10-30T10:05:05Z",
+    "version": "v1.0.4"
+  },
+  "github.com/minio/minlz": {
+    "module": "github.com/minio/minlz",
+    "origin": "https://github.com/minio/minlz",
+    "stars": 148,
+    "stars_error": null,
+    "stars_owner_repo": "minio/minlz",
+    "time": "2026-07-13T08:43:28Z",
+    "version": "v1.2.0"
+  },
+  "github.com/montanaflynn/stats": {
+    "module": "github.com/montanaflynn/stats",
+    "origin": "https://github.com/montanaflynn/stats",
+    "stars": 3022,
+    "stars_error": null,
+    "stars_owner_repo": "montanaflynn/stats",
+    "time": "2026-07-17T16:49:30Z",
+    "version": "v0.12.2"
+  },
+  "github.com/nats-io/nats.go": {
+    "module": "github.com/nats-io/nats.go",
+    "origin": "https://github.com/nats-io/nats.go",
+    "stars": 6696,
+    "stars_error": null,
+    "stars_owner_repo": "nats-io/nats.go",
+    "time": "2026-05-07T09:45:00Z",
+    "version": "v1.52.0"
+  },
+  "github.com/ncruces/go-strftime": {
+    "module": "github.com/ncruces/go-strftime",
+    "origin": "https://github.com/ncruces/go-strftime",
+    "stars": 18,
+    "stars_error": null,
+    "stars_owner_repo": "ncruces/go-strftime",
+    "time": "2025-10-08T11:45:18Z",
+    "version": "v1.0.0"
+  },
+  "github.com/negrel/conc": {
+    "module": "github.com/negrel/conc",
+    "origin": "https://github.com/negrel/conc",
+    "stars": 53,
+    "stars_error": null,
+    "stars_owner_repo": "negrel/conc",
+    "time": "2025-03-04T21:14:27Z",
+    "version": "v0.5.0"
+  },
+  "github.com/nicksnyder/go-i18n/v2": {
+    "module": "github.com/nicksnyder/go-i18n/v2",
+    "origin": "https://github.com/nicksnyder/go-i18n",
+    "stars": 3535,
+    "stars_error": null,
+    "stars_owner_repo": "nicksnyder/go-i18n",
+    "time": "2026-01-01T01:21:16Z",
+    "version": "v2.6.1"
+  },
+  "github.com/nyaruka/phonenumbers": {
+    "module": "github.com/nyaruka/phonenumbers",
+    "origin": "https://github.com/nyaruka/phonenumbers",
+    "stars": 1584,
+    "stars_error": null,
+    "stars_owner_repo": "nyaruka/phonenumbers",
+    "time": "2026-07-15T14:52:45Z",
+    "version": "v1.8.1"
+  },
+  "github.com/oklog/ulid/v2": {
+    "module": "github.com/oklog/ulid/v2",
+    "origin": "https://github.com/oklog/ulid",
+    "stars": 5043,
+    "stars_error": null,
+    "stars_owner_repo": "oklog/ulid",
+    "time": "2026-07-23T19:42:36Z",
+    "version": "v2.1.2"
+  },
+  "github.com/onsi/ginkgo/v2": {
+    "module": "github.com/onsi/ginkgo/v2",
+    "origin": "https://github.com/onsi/ginkgo",
+    "stars": 9032,
+    "stars_error": null,
+    "stars_owner_repo": "onsi/ginkgo",
+    "time": "2026-06-22T17:31:43Z",
+    "version": "v2.32.0"
+  },
+  "github.com/onsi/gomega": {
+    "module": "github.com/onsi/gomega",
+    "origin": "https://github.com/onsi/gomega",
+    "stars": 2350,
+    "stars_error": null,
+    "stars_owner_repo": "onsi/gomega",
+    "time": "2026-06-23T20:30:27Z",
+    "version": "v1.42.1"
+  },
+  "github.com/opensearch-project/opensearch-go/v4": {
+    "module": "github.com/opensearch-project/opensearch-go/v4",
+    "origin": "https://github.com/opensearch-project/opensearch-go",
+    "stars": 302,
+    "stars_error": null,
+    "stars_owner_repo": "opensearch-project/opensearch-go",
+    "time": "2026-07-21T02:02:32Z",
+    "version": "v4.7.2"
+  },
+  "github.com/panjf2000/ants/v2": {
+    "module": "github.com/panjf2000/ants/v2",
+    "origin": "https://github.com/panjf2000/ants",
+    "stars": 14468,
+    "stars_error": null,
+    "stars_owner_repo": "panjf2000/ants",
+    "time": "2026-05-25T01:28:32Z",
+    "version": "v2.12.1"
+  },
+  "github.com/pelletier/go-toml/v2": {
+    "module": "github.com/pelletier/go-toml/v2",
+    "origin": "https://github.com/pelletier/go-toml",
+    "stars": 1962,
+    "stars_error": null,
+    "stars_owner_repo": "pelletier/go-toml",
+    "time": "2026-07-05T02:25:11Z",
+    "version": "v2.4.3"
+  },
+  "github.com/phuslu/log": {
+    "module": "github.com/phuslu/log",
+    "origin": "https://github.com/phuslu/log",
+    "stars": 870,
+    "stars_error": null,
+    "stars_owner_repo": "phuslu/log",
+    "time": "2026-07-22T15:28:03Z",
+    "version": "v1.0.128"
+  },
+  "github.com/phuslu/log-contrib/grpc": {
+    "module": "github.com/phuslu/log-contrib/grpc",
+    "origin": "https://github.com/phuslu/log-contrib",
+    "stars": 1,
+    "stars_error": null,
+    "stars_owner_repo": "phuslu/log-contrib",
+    "time": "2025-03-09T10:09:53Z",
+    "version": "v0.0.0-20250309100953-cb5b9b62dd61"
+  },
+  "github.com/projectdiscovery/machineid": {
+    "module": "github.com/projectdiscovery/machineid",
+    "origin": "https://github.com/projectdiscovery/machineid",
+    "stars": 24,
+    "stars_error": null,
+    "stars_owner_repo": "projectdiscovery/machineid",
+    "time": "2025-07-15T11:31:14Z",
+    "version": "v0.0.0-20250715113114-c77eb3567582"
+  },
+  "github.com/qiniu/qmgo": {
+    "module": "github.com/qiniu/qmgo",
+    "origin": "https://github.com/qiniu/qmgo",
+    "stars": 1356,
+    "stars_error": null,
+    "stars_owner_repo": "qiniu/qmgo",
+    "time": "2025-07-05T05:44:28Z",
+    "version": "v1.1.10"
+  },
+  "github.com/quic-go/quic-go": {
+    "module": "github.com/quic-go/quic-go",
+    "origin": "https://github.com/quic-go/quic-go",
+    "stars": 11717,
+    "stars_error": null,
+    "stars_owner_repo": "quic-go/quic-go",
+    "time": "2026-06-04T16:37:22Z",
+    "version": "v0.60.0"
+  },
+  "github.com/rabbitmq/amqp091-go": {
+    "module": "github.com/rabbitmq/amqp091-go",
+    "origin": "https://github.com/rabbitmq/amqp091-go",
+    "stars": 2022,
+    "stars_error": null,
+    "stars_owner_repo": "rabbitmq/amqp091-go",
+    "time": "2026-07-21T06:16:44Z",
+    "version": "v1.13.0"
+  },
+  "github.com/redis/go-redis/extra/rediscmd/v9": {
+    "module": "github.com/redis/go-redis/extra/rediscmd/v9",
+    "origin": "https://github.com/redis/go-redis",
+    "stars": 22197,
+    "stars_error": null,
+    "stars_owner_repo": "redis/go-redis",
+    "time": "2026-06-22T07:31:42Z",
+    "version": "v9.21.0"
+  },
+  "github.com/redis/go-redis/v9": {
+    "module": "github.com/redis/go-redis/v9",
+    "origin": "https://github.com/redis/go-redis",
+    "stars": 22197,
+    "stars_error": null,
+    "stars_owner_repo": "redis/go-redis",
+    "time": "2026-06-22T07:31:42Z",
+    "version": "v9.21.0"
+  },
+  "github.com/redis/rueidis": {
+    "module": "github.com/redis/rueidis",
+    "origin": "https://github.com/redis/rueidis",
+    "stars": 2966,
+    "stars_error": null,
+    "stars_owner_repo": "redis/rueidis",
+    "time": "2026-06-19T02:56:03Z",
+    "version": "v1.0.76"
+  },
+  "github.com/redis/rueidis/rueidishook": {
+    "module": "github.com/redis/rueidis/rueidishook",
+    "origin": "https://github.com/redis/rueidis",
+    "stars": 2966,
+    "stars_error": null,
+    "stars_owner_repo": "redis/rueidis",
+    "time": "2026-06-19T02:56:03Z",
+    "version": "v1.0.76"
+  },
+  "github.com/reugn/async": {
+    "module": "github.com/reugn/async",
+    "origin": "https://github.com/reugn/async",
+    "stars": 309,
+    "stars_error": null,
+    "stars_owner_repo": "reugn/async",
+    "time": "2026-01-23T15:22:09Z",
+    "version": "v0.10.0"
+  },
+  "github.com/reugn/go-quartz": {
+    "module": "github.com/reugn/go-quartz",
+    "origin": "https://github.com/reugn/go-quartz",
+    "stars": 2013,
+    "stars_error": null,
+    "stars_owner_repo": "reugn/go-quartz",
+    "time": "2025-09-12T08:18:21Z",
+    "version": "v0.15.2"
+  },
+  "github.com/riverqueue/river": {
+    "module": "github.com/riverqueue/river",
+    "origin": "https://github.com/riverqueue/river",
+    "stars": 5462,
+    "stars_error": null,
+    "stars_owner_repo": "riverqueue/river",
+    "time": "2026-07-02T20:19:57Z",
+    "version": "v0.40.0"
+  },
+  "github.com/riverqueue/river/riverdriver/riverdatabasesql": {
+    "module": "github.com/riverqueue/river/riverdriver/riverdatabasesql",
+    "origin": "https://github.com/riverqueue/river",
+    "stars": 5462,
+    "stars_error": null,
+    "stars_owner_repo": "riverqueue/river",
+    "time": "2026-07-02T20:19:57Z",
+    "version": "v0.40.0"
+  },
+  "github.com/riverqueue/river/riverdriver/riverpgxv5": {
+    "module": "github.com/riverqueue/river/riverdriver/riverpgxv5",
+    "origin": "https://github.com/riverqueue/river",
+    "stars": 5462,
+    "stars_error": null,
+    "stars_owner_repo": "riverqueue/river",
+    "time": "2026-07-02T20:19:57Z",
+    "version": "v0.40.0"
+  },
+  "github.com/rs/xid": {
+    "module": "github.com/rs/xid",
+    "origin": "https://github.com/rs/xid",
+    "stars": 4280,
+    "stars_error": null,
+    "stars_owner_repo": "rs/xid",
+    "time": "2024-08-23T12:21:22Z",
+    "version": "v1.6.0"
+  },
+  "github.com/runZeroInc/mustache/v2": {
+    "module": "github.com/runZeroInc/mustache/v2",
+    "origin": "https://github.com/runZeroInc/mustache",
+    "stars": 0,
+    "stars_error": null,
+    "stars_owner_repo": "runZeroInc/mustache",
+    "time": "2024-10-02T14:12:34Z",
+    "version": "v2.1.0"
+  },
+  "github.com/samber/do/v2": {
+    "module": "github.com/samber/do/v2",
+    "origin": "https://github.com/samber/do",
+    "stars": 2772,
+    "stars_error": null,
+    "stars_owner_repo": "samber/do",
+    "time": "2026-07-20T13:24:56Z",
+    "version": "v2.1.0"
+  },
+  "github.com/samber/go-singleflightx": {
+    "module": "github.com/samber/go-singleflightx",
+    "origin": "https://github.com/samber/go-singleflightx",
+    "stars": 65,
+    "stars_error": null,
+    "stars_owner_repo": "samber/go-singleflightx",
+    "time": "2025-01-10T10:22:19Z",
+    "version": "v0.3.2"
+  },
+  "github.com/samber/hot": {
+    "module": "github.com/samber/hot",
+    "origin": "https://github.com/samber/hot",
+    "stars": 262,
+    "stars_error": null,
+    "stars_owner_repo": "samber/hot",
+    "time": "2026-03-11T13:26:29Z",
+    "version": "v0.13.0"
+  },
+  "github.com/samber/mo": {
+    "module": "github.com/samber/mo",
+    "origin": "https://github.com/samber/mo",
+    "stars": 3384,
+    "stars_error": null,
+    "stars_owner_repo": "samber/mo",
+    "time": "2026-06-02T09:26:23Z",
+    "version": "v1.17.0"
+  },
+  "github.com/samber/oops": {
+    "module": "github.com/samber/oops",
+    "origin": "https://github.com/samber/oops",
+    "stars": 974,
+    "stars_error": null,
+    "stars_owner_repo": "samber/oops",
+    "time": "2026-07-06T19:40:52Z",
+    "version": "v1.23.0"
+  },
+  "github.com/samber/ro": {
+    "module": "github.com/samber/ro",
+    "origin": "https://github.com/samber/ro",
+    "stars": 677,
+    "stars_error": null,
+    "stars_owner_repo": "samber/ro",
+    "time": "2026-07-04T18:33:51Z",
+    "version": "v0.4.0"
+  },
+  "github.com/samber/slog-common": {
+    "module": "github.com/samber/slog-common",
+    "origin": "https://github.com/samber/slog-common",
+    "stars": 9,
+    "stars_error": null,
+    "stars_owner_repo": "samber/slog-common",
+    "time": "2026-04-03T00:11:06Z",
+    "version": "v0.22.0"
+  },
+  "github.com/samber/slog-fiber": {
+    "module": "github.com/samber/slog-fiber",
+    "origin": "https://github.com/samber/slog-fiber",
+    "stars": 98,
+    "stars_error": null,
+    "stars_owner_repo": "samber/slog-fiber",
+    "time": "2026-04-29T17:37:13Z",
+    "version": "v1.22.2"
+  },
+  "github.com/samber/slog-http": {
+    "module": "github.com/samber/slog-http",
+    "origin": "https://github.com/samber/slog-http",
+    "stars": 98,
+    "stars_error": null,
+    "stars_owner_repo": "samber/slog-http",
+    "time": "2026-04-29T17:38:37Z",
+    "version": "v1.12.1"
+  },
+  "github.com/samber/slog-logrus/v2": {
+    "module": "github.com/samber/slog-logrus/v2",
+    "origin": "https://github.com/samber/slog-logrus",
+    "stars": 33,
+    "stars_error": null,
+    "stars_owner_repo": "samber/slog-logrus",
+    "time": "2026-03-25T14:57:01Z",
+    "version": "v2.5.4"
+  },
+  "github.com/samber/slog-multi": {
+    "module": "github.com/samber/slog-multi",
+    "origin": "https://github.com/samber/slog-multi",
+    "stars": 631,
+    "stars_error": null,
+    "stars_owner_repo": "samber/slog-multi",
+    "time": "2026-03-25T02:24:54Z",
+    "version": "v1.8.0"
+  },
+  "github.com/samber/slog-sentry/v2": {
+    "module": "github.com/samber/slog-sentry/v2",
+    "origin": "https://github.com/samber/slog-sentry",
+    "stars": 53,
+    "stars_error": null,
+    "stars_owner_repo": "samber/slog-sentry",
+    "time": "2026-06-02T08:30:03Z",
+    "version": "v2.11.0"
+  },
+  "github.com/samber/slog-zap/v2": {
+    "module": "github.com/samber/slog-zap/v2",
+    "origin": "https://github.com/samber/slog-zap",
+    "stars": 54,
+    "stars_error": null,
+    "stars_owner_repo": "samber/slog-zap",
+    "time": "2026-04-22T12:45:46Z",
+    "version": "v2.7.0"
+  },
+  "github.com/samber/slog-zerolog/v2": {
+    "module": "github.com/samber/slog-zerolog/v2",
+    "origin": "https://github.com/samber/slog-zerolog",
+    "stars": 75,
+    "stars_error": null,
+    "stars_owner_repo": "samber/slog-zerolog",
+    "time": "2026-03-25T14:46:44Z",
+    "version": "v2.9.2"
+  },
+  "github.com/sanity-io/litter": {
+    "module": "github.com/sanity-io/litter",
+    "origin": "https://github.com/sanity-io/litter",
+    "stars": 1653,
+    "stars_error": null,
+    "stars_owner_repo": "sanity-io/litter",
+    "time": "2025-02-15T15:38:52Z",
+    "version": "v1.5.8"
+  },
+  "github.com/santhosh-tekuri/jsonschema/v6": {
+    "module": "github.com/santhosh-tekuri/jsonschema/v6",
+    "origin": "https://github.com/santhosh-tekuri/jsonschema",
+    "stars": 1248,
+    "stars_error": null,
+    "stars_owner_repo": "santhosh-tekuri/jsonschema",
+    "time": "2025-05-23T13:19:41Z",
+    "version": "v6.0.2"
+  },
+  "github.com/segmentio/encoding": {
+    "module": "github.com/segmentio/encoding",
+    "origin": "https://github.com/segmentio/encoding",
+    "stars": 1053,
+    "stars_error": null,
+    "stars_owner_repo": "segmentio/encoding",
+    "time": "2026-03-10T23:16:08Z",
+    "version": "v0.5.4"
+  },
+  "github.com/segmentio/kafka-go": {
+    "module": "github.com/segmentio/kafka-go",
+    "origin": "https://github.com/segmentio/kafka-go",
+    "stars": 8594,
+    "stars_error": null,
+    "stars_owner_repo": "segmentio/kafka-go",
+    "time": "2026-04-23T20:28:47Z",
+    "version": "v0.4.51"
+  },
+  "github.com/sethvargo/go-limiter": {
+    "module": "github.com/sethvargo/go-limiter",
+    "origin": "https://github.com/sethvargo/go-limiter",
+    "stars": 719,
+    "stars_error": null,
+    "stars_owner_repo": "sethvargo/go-limiter",
+    "time": "2026-07-17T21:53:02Z",
+    "version": "v1.2.0"
+  },
+  "github.com/sethvargo/go-password": {
+    "module": "github.com/sethvargo/go-password",
+    "origin": "https://github.com/sethvargo/go-password",
+    "stars": 690,
+    "stars_error": null,
+    "stars_owner_repo": "sethvargo/go-password",
+    "time": "2026-07-17T22:23:14Z",
+    "version": "v0.4.0"
+  },
+  "github.com/shamaton/msgpack/v3": {
+    "module": "github.com/shamaton/msgpack/v3",
+    "origin": "https://github.com/shamaton/msgpack",
+    "stars": 180,
+    "stars_error": null,
+    "stars_owner_repo": "shamaton/msgpack",
+    "time": "2026-07-14T23:22:33Z",
+    "version": "v3.2.0"
+  },
+  "github.com/smartystreets/goconvey": {
+    "module": "github.com/smartystreets/goconvey",
+    "origin": "https://github.com/smartystreets/goconvey",
+    "stars": 8415,
+    "stars_error": null,
+    "stars_owner_repo": "smartystreets/goconvey",
+    "time": "2023-06-28T15:42:57Z",
+    "version": "v1.8.1"
+  },
+  "github.com/sourcegraph/conc": {
+    "module": "github.com/sourcegraph/conc",
+    "origin": "https://github.com/sourcegraph/conc",
+    "stars": 10417,
+    "stars_error": null,
+    "stars_owner_repo": "sourcegraph/conc",
+    "time": "2023-02-25T04:04:07Z",
+    "version": "v0.3.0"
+  },
+  "github.com/spf13/cast": {
+    "module": "github.com/spf13/cast",
+    "origin": "https://github.com/spf13/cast",
+    "stars": 3984,
+    "stars_error": null,
+    "stars_owner_repo": "spf13/cast",
+    "time": "2025-09-08T16:45:31Z",
+    "version": "v1.10.0"
+  },
+  "github.com/spyzhov/ajson": {
+    "module": "github.com/spyzhov/ajson",
+    "origin": "https://github.com/spyzhov/ajson",
+    "stars": 289,
+    "stars_error": null,
+    "stars_owner_repo": "spyzhov/ajson",
+    "time": "2024-11-25T22:41:05Z",
+    "version": "v0.9.6"
+  },
+  "github.com/stephenafamo/scan": {
+    "module": "github.com/stephenafamo/scan",
+    "origin": "https://github.com/stephenafamo/scan",
+    "stars": 104,
+    "stars_error": null,
+    "stars_owner_repo": "stephenafamo/scan",
+    "time": "2026-07-19T23:31:44Z",
+    "version": "v0.9.0"
+  },
+  "github.com/stretchr/testify": {
+    "module": "github.com/stretchr/testify",
+    "origin": "https://github.com/stretchr/testify",
+    "stars": 26097,
+    "stars_error": null,
+    "stars_owner_repo": "stretchr/testify",
+    "time": "2025-08-27T10:46:31Z",
+    "version": "v1.11.1"
+  },
+  "github.com/tidwall/gjson": {
+    "module": "github.com/tidwall/gjson",
+    "origin": "https://github.com/tidwall/gjson",
+    "stars": 15546,
+    "stars_error": null,
+    "stars_owner_repo": "tidwall/gjson",
+    "time": "2026-05-08T21:15:41Z",
+    "version": "v1.19.0"
+  },
+  "github.com/twmb/franz-go": {
+    "module": "github.com/twmb/franz-go",
+    "origin": "https://github.com/twmb/franz-go",
+    "stars": 2960,
+    "stars_error": null,
+    "stars_owner_repo": "twmb/franz-go",
+    "time": "2026-07-01T04:21:45Z",
+    "version": "v1.21.5"
+  },
+  "github.com/twmb/franz-go/pkg/kmsg": {
+    "module": "github.com/twmb/franz-go/pkg/kmsg",
+    "origin": "https://github.com/twmb/franz-go",
+    "stars": 2960,
+    "stars_error": null,
+    "stars_owner_repo": "twmb/franz-go",
+    "time": "2026-04-06T06:44:50Z",
+    "version": "v1.13.1"
+  },
+  "github.com/twmb/murmur3": {
+    "module": "github.com/twmb/murmur3",
+    "origin": "https://github.com/twmb/murmur3",
+    "stars": 352,
+    "stars_error": null,
+    "stars_owner_repo": "twmb/murmur3",
+    "time": "2023-06-01T15:33:08Z",
+    "version": "v1.1.8"
+  },
+  "github.com/unrolled/render": {
+    "module": "github.com/unrolled/render",
+    "origin": "https://github.com/unrolled/render",
+    "stars": 1997,
+    "stars_error": null,
+    "stars_owner_repo": "unrolled/render",
+    "time": "2024-09-29T00:00:47Z",
+    "version": "v1.7.0"
+  },
+  "github.com/uptrace/bun": {
+    "module": "github.com/uptrace/bun",
+    "origin": "https://github.com/uptrace/bun",
+    "stars": 4898,
+    "stars_error": null,
+    "stars_owner_repo": "uptrace/bun",
+    "time": "2026-02-28T11:06:26Z",
+    "version": "v1.2.18"
+  },
+  "github.com/uptrace/bun/dialect/pgdialect": {
+    "module": "github.com/uptrace/bun/dialect/pgdialect",
+    "origin": "https://github.com/uptrace/bun",
+    "stars": 4898,
+    "stars_error": null,
+    "stars_owner_repo": "uptrace/bun",
+    "time": "2026-02-28T11:06:26Z",
+    "version": "v1.2.18"
+  },
+  "github.com/uptrace/bun/extra/bundebug": {
+    "module": "github.com/uptrace/bun/extra/bundebug",
+    "origin": "https://github.com/uptrace/bun",
+    "stars": 4898,
+    "stars_error": null,
+    "stars_owner_repo": "uptrace/bun",
+    "time": "2026-02-28T11:06:26Z",
+    "version": "v1.2.18"
+  },
+  "github.com/uptrace/bun/extra/bunslog": {
+    "module": "github.com/uptrace/bun/extra/bunslog",
+    "origin": "https://github.com/uptrace/bun",
+    "stars": 4898,
+    "stars_error": null,
+    "stars_owner_repo": "uptrace/bun",
+    "time": "2026-02-28T11:06:26Z",
+    "version": "v1.2.18"
+  },
+  "github.com/uptrace/uptrace-go": {
+    "module": "github.com/uptrace/uptrace-go",
+    "origin": "https://github.com/uptrace/uptrace-go",
+    "stars": 111,
+    "stars_error": null,
+    "stars_owner_repo": "uptrace/uptrace-go",
+    "time": "2026-04-15T13:21:42Z",
+    "version": "v1.43.0"
+  },
+  "github.com/valkey-io/valkey-go": {
+    "module": "github.com/valkey-io/valkey-go",
+    "origin": "https://github.com/valkey-io/valkey-go",
+    "stars": 658,
+    "stars_error": null,
+    "stars_owner_repo": "valkey-io/valkey-go",
+    "time": "2026-06-20T04:09:46Z",
+    "version": "v1.0.76"
+  },
+  "github.com/valkey-io/valkey-go/valkeyhook": {
+    "module": "github.com/valkey-io/valkey-go/valkeyhook",
+    "origin": "https://github.com/valkey-io/valkey-go",
+    "stars": 658,
+    "stars_error": null,
+    "stars_owner_repo": "valkey-io/valkey-go",
+    "time": "2026-06-20T04:09:46Z",
+    "version": "v1.0.76"
+  },
+  "github.com/vmihailenco/msgpack/v5": {
+    "module": "github.com/vmihailenco/msgpack/v5",
+    "origin": "https://github.com/vmihailenco/msgpack",
+    "stars": 2664,
+    "stars_error": null,
+    "stars_owner_repo": "vmihailenco/msgpack",
+    "time": "2023-10-26T05:53:20Z",
+    "version": "v5.4.1"
+  },
+  "github.com/xtaci/kcp-go/v5": {
+    "module": "github.com/xtaci/kcp-go/v5",
+    "origin": "https://github.com/xtaci/kcp-go",
+    "stars": 4536,
+    "stars_error": null,
+    "stars_owner_repo": "xtaci/kcp-go",
+    "time": "2026-03-27T06:18:14Z",
+    "version": "v5.6.72"
+  },
+  "github.com/zeebo/xxh3": {
+    "module": "github.com/zeebo/xxh3",
+    "origin": "https://github.com/zeebo/xxh3",
+    "stars": 571,
+    "stars_error": null,
+    "stars_owner_repo": "zeebo/xxh3",
+    "time": "2026-01-23T19:18:08Z",
+    "version": "v1.1.0"
+  },
+  "github.com/zitadel/passwap": {
+    "module": "github.com/zitadel/passwap",
+    "origin": "https://github.com/zitadel/passwap",
+    "stars": 77,
+    "stars_error": null,
+    "stars_owner_repo": "zitadel/passwap",
+    "time": "2026-03-24T11:18:27Z",
+    "version": "v0.12.1"
+  },
+  "gitlab.com/greyxor/slogor": {
+    "module": "gitlab.com/greyxor/slogor",
+    "origin": "https://gitlab.com/greyxor/slogor.git",
+    "stars": null,
+    "stars_error": "HTTP 404",
+    "stars_owner_repo": "greyxor/slogor",
+    "time": "2026-05-09T15:48:40Z",
+    "version": "v1.6.10"
+  },
+  "go.etcd.io/etcd/client/v3": {
+    "module": "go.etcd.io/etcd/client/v3",
+    "origin": "https://github.com/etcd-io/etcd",
+    "stars": 52020,
+    "stars_error": null,
+    "stars_owner_repo": "etcd-io/etcd",
+    "time": "2026-07-23T19:30:42Z",
+    "version": "v3.7.1"
+  },
+  "go.mongodb.org/mongo-driver/v2": {
+    "module": "go.mongodb.org/mongo-driver/v2",
+    "origin": "https://github.com/mongodb/mongo-go-driver.git",
+    "stars": 8538,
+    "stars_error": null,
+    "stars_owner_repo": "mongodb/mongo-go-driver",
+    "time": "2026-07-09T18:48:08Z",
+    "version": "v2.8.0"
+  },
+  "go.opentelemetry.io/otel": {
+    "module": "go.opentelemetry.io/otel",
+    "origin": "https://github.com/open-telemetry/opentelemetry-go",
+    "stars": 6486,
+    "stars_error": null,
+    "stars_owner_repo": "open-telemetry/opentelemetry-go",
+    "time": "2026-05-27T16:42:37Z",
+    "version": "v1.44.0"
+  },
+  "go.opentelemetry.io/otel/trace": {
+    "module": "go.opentelemetry.io/otel/trace",
+    "origin": "https://github.com/open-telemetry/opentelemetry-go",
+    "stars": 6486,
+    "stars_error": null,
+    "stars_owner_repo": "open-telemetry/opentelemetry-go",
+    "time": "2026-05-27T16:42:37Z",
+    "version": "v1.44.0"
+  },
+  "go.temporal.io/sdk": {
+    "module": "go.temporal.io/sdk",
+    "origin": "https://github.com/temporalio/sdk-go",
+    "stars": 935,
+    "stars_error": null,
+    "stars_owner_repo": "temporalio/sdk-go",
+    "time": "2026-07-07T16:58:00Z",
+    "version": "v1.46.0"
+  },
+  "go.uber.org/multierr": {
+    "module": "go.uber.org/multierr",
+    "origin": "https://github.com/uber-go/multierr",
+    "stars": 1191,
+    "stars_owner_repo": "uber-go/multierr",
+    "time": "2023-03-29T23:00:37Z",
+    "version": "v1.11.0"
+  },
+  "go.uber.org/zap": {
+    "module": "go.uber.org/zap",
+    "origin": "https://github.com/uber-go/zap",
+    "stars": 24583,
+    "stars_owner_repo": "uber-go/zap",
+    "time": "2026-04-28T02:13:09Z",
+    "version": "v1.28.0"
+  },
+  "golang.org/x/crypto": {
+    "module": "golang.org/x/crypto",
+    "origin": "https://go.googlesource.com/crypto",
+    "stars": 3335,
+    "stars_error": null,
+    "stars_owner_repo": "golang/crypto",
+    "time": "2026-07-08T18:22:26Z",
+    "version": "v0.54.0"
+  },
+  "golang.org/x/net": {
+    "module": "golang.org/x/net",
+    "origin": "https://go.googlesource.com/net",
+    "stars": 3025,
+    "stars_error": null,
+    "stars_owner_repo": "golang/net",
+    "time": "2026-07-08T21:02:14Z",
+    "version": "v0.57.0"
+  },
+  "golang.org/x/oauth2": {
+    "module": "golang.org/x/oauth2",
+    "origin": "https://go.googlesource.com/oauth2",
+    "stars": 5876,
+    "stars_error": null,
+    "stars_owner_repo": "golang/oauth2",
+    "time": "2026-02-11T19:14:10Z",
+    "version": "v0.36.0"
+  },
+  "golang.org/x/sys": {
+    "module": "golang.org/x/sys",
+    "origin": "https://go.googlesource.com/sys",
+    "stars": 1348,
+    "stars_error": null,
+    "stars_owner_repo": "golang/sys",
+    "time": "2026-06-30T17:07:31Z",
+    "version": "v0.47.0"
+  },
+  "golang.org/x/text": {
+    "module": "golang.org/x/text",
+    "origin": "https://go.googlesource.com/text",
+    "stars": 801,
+    "stars_error": null,
+    "stars_owner_repo": "golang/text",
+    "time": "2026-07-08T15:41:08Z",
+    "version": "v0.40.0"
+  },
+  "google.golang.org/genproto/googleapis/api": {
+    "module": "google.golang.org/genproto/googleapis/api",
+    "origin": "https://github.com/googleapis/go-genproto",
+    "stars": 622,
+    "stars_error": null,
+    "stars_owner_repo": "googleapis/go-genproto",
+    "time": "2026-07-23T21:51:02Z",
+    "version": "v0.0.0-20260723215102-3fe39f3c1018"
+  },
+  "google.golang.org/grpc": {
+    "module": "google.golang.org/grpc",
+    "origin": "https://github.com/grpc/grpc-go",
+    "stars": 23013,
+    "stars_error": null,
+    "stars_owner_repo": "grpc/grpc-go",
+    "time": "2026-07-15T23:31:12Z",
+    "version": "v1.82.1"
+  },
+  "google.golang.org/protobuf": {
+    "module": "google.golang.org/protobuf",
+    "origin": "https://go.googlesource.com/protobuf",
+    "stars": 3334,
+    "stars_error": null,
+    "stars_owner_repo": "protocolbuffers/protobuf-go",
+    "time": "2025-12-12T08:48:31Z",
+    "version": "v1.36.11"
+  },
+  "k8s.io/client-go": {
+    "module": "k8s.io/client-go",
+    "origin": "https://github.com/kubernetes/client-go",
+    "stars": 9858,
+    "stars_error": null,
+    "stars_owner_repo": "kubernetes/client-go",
+    "time": "2026-07-23T02:10:32Z",
+    "version": "v0.36.3"
+  },
+  "resenje.org/singleflight": {
+    "module": "resenje.org/singleflight",
+    "origin": "https://github.com/janos/singleflight",
+    "stars": 87,
+    "stars_error": null,
+    "stars_owner_repo": "janos/singleflight",
+    "time": "2024-09-03T16:55:54Z",
+    "version": "v0.4.3"
+  },
+  "resty.dev/v3": {
+    "module": "resty.dev/v3",
+    "origin": "https://github.com/go-resty/resty",
+    "stars": 11729,
+    "stars_error": null,
+    "stars_owner_repo": "go-resty/resty",
+    "time": "2026-07-09T06:54:58Z",
+    "version": "v3.0.0-rc.3"
+  }
+}

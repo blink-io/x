@@ -5,7 +5,7 @@ import (
 
 	"github.com/blink-io/x/grpc/mdutil"
 	"github.com/blink-io/x/grpc/util"
-	"github.com/blink-io/x/requestid"
+	"github.com/blink-io/x/misc/requestid"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"

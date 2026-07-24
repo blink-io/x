@@ -1,7 +1,7 @@
 package govalidator
 
 import (
-	"github.com/asaskevich/govalidator"
+	"github.com/asaskevich/govalidator/v12"
 )
 
 type Validator = govalidator.Validator

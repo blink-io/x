@@ -1,7 +1,7 @@
 package requestid
 
 import (
-	"github.com/blink-io/x/requestid"
+	"github.com/blink-io/x/misc/requestid"
 	"github.com/google/uuid"
 )
 

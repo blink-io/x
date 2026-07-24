@@ -3,7 +3,7 @@ package requestid
 import (
 	"net/http"
 
-	"github.com/blink-io/x/requestid"
+	"github.com/blink-io/x/misc/requestid"
 )
 
 func New(ops ...Option) func(http.Handler) http.Handler {

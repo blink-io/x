@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/blink-io/x/grpc/util"
-	"github.com/blink-io/x/realip"
+	"github.com/blink-io/x/misc/realip"
 	"google.golang.org/grpc"
 )
 

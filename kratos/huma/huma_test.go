@@ -3,6 +3,7 @@ package huma
 import (
 	"context"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"strconv"
 	"testing"
@@ -14,6 +15,17 @@ import (
 )
 
 func TestServer(t *testing.T) {
+	MyMiddleware := func(ctx huma.Context, next func(huma.Context)) {
+		// Set a custom header on the response.
+		ctx.SetHeader("My-Custom-Header", "Hello, world!")
+
+		slog.Info("Invoke MyMiddleware")
+
+		// Call the next middleware in the chain. This eventually calls the
+		// operation handler as well.
+		next(ctx)
+	}
+
 	// Options for the CLI.
 	type Options struct {
 		Port int `help:"Port to listen on" short:"p" default:"9988"`
@@ -47,14 +59,26 @@ func TestServer(t *testing.T) {
 	// Create a CLI app which takes a port option.
 	cli := humacli.New(func(hooks humacli.Hooks, opts *Options) {
 		// Create a new router & API
-		srv := khttp.NewServer(khttp.Address(":" + strconv.Itoa(opts.Port)))
+		pathPrefix := "/api/v1"
+		srv := khttp.NewServer(
+			khttp.Address(":"+strconv.Itoa(opts.Port)),
+			khttp.PathPrefix(pathPrefix),
+		)
 		kapp := kratos.New(kratos.Server(srv))
 
-		api := NewWithPrefix(
+		humaCfg := huma.DefaultConfig("My Kratos API", "v1.0.0")
+		humaCfg.DocsRenderer = huma.DocsRendererStoplightElements
+		humaCfg.Servers = []*huma.Server{
+			{
+				URL: pathPrefix,
+			},
+		}
+		humaCfg.DocsPath = "/_docs_"
+		api := New(
 			srv,
-			"/api/v1",
-			huma.DefaultConfig("My Kratos API", "1.0.0"),
+			humaCfg,
 		)
+		api.UseMiddleware(MyMiddleware)
 
 		addRoutes(api)
 

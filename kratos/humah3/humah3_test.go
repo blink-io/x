@@ -50,9 +50,8 @@ func TestServer(t *testing.T) {
 		srv := khttp.NewServer(khttp.Address(":" + strconv.Itoa(opts.Port)))
 		kapp := kratos.New(kratos.Server(srv))
 
-		api := NewWithPrefix(
+		api := New(
 			srv,
-			"/api/v1",
 			huma.DefaultConfig("My Kratos API", "1.0.0"),
 		)
 

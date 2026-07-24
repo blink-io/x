@@ -4,8 +4,6 @@ import (
 	"github.com/google/uuid"
 	"github.com/lithammer/shortuuid/v4"
 	"github.com/rs/xid"
-	"github.com/segmentio/ksuid"
-	"github.com/teris-io/shortid"
 )
 
 func SecureTokenGen() (string, error) {
@@ -14,14 +12,6 @@ func SecureTokenGen() (string, error) {
 
 func UUIDTokenGen() (string, error) {
 	return uuid.NewString(), nil
-}
-
-func KSUIDTokenGen() (string, error) {
-	return ksuid.New().String(), nil
-}
-
-func ShortIDTokenGen() (string, error) {
-	return shortid.Generate()
 }
 
 func ShortUUIDTokenGen() (string, error) {

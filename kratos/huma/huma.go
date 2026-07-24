@@ -16,12 +16,11 @@ func NewContext(op *huma.Operation, ctx khttp.Context) huma.Context {
 var _ huma.Adapter = (*adapter)(nil)
 
 type adapter struct {
-	*khttp.Server
-	prefix string
+	srv *khttp.Server
 }
 
 func (a *adapter) Handle(op *huma.Operation, h func(huma.Context)) {
-	rr := a.Route(a.prefix)
+	rr := a.srv.Route("")
 	rr.Handle(op.Method, op.Path, func(ctx khttp.Context) error {
 		h(NewContext(op, ctx))
 		return nil
@@ -29,22 +28,13 @@ func (a *adapter) Handle(op *huma.Operation, h func(huma.Context)) {
 }
 
 func (a *adapter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	a.Server.ServeHTTP(w, r)
+	a.srv.ServeHTTP(w, r)
 }
 
-func NewAdapter(srv *khttp.Server, prefix string) huma.Adapter {
-	return &adapter{Server: srv, prefix: prefix}
+func NewAdapter(srv *khttp.Server) huma.Adapter {
+	return &adapter{srv: srv}
 }
 
 func New(srv *khttp.Server, config huma.Config) huma.API {
-	return NewWithPrefix(srv, "", config)
-}
-
-func NewWithPrefix(srv *khttp.Server, prefix string, config huma.Config) huma.API {
-	if len(config.Servers) == 0 {
-		config.Servers = append(config.Servers, &huma.Server{
-			URL: prefix,
-		})
-	}
-	return huma.NewAPI(config, NewAdapter(srv, prefix))
+	return huma.NewAPI(config, NewAdapter(srv))
 }

@@ -3,7 +3,7 @@ package realip
 import (
 	"net/http"
 
-	"github.com/blink-io/x/realip"
+	"github.com/blink-io/x/misc/realip"
 )
 
 type Options = realip.Options

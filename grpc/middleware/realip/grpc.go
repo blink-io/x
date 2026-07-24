@@ -5,7 +5,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/blink-io/x/realip"
+	"github.com/blink-io/x/misc/realip"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/peer"
 )

@@ -2,14 +2,16 @@ package rueidis
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"github.com/blink-io/x/cache"
+	"github.com/blink-io/x/encoding"
 
-	"github.com/gogo/protobuf/codec"
 	"github.com/redis/rueidis"
-	"github.com/spf13/cast"
 )
+
+var errNilCodec = errors.New("rueidis cache: encoding codec is required")
 
 const Name = "goredis"
 
@@ -19,14 +21,21 @@ type Cache[V any] struct {
 	cc  rueidis.Client
 	ttl time.Duration
 	ctx context.Context
-	enc codec.Codec
+	enc encoding.Codec
 }
 
-func New[V any](cc rueidis.Client, ttl time.Duration) (*Cache[V], error) {
+// New returns a new rueidis-backed TTL cache. The provided encoding.Codec is
+// used to serialize values into bytes for storage and to decode them on
+// retrieval; it must be safe for concurrent use.
+func New[V any](cc rueidis.Client, ttl time.Duration, enc encoding.Codec) (*Cache[V], error) {
+	if enc == nil {
+		return nil, errNilCodec
+	}
 	return &Cache[V]{
 		cc:  cc,
 		ttl: ttl,
 		ctx: context.Background(),
+		enc: enc,
 	}, nil
 }
 
@@ -39,17 +48,26 @@ func (c *Cache[V]) SetWithTTL(key string, value V, ttl time.Duration) {
 }
 
 func (c *Cache[V]) setWithTTL(key string, value V, ttl time.Duration) {
-	cmd := c.cc.B().Set().Key(key).Value(cast.ToString(value)).Ex(ttl).Build()
+	data, err := c.enc.Marshal(value)
+	if err != nil {
+		return
+	}
+	cmd := c.cc.B().Set().Key(key).Value(string(data)).Ex(ttl).Build()
 	c.cc.Do(c.ctx, cmd)
 }
 
 func (c *Cache[V]) Get(key string) (V, bool) {
-	//i := c.cc.Get(c.ctx, key)
+	cmd := c.cc.B().Get().Key(key).Build()
+	resp, err := c.cc.Do(c.ctx, cmd).AsBytes()
+	if err != nil {
+		var zero V
+		return zero, false
+	}
 	var v V
-	//if i != nil {
-	//	return i.Value(), i.Expired()
-	//}
-	return v, false
+	if err := c.enc.Unmarshal(resp, &v); err != nil {
+		return v, false
+	}
+	return v, true
 }
 
 func (c *Cache[V]) Del(key string) {

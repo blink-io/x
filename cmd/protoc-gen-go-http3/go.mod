@@ -1,4 +1,4 @@
-module github.com/blink-io/x/cmd/protoc-gen-go-http3/v2
+module github.com/blink-io/x/cmd/protoc-gen-go-http3/v3
 
 go 1.25.0
 

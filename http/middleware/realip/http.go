@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/blink-io/x/realip"
+	"github.com/blink-io/x/misc/realip"
 )
 
 // getFromHTTP extracts the real client's remote IP Address.
