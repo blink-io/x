@@ -7,8 +7,8 @@ import (
 	"github.com/blink-io/hyperbun/schema"
 	"github.com/blink-io/opt/omit"
 	"github.com/blink-io/opt/omitnull"
-
 	"github.com/blink-io/x/misc/ptr"
+
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/google/uuid"
 	"github.com/lib/pq"
@@ -26,20 +26,20 @@ func randomTblDemoSetter() *TblDemoSetter {
 	vjson := map[string]any{"v": gofakeit.City()}
 
 	var s = &TblDemoSetter{
-		NUUID:  ptr.Of(sql.Null[string]{V: uuid.NewString(), Valid: true}),
-		NEnum:  ptr.Of(sql.Null[EnumTblBasicNEnum]{V: nenum, Valid: true}),
-		NStr:   ptr.Of(sql.Null[string]{}),
-		NTime:  ptr.Of(sql.Null[time.Time]{}),
-		NInt32: ptr.Of(sql.Null[int32]{V: gofakeit.Int32(), Valid: true}),
+		NUUID:  ptr.To(sql.Null[string]{V: uuid.NewString(), Valid: true}),
+		NEnum:  ptr.To(sql.Null[EnumTblBasicNEnum]{V: nenum, Valid: true}),
+		NStr:   ptr.To(sql.Null[string]{}),
+		NTime:  ptr.To(sql.Null[time.Time]{}),
+		NInt32: ptr.To(sql.Null[int32]{V: gofakeit.Int32(), Valid: true}),
 
-		VUUID:      ptr.Of(vuuid),
+		VUUID:      ptr.To(vuuid),
 		VStr:       &vstr,
 		VJson:      &vjson,
-		VInt32:     ptr.Of(gofakeit.Int32()),
-		VEnum:      ptr.Of(venum),
-		VTime:      ptr.Of(gofakeit.Date()),
-		VStrArrays: ptr.Of(pq.StringArray{gofakeit.Name(), gofakeit.City(), gofakeit.AppName()}),
-		VBytes:     ptr.Of(pq.ByteaArray{[]byte(gofakeit.Name())}),
+		VInt32:     ptr.To(gofakeit.Int32()),
+		VEnum:      ptr.To(venum),
+		VTime:      ptr.To(gofakeit.Date()),
+		VStrArrays: ptr.To(pq.StringArray{gofakeit.Name(), gofakeit.City(), gofakeit.AppName()}),
+		VBytes:     ptr.To(pq.ByteaArray{[]byte(gofakeit.Name())}),
 	}
 
 	return s
@@ -53,12 +53,12 @@ func randomTblDemo() *TblDemo {
 	vjson := map[string]any{"v": gofakeit.City()}
 
 	var s = &TblDemo{
-		NUUID:        ptr.Of(uuid.NewString()),
-		NEnum:        ptr.Of(nenum),
+		NUUID:        ptr.To(uuid.NewString()),
+		NEnum:        ptr.To(nenum),
 		NStr:         nil,
 		NTime:        nil,
-		NInt32:       ptr.Of(gofakeit.Int32()),
-		NInt32Arrays: ptr.Of([]int32{gofakeit.Int32(), gofakeit.Int32()}),
+		NInt32:       ptr.To(gofakeit.Int32()),
+		NInt32Arrays: ptr.To([]int32{gofakeit.Int32(), gofakeit.Int32()}),
 
 		VUUID:      vuuid,
 		VStr:       vstr,
@@ -195,11 +195,11 @@ func randomTblSimpleSetter(deletedAt *time.Time) *TblSimpleSetter {
 
 func randomTblSimpleSetter2(deletedAt *time.Time) *TblSimpleSetter2 {
 	r := &TblSimpleSetter2{
-		Name:      ptr.Of(gofakeit.Name()),
-		GUID:      ptr.Of(gofakeit.UUID()),
-		CreatedAt: ptr.Of(time.Now()),
+		Name:      ptr.To(gofakeit.Name()),
+		GUID:      ptr.To(gofakeit.UUID()),
+		CreatedAt: ptr.To(time.Now()),
 		DeletedAt: deletedAt,
-		StrArrays: ptr.Of([]string{gofakeit.Name(), gofakeit.Animal(), gofakeit.City()}),
+		StrArrays: ptr.To([]string{gofakeit.Name(), gofakeit.Animal(), gofakeit.City()}),
 	}
 	return r
 }

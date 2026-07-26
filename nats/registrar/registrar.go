@@ -55,13 +55,7 @@ func NewServiceRegistrar(c *nats.Conn) ServiceRegistrar {
 	return serviceRegistrar{c}
 }
 
-type Func[S any] func(ServiceRegistrar, S)
-
-type FuncWithErr[S any] func(ServiceRegistrar, S) error
-
-type CtxFunc[S any] func(context.Context, ServiceRegistrar, S)
-
-type CtxFuncWithErr[S any] func(context.Context, ServiceRegistrar, S) error
+type Func[S any] func(context.Context, ServiceRegistrar, S) error
 
 type Registrar interface {
 	RegisterToNATS(context.Context, ServiceRegistrar) error
@@ -69,7 +63,7 @@ type Registrar interface {
 
 type registrar[S any] struct {
 	s S
-	f CtxFuncWithErr[S]
+	f Func[S]
 }
 
 var _ Registrar = (*registrar[any])(nil)
@@ -78,33 +72,10 @@ func (h *registrar[S]) RegisterToNATS(ctx context.Context, r ServiceRegistrar) e
 	return h.f(ctx, r, h.s)
 }
 
-func New[S any](s S, f Func[S]) Registrar {
-	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
-		f(r, s)
-		return nil
-	}
-	return NewCtxWithErr(s, cf)
-}
-
-func NewWithErr[S any](s S, f FuncWithErr[S]) Registrar {
-	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
-		return f(r, s)
-	}
-	return NewCtxWithErr(s, cf)
-}
-
-func NewCtx[S any](s S, f CtxFunc[S]) Registrar {
-	cf := func(ctx context.Context, r ServiceRegistrar, s S) error {
-		f(ctx, r, s)
-		return nil
-	}
-	return NewCtxWithErr(s, cf)
-}
-
-func NewCtxWithErr[S any](s S, f CtxFuncWithErr[S]) Registrar {
-	h := &registrar[S]{
+func NewRegistrar[S any](s S, f Func[S]) Registrar {
+	rr := &registrar[S]{
 		s: s,
 		f: f,
 	}
-	return h
+	return rr
 }

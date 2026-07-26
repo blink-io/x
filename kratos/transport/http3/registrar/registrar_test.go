@@ -14,8 +14,9 @@ func TestIsServerThen_1(t *testing.T) {
 
 	rr := NewServerHandler(ss)
 
-	r := New[string]("test", func(r ServerHandler, s string) {
-		fmt.Println(r)
+	r := NewRegistrar[string]("test", func(ctx context.Context, sh ServerHandler, s string) error {
+		fmt.Println(sh)
+		return nil
 	})
 
 	err := r.RegisterToHTTP3(context.Background(), rr)
