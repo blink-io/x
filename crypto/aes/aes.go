@@ -21,19 +21,19 @@ const (
 )
 
 // Encrypt is alias of EncryptCBC.
-func Encrypt(plainText []byte, key []byte, iv ...[]byte) ([]byte, error) {
+func Encrypt(plainText, key []byte, iv ...[]byte) ([]byte, error) {
 	return EncryptCBC(plainText, key, iv...)
 }
 
 // Decrypt is alias of DecryptCBC.
-func Decrypt(cipherText []byte, key []byte, iv ...[]byte) ([]byte, error) {
+func Decrypt(cipherText, key []byte, iv ...[]byte) ([]byte, error) {
 	return DecryptCBC(cipherText, key, iv...)
 }
 
 // EncryptCBC encrypts `plainText` using CBC mode.
 // Note that the key must be 16/24/32 bit length.
 // The parameter `iv` initialization vector is unnecessary.
-func EncryptCBC(plainText []byte, key []byte, iv ...[]byte) ([]byte, error) {
+func EncryptCBC(plainText, key []byte, iv ...[]byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		return nil, err
@@ -56,7 +56,7 @@ func EncryptCBC(plainText []byte, key []byte, iv ...[]byte) ([]byte, error) {
 // DecryptCBC decrypts `cipherText` using CBC mode.
 // Note that the key must be 16/24/32 bit length.
 // The parameter `iv` initialization vector is unnecessary.
-func DecryptCBC(cipherText []byte, key []byte, iv ...[]byte) ([]byte, error) {
+func DecryptCBC(cipherText, key []byte, iv ...[]byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		return nil, err
@@ -142,7 +142,7 @@ func PKCS7UnPadding(src []byte, blockSize int) ([]byte, error) {
 // EncryptCFB encrypts `plainText` using CFB mode.
 // Note that the key must be 16/24/32 bit length.
 // The parameter `iv` initialization vector is unnecessary.
-func EncryptCFB(plainText []byte, key []byte, padding *int, iv ...[]byte) ([]byte, error) {
+func EncryptCFB(plainText, key []byte, padding *int, iv ...[]byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		err = fmt.Errorf(`aes.NewCipher failed for key "%s"`, key)
@@ -165,7 +165,7 @@ func EncryptCFB(plainText []byte, key []byte, padding *int, iv ...[]byte) ([]byt
 // DecryptCFB decrypts `plainText` using CFB mode.
 // Note that the key must be 16/24/32 bit length.
 // The parameter `iv` initialization vector is unnecessary.
-func DecryptCFB(cipherText []byte, key []byte, unPadding int, iv ...[]byte) ([]byte, error) {
+func DecryptCFB(cipherText, key []byte, unPadding int, iv ...[]byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		err = fmt.Errorf(`aes.NewCipher failed for key "%s"`, key)

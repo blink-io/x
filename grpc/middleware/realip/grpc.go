@@ -5,9 +5,10 @@ import (
 	"net"
 	"strings"
 
-	"github.com/blink-io/x/misc/realip"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/peer"
+
+	"github.com/blink-io/x/misc/realip"
 )
 
 func getFromGRPC(ctx context.Context, o *options) string {

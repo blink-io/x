@@ -15,8 +15,8 @@ func UnaryClientInterceptor(opts ...Option) grpc.UnaryClientInterceptor {
 		req, reply any,
 		cc *grpc.ClientConn,
 		invoker grpc.UnaryInvoker,
-		callOpts ...grpc.CallOption) error {
-
+		callOpts ...grpc.CallOption,
+	) error {
 		hub := sentry.GetHubFromContext(ctx)
 		if hub == nil {
 			hub = sentry.CurrentHub().Clone()
@@ -51,8 +51,8 @@ func StreamClientInterceptor(opts ...Option) grpc.StreamClientInterceptor {
 		cc *grpc.ClientConn,
 		method string,
 		streamer grpc.Streamer,
-		callOpts ...grpc.CallOption) (grpc.ClientStream, error) {
-
+		callOpts ...grpc.CallOption,
+	) (grpc.ClientStream, error) {
 		hub := sentry.GetHubFromContext(ctx)
 		if hub == nil {
 			hub = sentry.CurrentHub().Clone()

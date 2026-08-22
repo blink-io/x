@@ -3,7 +3,7 @@ package logrus
 import (
 	"log/slog"
 
-	"github.com/samber/slog-logrus/v2"
+	sloglogrus "github.com/samber/slog-logrus/v2"
 )
 
 type Option = sloglogrus.Option

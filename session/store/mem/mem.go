@@ -97,7 +97,7 @@ func (s *Store) All(ctx context.Context) (map[string][]byte, error) {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 
-	var mm = make(map[string][]byte)
+	mm := make(map[string][]byte)
 
 	for token, item := range s.items {
 		if item.expiration > time.Now().UnixNano() {

@@ -64,14 +64,14 @@ func RunTestLock(t *testing.T, kv kvstore.Store) {
 
 // RunTestLockTTL tests the KV pair Lock with TTL APIs supported
 // by the K/V backends.
-func RunTestLockTTL(t *testing.T, kv kvstore.Store, backup kvstore.Store) {
+func RunTestLockTTL(t *testing.T, kv, backup kvstore.Store) {
 	t.Helper()
 
 	testLockTTL(t, kv, backup)
 }
 
 // RunTestTTL tests the TTL functionality of the K/V backend.
-func RunTestTTL(t *testing.T, kv kvstore.Store, backup kvstore.Store) {
+func RunTestTTL(t *testing.T, kv, backup kvstore.Store) {
 	t.Helper()
 
 	testPutTTL(t, kv, backup)
@@ -421,7 +421,7 @@ func testLockUnlock(t *testing.T, kv kvstore.Store) {
 	require.NoError(t, err)
 }
 
-func testLockTTL(t *testing.T, kv kvstore.Store, otherConn kvstore.Store) {
+func testLockTTL(t *testing.T, kv, otherConn kvstore.Store) {
 	t.Helper()
 
 	ctx, cancel := context.WithTimeout(context.Background(), testTimeout)
@@ -509,7 +509,7 @@ func testLockTTL(t *testing.T, kv kvstore.Store, otherConn kvstore.Store) {
 	require.NoError(t, err)
 }
 
-func testPutTTL(t *testing.T, kv kvstore.Store, otherConn kvstore.Store) {
+func testPutTTL(t *testing.T, kv, otherConn kvstore.Store) {
 	t.Helper()
 
 	firstKey := "testPutTTL"

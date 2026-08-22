@@ -6,10 +6,8 @@ import (
 
 type fieldsCtxMarker struct{}
 
-var (
-	// fieldsCtxMarkerKey is the Context value marker that is used by logging middleware to read and write logging fields into context.
-	fieldsCtxMarkerKey = &fieldsCtxMarker{}
-)
+// fieldsCtxMarkerKey is the Context value marker that is used by logging middleware to read and write logging fields into context.
+var fieldsCtxMarkerKey = &fieldsCtxMarker{}
 
 // Fields loosely represents key value pairs that adds context to log lines. The key has to be type of string, whereas
 // value can be an arbitrary object.

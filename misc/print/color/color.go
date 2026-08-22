@@ -27,6 +27,4 @@ const (
 	BgBlue   = color.BgBlue
 )
 
-var (
-	New = color.New
-)
+var New = color.New

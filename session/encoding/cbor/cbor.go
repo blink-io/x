@@ -4,8 +4,9 @@ import (
 	"bytes"
 	"time"
 
-	"github.com/blink-io/x/session/encoding"
 	"github.com/fxamacker/cbor/v2"
+
+	"github.com/blink-io/x/session/encoding"
 )
 
 const Name = "cbor"
@@ -14,8 +15,7 @@ func init() {
 	encoding.Register(Name, &codec{})
 }
 
-type codec struct {
-}
+type codec struct{}
 
 func New() encoding.Codec {
 	return &codec{}

@@ -4,6 +4,4 @@ import (
 	"github.com/klauspost/compress"
 )
 
-var (
-	Estimate = compress.Estimate
-)
+var Estimate = compress.Estimate

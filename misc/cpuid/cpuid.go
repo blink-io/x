@@ -6,6 +6,4 @@ type (
 	CPUInfo = cpuid.CPUInfo
 )
 
-var (
-	Detect = cpuid.Detect
-)
+var Detect = cpuid.Detect

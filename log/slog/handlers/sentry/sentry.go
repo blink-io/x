@@ -3,7 +3,7 @@ package sentry
 import (
 	"log/slog"
 
-	"github.com/samber/slog-sentry/v2"
+	slogsentry "github.com/samber/slog-sentry/v2"
 )
 
 type Option = slogsentry.Option

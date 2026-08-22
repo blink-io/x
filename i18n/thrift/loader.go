@@ -22,13 +22,13 @@ func NewLoader(addr string, languages []string, ops ...Option) (i18n.Loader, err
 	useHTTP := opt.useHTTP
 	protocolType := opt.protocol
 
-	var cfg = &thrift.TConfiguration{
+	cfg := &thrift.TConfiguration{
 		ConnectTimeout: i18n.DefaultTimeout,
 		SocketTimeout:  i18n.DefaultTimeout,
 	}
 	var transport thrift.TTransport
 	var err error
-	var headers = make(map[string]string)
+	headers := make(map[string]string)
 	if useHTTP {
 		transport, err = thrift.NewTHttpClientWithOptions(addr, thrift.THttpClientOptions{
 			Client: &http.Client{

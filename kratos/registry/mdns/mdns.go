@@ -46,7 +46,7 @@ func (r *Registry) GetService(ctx context.Context, serviceName string) ([]*kregi
 }
 
 func (r *Registry) Watch(ctx context.Context, serviceName string) (kregistry.Watcher, error) {
-	//TODO implement me
+	// TODO implement me
 	panic("implement me")
 }
 
@@ -82,6 +82,6 @@ func (r *Registry) Register(ctx context.Context, service *kregistry.ServiceInsta
 }
 
 func (r *Registry) Deregister(ctx context.Context, service *kregistry.ServiceInstance) error {
-	//TODO implement me
+	// TODO implement me
 	panic("implement me")
 }

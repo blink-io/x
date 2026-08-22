@@ -13,7 +13,6 @@ import (
 
 // Realpath returns the real path of a given file in the os
 func Realpath(fpath string) (string, error) {
-
 	if len(fpath) == 0 {
 		return "", os.ErrInvalid
 	}
@@ -86,7 +85,6 @@ func Realpath(fpath string) (string, error) {
 		path = path[0 : len(path)-1]
 	}
 	return string(path), nil
-
 }
 
 // test if a link is symbolic link
@@ -96,7 +94,6 @@ func isSymlink(fi os.FileInfo) bool {
 
 // switch a symbolic link component to its real path
 func switchSymlinkCom(path []byte, start int, link, after string) []byte {
-
 	if link[0] == os.PathSeparator {
 		// Absolute links
 		return []byte(filepath.Join(link, after))

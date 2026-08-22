@@ -18,7 +18,7 @@ type keyValue struct {
 }
 
 type doOptions struct {
-	//method      string
+	// method      string
 	statusCode  int
 	ahs         []*keyValue
 	shs         map[string]string
@@ -61,13 +61,13 @@ func ApplyStatusCode(statusCode int) DoOption {
 	}
 }
 
-func ApplyAddHeader(key string, value string) DoOption {
+func ApplyAddHeader(key, value string) DoOption {
 	return func(o *doOptions) {
 		o.ahs = append(o.ahs, &keyValue{key, value})
 	}
 }
 
-func ApplySetHeader(key string, value string) DoOption {
+func ApplySetHeader(key, value string) DoOption {
 	return func(o *doOptions) {
 		o.shs[key] = value
 	}
@@ -111,7 +111,6 @@ func Do[Request Req, Response Res](
 			if err := kctx.BindQuery(&in); err != nil {
 				return err
 			}
-
 		}
 		if !opts.skipVars {
 			if err := kctx.BindVars(&in); err != nil {
@@ -296,10 +295,10 @@ type RouterHandle interface {
 	Handle(method, path string, h khttp.HandlerFunc, filters ...khttp.FilterFunc)
 }
 
-type RouterAction[Request Req, Response Res] func(path string, operation string, handle Func[Request, Response], ops ...DoOption)
+type RouterAction[Request Req, Response Res] func(path, operation string, handle Func[Request, Response], ops ...DoOption)
 
 func Route[Request Req, Response Res](rh RouterHandle, method string) RouterAction[Request, Response] {
-	return func(path string, operation string, handle Func[Request, Response], ops ...DoOption) {
+	return func(path, operation string, handle Func[Request, Response], ops ...DoOption) {
 		rh.Handle(method, path, Do(method, operation, handle, ops...))
 	}
 }

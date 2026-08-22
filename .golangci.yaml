@@ -1,0 +1,285 @@
+version: "2"
+
+run:
+  tests: true
+  build-tags:
+    - goexperiment.jsonv2
+  modules-download-mode: readonly
+  allow-parallel-runners: true
+  timeout: 10m
+
+linters:
+  default: standard
+  enable:
+    - bodyclose
+    - contextcheck
+    - copyloopvar
+    - decorder
+    - dupl
+    - durationcheck
+    - errcheck
+    - errorlint
+    - exhaustive
+    - exptostd
+    - fatcontext
+    - forbidigo
+    - gocheckcompilerdirectives
+    - gochecksumtype
+    - gocognit
+    - gocyclo
+    - godot
+    - gosec
+    - gosmopolitan
+    - govet
+    - iface
+    - ineffassign
+    - misspell
+    - nilerr
+    - nilnil
+    - noctx
+    - nolintlint
+    - nosprintfhostport
+    - prealloc
+    - predeclared
+    - promlinter
+    - reassign
+    - revive
+    - rowserrcheck
+    - sqlclosecheck
+    - staticcheck
+    - testifylint
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - unused
+    - usestdlibvars
+    - usetesting
+    - wastedassign
+    - whitespace
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters:
+          - dupl
+          - gocognit
+          - gocyclo
+          - gosec
+          - predeclared
+          - revive
+          - staticcheck
+      - path: tests/
+        linters:
+          - dupl
+          - gocognit
+          - gocyclo
+          - gosec
+          - prealloc
+          - revive
+          - rowserrcheck
+          - sqlclosecheck
+          - staticcheck
+      - path: hack/
+        linters:
+          - revive
+          - staticcheck
+
+  settings:
+    dupl:
+      threshold: 150
+    errcheck:
+      check-blank: true
+      check-type-assertions: true
+      disable-default-exclusions: false
+    exhaustive:
+      default-signifies-exhaustive: true
+    funlen:
+      lines: 100
+      statements: 60
+    gochecksumtype:
+      default-signifies-exhaustive: true
+    gocognit:
+      min-complexity: 20
+    gocyclo:
+      min-complexity: 15
+    godot:
+      scope: declarations
+      capital: true
+      period: true
+    gosec:
+      excludes:
+        - G115
+    govet:
+      enable-all: true
+      disable:
+        - fieldalignment
+      settings:
+        printf:
+          funcs:
+            - github.com/blink-io/x/log.Errorf
+            - github.com/blink-io/x/log.Warnf
+            - github.com/blink-io/x/log.Infof
+            - github.com/blink-io/x/log.Debugf
+    misspell:
+      locale: US
+    nolintlint:
+      allow-unused: false
+      require-explanation: true
+      require-specific: true
+    prealloc:
+      simple: true
+      range-loops: true
+      for-loops: false
+    predeclared:
+      ignore:
+        - copy
+        - new
+    promlinter:
+      strict: false
+    revive:
+      rules:
+        - name: atomic
+        - name: blank-imports
+        - name: bool-literal-in-expr
+        - name: confusing-naming
+        - name: context-as-argument
+          arguments:
+            - allowTypesBefore: '*testing.T'
+        - name: context-keys-type
+        - name: dot-imports
+        - name: duplicated-imports
+        - name: empty-block
+        - name: empty-lines
+        - name: error-naming
+        - name: error-return
+        - name: error-strings
+        - name: errorf
+        - name: exported
+          arguments:
+            - checkPrivateReceivers
+            - sayRepetitiveInsteadOfStutters
+        - name: flag-parameter
+        - name: function-result-limit
+          arguments: [4]
+        - name: get-return
+        - name: identical-branches
+        - name: if-return
+        - name: import-shadowing
+        - name: increment-decrement
+        - name: indent-error-flow
+          arguments:
+            - preserve-try
+        - name: line-length-limit
+          arguments:
+            - 160
+            - tab
+            - ignoreComments
+        - name: max-control-nesting
+          arguments: [5]
+        - name: max-public-structs
+          arguments: [10]
+        - name: modifies-value-receiver
+        - name: nested-structs
+        - name: optimize-operands-order
+        - name: package-comments
+          arguments:
+            - shouldBeSimple
+            - leading
+            - period
+        - name: range
+          arguments:
+            - allowForLoop
+            - errcheck
+        - name: receiver-naming
+        - name: redefines-builtin-id
+        - name: redundant-import-alias
+        - name: string-of-int
+        - name: struct-tag
+        - name: superfluous-else
+          arguments:
+            - preserveScope
+        - name: time-equal
+        - name: time-naming
+        - name: unexported-return
+        - name: unhandled-error
+          arguments:
+            - fmt.Errorf
+            - errors.New
+            - .Wrap
+            - .Wrapf
+            - github.com/pkg/errors.Wrap
+            - github.com/pkg/errors.Wrapf
+            - github.com/samber/oops.Wrap
+            - github.com/samber/oops.Wrapf
+        - name: unnecessary-stmt
+        - name: unreachable-code
+        - name: unused-parameter
+          arguments:
+            - allowRegex: "^_"
+        - name: unused-receiver
+          arguments:
+            - allowRegex: "^_"
+        - name: use-any
+        - name: var-declaration
+        - name: var-naming
+        - name: waitgroup-by-value
+    staticcheck:
+      checks:
+        - all
+        - -ST1003
+        - -ST1016
+        - -ST1020
+        - -ST1021
+        - -ST1022
+        - -ST1023
+    testifylint:
+      enable-all: true
+    thelper:
+      test:
+        first: true
+        name: true
+        begin: true
+      benchmark:
+        first: true
+        name: true
+        begin: true
+      tb:
+        first: true
+        name: true
+        begin: true
+    unparam:
+      check-exported: false
+
+formatters:
+  enable:
+    - gofmt
+    - gofumpt
+    - goimports
+  settings:
+    gofmt:
+      simplify: true
+      rewrite-rules:
+        - pattern: 'interface{}'
+          replacement: 'any'
+    gofumpt:
+      extra:
+        group-params: true
+    goimports:
+      local-prefixes:
+        - github.com/blink-io/x
+  exclusions:
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+      - Godeps$
+      - _examples
+      - _test
+      - tests/
+
+issues:
+  max-issues-per-linter: 50
+  max-same-issues: 3
+  new-from-rev: HEAD
+  new: false
+  uniq-by-line: true

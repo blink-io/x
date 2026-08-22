@@ -245,7 +245,7 @@ func Wrapf(err error, format string, args ...any) error {
 //
 // An error is considered to match a target if it is equal to that target or if
 // it implements a method Is(error) bool such that Is(target) returns true.
-func Is(err error, target error) bool {
+func Is(err, target error) bool {
 	return errors.Is(err, target)
 }
 

@@ -1,6 +1,6 @@
 package http
 
-import "github.com/samber/slog-http"
+import sloghttp "github.com/samber/slog-http"
 
 type Config = sloghttp.Config
 

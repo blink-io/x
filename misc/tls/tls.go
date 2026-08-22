@@ -7,9 +7,7 @@ import (
 	"os"
 )
 
-var (
-	ErrEmptyTLSConfig = fmt.Errorf("empty TLS config")
-)
+var ErrEmptyTLSConfig = fmt.Errorf("empty TLS config")
 
 func CreateBaseTLSConfig(caFile string, caOptional bool, certFile, keyFile string, insecureSkipVerify bool) (*tls.Config, error) {
 	certPool := x509.NewCertPool()

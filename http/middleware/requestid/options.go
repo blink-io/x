@@ -1,8 +1,9 @@
 package requestid
 
 import (
-	"github.com/blink-io/x/misc/requestid"
 	"github.com/google/uuid"
+
+	"github.com/blink-io/x/misc/requestid"
 )
 
 type options struct {

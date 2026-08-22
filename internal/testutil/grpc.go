@@ -5,11 +5,12 @@ import (
 	"log"
 	"log/slog"
 
-	"github.com/blink-io/x/internal/testdata"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/stats"
+
+	"github.com/blink-io/x/internal/testdata"
 )
 
 func CreateGRPCClient(target string, secure bool, ops ...grpc.DialOption) *grpc.ClientConn {
@@ -19,7 +20,7 @@ func CreateGRPCClient(target string, secure bool, ops ...grpc.DialOption) *grpc.
 	} else {
 		creds = insecure.NewCredentials()
 	}
-	var newOps = make([]grpc.DialOption, 0)
+	newOps := make([]grpc.DialOption, 0)
 	newOps = append(newOps, grpc.WithTransportCredentials(creds))
 	if len(ops) > 0 {
 		newOps = append(newOps, ops...)
@@ -39,7 +40,7 @@ func CreateGRPCServer(secure bool, ops ...grpc.ServerOption) *grpc.Server {
 		creds = insecure.NewCredentials()
 	}
 
-	var newOps = make([]grpc.ServerOption, 0)
+	newOps := make([]grpc.ServerOption, 0)
 	newOps = append(newOps, grpc.Creds(creds), grpc.StatsHandler(&statsHandler{}))
 	if len(ops) > 0 {
 		newOps = append(newOps, ops...)
@@ -51,8 +52,7 @@ func CreateGRPCServer(secure bool, ops ...grpc.ServerOption) *grpc.Server {
 
 var _ stats.Handler = (*statsHandler)(nil)
 
-type statsHandler struct {
-}
+type statsHandler struct{}
 
 func (s *statsHandler) TagRPC(ctx context.Context, info *stats.RPCTagInfo) context.Context {
 	slog.Info("Invoke [TagRPC]", "info", info)

@@ -4,6 +4,4 @@ import (
 	"github.com/montanaflynn/stats"
 )
 
-var (
-	Max = stats.Max
-)
+var Max = stats.Max

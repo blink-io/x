@@ -3,7 +3,7 @@ package zerolog
 import (
 	"log/slog"
 
-	"github.com/samber/slog-zerolog/v2"
+	slogzerolog "github.com/samber/slog-zerolog/v2"
 )
 
 type Option = slogzerolog.Option

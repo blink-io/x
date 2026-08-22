@@ -1,6 +1,6 @@
 package multi
 
-import "github.com/samber/slog-multi"
+import slogmulti "github.com/samber/slog-multi"
 
 var Failover = slogmulti.Failover
 

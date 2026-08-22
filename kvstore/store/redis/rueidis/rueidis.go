@@ -63,9 +63,9 @@ func newClient(endpoints []string, cfg *Config) (rueidis.Client, error) {
 
 	opt := rueidis.ClientOption{
 		InitAddress: endpoints,
-		//DialTimeout:  5 * time.Second,
-		//ReadTimeout:  30 * time.Second,
-		//WriteTimeout: 30 * time.Second,
+		// DialTimeout:  5 * time.Second,
+		// ReadTimeout:  30 * time.Second,
+		// WriteTimeout: 30 * time.Second,
 	}
 
 	if cfg != nil {
@@ -213,7 +213,6 @@ func (r *Store) Watch(ctx context.Context, key string, _ *kvstore.ReadOptions) (
 		if err := watchLoop(ctx, msgCh, get, push); err != nil {
 			log.Printf("watchLoop in Watch err: %v", err)
 		}
-
 	}(ctx, sub, get, push)
 
 	return watchCh, nil

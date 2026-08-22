@@ -3,12 +3,15 @@ package ristretto
 import (
 	"time"
 
-	"github.com/blink-io/x/cache"
 	"github.com/dgraph-io/ristretto/v2"
+
+	"github.com/blink-io/x/cache"
 )
 
-const Name = "ristretto"
-const defaultCost = 1
+const (
+	Name        = "ristretto"
+	defaultCost = 1
+)
 
 var _ cache.TTLCache[any] = (*Cache[any])(nil)
 

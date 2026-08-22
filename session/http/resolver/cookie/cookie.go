@@ -113,6 +113,7 @@ func (v *rv) Resolve(m resolver.Manager, ef resolver.ErrorFunc, w http.ResponseW
 	}
 	return nil
 }
+
 func (v *rv) SessionCookie() SessionCookie {
 	return v.Cookie
 }

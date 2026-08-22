@@ -6,7 +6,7 @@ import (
 	"encoding/base64"
 	"errors"
 
-	"github.com/hashicorp/golang-lru/v2"
+	lru "github.com/hashicorp/golang-lru/v2"
 	"golang.org/x/crypto/chacha20poly1305"
 )
 

@@ -20,3 +20,18 @@ upgrade2:
 	goup -v || go-mod-upgrade -v
 
 up-build: upgrade build
+
+.PHONY: lint
+# Run golangci-lint
+lint:
+	golangci-lint run --config .golangci.yaml ./...
+
+.PHONY: fmt
+# Run formatters
+fmt:
+	golangci-lint fmt --diff
+
+.PHONY: config-verify
+# Validate golangci-lint configuration
+config-verify:
+	golangci-lint config verify

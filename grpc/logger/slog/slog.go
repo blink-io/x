@@ -19,16 +19,14 @@ const (
 	LevelFatal slog.Level = 12
 )
 
-var (
-	// _grpcToSlogLevel maps gRPC log levels to slog log levels.
-	_grpcToSlogLevel = map[int]slog.Level{
-		grpcLvlDebug: slog.LevelDebug,
-		grpcLvlInfo:  slog.LevelInfo,
-		grpcLvlWarn:  slog.LevelWarn,
-		grpcLvlError: slog.LevelError,
-		grpcLvlFatal: LevelFatal,
-	}
-)
+// _grpcToSlogLevel maps gRPC log levels to slog log levels.
+var _grpcToSlogLevel = map[int]slog.Level{
+	grpcLvlDebug: slog.LevelDebug,
+	grpcLvlInfo:  slog.LevelInfo,
+	grpcLvlWarn:  slog.LevelWarn,
+	grpcLvlError: slog.LevelError,
+	grpcLvlFatal: LevelFatal,
+}
 
 type LevelEnabler interface {
 	Enabled(ctx context.Context, level slog.Level) bool

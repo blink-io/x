@@ -10,8 +10,7 @@ const (
 	Name = "gojson"
 )
 
-type codec struct {
-}
+type codec struct{}
 
 func New() encoding.Codec {
 	return &codec{}

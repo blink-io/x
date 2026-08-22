@@ -1,16 +1,16 @@
 package huml
 
 import (
-	"github.com/blink-io/x/encoding"
 	"github.com/huml-lang/go-huml"
+
+	"github.com/blink-io/x/encoding"
 )
 
 const (
 	Name = "huml"
 )
 
-type codec struct {
-}
+type codec struct{}
 
 func New() encoding.Codec {
 	return &codec{}

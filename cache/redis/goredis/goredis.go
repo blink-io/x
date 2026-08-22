@@ -4,8 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/blink-io/x/cache"
 	"github.com/redis/go-redis/v9"
+
+	"github.com/blink-io/x/cache"
 )
 
 const Name = "goredis"

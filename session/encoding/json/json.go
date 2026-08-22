@@ -15,8 +15,7 @@ func init() {
 	encoding.Register(Name, &codec{})
 }
 
-type codec struct {
-}
+type codec struct{}
 
 func New() encoding.Codec {
 	return &codec{}

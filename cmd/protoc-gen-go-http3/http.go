@@ -243,7 +243,7 @@ func buildPathVars(path string) (res map[string]*string) {
 	return
 }
 
-func replacePath(name string, value string, path string) string {
+func replacePath(name, value, path string) string {
 	pattern := regexp.MustCompile(fmt.Sprintf(`(?i){([\s]*%s\b[\s]*)=?([^{}]*)}`, name))
 	idx := pattern.FindStringIndex(path)
 	if len(idx) > 0 {

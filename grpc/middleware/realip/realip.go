@@ -3,9 +3,10 @@ package realip
 import (
 	"context"
 
+	"google.golang.org/grpc"
+
 	"github.com/blink-io/x/grpc/util"
 	"github.com/blink-io/x/misc/realip"
-	"google.golang.org/grpc"
 )
 
 type Options = realip.Options

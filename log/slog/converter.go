@@ -6,8 +6,10 @@ import (
 	slogcommon "github.com/samber/slog-common"
 )
 
-var SourceKey = "source"
-var ErrorKeys = []string{"error", "err"}
+var (
+	SourceKey = "source"
+	ErrorKeys = []string{"error", "err"}
+)
 
 type Converter func(addSource bool, replaceAttr func(groups []string, a slog.Attr) slog.Attr, loggerAttr []slog.Attr, groups []string, record *slog.Record) []any
 

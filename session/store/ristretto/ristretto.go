@@ -6,8 +6,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/blink-io/x/session/store"
 	"github.com/dgraph-io/ristretto/v2"
+
+	"github.com/blink-io/x/session/store"
 )
 
 const Name = "ristretto"

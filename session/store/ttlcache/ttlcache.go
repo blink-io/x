@@ -4,8 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/blink-io/x/session/store"
 	"github.com/jellydator/ttlcache/v3"
+
+	"github.com/blink-io/x/session/store"
 )
 
 const Name = "ttlcache"

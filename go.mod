@@ -31,9 +31,9 @@ require (
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20260711044523-1d14c1b2d443
 	github.com/blink-io/opt v0.0.0-20250826090112-aa8ab860d240
 	github.com/bmatcuk/doublestar/v4 v4.10.0
-	github.com/brianvoe/gofakeit/v7 v7.15.0
+	github.com/brianvoe/gofakeit/v7 v7.16.0
 	github.com/caarlos0/env/v11 v11.4.1
-	github.com/carlmjohnson/requests v0.25.1
+	github.com/carlmjohnson/requests v0.26.1
 	github.com/cenkalti/backoff/v4 v4.3.0
 	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/coder/websocket v1.8.15
@@ -50,12 +50,12 @@ require (
 	github.com/fatih/color v1.19.0
 	github.com/fxamacker/cbor/v2 v2.9.3
 	github.com/getsentry/sentry-go v0.48.0
-	github.com/go-chi/chi/v5 v5.3.1
+	github.com/go-chi/chi/v5 v5.3.2
 	github.com/go-co-op/gocron-redis-lock/v2 v2.2.1
 	github.com/go-co-op/gocron/v2 v2.22.0
 	github.com/go-crypt/crypt v0.14.15
 	github.com/go-faker/faker/v4 v4.11.0
-	github.com/go-json-experiment/json v0.0.0-20260623181947-01eb4420fa68
+	github.com/go-json-experiment/json v0.0.0-20260820222146-c27c302e5fc3
 	github.com/go-kratos/kratos/v3 v3.0.0
 	github.com/go-openapi/inflect v1.0.0
 	github.com/go-resty/resty/v2 v2.17.2
@@ -126,9 +126,9 @@ require (
 	github.com/redis/rueidis/rueidishook v1.0.77
 	github.com/reugn/async v0.10.0
 	github.com/reugn/go-quartz v0.15.2
-	github.com/riverqueue/river v0.44.0
-	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.44.0
-	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.44.0
+	github.com/riverqueue/river v0.44.1
+	github.com/riverqueue/river/riverdriver/riverdatabasesql v0.44.1
+	github.com/riverqueue/river/riverdriver/riverpgxv5 v0.44.1
 	github.com/rs/xid v1.6.0
 	github.com/samber/do/v2 v2.1.0
 	github.com/samber/hot v0.13.0
@@ -184,10 +184,10 @@ require (
 	golang.org/x/oauth2 v0.36.0
 	golang.org/x/sys v0.47.0
 	golang.org/x/text v0.41.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20260818201246-1b0934165a6f
+	google.golang.org/genproto/googleapis/api v0.0.0-20260819154853-08b0e4226688
 	google.golang.org/grpc v1.83.1
 	google.golang.org/protobuf v1.36.12
-	k8s.io/client-go v0.36.3
+	k8s.io/client-go v0.36.4
 	resty.dev/v3 v3.0.0-rc.3
 )
 
@@ -311,9 +311,9 @@ require (
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9 // indirect
 	github.com/refraction-networking/utls v1.8.2 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-	github.com/riverqueue/river/riverdriver v0.44.0 // indirect
-	github.com/riverqueue/river/rivershared v0.44.0 // indirect
-	github.com/riverqueue/river/rivertype v0.44.0 // indirect
+	github.com/riverqueue/river/riverdriver v0.44.1 // indirect
+	github.com/riverqueue/river/rivershared v0.44.1 // indirect
+	github.com/riverqueue/river/rivertype v0.44.1 // indirect
 	github.com/robfig/cron v1.2.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/rs/zerolog v1.35.1 // indirect
@@ -387,10 +387,10 @@ require (
 	golang.org/x/sync v0.22.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/tools v0.49.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260807164820-c8921c73eeea // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260818201246-1b0934165a6f // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/apimachinery v0.36.3 // indirect
+	k8s.io/apimachinery v0.36.4 // indirect
 	k8s.io/klog/v2 v2.140.0 // indirect
 	k8s.io/kube-openapi v0.0.0-20260520065146-aa012df4f4af // indirect
 	k8s.io/utils v0.0.0-20260507154919-ff6756f316d2 // indirect

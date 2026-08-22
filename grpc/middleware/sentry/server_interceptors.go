@@ -33,8 +33,8 @@ func UnaryServerInterceptor(opts ...Option) grpc.UnaryServerInterceptor {
 	return func(ctx context.Context,
 		req any,
 		info *grpc.UnaryServerInfo,
-		handler grpc.UnaryHandler) (any, error) {
-
+		handler grpc.UnaryHandler,
+	) (any, error) {
 		hub := sentry.GetHubFromContext(ctx)
 		if hub == nil {
 			hub = sentry.CurrentHub().Clone()
@@ -67,8 +67,8 @@ func StreamServerInterceptor(opts ...Option) grpc.StreamServerInterceptor {
 	return func(srv any,
 		ss grpc.ServerStream,
 		info *grpc.StreamServerInfo,
-		handler grpc.StreamHandler) error {
-
+		handler grpc.StreamHandler,
+	) error {
 		ctx := ss.Context()
 		hub := sentry.GetHubFromContext(ctx)
 		if hub == nil {
