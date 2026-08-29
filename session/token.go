@@ -2,7 +2,7 @@ package session
 
 import (
 	"github.com/google/uuid"
-	"github.com/lithammer/shortuuid/v4"
+	"github.com/lithammer/shortuuid/v5"
 	"github.com/rs/xid"
 )
 
