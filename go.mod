@@ -54,7 +54,7 @@ require (
 	github.com/go-co-op/gocron-redis-lock/v2 v2.2.1
 	github.com/go-co-op/gocron/v2 v2.22.0
 	github.com/go-crypt/crypt v0.14.15
-	github.com/go-faker/faker/v4 v4.11.0
+	github.com/go-faker/faker/v4 v4.12.0
 	github.com/go-json-experiment/json v0.0.0-20260820222146-c27c302e5fc3
 	github.com/go-kratos/kratos/v3 v3.0.0
 	github.com/go-openapi/inflect v1.0.0
@@ -114,7 +114,7 @@ require (
 	github.com/onsi/gomega v1.43.0
 	github.com/opensearch-project/opensearch-go/v4 v4.7.3
 	github.com/pelletier/go-toml/v2 v2.4.3
-	github.com/phuslu/log v1.0.131
+	github.com/phuslu/log v1.0.133
 	github.com/phuslu/log-contrib/grpc v0.0.0-20250309100953-cb5b9b62dd61
 	github.com/projectdiscovery/machineid v0.0.0-20250715113114-c77eb3567582
 	github.com/qiniu/qmgo v1.1.10
@@ -150,7 +150,7 @@ require (
 	github.com/sethvargo/go-limiter v1.2.0
 	github.com/sethvargo/go-password v0.4.0
 	github.com/sethvargo/go-retry v0.4.0
-	github.com/shamaton/msgpack/v3 v3.2.2
+	github.com/shamaton/msgpack/v3 v3.2.3
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cast v1.10.0
