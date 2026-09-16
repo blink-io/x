@@ -48,7 +48,7 @@ require (
 	github.com/ergochat/readline v0.1.3
 	github.com/failsafe-go/failsafe-go v0.9.7
 	github.com/fatih/color v1.19.0
-	github.com/fxamacker/cbor/v2 v2.9.3
+	github.com/fxamacker/cbor/v2 v2.9.4
 	github.com/getsentry/sentry-go v0.49.0
 	github.com/go-chi/chi/v5 v5.3.2
 	github.com/go-co-op/gocron-redis-lock/v2 v2.2.1
@@ -97,7 +97,7 @@ require (
 	github.com/lmittmann/tint v1.2.0
 	github.com/madflojo/testcerts v1.5.0
 	github.com/matoous/go-nanoid/v2 v2.1.0
-	github.com/matthewhartstonge/argon2 v1.6.2
+	github.com/matthewhartstonge/argon2 v1.6.3
 	github.com/mattn/go-runewidth v0.0.30
 	github.com/meilisearch/meilisearch-go v0.36.3
 	github.com/mholt/archives v0.1.5
@@ -119,11 +119,11 @@ require (
 	github.com/projectdiscovery/machineid v0.0.0-20250715113114-c77eb3567582
 	github.com/qiniu/qmgo v1.1.10
 	github.com/quic-go/quic-go v0.62.0
-	github.com/rabbitmq/amqp091-go v1.14.0
+	github.com/rabbitmq/amqp091-go v1.15.0
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.22.0
 	github.com/redis/go-redis/v9 v9.22.0
-	github.com/redis/rueidis v1.0.77
-	github.com/redis/rueidis/rueidishook v1.0.77
+	github.com/redis/rueidis v1.0.78
+	github.com/redis/rueidis/rueidishook v1.0.78
 	github.com/reugn/async v0.10.0
 	github.com/reugn/go-quartz v0.15.2
 	github.com/riverqueue/river v0.47.0
@@ -133,7 +133,7 @@ require (
 	github.com/samber/do/v2 v2.1.0
 	github.com/samber/hot v0.13.1
 	github.com/samber/mo v1.17.0
-	github.com/samber/oops v1.23.1
+	github.com/samber/oops v1.23.2
 	github.com/samber/ro v0.4.1
 	github.com/samber/slog-common v0.22.0
 	github.com/samber/slog-fiber v1.22.2
@@ -157,17 +157,17 @@ require (
 	github.com/spyzhov/ajson v0.9.6
 	github.com/stephenafamo/scan v0.9.0
 	github.com/stretchr/testify v1.12.1
-	github.com/twmb/franz-go v1.21.6
-	github.com/twmb/franz-go/pkg/kmsg v1.13.1
+	github.com/twmb/franz-go v1.21.7
+	github.com/twmb/franz-go/pkg/kmsg v1.14.0
 	github.com/twmb/murmur3 v1.2.0
-	github.com/unrolled/render v1.7.0
+	github.com/unrolled/render v1.8.1
 	github.com/uptrace/bun v1.2.18
 	github.com/uptrace/bun/dialect/pgdialect v1.2.18
 	github.com/uptrace/bun/extra/bundebug v1.2.18
 	github.com/uptrace/bun/extra/bunslog v1.2.18
 	github.com/uptrace/uptrace-go v1.43.0
-	github.com/valkey-io/valkey-go v1.0.77
-	github.com/valkey-io/valkey-go/valkeyhook v1.0.77
+	github.com/valkey-io/valkey-go v1.0.78
+	github.com/valkey-io/valkey-go/valkeyhook v1.0.78
 	github.com/vmihailenco/msgpack/v5 v5.4.1
 	github.com/xtaci/kcp-go/v5 v5.6.72
 	github.com/zeebo/xxh3 v1.1.0
@@ -177,7 +177,7 @@ require (
 	go.mongodb.org/mongo-driver/v2 v2.9.1
 	go.opentelemetry.io/otel v1.46.0
 	go.opentelemetry.io/otel/trace v1.46.0
-	go.temporal.io/sdk v1.48.0
+	go.temporal.io/sdk v1.49.0
 	go.uber.org/multierr v1.11.0
 	go.uber.org/zap v1.28.0
 	golang.org/x/crypto v0.57.0
@@ -379,7 +379,7 @@ require (
 	go.opentelemetry.io/otel/sdk/log v0.19.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.46.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.10.0 // indirect
-	go.temporal.io/api v1.63.4 // indirect
+	go.temporal.io/api v1.63.5 // indirect
 	go.uber.org/atomic v1.11.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.4 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
