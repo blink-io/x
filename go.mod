@@ -42,7 +42,7 @@ require (
 	github.com/danielgtaylor/huma/v2 v2.39.1
 	github.com/dgraph-io/ristretto/v2 v2.4.2
 	github.com/dlclark/regexp2 v1.12.0
-	github.com/dustin/go-humanize v1.0.1
+	github.com/dustin/go-humanize v1.1.0
 	github.com/elastic/elastic-transport-go/v8 v8.11.0
 	github.com/elastic/go-elasticsearch/v9 v9.5.2
 	github.com/ergochat/readline v0.1.3
@@ -110,8 +110,8 @@ require (
 	github.com/nicksnyder/go-i18n/v2 v2.6.1
 	github.com/nyaruka/phonenumbers v1.8.1
 	github.com/oklog/ulid/v2 v2.1.2
-	github.com/onsi/ginkgo/v2 v2.32.2
-	github.com/onsi/gomega v1.43.0
+	github.com/onsi/ginkgo/v2 v2.33.0
+	github.com/onsi/gomega v1.43.1
 	github.com/opensearch-project/opensearch-go/v4 v4.7.3
 	github.com/pelletier/go-toml/v2 v2.4.3
 	github.com/phuslu/log v1.0.133
@@ -185,8 +185,8 @@ require (
 	golang.org/x/oauth2 v0.37.0
 	golang.org/x/sys v0.48.0
 	golang.org/x/text v0.42.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20260911204522-f61a6ca850bd
-	google.golang.org/grpc v1.83.2
+	google.golang.org/genproto/googleapis/api v0.0.0-20260917231906-eeb232e0883d
+	google.golang.org/grpc v1.84.0
 	google.golang.org/protobuf v1.36.12
 	k8s.io/client-go v0.37.0
 	resty.dev/v3 v3.0.0-rc.4
