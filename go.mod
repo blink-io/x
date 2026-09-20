@@ -30,8 +30,8 @@ require (
 	github.com/blink-io/hypersql v0.0.0-20250715100453-239dcf60539c
 	github.com/blink-io/kratos-transport/transport/http3 v0.0.0-20260711044523-1d14c1b2d443
 	github.com/blink-io/opt v0.0.0-20250826090112-aa8ab860d240
-	github.com/bmatcuk/doublestar/v4 v4.10.0
-	github.com/brianvoe/gofakeit/v7 v7.17.0
+	github.com/bmatcuk/doublestar/v4 v4.10.1
+	github.com/brianvoe/gofakeit/v7 v7.17.1
 	github.com/caarlos0/env/v11 v11.4.1
 	github.com/carlmjohnson/requests v0.26.1
 	github.com/cenkalti/backoff/v4 v4.3.0
@@ -104,8 +104,8 @@ require (
 	github.com/miekg/dns v1.1.73
 	github.com/minio/highwayhash v1.0.4
 	github.com/minio/minlz v1.2.0
-	github.com/montanaflynn/stats v0.12.6
-	github.com/nats-io/nats.go v1.53.1
+	github.com/montanaflynn/stats v0.12.7
+	github.com/nats-io/nats.go v1.54.0
 	github.com/ncruces/go-strftime v1.0.0
 	github.com/nicksnyder/go-i18n/v2 v2.6.1
 	github.com/nyaruka/phonenumbers v1.8.1
@@ -157,7 +157,7 @@ require (
 	github.com/spyzhov/ajson v0.9.6
 	github.com/stephenafamo/scan v0.9.0
 	github.com/stretchr/testify v1.12.1
-	github.com/twmb/franz-go v1.21.7
+	github.com/twmb/franz-go v1.22.0
 	github.com/twmb/franz-go/pkg/kmsg v1.14.0
 	github.com/twmb/murmur3 v1.2.0
 	github.com/unrolled/render v1.8.1
@@ -185,7 +185,7 @@ require (
 	golang.org/x/oauth2 v0.37.0
 	golang.org/x/sys v0.48.0
 	golang.org/x/text v0.42.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20260917231906-eeb232e0883d
+	google.golang.org/genproto/googleapis/api v0.0.0-20260918162117-cecb64721679
 	google.golang.org/grpc v1.84.0
 	google.golang.org/protobuf v1.36.12
 	k8s.io/client-go v0.37.0
@@ -300,7 +300,7 @@ require (
 	github.com/nexus-rpc/sdk-go v0.7.0 // indirect
 	github.com/nwaples/rardecode/v2 v2.4.1 // indirect
 	github.com/philhofer/fwd v1.2.0 // indirect
-	github.com/pierrec/lz4/v4 v4.1.29 // indirect
+	github.com/pierrec/lz4/v4 v4.1.30 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/power-devops/perfstat v0.0.0-20260805114148-88456608a4f6 // indirect
 	github.com/prometheus/client_golang v1.24.1 // indirect
@@ -389,7 +389,7 @@ require (
 	golang.org/x/sync v0.23.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/tools v0.49.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260904194346-d0f1323225a4 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260917231906-eeb232e0883d // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/apimachinery v0.37.0 // indirect
