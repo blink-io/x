@@ -10,9 +10,8 @@ var (
 )
 
 type (
-	OptionFn     = slogor.OptionFn
-	Handler      = slogor.Handler
-	GroupOrAttrs = slogor.GroupOrAttrs
+	OptionFn = slogor.OptionFn
+	Handler  = slogor.Handler
 )
 
 var (
