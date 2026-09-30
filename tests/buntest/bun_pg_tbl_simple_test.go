@@ -92,7 +92,7 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 			string(TblSimpleTable.Columns.Name): gofakeit.Animal(),
 		}
 		q := bundb.NewUpdate().Model(&m).
-			Table(string(TblSimpleTable.Name)).
+			Table(string(TblSimpleTable.Label)).
 			Where("id = ?", 11)
 		_, err := q.Exec(ctx)
 		require.NoError(t, err)
@@ -116,7 +116,7 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 	t.Run("select custom columns", func(t *testing.T) {
 		q := bundb.NewSelect().
 			Column("id", "name", "created_at", "deleted_at").
-			Table(TblSimpleTable.Name)
+			Table(TblSimpleTable.Label)
 		var mm []CustomResult
 		err := q.Scan(ctx, &mm)
 		require.NoError(t, err)
@@ -167,7 +167,7 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 
 	t.Run("delete by id 2", func(t *testing.T) {
 		q := bundb.NewDelete().
-			Table(TblSimpleTable.Name).
+			Table(TblSimpleTable.Label).
 			Where("id = ?", 11)
 		rr, err := q.Exec(ctx)
 		require.NoError(t, err)
@@ -185,7 +185,7 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 		vals := []string{gofakeit.Animal(), gofakeit.City()}
 		q := bundb.NewUpdate().
 			Set("str_arrays = ?", pgdialect.Array(vals)).
-			Table(TblSimpleTable.Name).
+			Table(TblSimpleTable.Label).
 			Where("id = ?", 59)
 		_, err := q.Exec(ctx)
 		require.NoError(t, err)
@@ -211,7 +211,7 @@ func TestBun_TblSimple_Tests(t *testing.T) {
 		}
 		q := bundb.NewUpdate().
 			Model(&um).
-			Table(TblSimpleTable.Name).
+			Table(TblSimpleTable.Label).
 			Where("id = ?", 61)
 		_, err := q.Exec(ctx)
 		require.NoError(t, err)

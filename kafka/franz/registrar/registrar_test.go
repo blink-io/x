@@ -26,6 +26,6 @@ func TestIface(t *testing.T) {
 
 	})
 
-	err = r.RegisterToSaramaKafka(nil, nil)
+	err = r.RegisterToFranzKafka(nil, nil)
 	require.NoError(t, err)
 }

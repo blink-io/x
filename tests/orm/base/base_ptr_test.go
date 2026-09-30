@@ -58,8 +58,8 @@ func TestPtr_2(t *testing.T) {
 }
 
 func TestPtr_3(t *testing.T) {
-	mmptr := ptr.Of(mm)
-	mmfptr := ptr.Of(getMM())
+	mmptr := ptr.To(mm)
+	mmfptr := ptr.To(getMM())
 
 	fmt.Printf("mm ptr: %p\n", mmptr)
 	fmt.Printf("mm fptr: %p\n", mmfptr)
