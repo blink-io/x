@@ -18,10 +18,11 @@ func UnaryServerInterceptor(ops ...Option) grpc.UnaryServerInterceptor {
 		if len(reqID) == 0 {
 			reqID = opts.generator()
 		}
-		outMD := metadata.New(map[string]string{
-			opts.header: reqID,
-		})
-		resp, err = handler(metadata.NewOutgoingContext(ctx, outMD), req)
+		// Append on top of the existing outgoing metadata instead of
+		// rebuilding a map per request; rebuilt metadata silently dropped
+		// entries added by upstream interceptors (auth, tracing).
+		ctx = metadata.AppendToOutgoingContext(ctx, opts.header, reqID)
+		resp, err = handler(ctx, req)
 		return
 	}
 }
@@ -33,12 +34,9 @@ func StreamServerInterceptor(ops ...Option) grpc.StreamServerInterceptor {
 		if len(reqID) == 0 {
 			reqID = o.generator()
 		}
-		outMD := metadata.New(map[string]string{
-			o.header: reqID,
-		})
 		wsCtx := requestid.NewContext(ss.Context(), reqID)
 		ws := util.WrapServerStream(ss)
-		ws.WrappedContext = metadata.NewOutgoingContext(wsCtx, outMD)
+		ws.WrappedContext = metadata.AppendToOutgoingContext(wsCtx, o.header, reqID)
 		ss = ws
 		return handler(srv, ss)
 	}

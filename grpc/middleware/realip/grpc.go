@@ -19,7 +19,15 @@ func getFromGRPC(ctx context.Context, o *options) string {
 	for _, header := range o.Headers {
 		mdvals := md.Get(header)
 		for _, mdval := range mdvals {
-			addrs := strings.Split(mdval, ",")
+			if mdval == "" {
+				continue
+			}
+			// Single-value headers (the common case) skip the slice
+			// allocation of strings.Split entirely.
+			addrs := []string{mdval}
+			if strings.Contains(mdval, ",") {
+				addrs = strings.Split(mdval, ",")
+			}
 			if ip, ok := realip.GetIPAddress(addrs, o.PrivateSubnets); ok {
 				return ip
 			}

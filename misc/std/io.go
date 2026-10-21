@@ -3,7 +3,8 @@ package std
 import "io"
 
 func CloseQuietly(c io.Closer) {
-	func() {
-		_ = c.Close()
-	}()
+	if c == nil {
+		return
+	}
+	_ = c.Close()
 }

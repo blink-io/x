@@ -121,6 +121,9 @@ type Logger struct {
 
 // Info implements grpclog.LoggerV2.
 func (l *Logger) Info(args ...any) {
+	if !l.enabler.Enabled(l.ctx, slog.LevelInfo) {
+		return
+	}
 	l.delegate.InfoContext(l.ctx, sprintln(args))
 }
 
@@ -133,12 +136,18 @@ func (l *Logger) Infoln(args ...any) {
 
 // Infof implements grpclog.LoggerV2.
 func (l *Logger) Infof(format string, args ...any) {
+	if !l.enabler.Enabled(l.ctx, slog.LevelInfo) {
+		return
+	}
 	msg := fmt.Sprintf(format, args...)
 	l.delegate.InfoContext(l.ctx, msg)
 }
 
 // Warning implements grpclog.LoggerV2.
 func (l *Logger) Warning(args ...any) {
+	if !l.enabler.Enabled(l.ctx, slog.LevelWarn) {
+		return
+	}
 	l.delegate.WarnContext(l.ctx, sprintln(args))
 }
 
@@ -151,12 +160,18 @@ func (l *Logger) Warningln(args ...any) {
 
 // Warningf implements grpclog.LoggerV2.
 func (l *Logger) Warningf(format string, args ...any) {
+	if !l.enabler.Enabled(l.ctx, slog.LevelWarn) {
+		return
+	}
 	msg := fmt.Sprintf(format, args...)
 	l.delegate.WarnContext(l.ctx, msg)
 }
 
 // Error implements grpclog.LoggerV2.
 func (l *Logger) Error(args ...any) {
+	if !l.enabler.Enabled(l.ctx, slog.LevelError) {
+		return
+	}
 	l.delegate.ErrorContext(l.ctx, sprintln(args))
 }
 
@@ -169,6 +184,9 @@ func (l *Logger) Errorln(args ...any) {
 
 // Errorf implements grpclog.LoggerV2.
 func (l *Logger) Errorf(format string, args ...any) {
+	if !l.enabler.Enabled(l.ctx, slog.LevelError) {
+		return
+	}
 	msg := fmt.Sprintf(format, args...)
 	l.delegate.ErrorContext(l.ctx, msg)
 }
@@ -190,7 +208,12 @@ func (l *Logger) Fatalf(format string, args ...any) {
 
 // V implements grpclog.LoggerV2.
 func (l *Logger) V(level int) bool {
-	return l.enabler.Enabled(l.ctx, _grpcToSlogLevel[level])
+	// Unmapped levels must not fall through to the zero-value slog level.
+	lvl, ok := _grpcToSlogLevel[level]
+	if !ok {
+		return false
+	}
+	return l.enabler.Enabled(l.ctx, lvl)
 }
 
 func sprintln(args []any) string {

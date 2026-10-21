@@ -1,6 +1,8 @@
 package requestid
 
 import (
+	"strings"
+
 	"github.com/google/uuid"
 
 	"github.com/blink-io/x/misc/requestid"
@@ -21,6 +23,9 @@ func applyOptions(ops ...Option) *options {
 	for _, o := range ops {
 		o(opt)
 	}
+	// gRPC metadata keys are lowercase; normalize once at construction
+	// instead of per intercepted call.
+	opt.header = strings.ToLower(opt.header)
 	return opt
 }
 

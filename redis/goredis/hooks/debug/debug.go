@@ -35,7 +35,7 @@ func (h *hook) DialHook(next redis.DialHook) redis.DialHook {
 func (h *hook) ProcessHook(next redis.ProcessHook) redis.ProcessHook {
 	return func(ctx context.Context, cmd redis.Cmder) error {
 		str := rediscmd.CmdString(cmd)
-		h.logf("Redis CMD: ", str)
+		h.logf("Redis CMD: %s", str)
 		return next(ctx, cmd)
 	}
 }
@@ -43,7 +43,7 @@ func (h *hook) ProcessHook(next redis.ProcessHook) redis.ProcessHook {
 func (h *hook) ProcessPipelineHook(next redis.ProcessPipelineHook) redis.ProcessPipelineHook {
 	return func(ctx context.Context, cmds []redis.Cmder) error {
 		str1, str2 := rediscmd.CmdsString(cmds)
-		h.logf("%s: %s", str1, str2)
+		h.logf("Redis pipeline cmds: %s, info: %s", str1, str2)
 		return next(ctx, cmds)
 	}
 }

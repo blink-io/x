@@ -15,6 +15,8 @@ github.com/42wim/httpsig v1.3.0 h1:HK2bieeZ99X9IvOoc1ST6yrhLek0f4MqlEGES2JCP3g=
 github.com/42wim/httpsig v1.3.0/go.mod h1:lgC3Yrvp4lxi1odEF1ge3kQBu/VM+SRcZQu5YwiR3dU=
 github.com/99designs/gqlgen v0.17.95 h1:882h7F5iJImgtyUVttc4MOK2NbzbMYc2oyNeHqkjpP4=
 github.com/99designs/gqlgen v0.17.95/go.mod h1:kHYPrpwOXDU1OQyxIg3Z7nVXSnlUoHVWBY7CMJCAM4M=
+github.com/99designs/gqlgen v0.17.97 h1:Dv4OZ+Mvt38+1cemFYatThs3Y3tq2fjuV2OFWq2R7kc=
+github.com/99designs/gqlgen v0.17.97/go.mod h1:Fk3sbEOHsiIkcmUhhTxe/Jmm3oXKDgc5L70P0rWOljw=
 github.com/AthenZ/athenz v1.12.48 h1:QlLgYuujjBi5YfxTgYBVytrzmRv+ur/6NvY7Jq+WOUE=
 github.com/AthenZ/athenz v1.12.48/go.mod h1:h4Q4H30QakBDfTLQoIra7TyVT14Cxcs0vcKBX7ZJJkg=
 github.com/AthenZ/athenz v1.12.49 h1:DT0YSj5iiL8fFt8ou/tgYsVL2BYqW9RHRgtg8BMfxp8=
@@ -981,6 +983,8 @@ github.com/uptrace/bun/extra/bunslog v1.3.0 h1:te1va7h9QN/SJPOwAKxqCVxahsx1gu7z4
 github.com/uptrace/bun/extra/bunslog v1.3.0/go.mod h1:sQglPlo9YQMKgQr/jnrNV3wXfrzwUjojFlutrpGqDWk=
 github.com/uptrace/uptrace-go v1.47.0 h1:FQgpAx/DdfDEaJ9xX03RaAc7BXVraBz0qC15oynFDpI=
 github.com/uptrace/uptrace-go v1.47.0/go.mod h1:xVJgZjczsSa94/pdg5HrtWTY/HyfCXxL7f+MienUh7Y=
+github.com/urfave/cli/v3 v3.14.0 h1:a8414NQlHJs0c/iBsulKLzlES0n/lEAskbL2LKpU4/s=
+github.com/urfave/cli/v3 v3.14.0/go.mod h1:vXn6HxPNccJSzQr2QvwVncOKrgYGIHU0HY5h8B2nQj4=
 github.com/valkey-io/valkey-go v1.0.78 h1:1Ce8hRaaNXpKfqmqZQRhnbVh1eW8MGR873pdXVvE4y8=
 github.com/valkey-io/valkey-go v1.0.78/go.mod h1:gvC/r2m3eW4Hbj0YnjogTzNtFdPSM/D+NCqen+5OABM=
 github.com/valkey-io/valkey-go v1.0.79 h1:dryzYka/oOkSMOcNmOTjQI8zfu/4bUzDZNnFW9NlqNM=
@@ -1303,6 +1307,8 @@ google.golang.org/genproto/googleapis/api v0.0.0-20261005182115-fad411399dd8 h1:
 google.golang.org/genproto/googleapis/api v0.0.0-20261005182115-fad411399dd8/go.mod h1:QK6p7IgD7IZEZJBhhSUCib5X2vMOzlrGCGUw2XyVDh0=
 google.golang.org/genproto/googleapis/api v0.0.0-20261012220534-4341edf3f941 h1:DS/w3N8rsfrwxwgGSj6WhMsPo7aNQGmDx74J81zd0NQ=
 google.golang.org/genproto/googleapis/api v0.0.0-20261012220534-4341edf3f941/go.mod h1:AuGAdi9KnXss7xbLxIKhCvk+Ro/SxpET/iS45DNYN+M=
+google.golang.org/genproto/googleapis/api v0.0.0-20261019180522-ce908d29299b h1:nB3spRIaSPtxJpxb0k41yljROvm2Jrwfs2pSNdKS5y8=
+google.golang.org/genproto/googleapis/api v0.0.0-20261019180522-ce908d29299b/go.mod h1:9N4vtjEwvgQKEdlFVQO0M44ErhecQ9DCSQfGoZ51M6w=
 google.golang.org/genproto/googleapis/rpc v0.0.0-20261005182115-fad411399dd8 h1:0SXBqli5dnuCKMjI/X3FM226zEaEa0GUcSCJtN1vL2o=
 google.golang.org/genproto/googleapis/rpc v0.0.0-20261005182115-fad411399dd8/go.mod h1:OaIUM3+LpYcK2GXM4FTmhWoIq371Owdr+Cc7/BsYHHc=
 google.golang.org/genproto/googleapis/rpc v0.0.0-20261012220534-4341edf3f941 h1:QG6hS4zFplRZvOQedzei4t2pT/zkQc3VR1u+S9/rcAw=

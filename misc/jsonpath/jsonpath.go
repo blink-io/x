@@ -494,7 +494,10 @@ func (j *JSONPath) evalRecursive(input []reflect.Value, node *RecursiveNode) ([]
 
 // evalFilter filters array according to FilterNode
 func (j *JSONPath) evalFilter(input []reflect.Value, node *FilterNode) ([]reflect.Value, error) {
-	results := []reflect.Value{}
+	results := make([]reflect.Value, 0, len(input))
+	// Reused single-element scratch for each filtered element; allocating
+	// one slice per element is the hottest spot of this function.
+	temp := make([]reflect.Value, 1)
 	for _, value := range input {
 		value, _ = template.Indirect(value)
 
@@ -502,7 +505,7 @@ func (j *JSONPath) evalFilter(input []reflect.Value, node *FilterNode) ([]reflec
 			return input, fmt.Errorf("%v is not array or slice and cannot be filtered", value)
 		}
 		for i := 0; i < value.Len(); i++ {
-			temp := []reflect.Value{value.Index(i)}
+			temp[0] = value.Index(i)
 			lefts, err := j.evalList(temp, node.Left)
 
 			// case exists

@@ -618,16 +618,10 @@ func (m *manager) getSessionDataFromContext(ctx context.Context) *sessionData {
 
 type contextKey string
 
-var (
-	contextKeyID      uint64
-	contextKeyIDMutex = &sync.Mutex{}
-)
+var contextKeyID atomic.Uint64
 
 func generateContextKey() contextKey {
-	contextKeyIDMutex.Lock()
-	defer contextKeyIDMutex.Unlock()
-	atomic.AddUint64(&contextKeyID, 1)
-	return contextKey(fmt.Sprintf("session.%d", contextKeyID))
+	return contextKey(fmt.Sprintf("session.%d", contextKeyID.Add(1)))
 }
 
 func (m *manager) doStoreDelete(ctx context.Context, token string) (err error) {

@@ -3,6 +3,7 @@ package slog
 import (
 	"fmt"
 	"log/slog"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -204,5 +205,8 @@ func withLogger(
 	opts []Option,
 	f func(*Logger),
 ) {
-	f(NewLogger(slog.Default(), append(opts, withWarn())...))
+	// The logger must actually honor minimalLevel for V() expectations to
+	// hold; slog.Default() is always INFO and would enable everything.
+	l := slog.New(slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{Level: minimalLevel}))
+	f(NewLogger(l, append(opts, withWarn())...))
 }

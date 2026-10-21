@@ -2,6 +2,7 @@ package goredis
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"github.com/blink-io/x/session/store"
@@ -72,24 +73,26 @@ func (s *Store) All(ctx context.Context) (map[string][]byte, error) {
 	var cursor uint64
 	sessions := make(map[string][]byte)
 	for {
-		var keys []string
-		var err error
-		keys, cursor, err = s.client.Scan(ctx, cursor, s.prefix+"*", 0).Result()
+		// Batch one SCAN page of keys in a single MGET instead of one
+		// sequential GET round-trip per session.
+		keys, next, err := s.client.Scan(ctx, cursor, s.prefix+"*", 500).Result()
 		if err != nil {
-			if err == redis.Nil {
+			if errors.Is(err, redis.Nil) {
 				return nil, nil
-			} else {
-				return nil, err
 			}
+			return nil, err
 		}
-		for _, key := range keys {
-			token := key[len(s.prefix):]
-			data, exists, err := s.Find(ctx, token)
+		cursor = next
+
+		if len(keys) > 0 {
+			replies, err := s.client.MGet(ctx, keys...).Result()
 			if err != nil {
 				return nil, err
 			}
-			if exists {
-				sessions[token] = data
+			for i, reply := range replies {
+				if v, ok := reply.(string); ok && v != "" {
+					sessions[keys[i][len(s.prefix):]] = []byte(v)
+				}
 			}
 		}
 		if cursor == 0 {

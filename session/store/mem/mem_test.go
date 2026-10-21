@@ -120,18 +120,24 @@ func TestDelete(t *testing.T) {
 }
 
 func TestCleanupInterval(t *testing.T) {
+	ctx := context.Background()
+
 	m := NewWithCleanupInterval(100 * time.Millisecond)
 	defer m.StopCleanup()
-	m.items["session_token"] = item{object: []byte("encoded_data"), expiration: time.Now().Add(500 * time.Millisecond).UnixNano()}
 
-	_, ok := m.items["session_token"]
-	if !ok {
-		t.Fatalf("got %v: expected %v", ok, true)
+	err := m.Commit(ctx, "session_token", []byte("encoded_data"), time.Now().Add(500*time.Millisecond))
+	if err != nil {
+		t.Fatalf("got %v: expected %v", err, nil)
+	}
+
+	_, found, _ := m.Find(ctx, "session_token")
+	if found != true {
+		t.Fatalf("got %v: expected %v", found, true)
 	}
 
 	time.Sleep(time.Second)
-	_, ok = m.items["session_token"]
-	if ok {
-		t.Fatalf("got %v: expected %v", ok, false)
+	_, found, _ = m.Find(ctx, "session_token")
+	if found != false {
+		t.Fatalf("got %v: expected %v", found, false)
 	}
 }

@@ -46,6 +46,7 @@ var (
 	ErrSyntax        = errors.New("invalid syntax")
 	dictKeyRex       = regexp.MustCompile(`^'([^']*)'$`)
 	sliceOperatorRex = regexp.MustCompile(`^(-?[\d]*)(:-?[\d]*)?(:-?[\d]*)?$`)
+	filterRex        = regexp.MustCompile(`^([^!<>=]+)([!<>=]+)(.+?)$`)
 )
 
 // Parse parsed the given text and return a node Parser.
@@ -68,7 +69,7 @@ func NewParser(name string) *Parser {
 
 // parseAction parsed the expression inside delimiter
 func parseAction(name, text string) (*Parser, error) {
-	p, err := Parse(name, fmt.Sprintf("%s%s%s", leftDelim, text, rightDelim))
+	p, err := Parse(name, leftDelim+text+rightDelim)
 	// when error happens, p will be nil, so we need to return here
 	if err != nil {
 		return p, err
@@ -145,40 +146,44 @@ func (p *Parser) parseLeftDelim(cur *ListNode) error {
 }
 
 func (p *Parser) parseInsideAction(cur *ListNode) error {
-	prefixMap := map[string]func(*ListNode) error{
-		rightDelim: p.parseRightDelim,
-		"[?(":      p.parseFilter,
-		"..":       p.parseRecursive,
-	}
-	for prefix, parseFunc := range prefixMap {
-		if strings.HasPrefix(p.input[p.pos:], prefix) {
-			return parseFunc(cur)
+	for {
+		// Only one of these prefixes (if any) can match; checks run in a
+		// fixed order instead of building a map with two closures per token.
+		if strings.HasPrefix(p.input[p.pos:], rightDelim) {
+			return p.parseRightDelim(cur)
+		}
+		if strings.HasPrefix(p.input[p.pos:], "[?(") {
+			return p.parseFilter(cur)
+		}
+		if strings.HasPrefix(p.input[p.pos:], "..") {
+			return p.parseRecursive(cur)
+		}
+
+		switch r := p.next(); {
+		case r == eof || isEndOfLine(r):
+			return fmt.Errorf("unclosed action")
+		case r == ' ':
+			p.consumeText()
+			continue
+		case r == '@' || r == '$': // the current object, just pass it
+			p.consumeText()
+			continue
+		case r == '[':
+			return p.parseArray(cur)
+		case r == '"' || r == '\'':
+			return p.parseQuote(cur, r)
+		case r == '.':
+			return p.parseField(cur)
+		case r == '+' || r == '-' || unicode.IsDigit(r):
+			p.backup()
+			return p.parseNumber(cur)
+		case isAlphaNumeric(r):
+			p.backup()
+			return p.parseIdentifier(cur)
+		default:
+			return fmt.Errorf("unrecognized character in action: %#U", r)
 		}
 	}
-
-	switch r := p.next(); {
-	case r == eof || isEndOfLine(r):
-		return fmt.Errorf("unclosed action")
-	case r == ' ':
-		p.consumeText()
-	case r == '@' || r == '$': // the current object, just pass it
-		p.consumeText()
-	case r == '[':
-		return p.parseArray(cur)
-	case r == '"' || r == '\'':
-		return p.parseQuote(cur, r)
-	case r == '.':
-		return p.parseField(cur)
-	case r == '+' || r == '-' || unicode.IsDigit(r):
-		p.backup()
-		return p.parseNumber(cur)
-	case isAlphaNumeric(r):
-		p.backup()
-		return p.parseIdentifier(cur)
-	default:
-		return fmt.Errorf("unrecognized character in action: %#U", r)
-	}
-	return p.parseInsideAction(cur)
 }
 
 // parseRightDelim scans the right delimiter, which is known to be present.
@@ -277,7 +282,7 @@ Loop:
 	if len(strs) > 1 {
 		union := []*ListNode{}
 		for _, str := range strs {
-			parser, err := parseAction("union", fmt.Sprintf("[%s]", strings.Trim(str, " ")))
+			parser, err := parseAction("union", "["+strings.Trim(str, " ")+"]")
 			if err != nil {
 				return err
 			}
@@ -290,7 +295,7 @@ Loop:
 	// dict key
 	value := dictKeyRex.FindStringSubmatch(text)
 	if value != nil {
-		parser, err := parseAction("arraydict", fmt.Sprintf(".%s", value[1]))
+		parser, err := parseAction("arraydict", "."+value[1])
 		if err != nil {
 			return err
 		}
@@ -373,10 +378,9 @@ Loop:
 	if p.next() != ']' {
 		return fmt.Errorf("unclosed array expect ]")
 	}
-	reg := regexp.MustCompile(`^([^!<>=]+)([!<>=]+)(.+?)$`)
 	text := p.consumeText()
 	text = text[:len(text)-2]
-	value := reg.FindStringSubmatch(text)
+	value := filterRex.FindStringSubmatch(text)
 	if value == nil {
 		parser, err := parseAction("text", text)
 		if err != nil {

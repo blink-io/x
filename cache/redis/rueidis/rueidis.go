@@ -13,7 +13,7 @@ import (
 
 var errNilCodec = errors.New("rueidis cache: encoding codec is required")
 
-const Name = "goredis"
+const Name = "rueidis"
 
 var _ cache.TTLCache[any] = (*Cache[any])(nil)
 

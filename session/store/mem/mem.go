@@ -39,6 +39,9 @@ func NewWithCleanupInterval(cleanupInterval time.Duration) *Store {
 		items: make(map[string]item),
 	}
 	if cleanupInterval > 0 {
+		// Create the channel before the goroutine starts so it can never
+		// race with StopCleanup or lock it on a nil channel.
+		s.stopCleanup = make(chan bool)
 		go s.startCleanup(cleanupInterval)
 	}
 	return s
@@ -98,9 +101,10 @@ func (s *Store) All(ctx context.Context) (map[string][]byte, error) {
 	defer s.mu.RUnlock()
 
 	mm := make(map[string][]byte)
+	now := time.Now().UnixNano()
 
 	for token, item := range s.items {
-		if item.expiration > time.Now().UnixNano() {
+		if item.expiration > now {
 			mm[token] = item.object
 		}
 	}
@@ -109,14 +113,13 @@ func (s *Store) All(ctx context.Context) (map[string][]byte, error) {
 }
 
 func (s *Store) startCleanup(interval time.Duration) {
-	s.stopCleanup = make(chan bool)
 	ticker := time.NewTicker(interval)
+	defer ticker.Stop()
 	for {
 		select {
 		case <-ticker.C:
 			s.deleteExpired()
 		case <-s.stopCleanup:
-			ticker.Stop()
 			return
 		}
 	}
@@ -133,8 +136,11 @@ func (s *Store) startCleanup(interval time.Duration) {
 // store object from being garbage collected even after the test function
 // has finished. You can prevent this by manually calling StopCleanup.
 func (s *Store) StopCleanup() {
-	if s.stopCleanup != nil {
-		s.stopCleanup <- true
+	// Non-blocking: safe when the cleanup goroutine is disabled, already
+	// stopped, or has not started reading yet.
+	select {
+	case s.stopCleanup <- true:
+	default:
 	}
 }
 

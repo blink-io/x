@@ -9,7 +9,7 @@ require (
 	connectrpc.com/connect v1.21.1
 	filippo.io/csrf v0.2.1
 	github.com/42wim/httpsig v1.3.0
-	github.com/99designs/gqlgen v0.17.95
+	github.com/99designs/gqlgen v0.17.97
 	github.com/Azure/go-amqp v1.7.0
 	github.com/BurntSushi/toml v1.6.0
 	github.com/IBM/sarama v1.61.1
@@ -185,7 +185,7 @@ require (
 	golang.org/x/oauth2 v0.37.0
 	golang.org/x/sys v0.49.0
 	golang.org/x/text v0.43.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20261012220534-4341edf3f941
+	google.golang.org/genproto/googleapis/api v0.0.0-20261019180522-ce908d29299b
 	google.golang.org/grpc v1.84.0
 	google.golang.org/protobuf v1.36.12
 	k8s.io/client-go v0.37.1
@@ -202,6 +202,7 @@ require (
 	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/RoaringBitmap/roaring/v2 v2.29.0 // indirect
 	github.com/STARRY-S/zip v0.2.3 // indirect
+	github.com/agnivade/levenshtein v1.2.1 // indirect
 	github.com/andybalholm/brotli v1.2.6 // indirect
 	github.com/ardielle/ardielle-go v1.5.2 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -234,6 +235,7 @@ require (
 	github.com/go-playground/validator/v10 v10.30.5 // indirect
 	github.com/go-redsync/redsync/v4 v4.18.0 // indirect
 	github.com/go-sql-driver/mysql v1.10.1 // indirect
+	github.com/goccy/go-yaml v1.19.2 // indirect
 	github.com/gofiber/schema v1.8.8 // indirect
 	github.com/gofiber/utils/v2 v2.6.2 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
@@ -346,6 +348,7 @@ require (
 	github.com/tklauser/numcpus v0.12.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/ulikunitz/xz v0.5.17 // indirect
+	github.com/urfave/cli/v3 v3.14.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.75.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect

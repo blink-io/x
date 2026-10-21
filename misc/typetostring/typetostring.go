@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"sync"
 )
 
 func GetType[T any]() string {
@@ -23,9 +24,23 @@ func GetReflectValueType(v reflect.Value) string {
 	return GetReflectType(v.Type())
 }
 
+// typeNames caches reflect.Type -> generated name. getType is typically
+// called for the same type instantiations many times (DI service names,
+// metric labels), so compute each name once.
+var typeNames sync.Map
+
 // getType generates a service name from a type.
 // It returns a string like "*[]*github.com/samber/example.test".
 func getType(typeOfT reflect.Type) string {
+	if v, ok := typeNames.Load(typeOfT); ok {
+		return v.(string)
+	}
+	name := buildTypeName(typeOfT)
+	typeNames.Store(typeOfT, name)
+	return name
+}
+
+func buildTypeName(typeOfT reflect.Type) string {
 	if name := typeOfT.Name(); name != "" {
 
 		pkgPath := typeOfT.PkgPath()

@@ -7,8 +7,11 @@ import (
 )
 
 func ToValueF[T any](f func(any) (T, error), v any, t T) T {
+	if f == nil {
+		return t
+	}
 	r, err := f(v)
-	if f == nil || err != nil {
+	if err != nil {
 		return t
 	}
 	return r

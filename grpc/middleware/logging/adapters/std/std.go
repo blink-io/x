@@ -2,25 +2,33 @@ package std
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
+)
+
+const (
+	prefixDebug = "DEBUG :"
+	prefixInfo  = "INFO :"
+	prefixWarn  = "WARN :"
+	prefixError = "ERROR :"
 )
 
 func InterceptorLogger(l *log.Logger) logging.Logger {
 	return logging.LoggerFunc(func(ctx context.Context, lvl logging.Level, msg string, fields ...any) {
 		switch lvl {
 		case logging.LevelDebug:
-			msg = fmt.Sprintf("DEBUG :%v", msg)
+			msg = prefixDebug + msg
 		case logging.LevelInfo:
-			msg = fmt.Sprintf("INFO :%v", msg)
+			msg = prefixInfo + msg
 		case logging.LevelWarn:
-			msg = fmt.Sprintf("WARN :%v", msg)
+			msg = prefixWarn + msg
 		case logging.LevelError:
-			msg = fmt.Sprintf("ERROR :%v", msg)
+			msg = prefixError + msg
 		default:
-			panic(fmt.Sprintf("unknown level %v", lvl))
+			// A config mistake must not crash the request path; log it
+			// through the same channel with a marker prefix.
+			msg = prefixWarn + "UNKNOWN-LEVEL " + msg
 		}
 		l.Println(append([]any{"msg", msg}, fields...))
 	})

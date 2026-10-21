@@ -2,6 +2,9 @@ package i18n
 
 import (
 	stdhttp "net/http"
+	"strings"
+	"sync"
+	"sync/atomic"
 
 	"golang.org/x/text/language"
 )
@@ -53,6 +56,12 @@ func NewQueryParamsResolver(name string) Resolver {
 }
 
 func (rv *QueryParamsResolver) Resolve(r *stdhttp.Request) string {
+	// r.URL.Query() parses the entire RawQuery and allocates two maps; a
+	// single check avoids all of it when the parameter is absent, which is
+	// the common case.
+	if !strings.Contains(r.URL.RawQuery, rv.Name+"=") {
+		return ""
+	}
 	return r.URL.Query().Get(rv.Name)
 }
 
@@ -66,11 +75,39 @@ func NewAcceptLanguageResolver() Resolver {
 
 func (rv *AcceptLanguageResolver) Resolve(r *stdhttp.Request) string {
 	val := r.Header.Get("Accept-Language")
-	if tags, _, err := language.ParseAcceptLanguage(val); err == nil {
-		return tags[0].String()
+	if val == "" {
+		return ""
 	}
-	return ""
+	// The Accept-Language header repeats heavily in real traffic, and
+	// language.ParseAcceptLanguage is not cheap; memoize by the raw header
+	// value up to a bounded number of distinct values.
+	if v, ok := acceptLangCache.Load(val); ok {
+		if s, ok := v.(string); ok {
+			return s
+		}
+	}
+	tags, _, err := language.ParseAcceptLanguage(val)
+	if err != nil || len(tags) == 0 {
+		return ""
+	}
+	// ParseAcceptLanguage orders tags by quality; the first entry is the
+	// preferred language.
+	tag := tags[0].String()
+	if acceptLangCount.Add(1) > acceptLangCacheMax {
+		return tag
+	}
+	acceptLangCache.Store(val, tag)
+	return tag
 }
+
+var (
+	// Both are shared between resolver instances; the count bounds memory
+	// in case of adversarial header values.
+	acceptLangCache sync.Map
+	acceptLangCount atomic.Int64
+)
+
+const acceptLangCacheMax = 128
 
 // PathResolver gets locale info from url path expr.
 // Foe example, /products/{lang} -> /products/zh-cn?product_id=XXX,

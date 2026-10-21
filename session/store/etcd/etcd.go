@@ -59,8 +59,15 @@ func (e *Store) Find(ctx context.Context, token string) (b []byte, exists bool, 
 // given expiry time. If the session token already exists then the data and expiry
 // time are updated.
 func (e *Store) Commit(ctx context.Context, token string, b []byte, expiry time.Time) error {
-	lease, _ := e.client.Grant(ctx, int64(time.Until(expiry).Seconds()))
-	_, err := e.client.Put(ctx, e.prefix+token, string(b), clientv3.WithLease(lease.ID))
+	ttl := int64(time.Until(expiry).Seconds())
+	if ttl < 1 {
+		ttl = 1
+	}
+	lease, err := e.client.Grant(ctx, ttl)
+	if err != nil {
+		return err
+	}
+	_, err = e.client.Put(ctx, e.prefix+token, string(b), clientv3.WithLease(lease.ID))
 	return err
 }
 

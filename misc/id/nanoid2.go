@@ -5,6 +5,13 @@ import (
 )
 
 func NanoID2(len int) string {
-	idv, _ := gonanoid.New()
+	if len <= 0 {
+		idv, _ := gonanoid.New()
+		return idv
+	}
+	idv, err := gonanoid.New(len)
+	if err != nil {
+		idv, _ = gonanoid.New()
+	}
 	return idv
 }

@@ -57,8 +57,11 @@ func (s *Store) Find(ctx context.Context, token string) (b []byte, exists bool, 
 // given expiry time. If the session token already exists then the data and
 // expiry time are updated.
 func (s *Store) Commit(ctx context.Context, token string, b []byte, expiry time.Time) error {
-	setCmd := s.client.B().Set().Key(s.prefix + token).Value(string(b)).Ex(expiry.Sub(time.Now())).Build()
-	err := s.client.Do(ctx, setCmd).Error()
+	setCmd := s.client.B().Set().Key(s.prefix + token).Value(string(b))
+	if ttl := expiry.Sub(time.Now()); ttl > 0 {
+		setCmd.Ex(ttl)
+	}
+	err := s.client.Do(ctx, setCmd.Build()).Error()
 	return err
 }
 
@@ -76,25 +79,29 @@ func (s *Store) All(ctx context.Context) (map[string][]byte, error) {
 	sessions := make(map[string][]byte)
 
 	for {
-		scanCmd := s.client.B().Scan().Cursor(cursor).Match(s.prefix + "*").Build()
+		// Batch one SCAN page of keys in a single MGET instead of one
+		// sequential GET round-trip per session.
+		scanCmd := s.client.B().Scan().Cursor(cursor).Match(s.prefix + "*").Count(500).Build()
 		v, err := s.client.Do(ctx, scanCmd).AsScanEntry()
-		cursor = v.Cursor
-		keys := v.Elements
 		if err != nil {
 			if rueidis.IsRedisNil(err) {
 				return nil, nil
-			} else {
-				return nil, err
 			}
+			return nil, err
 		}
-		for _, key := range keys {
-			token := key[len(s.prefix):]
-			data, exists, err := s.Find(ctx, token)
+		cursor = v.Cursor
+		keys := v.Elements
+
+		if len(keys) > 0 {
+			mgetCmd := s.client.B().Mget().Key(keys...).Build()
+			replies, err := s.client.Do(ctx, mgetCmd).AsStrSlice()
 			if err != nil {
 				return nil, err
 			}
-			if exists {
-				sessions[token] = data
+			for i, reply := range replies {
+				if reply != "" {
+					sessions[keys[i][len(s.prefix):]] = []byte(reply)
+				}
 			}
 		}
 		if cursor == 0 {

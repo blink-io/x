@@ -1,11 +1,11 @@
 package hash
 
 import (
+	"encoding/binary"
+
 	"github.com/cespare/xxhash/v2"
 )
 
 func XXH(data []byte) []byte {
-	h := xxhash.New()
-	_, _ = h.Write(data)
-	return h.Sum(nil)
+	return binary.BigEndian.AppendUint64(nil, xxhash.Sum64(data))
 }

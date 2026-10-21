@@ -15,7 +15,16 @@ import (
 // Fallbacks to the request's `RemoteAddr` field which is filled by the transport.
 func getFromHTTP(r *http.Request, o *options) string {
 	for _, header := range o.Headers {
-		addrs := strings.Split(r.Header.Get(header), ",")
+		val := r.Header.Get(header)
+		if val == "" {
+			continue
+		}
+		// Single-value headers (the common case) skip the slice allocation
+		// of strings.Split entirely.
+		addrs := []string{val}
+		if strings.Contains(val, ",") {
+			addrs = strings.Split(val, ",")
+		}
 		if ip, ok := realip.GetIPAddress(addrs, o.PrivateSubnets); ok {
 			return ip
 		}

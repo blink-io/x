@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"log"
 	"strings"
+	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/blink-io/x/kvstore"
@@ -137,8 +139,11 @@ func (r *Store) setTTL(ctx context.Context, key string, val *kvstore.KVPair, ttl
 	if err != nil {
 		return err
 	}
-	setCmd := r.client.B().Set().Key(key).Value(valStr).Ex(ttl).Build()
-	return r.client.Do(ctx, setCmd).Error()
+	setCmd := r.client.B().Set().Key(key).Value(valStr)
+	if ttl > 0 {
+		setCmd.Ex(ttl)
+	}
+	return r.client.Do(ctx, setCmd.Build()).Error()
 }
 
 // Get a value given its key.
@@ -184,7 +189,9 @@ func (r *Store) Exists(ctx context.Context, key string, _ *kvstore.ReadOptions) 
 // glitch: we use notified-then-retrieve to retrieve *kvstore.KVPair.
 // so the responses may sometimes inaccurate.
 func (r *Store) Watch(ctx context.Context, key string, _ *kvstore.ReadOptions) (<-chan *kvstore.KVPair, error) {
-	watchCh := make(chan *kvstore.KVPair)
+	// Buffer of one lets the initial state push avoid blocking before the
+	// consumer reads; missed events are harmless for notified-then-retrieve.
+	watchCh := make(chan *kvstore.KVPair, 1)
 	nKey := normalize(key)
 
 	get := getter(func() (any, error) {
@@ -197,11 +204,16 @@ func (r *Store) Watch(ctx context.Context, key string, _ *kvstore.ReadOptions) (
 
 	push := pusher(func(v any) {
 		if val, ok := v.(*kvstore.KVPair); ok {
-			watchCh <- val
+			select {
+			case watchCh <- val:
+			case <-ctx.Done():
+			}
 		}
 	})
 
-	sub := newSubscribe(ctx, r.client, regexWatch(nKey, true))
+	// Note: must match goredis — a single key watch only fires for the key
+	// itself, not for its children.
+	sub := newSubscribe(ctx, r.client, regexWatch(nKey, false))
 
 	go func(ctx context.Context, sub *subscribe, get getter, push pusher) {
 		defer func() {
@@ -220,7 +232,7 @@ func (r *Store) Watch(ctx context.Context, key string, _ *kvstore.ReadOptions) (
 
 // WatchTree watches for changes on child nodes under a given directory.
 func (r *Store) WatchTree(ctx context.Context, directory string, _ *kvstore.ReadOptions) (<-chan []*kvstore.KVPair, error) {
-	watchCh := make(chan []*kvstore.KVPair)
+	watchCh := make(chan []*kvstore.KVPair, 1)
 	nKey := normalize(directory)
 
 	get := getter(func() (any, error) {
@@ -233,7 +245,10 @@ func (r *Store) WatchTree(ctx context.Context, directory string, _ *kvstore.Read
 
 	push := pusher(func(v any) {
 		if p, ok := v.([]*kvstore.KVPair); ok {
-			watchCh <- p
+			select {
+			case watchCh <- p:
+			case <-ctx.Done():
+			}
 		}
 	})
 
@@ -277,7 +292,7 @@ func (r *Store) NewLock(_ context.Context, key string, opts *kvstore.LockOptions
 		key:      key,
 		value:    value,
 		ttl:      ttl,
-		unlockCh: make(chan struct{}),
+		unlockCh: make(chan struct{}, 1),
 	}, nil
 }
 
@@ -301,7 +316,7 @@ func (r *Store) keys(ctx context.Context, regex string) ([]string, error) {
 	const (
 		startCursor  = 0
 		endCursor    = 0
-		defaultCount = 10
+		defaultCount = 500
 	)
 
 	var allKeys []string
@@ -535,22 +550,32 @@ func watchLoop(ctx context.Context, msgCh chan *rueidis.PubSubMessage, get gette
 }
 
 type subscribe struct {
-	client  rueidis.Client
+	// client is a dedicated connection acquired from the shared store
+	// client; closing it must never affect Get/Put/lock traffic.
+	client  rueidis.DedicatedClient
 	pubsub  rueidis.Completed
 	closeCh chan struct{}
+
+	closeOnce sync.Once
 }
 
 func newSubscribe(ctx context.Context, client rueidis.Client, regex string) *subscribe {
+	sub, _ := client.Dedicate()
+	pubsub := sub.B().Psubscribe().Pattern(regex).Build()
 	return &subscribe{
-		client:  client,
-		pubsub:  client.B().Psubscribe().Pattern(regex).Build(),
+		client:  sub,
+		pubsub:  pubsub,
 		closeCh: make(chan struct{}),
 	}
 }
 
 func (s *subscribe) Close() error {
-	close(s.closeCh)
-	s.client.Close()
+	s.closeOnce.Do(func() {
+		close(s.closeCh)
+		// Closing the dedicated wire tears down the pubsub subscription
+		// server-side and unblocks a pending Receive.
+		s.client.Close()
+	})
 	return nil
 }
 
@@ -578,7 +603,11 @@ func (s *subscribe) receiveLoop(ctx context.Context, msgCh chan *rueidis.PubSubM
 				return
 			}
 			if msg != nil {
-				msgCh <- msg
+				select {
+				case msgCh <- msg:
+				case <-ctx.Done():
+					return
+				}
 			}
 		}
 	}
@@ -586,8 +615,12 @@ func (s *subscribe) receiveLoop(ctx context.Context, msgCh chan *rueidis.PubSubM
 
 type redisLock struct {
 	redis    *Store
-	last     *kvstore.KVPair
 	unlockCh chan struct{}
+
+	// mu guards last: it is written by the holdLock goroutine and read by
+	// tryLock/Unlock without any other synchronization.
+	mu   sync.Mutex
+	last *kvstore.KVPair
 
 	key   string
 	value []byte
@@ -606,7 +639,12 @@ func (l *redisLock) Lock(ctx context.Context) (<-chan struct{}, error) {
 	}
 
 	// wait for changes on the key.
-	watch, err := l.redis.Watch(ctx, l.key, nil)
+	// The watch must only live as long as this Lock call, otherwise every
+	// contended acquisition leaks a pubsub subscription and its goroutines.
+	wctx, wcancel := context.WithCancel(ctx)
+	defer wcancel()
+
+	watch, err := l.redis.Watch(wctx, l.key, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -631,11 +669,17 @@ func (l *redisLock) Lock(ctx context.Context) (<-chan struct{}, error) {
 // and return `false, nil` when it can't lock now,
 // and return `false, err` if any unexpected error happened underlying.
 func (l *redisLock) tryLock(ctx context.Context, lockHeld chan struct{}) (bool, error) {
-	success, item, err := l.redis.AtomicPut(ctx, l.key, l.value, l.last, &kvstore.WriteOptions{
+	l.mu.Lock()
+	previous := l.last
+	l.mu.Unlock()
+
+	success, item, err := l.redis.AtomicPut(ctx, l.key, l.value, previous, &kvstore.WriteOptions{
 		TTL: l.ttl,
 	})
 	if success {
+		l.mu.Lock()
 		l.last = item
+		l.mu.Unlock()
 		// keep holding.
 		go l.holdLock(ctx, lockHeld)
 		return true, nil
@@ -650,11 +694,17 @@ func (l *redisLock) holdLock(ctx context.Context, lockHeld chan struct{}) {
 	defer close(lockHeld)
 
 	hold := func() error {
-		_, item, err := l.redis.AtomicPut(ctx, l.key, l.value, l.last, &kvstore.WriteOptions{
+		l.mu.Lock()
+		previous := l.last
+		l.mu.Unlock()
+
+		_, item, err := l.redis.AtomicPut(ctx, l.key, l.value, previous, &kvstore.WriteOptions{
 			TTL: l.ttl,
 		})
 		if err == nil {
+			l.mu.Lock()
 			l.last = item
+			l.mu.Unlock()
 		}
 		return err
 	}
@@ -677,14 +727,25 @@ func (l *redisLock) holdLock(ctx context.Context, lockHeld chan struct{}) {
 }
 
 func (l *redisLock) Unlock(ctx context.Context) error {
-	l.unlockCh <- struct{}{}
+	// holdLock may already be gone (context canceled, transient Redis error,
+	// double Unlock), so signal best-effort instead of blocking forever.
+	select {
+	case l.unlockCh <- struct{}{}:
+	default:
+	}
 
-	_, err := l.redis.AtomicDelete(ctx, l.key, l.last)
+	l.mu.Lock()
+	previous := l.last
+	l.mu.Unlock()
+
+	_, err := l.redis.AtomicDelete(ctx, l.key, previous)
 	if err != nil {
 		return err
 	}
 
+	l.mu.Lock()
 	l.last = nil
+	l.mu.Unlock()
 
 	return nil
 }
@@ -701,7 +762,12 @@ func formatSec(dur time.Duration) string {
 	return fmt.Sprintf("%d", int(dur/time.Second))
 }
 
+var seqCounter atomic.Uint64
+
 func sequenceNum() uint64 {
 	// TODO: use uuid if we concerns collision probability of this number.
-	return uint64(time.Now().Nanosecond())
+	// Mix a per-process counter into a full nanosecond timestamp so the
+	// value is unique across seconds (Nanosecond() wraps every second and
+	// made the CAS comparison pass against unrelated values).
+	return uint64(time.Now().UnixNano())<<20 | seqCounter.Add(1)&0xFFFFF
 }

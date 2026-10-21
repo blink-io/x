@@ -2,7 +2,6 @@ package zap
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
 	"go.uber.org/zap"
@@ -11,6 +10,9 @@ import (
 // InterceptorLogger adapts zap logger to interceptor logger.
 // This code is simple enough to be copied and not imported.
 func InterceptorLogger(l *zap.Logger) logging.Logger {
+	// AddCallerSkip is constant across records; apply it once instead of
+	// copying the whole logger for every log record.
+	base := l.WithOptions(zap.AddCallerSkip(1))
 	return logging.LoggerFunc(func(ctx context.Context, lvl logging.Level, msg string, fields ...any) {
 		f := make([]zap.Field, 0, len(fields)/2)
 
@@ -30,7 +32,7 @@ func InterceptorLogger(l *zap.Logger) logging.Logger {
 			}
 		}
 
-		logger := l.WithOptions(zap.AddCallerSkip(1)).With(f...)
+		logger := base.With(f...)
 
 		switch lvl {
 		case logging.LevelDebug:
@@ -42,7 +44,8 @@ func InterceptorLogger(l *zap.Logger) logging.Logger {
 		case logging.LevelError:
 			logger.Error(msg)
 		default:
-			panic(fmt.Sprintf("unknown level %v", lvl))
+			// A config mistake must not crash the request path.
+			logger.Warn("unknown logging level", zap.Int("level", int(lvl)))
 		}
 	})
 }
