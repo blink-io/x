@@ -63,8 +63,8 @@ require (
 	github.com/go-test/deep v1.1.2
 	github.com/go-viper/mapstructure/v2 v2.5.0
 	github.com/goccy/go-json v0.12.0
-	github.com/gofiber/contrib/v3/monitor v1.2.7
-	github.com/gofiber/contrib/v3/otel v1.3.5
+	github.com/gofiber/contrib/v3/monitor v1.2.8
+	github.com/gofiber/contrib/v3/otel v1.3.6
 	github.com/gofiber/fiber/v3 v3.7.0
 	github.com/gofrs/uuid/v5 v5.5.1
 	github.com/google/flatbuffers v25.12.19+incompatible
@@ -73,7 +73,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.4
 	github.com/guregu/null/v6 v6.0.0
 	github.com/h2non/filetype v1.1.3
-	github.com/hashicorp/consul/api v1.35.0
+	github.com/hashicorp/consul/api v1.35.1
 	github.com/hashicorp/go-retryablehttp v0.7.8
 	github.com/hashicorp/golang-lru/v2 v2.0.7
 	github.com/hashicorp/mdns v1.0.7
@@ -103,7 +103,7 @@ require (
 	github.com/mholt/archives v0.1.5
 	github.com/miekg/dns v1.1.73
 	github.com/minio/highwayhash v1.0.4
-	github.com/minio/minlz v1.3.0
+	github.com/minio/minlz v1.3.1
 	github.com/montanaflynn/stats v0.14.0
 	github.com/nats-io/nats.go v1.56.0
 	github.com/ncruces/go-strftime v1.1.0
@@ -120,8 +120,8 @@ require (
 	github.com/qiniu/qmgo v1.1.10
 	github.com/quic-go/quic-go v0.64.1
 	github.com/rabbitmq/amqp091-go v1.17.0
-	github.com/redis/go-redis/extra/rediscmd/v9 v9.24.0
-	github.com/redis/go-redis/v9 v9.24.0
+	github.com/redis/go-redis/extra/rediscmd/v9 v9.24.1
+	github.com/redis/go-redis/v9 v9.24.1
 	github.com/redis/rueidis v1.0.80
 	github.com/redis/rueidis/rueidishook v1.0.80
 	github.com/reugn/async v0.10.0
@@ -150,7 +150,7 @@ require (
 	github.com/sethvargo/go-limiter v1.2.0
 	github.com/sethvargo/go-password v0.4.0
 	github.com/sethvargo/go-retry v0.7.0
-	github.com/shamaton/msgpack/v3 v3.2.8
+	github.com/shamaton/msgpack/v3 v3.3.0
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/sourcegraph/conc v0.3.0
 	github.com/spf13/cast v1.10.0
@@ -169,8 +169,8 @@ require (
 	github.com/valkey-io/valkey-go v1.0.80
 	github.com/valkey-io/valkey-go/valkeyhook v1.0.80
 	github.com/vmihailenco/msgpack/v5 v5.4.1
-	github.com/xtaci/kcp-go/v5 v5.7.8
-	github.com/zeebo/xxh3 v1.1.1-0.20260908150653-f7225998cebf
+	github.com/xtaci/kcp-go/v5 v5.7.10
+	github.com/zeebo/xxh3 v1.1.1-0.20261118193009-e05079abbd7d
 	github.com/zitadel/passwap v0.13.0
 	gitlab.com/greyxor/slogor v1.7.1
 	go.etcd.io/etcd/client/v3 v3.7.4
@@ -235,7 +235,7 @@ require (
 	github.com/go-playground/validator/v10 v10.30.6 // indirect
 	github.com/go-redsync/redsync/v4 v4.18.0 // indirect
 	github.com/go-sql-driver/mysql v1.10.1 // indirect
-	github.com/gofiber/schema v1.10.0 // indirect
+	github.com/gofiber/schema v1.10.2 // indirect
 	github.com/gofiber/utils/v2 v2.6.5 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v5 v5.3.1 // indirect
@@ -350,7 +350,7 @@ require (
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/ulikunitz/xz v0.5.17 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.79.0 // indirect
+	github.com/valyala/fasthttp v1.80.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/vektah/gqlparser/v2 v2.5.64 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
@@ -363,7 +363,7 @@ require (
 	go.etcd.io/etcd/api/v3 v3.7.4 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.7.4 // indirect
 	go.mongodb.org/mongo-driver v1.17.10 // indirect
-	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
+	go.opentelemetry.io/auto/sdk v1.2.2 // indirect
 	go.opentelemetry.io/contrib v1.47.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.72.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/runtime v0.72.0 // indirect
